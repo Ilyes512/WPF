@@ -358,113 +358,125 @@ class wpf_walker extends Walker_Nav_Menu {
 /****************************************************
  *		>THEME SUPPORT + SIDEBAR
 *****************************************************/
-
-function wpf_theme_support() {
-	// language support
-	load_theme_textdomain('wpf', get_template_directory() . '/lang');
-	
-	// Add post thumbnail supports.
-	add_theme_support('post-thumbnails');
-	// set_post_thumbnail_size(150, 150, false);
-	
-	// rss
-	add_theme_support('automatic-feed-links');
-	
-	// Add post formarts supports.
-	//add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video'));
-	
-	// Add menu supports.
-	add_theme_support('menus');
-	register_nav_menus(array(
-		'primary' => __('Primary Navigation', 'wpf'),
-		'utility' => __('Utility Navigation', 'wpf')
-	));
-} // end wpf_theme_support()
+if (!function_exists('wpf_theme_support')) {
+	function wpf_theme_support() {
+		// language support
+		load_theme_textdomain('wpf', get_template_directory() . '/lang');
+		
+		// Add post thumbnail supports.
+		add_theme_support('post-thumbnails');
+		// set_post_thumbnail_size(150, 150, false);
+		
+		// rss
+		add_theme_support('automatic-feed-links');
+		
+		// Add post formarts supports.
+		//add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video'));
+		
+		// Add menu supports.
+		add_theme_support('menus');
+		register_nav_menus(array(
+			'primary' => __('Primary Navigation', 'wpf'),
+			'utility' => __('Utility Navigation', 'wpf')
+		));
+	} // end wpf_theme_support()
+}
 add_action('after_setup_theme', 'wpf_theme_support');
 
-function wpf_sidebar_support() {
-	// create widget areas: sidebar, footer
-	register_sidebar(array(
-		'name'=> __('Sidebar', 'wpf'),
-		'id' => 'sidebar-main',
-		'description' => __('This is the sidebar next to the maincontent of a page', 'wpf'),
-		'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
-		'after_widget' => '</div></article>',
-		'before_title' => '<h6><strong>',
-		'after_title' => '</strong></h6>'
-	));
-	
-	register_sidebar(array(
-		'name' => __('Footer 1', 'wpf'),
-		'id' => 'sidebar-footer-1',
-		'description' => __('An optional widget area for your site footer', 'wpf'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h6><strong>',
-		'after_title' => '</strong></h6>'
-	));
-	
-	register_sidebar(array(
-		'name' => __('Footer 2', 'wpf'),
-		'id' => 'sidebar-footer-2',
-		'description' => __('An optional widget area for your site footer', 'wpf'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h6><strong>',
-		'after_title' => '</strong></h6>'
-	));
-	
-	register_sidebar(array(
-		'name' => __('Footer 3', 'wpf'),
-		'id' => 'sidebar-footer-3',
-		'description' => __('An optional widget area for your site footer', 'wpf'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h6><strong>',
-		'after_title' => '</strong></h6>'
-	));
-	// wpf_footer_widget() will return a $GLOBAL['$wpf_widget_classes'] containing the 3 footer grid classes
-	wpf_footer_widget();
-} // end wpf_sidebar_support();
+if (!function_exists('wpf_sidebar_support')) {
+	function wpf_sidebar_support() {
+		// create widget areas: sidebar, footer
+		register_sidebar(array(
+			'name'=> __('Sidebar', 'wpf'),
+			'id' => 'sidebar-main',
+			'description' => __('This is the sidebar next to the maincontent of a page', 'wpf'),
+			'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="large-12 columns">',
+			'after_widget' => '</div></article>',
+			'before_title' => '<h6 class="widget-title"><strong>',
+			'after_title' => '</strong></h6>'
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer 1', 'wpf'),
+			'id' => 'sidebar-footer-1',
+			'description' => __('An optional widget area for your site footer', 'wpf'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h6 class="widget-title"><strong>',
+			'after_title' => '</strong></h6>'
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer 2', 'wpf'),
+			'id' => 'sidebar-footer-2',
+			'description' => __('An optional widget area for your site footer', 'wpf'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h6 class="widget-title"><strong>',
+			'after_title' => '</strong></h6>'
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer 3', 'wpf'),
+			'id' => 'sidebar-footer-3',
+			'description' => __('An optional widget area for your site footer', 'wpf'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h6 class="widget-title"><strong>',
+			'after_title' => '</strong></h6>'
+		));
+		// wpf_footer_widget() will return a $GLOBAL['$wpf_widget_classes'] containing the 3 footer grid classes
+		wpf_footer_widget();
+	} // end wpf_sidebar_support();
+}
 add_action('widgets_init', 'wpf_sidebar_support');
 
-// this function takes care off the footer widget classes
-function wpf_footer_widget() {
-	// 1 = active sidebar, 0 = not active
-	
-	$footer_sidebar = array(
-											(is_active_sidebar('sidebar-footer-1') ? 1 : 0),
-											(is_active_sidebar('sidebar-footer-2') ? 1 : 0),
-											(is_active_sidebar('sidebar-footer-3') ? 1 : 0),
-										);
-	$total_active = array_sum($footer_sidebar);
-	
-		if ($total_active == 1) {
-			// $footer_sidebar == 100/010/001
-			$class = array('large-12', false, false);
-		} elseif ($total_active == 2) {
-			if ($footer_sidebar[1] == 0) {
-				// $footer_sidebar == 101
-				$class = array('large-8', false, 'large-4');
-			} elseif ($footer_sidebar[0] == 0) {
-				// $footer_sidebar == 011
-				$class = array(false, 'large-8', 'large-4');
-			} else {
-				// $footer_sidebar == 110
+if (!function_exists('wpf_footer_widget')) {
+	// this function takes care off the footer widget classes
+	function wpf_footer_widget() {
+		// 1 = active sidebar, 0 = not active
+		
+		$footer_sidebar = array(
+												(is_active_sidebar('sidebar-footer-1') ? 1 : 0),
+												(is_active_sidebar('sidebar-footer-2') ? 1 : 0),
+												(is_active_sidebar('sidebar-footer-3') ? 1 : 0)
+											);
+		$total_active = implode('', $footer_sidebar);
+		
+		switch ($total_active){
+			case '100':
+				$class = array('large-12', false, false);
+				break;
+			case '010':
+				$class = array(false, 'large-12', false);
+				break;
+			case '001':
+				$class = array(false, false, 'large-12');
+				break;
+			case '110':
 				$class = array('large-4', 'large-8', false);
-			}
-		} else {
-			// $footer_sidebar == 111/000
-			$class = array('large-4', 'large-4', 'large-4');
+				break;
+			case '101':
+				$class = array('large-8', false, 'large-4');
+				break;
+			case '011':
+				$class = array(false, 'large-8', 'large-4');
+				break;
+			default:
+				$class = array('large-4', 'large-4', 'large-4');	
 		}
-	// return
-	$GLOBALS['wpf_widget_classes'] = $class;
+	
+		// return
+		$GLOBALS['wpf_widget_classes'] = $class;
+	}
 }
 
-// return entry meta information for posts, used by multiple loops.
-function wpf_entry_meta() {
-	echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'wpf'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
-	echo '<p class="byline author">'. __('Written by', 'wpf') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+if (!function_exists('wpf_entry_meta')) {
+	// return entry meta information for posts, used by multiple loops.
+	function wpf_entry_meta() {
+		echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'wpf'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
+		echo '<p class="byline author">'. __('Written by', 'wpf') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+	}
 }
 
 /****************************************************

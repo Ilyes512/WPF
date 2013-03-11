@@ -33,9 +33,8 @@
 <?php wp_footer(); ?>
 
 <script>
-	$(document).foundation();
+	jQuery(document).foundation();
 </script>
-<!-- <?php wp_nav_menu(array('theme_location' => 'utility', 'container' => false, 'menu_class' => 'inline-list right', 'fallback_cb' => false)); ?> -->
 </body>
 </html>
 <!-- end footer.php -->
