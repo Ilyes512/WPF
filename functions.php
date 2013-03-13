@@ -109,11 +109,11 @@ function wpf_scripts_and_styles() {
 		// register Google jQuery
 		wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true);
 		
-		// modernizr (without html5shiv - will still be loaded but only if needed)
-		wp_register_script('wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false);
+		// modernizr (without html5shiv, will still be loaded but only if needed)
+		wp_register_script('wpf-modernizr', get_stylesheet_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false);
 		
 		// adding Foundation scripts file in the footer
-		wp_register_script('wpf-js', get_template_directory_uri() . '/js/foundation.min.js', array('jquery'), WPF_VERSION, true);
+		wp_register_script('wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array('jquery'), WPF_VERSION, true);
 
 		// enqueue styles and scripts
 		wp_enqueue_style('wpf-stylesheet');
