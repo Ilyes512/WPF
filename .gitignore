@@ -4,3 +4,5 @@ js/combine.js
 js/combine-ck.js
 .DS_Store
 codekit-config.json
+js/combine2.js
+js/combine2.min.js

@@ -2,27 +2,27 @@
 //@charset "UTF-8";
 
 // Global Foundation Settings
-@import "settings"; //this will first include foundation-global
+@import "settings"; // *always required (cause it includes "foundation/foundation-global" wish is required)
 
 @import "normalize";
 
 // Comment the specific parts of Foundation that your not gona use to make the style.css
 // file lighter
 
-@import "foundation/components/global";
+@import "foundation/components/global"; // *always required
 @import "foundation/components/grid";
 @import "foundation/components/visibility";
 @import "foundation/components/block-grid";
 @import "foundation/components/type";
 @import "foundation/components/buttons";
-@import "foundation/components/forms";
-@import "foundation/components/custom-forms";
-@import "foundation/components/button-groups";
-@import "foundation/components/dropdown-buttons";
-@import "foundation/components/split-buttons";
+@import "foundation/components/forms"; // *requires components/buttons
+@import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+@import "foundation/components/button-groups"; // *requires components/buttons
+@import "foundation/components/dropdown-buttons"; // *requires components/buttons
+@import "foundation/components/split-buttons"; // *requires components/buttons
 @import "foundation/components/flex-video";
 @import "foundation/components/section";
-@import "foundation/components/top-bar";
+@import "foundation/components/top-bar"; // *requires components/grid
 @import "foundation/components/orbit";
 @import "foundation/components/reveal";
 @import "foundation/components/joyride";
@@ -120,16 +120,23 @@ ul {
 }
 
 // adjust search button on top-bar
-input.prefix.button {
+input.postfix.button {
 	line-height: 1;
 }
 
+/*
 // adjust search button on sidebar
-#sidebar input.prefix.button {
+#sidebar input.postfix.button {
 	line-height: 0.7;
 }
+*/
 
 // FIX: A fixed top-bar partly disappears behind the wpadminbar 
 body.logged-in .fixed {
 	top: 28px; // the wpadminbar has a height of 28px
+}
+
+// add's some optional hr markup within panel's (404 and not found page)
+.panel > hr {
+	border: 5px solid $primary-color;
 }

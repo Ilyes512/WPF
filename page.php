@@ -27,7 +27,6 @@
 		</div> <!-- end .large-8.columns -->
 		
 		<?php get_sidebar(); ?>
-		<hr>
 	</section><!-- Container End -->	
 		
 <?php get_footer(); ?>

@@ -33,7 +33,6 @@
 		</div>
 		
 		<?php get_sidebar(); ?>
-		<hr>	
 	</section> <!-- end .large-8.columns -->
 
 	<?php get_footer(); ?>

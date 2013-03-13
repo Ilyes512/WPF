@@ -1,9 +1,9 @@
 <!-- index.php -->
-	<?php get_header(); ?>
+<?php get_header(); ?>
 
 	<section class="row" role="document">
 	
-	<!-- Row for main content area -->
+		<!-- Row for main content area -->
 		<div class="large-8 columns" role="main">
 		
 		<?php if (have_posts()): ?>
@@ -29,8 +29,7 @@
 		</div>
 		
 		<?php get_sidebar(); ?>
-		<hr>	
 	</section> <!-- end .large-8.columns -->	
 
-	<?php get_footer(); ?>
+<?php get_footer(); ?>
 <!-- end index.php -->

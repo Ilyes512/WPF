@@ -5,7 +5,7 @@
 			<input type="text" value="" name="s" id="s" placeholder="<?php _e('Search', 'wpf'); ?>">
 		</div>
 		<div class="small-4 columns">
-			<input type="submit" id="searchsubmit" value="<?php _e('Search', 'wpf'); ?>" class="prefix button">
+			<input type="submit" id="searchsubmit" value="<?php _e('Search', 'wpf'); ?>" class="postfix button radius">
 		</div>
 	</div>
 </form>

@@ -19,7 +19,7 @@
 		<?php endif; ?>
 		<div class="row">
 			<div class="large-6 columns">
-				<p>&copy; <?php echo date('Y'); ?>. Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repositoru on github!</a></p>
+				<p>&copy; <?php echo date('Y'); ?>. Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>
 			</div>
 			<div class="large-6 columns">
 				<?php wp_nav_menu(array('theme_location' => 'utility', 'container' => false, 'menu_class' => 'inline-list right', 'fallback_cb' => false)); ?>
