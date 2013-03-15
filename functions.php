@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.1');
+define('WPF_VERSION', '0.1.2');
 
 /****************************************************
 		Table of contents
