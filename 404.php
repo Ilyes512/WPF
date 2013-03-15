@@ -23,6 +23,7 @@
 			</div>
 	
 		</div>
+		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 		<hr>
 	</section>

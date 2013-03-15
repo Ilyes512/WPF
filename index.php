@@ -27,7 +27,7 @@
 		<?php endif; ?>
 	
 		</div>
-		
+		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 	</section> <!-- end .large-8.columns -->	
 

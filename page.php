@@ -25,7 +25,7 @@
 		<?php endwhile; ?>
 	
 		</div> <!-- end .large-8.columns -->
-		
+		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 	</section><!-- Container End -->	
 		
