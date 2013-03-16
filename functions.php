@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.2');
+define('WPF_VERSION', '0.1.3');
 
 /****************************************************
 		Table of contents
@@ -110,7 +110,7 @@ function wpf_scripts_and_styles() {
 		wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true);
 		
 		// modernizr (without html5shiv, will still be loaded but only if needed)
-		wp_register_script('wpf-modernizr', get_stylesheet_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false);
+		wp_register_script('wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false);
 		
 		// adding Foundation scripts file in the footer
 		wp_register_script('wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array('jquery'), WPF_VERSION, true);
