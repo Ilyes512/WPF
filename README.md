@@ -8,7 +8,8 @@ This theme uses the latest Foundation (4.0.8) and works on the latest Wordpress 
 
 Useful links
 =============
-* http://foundation.zurb.com/docs/
+* [Official WPF Google Group Forum](https://groups.google.com/forum/?fromgroups#!forum/wordpressfoundation)
+* [Zurb Foundation Documentation](http://foundation.zurb.com/docs/)
 
 Credits
 =======
@@ -18,4 +19,4 @@ Credits
 
 Looking for collaborators!
 ==========================
-Please, if you have tips or idea's, then please share them! Just put them on under the issues.
+Please, if you have tips or idea's, then please share them! Just put them under the issues.
