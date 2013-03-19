@@ -20,7 +20,7 @@ get_header(); ?>
 				</div>
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'), 'after' => '</p></nav>' )); ?>
-					<p><?php the_tags(); ?></p>
+					<?php wpf_tags('<p>', '</p>'); ?>
 				</footer>
 				<div class="row">
 					<div class="large-10 large-centered columns">

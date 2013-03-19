@@ -18,7 +18,7 @@
 				</div>
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'), 'after' => '</p></nav>' )); ?>
-					<p><?php the_tags(); ?></p>
+					<?php wpf_tags('<p>', '</p>'); ?>
 				</footer>
 				<?php comments_template(); ?>
 			</article>

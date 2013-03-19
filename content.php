@@ -5,10 +5,12 @@
 		<?php wpf_entry_meta(); ?>
 	</header>
 	<div class="entry-content">
-		<?php the_content('Continue reading...'); ?>
+		<?php the_content(__('Continue reading...', 'wpf')); ?>
 	</div>
 	<footer>
-		<?php $tag = get_the_tags(); if (!$tag) { } else { ?><p><?php the_tags(); ?></p><?php } ?>
+		<p>
+		<?php wpf_postfooter_meta(); ?>
+		</p>
 	</footer>
 	<hr />
 </article>

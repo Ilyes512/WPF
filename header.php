@@ -16,7 +16,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('antialiased'); ?>>
 
 <div id="container" class="container" role="document">
 

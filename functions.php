@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.3');
+define('WPF_VERSION', '0.1.4');
 
 /****************************************************
 		Table of contents
@@ -31,7 +31,7 @@ function wpf_cleanup() {
 	add_action('wp_enqueue_scripts', 'wpf_scripts_and_styles', 999);
 	
 	// additional post related cleaning
-	/* For now it's off until I see the any problems relating to this
+	/* For now it's commented until I come across any problems relating to this
 		add_filter('img_caption_shortcode', 'wpf_cleaner_caption', 10, 3);
 		add_filter('get_image_tag_class', 'wpf_image_tag_class', 0, 4);
 		add_filter('get_image_tag', 'wpf_image_editor', 0, 4);
@@ -40,8 +40,6 @@ function wpf_cleanup() {
 } // end wpf_cleanup
 
 function wpf_head_cleanup() {
-	// remove generator meta
-	// remove_action('wp_head', 'wp_generator');
 	// category feeds
 	// remove_action('wp_head', 'feed_links_extra', 3);
 	// post and comment feeds
@@ -442,7 +440,7 @@ if (!function_exists('wpf_footer_widget')) {
 												(is_active_sidebar('sidebar-footer-3') ? 1 : 0)
 											);
 		$total_active = implode('', $footer_sidebar);
-		
+
 		switch ($total_active){
 			case '100':
 				$class = array('large-12', false, false);
@@ -471,17 +469,65 @@ if (!function_exists('wpf_footer_widget')) {
 	}
 }
 
-if (!function_exists('wpf_entry_meta')) {
-	// return entry meta information for posts, used by multiple loops.
-	function wpf_entry_meta() {
-		echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'wpf'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
-		echo '<p class="byline author">'. __('Written by', 'wpf') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
-	}
-}
-
 /****************************************************
  *		>MISC
 *****************************************************/
 
+// prints the entry meta for posts.
+if (!function_exists('wpf_entry_meta')) {
+	function wpf_entry_meta() {
+		printf(__('<p>Posted by <a href="%s" rel="author">%s</a> on <a href="%s"><time datetime="%s">%s</time></a></p>', 'wpf'),
+			get_author_posts_url(get_the_author_meta('ID')),
+			get_the_author(),
+			get_month_link(get_the_time('Y'), get_the_time('m')),
+			get_the_time('c'),
+			get_the_time('j F Y')
+		);
+	}
+}
+
+// checks if the post/page has any tag's
+// true: post the tags with foundation labels
+// false: print nothing
+if (!function_exists('wpf_tags')) {
+	function wpf_tags($before = null, $after = null) {
+		if (has_tag()) {
+			echo $before;
+			// Translators: Only translate "Tags:"
+			the_tags(__('Tags: <span class="secondary label">', 'wpf'), '</span> <span class="secondary label">', '</span>');
+			echo $after;
+		}
+	}
+}
+
+// Prints the footer post meta for posts. Also uses wpf_tags().
+// Prints the category's and show's the comment count (if comments is enabled).
+if (!function_exists('wpf_postfooter_meta')) {
+	function wpf_postfooter_meta() {
+		// Translators: used between list items, there is a space after the comma.
+		$categories_list = get_the_category_list(__(', ', 'wpf'));
+		
+		// check if the post has comments enabled
+		if (comments_open()) {
+			// get the number of comments
+			$num_comment = get_comments_number();
+			
+			if ($num_comment == 0) {
+				$comment = __('Leave a response');
+			} else {
+				$comment = sprintf(_n('one response', '%s responses', $num_comment, 'wpf'), $num_comment);	
+			}
+			// add the permalink + #respond anchor so it directs the user to the form
+			$comment = '<a href="'.get_permalink().'#respond">'.$comment.'</a>';
+		}
+		else {
+			$comment = __('Comments are locked for this post', 'wpf');
+		}
+		
+		printf(__('Posted in %s | %s', 'wpf'), $categories_list, $comment);
+		
+		wpf_tags('<br>');
+	}
+}
 
 ?>

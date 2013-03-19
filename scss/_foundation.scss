@@ -140,3 +140,8 @@ body.logged-in .fixed {
 .panel > hr {
 	border: 5px solid $primary-color;
 }
+
+// Dont show the "dots" for widget list's
+.widget ul {
+	list-style: none;
+}
