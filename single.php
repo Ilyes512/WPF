@@ -12,13 +12,14 @@
 				<header>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<?php wpf_entry_meta(); ?>
+					<?php wpf_breadcrumb(); ?>
 				</header>
 				<div class="entry-content">
 					<?php the_content(); ?>
 				</div>
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'), 'after' => '</p></nav>' )); ?>
-					<?php wpf_tags('<p>', '</p>'); ?>
+					<?php wpf_tags('<div class="text-center">', '</div>'); ?>
 				</footer>
 				<?php comments_template(); ?>
 			</article>
