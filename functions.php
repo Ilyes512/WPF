@@ -1,22 +1,24 @@
 <?php
-define('WPF_VERSION', '0.1.5');
+define('WPF_VERSION', '0.1.6');
 
 /****************************************************
 		Table of contents
 *****************************************************
- *		>CLEANUP + ENQUEUE
+ *		>LANG + CLEANUP + ENQUEUE
  *		>FOUNDATION NAVIGATION
  *		>THEME SUPPORT + SIDEBAR
  *		>MISC
 */
 
 /****************************************************
- *		>CLEANUP + ENQUEUE
+ *		>LANG + CLEANUP + ENQUEUE
 *****************************************************/
 
 if (!function_exists('wpf_cleanup')) {
 	// Start cleaning up <head> and add the necessary css and javascript files
 	function wpf_cleanup() {
+		// add language support
+		load_theme_textdomain('wpf', get_template_directory() . '/lang');
 	
 		// launching operation cleanup
 		add_action('init', 'wpf_head_cleanup');
@@ -553,7 +555,7 @@ if (!function_exists('wpf_postfooter_meta')) {
 			$num_comments = get_comments_number();
 			
 			if ($num_comments == 0) {
-				$comment = __('Leave a response');
+				$comment = __('Leave a response', 'wpf');
 			} else {
 				$comment = sprintf(_n('one response', '%s responses', $num_comments, 'wpf'), $num_comments);	
 			}

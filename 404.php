@@ -8,7 +8,7 @@
 		
 			<div class="panel radius">
 				<hr>
-				<h1 class="entry-title"><?php _e('404 error - File Not Found!', 'wpf'); ?></h1>
+				<h1 class="entry-title"><?php _e('404 error - Page not found!', 'wpf'); ?></h1>
 
 				<div class="error">
 					<p class="bottom"><?php _e('Something went wrong! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'wpf'); ?></p>
