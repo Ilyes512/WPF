@@ -1,6 +1,5 @@
-<!-- single.php -->
 <?php get_header(); ?>
-	
+<!-- single.php -->
 	<section class="row" role="document">
 
 		<!-- Row for main content area -->
@@ -12,7 +11,7 @@
 				<header>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<?php wpf_entry_meta(); ?>
-					<?php wpf_breadcrumb(); ?>
+					<?php wpf_breadcrumb(true); ?>
 				</header>
 				<div class="entry-content">
 					<?php the_content(); ?>
@@ -25,10 +24,10 @@
 			</article>
 			<?php endwhile; ?>
 	
-		</div><!-- end .large-12.columns -->
+		</div> <!-- end .large-8.columns -->
 		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
-	</section> <!-- end .large-8.columns -->
+	</section>
 		
 <?php get_footer(); ?>
 <!-- end single.php -->

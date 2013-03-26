@@ -1,6 +1,5 @@
-<!-- page.php -->
 <?php get_header(); ?>
-
+<!-- page.php -->
 	<section class="row" role="document">
 	
 		<!-- Row for main content area -->
@@ -30,4 +29,4 @@
 	</section><!-- Container End -->	
 		
 <?php get_footer(); ?>
-<!-- page.php -->
+<!-- end page.php -->

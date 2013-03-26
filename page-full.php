@@ -1,9 +1,6 @@
-<?php
-/*
-Template Name: Full Width
-*/
+<?php /* Template Name: Full Width */
 get_header(); ?>
-
+<!-- page-full.php -->
 	<section class="row" role="document">
 		<!-- Row for main content area -->
 		<div class="large-12 columns" role="main">
@@ -31,6 +28,7 @@ get_header(); ?>
 			<?php endwhile; // End the loop ?>
 		</div> <!-- end .large-12.columns -->
 		<hr>
-	</section> <!-- end .large-8.columns -->
+	</section>
 
 <?php get_footer(); ?>
+<!-- end page-full.php -->

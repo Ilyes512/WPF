@@ -1,10 +1,5 @@
-<?php
-	// page is identical to index.php
-?>
-
+<?php get_header(); ?>
 <!-- archive.php -->
-	<?php get_header(); ?>
-
 	<section class="row" role="document">
 	
 		<!-- Row for main content area -->
@@ -30,10 +25,10 @@
 			</nav>
 		<?php endif; ?>
 	
-		</div>
+		</div> <!-- end .large-8.columns -->
 		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
-	</section> <!-- end .large-8.columns -->
+	</section>
 
-	<?php get_footer(); ?>
+<?php get_footer(); ?>
 <!-- end archive.php -->

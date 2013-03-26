@@ -1,5 +1,5 @@
-<!-- header.php -->
 <!DOCTYPE html>
+<!-- header.php -->
 <!--[if IE 8]> <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
@@ -31,17 +31,13 @@
 				</ul>
 				<section class="top-bar-section">
 					<?php
-						wp_nav_menu(array(
-							'theme_location' => 'primary',
-							'container' => false,
-							'depth' => 0,
-							'items_wrap' => '<ul class="left">%3$s</ul>',
-							'fallback_cb' => false,
-							'walker' => new wpf_walker(array(
-								'in_top_bar' => true,
-								'item_type' => 'li')
-								)
-							));
+				  	wp_nav_menu(array(
+				  		'theme_location' => 'primary',
+				  		'container' => false,
+				  		'items_wrap' => '<ul class="left">%3$s</ul>',
+				  		'depth' => 0,
+				  		'walker' => new wpf_walker()
+				  	));
 					?>
 					<ul class="right hide-for-medium-down">
 						<li class="divider"></li>

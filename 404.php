@@ -1,6 +1,5 @@
-<!-- 404.php -->
 <?php get_header(); ?>
-
+<!-- 404.php -->
 	<section class="row" role="document">
 	
 		<!-- Row for main content area -->
@@ -22,7 +21,7 @@
 				<hr>
 			</div>
 	
-		</div>
+		</div> <!-- end .large-8.columns -->
 		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 		<hr>

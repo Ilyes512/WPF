@@ -1,6 +1,5 @@
-<!-- search.php -->
 <?php get_header(); ?>
-
+<!-- search.php -->
 	<section class="row" role="document">
 	
 		<!-- Row for main content area -->
@@ -28,11 +27,11 @@
 			</nav>
 		<?php } ?>
 	
-		</div>
+		</div> <!-- end .large-8.columns -->
 		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 		
-	</section> <!-- end .large-8.columns -->		
+	</section>
 	
 <?php get_footer(); ?>
 <!-- end search.php -->

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-03-23 00:59+0100\n"
-"PO-Revision-Date: 2013-03-23 00:59+0100\n"
+"POT-Creation-Date: 2013-03-23 20:53+0100\n"
+"PO-Revision-Date: 2013-03-23 20:54+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -255,6 +255,10 @@ msgstr[1] "%s reacties"
 #: functions.php:565
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
+
+#: functions.php:627
+msgid "Home"
+msgstr "Start"
 
 #: page-full.php:22 page.php:20 single.php:21
 msgid "Pages:"

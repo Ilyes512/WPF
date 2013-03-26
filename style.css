@@ -1701,7 +1701,7 @@ dl {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 1.25em;
-  list-style-position: outside;
+  list-style-position: inside;
   font-family: inherit;
 }
 
@@ -4816,7 +4816,7 @@ kbd {
 }
 [data-magellan-expedition] {
   background: white;
-  z-index: 997;
+  z-index: 50;
   min-width: 100%;
   padding: 10px;
 }
@@ -5072,14 +5072,8 @@ table tfoot tr td {
 }
 
 /* +++++++++++++++++++++++++++++++++++++++++
-   WPF
+   WPF - Wordpress compatibility
 +++++++++++++++++++++++++++++++++++++++++ */
-header.row,
-.container.row,
-.row.full-width {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
 h4.subheader, ol.commentlist cite.subheader.fn {
   margin-top: -1em;
 }
@@ -5184,7 +5178,7 @@ ol.commentlist a.comment-reply-link {
   bottom: 1em;
 }
 
-ul {
+widget ul {
   margin-left: 1.25em;
 }
 
@@ -5206,4 +5200,8 @@ body.logged-in .fixed {
 
 .widget ul {
   list-style: none;
+}
+
+img.wp-smiley {
+  margin-bottom: 0;
 }

@@ -46,22 +46,15 @@
 @import "foundation/components/dropdown";
 
 /* +++++++++++++++++++++++++++++++++++++++++
-   WPF
+   WPF - Wordpress compatibility
 +++++++++++++++++++++++++++++++++++++++++ */
-
-// add some extra style to row to beautify custom background image
-header.row,
-.container.row,
-.row.full-width {
-	background-color: rgba(255,255,255,0.9);
-}
 
 // adjusting header
 h4.subheader {
 	margin-top: -1em;
 }
 
-// add new pagination class for WordPress, Sass is amazingly fast
+// add new pagination class for WordPress
 .page-numbers { @include pagination; }
 
 // customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
@@ -109,8 +102,8 @@ ol.commentlist {
 			}
 }
 
-// add some extra margin to ul
-ul {
+// add some extra margin to ul.widget
+widget ul {
 	margin-#{$default-float}: $list-side-margin;
 }
 
@@ -144,4 +137,9 @@ body.logged-in .fixed {
 // Dont show the "dots" for widget list's
 .widget ul {
 	list-style: none;
+}
+
+// fix wp-smiley
+img.wp-smiley {
+	margin-bottom: 0;
 }

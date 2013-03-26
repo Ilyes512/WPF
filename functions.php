@@ -15,7 +15,7 @@ define('WPF_VERSION', '0.1.6');
 *****************************************************/
 
 if (!function_exists('wpf_cleanup')) {
-	// Start cleaning up <head> and add the necessary css and javascript files
+	// Add language support, start cleaning up <head> and add the necessary css and javascript files
 	function wpf_cleanup() {
 		// add language support
 		load_theme_textdomain('wpf', get_template_directory() . '/lang');
@@ -294,102 +294,52 @@ if (!function_exists('wpf_active_list_pages_class')) {
 add_filter('wp_list_pages', 'wpf_active_list_pages_class', 10, 2);
 
 if (!class_exists('wpf_walker')) {
-	/**
-	 * class required_walker
-	 * Custom output to enable the the ZURB Navigation style.
-	 * Courtesy of Kriesi.at. http://www.kriesi.at/archives/improve-your-wordpress-navigation-menu-output
-	 * From required+ Foundation http://themes.required.ch
-	 */
-	class wpf_walker extends Walker_Nav_Menu {
-	
-		/**
-		 * Specify the item type to allow different walkers
-		 * @var array
-		 */
-		var $nav_bar = '';
-	
-		function __construct($nav_args = '') {
-	
-			$defaults = array(
-				'item_type' => 'li',
-				'in_top_bar' => false,
-			);
-			$this->nav_bar = apply_filters('req_nav_args', wp_parse_args($nav_args, $defaults));
+	class wpf_walker extends Walker_Nav_menu {
+	 
+		function start_lvl(&$output, $depth = 0, $args = array()) {
+			$indent = str_repeat("\t", $depth);
+			$output .= "\n$indent<ul class=\"dropdown\">\n";
 		}
-	
+		
 		function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
+			
 			$id_field = $this->db_fields['id'];
-			if (is_object($args[0])) {
+			if(is_object($args[0])) {
 				$args[0]->has_children = ! empty($children_elements[$element->$id_field]);
 			}
 			return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 		}
-	
+		
 		function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-			global $wp_query;
-			$indent = ($depth) ? str_repeat("\t", $depth) : '';
-	
+			$indent = str_repeat("\t", $depth);
+			
 			$class_names = $value = '';
-	
-			$classes = empty($item->classes) ? array() : (array) $item->classes;
-			$classes[] = 'menu-item-' . $item->ID;
-	
-			// Check for flyout
-			$flyout_toggle = '';
-			if ($args->has_children && $this->nav_bar['item_type'] == 'li') {
-	
-				if ($depth == 0 && $this->nav_bar['in_top_bar'] == false) {
-	
-					$classes[] = 'has-flyout';
-					$flyout_toggle = '<a href="#" class="flyout-toggle"><span></span></a>';
-	
-				} elseif ($this->nav_bar['in_top_bar'] == true) {
-	
-					$classes[] = 'has-dropdown';
-					$flyout_toggle = '';
-				}
-			}
-	
-			$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter( $classes ), $item, $args));
+			
+			$all_classes = empty($item->classes) ? array() : (array) $item->classes;
+			$classes[] = $args->has_children ? 'has-dropdown' : '';
+			$classes[] = in_array('active', $all_classes) ? 'active' : '';
+			
+			$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
 			$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
-	
-			if ( $depth > 0 ) {
-				$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+			
+			if($depth > 0) {
+				$output .= $indent . '<li' . $value . $class_names .'>';
 			} else {
-				$output .= $indent . ($this->nav_bar['in_top_bar'] == true ? '<li class="divider"></li>' : '') . '<' . $this->nav_bar['item_type'] . ' id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
-			}
-	
-			$attributes  = ! empty($item->attr_title) ? ' title="'	. esc_attr($item->attr_title) .'"' : '';
-			$attributes .= ! empty($item->target)			? ' target="'	. esc_attr($item->target		) .'"' : '';
-			$attributes .= ! empty($item->xfn)				? ' rel="'		. esc_attr($item->xfn				) .'"' : '';
-			$attributes .= ! empty($item->url)				? ' href="'		. esc_attr($item->url				) .'"' : '';
-	
-			$item_output  = $args->before;
-			$item_output .= '<a '. $attributes .'>';
+				$output .= $indent . '<li class="divider"></li>'."\n".'<li' . $value . $class_names .'>';
+			} 
+			
+			$attributes  = !empty($item->attr_title) ? ' title="'  . esc_attr( $item->attr_title) .'"' : '';
+			$attributes .= !empty($item->target)     ? ' target="' . esc_attr( $item->target    ) .'"' : '';
+			$attributes .= !empty($item->xfn)        ? ' rel="'    . esc_attr( $item->xfn       ) .'"' : '';
+			$attributes .= !empty($item->url)        ? ' href="'   . esc_attr( $item->url       ) .'"' : '';
+			
+			$item_output = $args->before;
+			$item_output .= '<a'. $attributes .'>';
 			$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
 			$item_output .= '</a>';
-			$item_output .= $flyout_toggle; // Add possible flyout toggle
 			$item_output .= $args->after;
-	
+			
 			$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-		}
-	
-		function end_el(&$output, $item, $depth = 0, $args = array()) {
-			if ($depth > 0) {
-				$output .= "</li>\n";
-			} else {
-				$output .= "</" . $this->nav_bar['item_type'] . ">\n";
-			}
-		}
-	
-		function start_lvl(&$output, $depth = 0, $args = array()) {
-			if ($depth == 0 && $this->nav_bar['item_type'] == 'li') {
-				$indent = str_repeat("\t", 1);
-				$output .= $this->nav_bar['in_top_bar'] == true ? "\n$indent<ul class=\"dropdown\">\n" : "\n$indent<ul class=\"flyout\">\n";
-		} else {
-				$indent = str_repeat("\t", $depth);
-				$output .= $this->nav_bar['in_top_bar'] == true ? "\n$indent<ul class=\"dropdown\">\n" : "\n$indent<ul class=\"level-$depth\">\n";
-			}
 		}
 	}
 }
@@ -408,9 +358,6 @@ if (!function_exists('wpf_theme_support')) {
 		
 		// rss
 		add_theme_support('automatic-feed-links');
-		
-		// Add post formarts supports.
-		//add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video'));
 		
 		// Add menu supports.
 		add_theme_support('menus');
@@ -575,7 +522,7 @@ if (!function_exists('wpf_postfooter_meta')) {
 if (!function_exists('wpf_breadcrumb')) {
 	// Prints the category breadcrumb for a post using foundation's breadcrumb
 	// see: http://foundation.zurb.com/docs/components/breadcrumbs.html
-	function wpf_breadcrumb($print = true) {
+	function wpf_breadcrumb($add_home = false, $print = true) {
 		$raw_cat = get_the_category();
 		$raw_count = count($raw_cat);
 		$cat_array = array();
@@ -624,18 +571,109 @@ if (!function_exists('wpf_breadcrumb')) {
 			
 			// create the final breadcrumb html
 			$html_result .= '<ul class="breadcrumbs">';
+			if($add_home) $html_result .= '<li><a href="'.esc_url(home_url('/')).'">'.__('Home', 'wpf').'</a></li>';
 			foreach ($breadcrumb as $cat) {
-				$html_result .= '<li><a href="'.esc_url(get_category_link($cat['cat_ID'])).'">';
+				// if the current page is the category's archive page then add .current (disable link)
+				if (is_category($cat['cat_ID'])) $class = ' class="current"'; else $class = '';
+				$html_result .= '<li'.$class.'><a href="'.esc_url(get_category_link($cat['cat_ID'])).'">';
 				$html_result .= $cat['name'];
 				$html_result .= '</a></li>';
 			}
 			$html_result .= '</ul>';
 		}
 		// By default the breadcrumb is printed.
-		// See wpf_breadcrumb($print = true ) at the top
+		// See wpf_breadcrumb($print = true) at the top
 		if ($print) echo $html_result;
 		else return $html_result;	
 	}
 }
+
+/****************************************************
+ *		> POST TYPE 'QUOTE'
+*****************************************************/
+
+/*
+if (!function_exists('wpf_quotes')) {
+	function wpf_quotes() {
+		
+		$quote_labels = array(
+													'name' => _x('My Quotes', 'post type general name', 'wpf'),
+													'singular_name' => _x('Quote', 'post type singular name', 'wpf'),
+													'menu_name' => __('Quotes', 'wpf'),
+													'all_items' => __('All Quotes', 'wpf'),
+													'add_new' => _x('Add New', 'quote', 'wpf'),
+													'add_new_item' => __('Add New Quote', 'wpf'),
+													'edit_item' => __('Edit Quote', 'wpf'),
+													'new_item' => __('New Quote', 'wpf'),
+													'view_item' => __('View Quote', 'wpf'),
+													'search_items' => __('Search Quotes', 'wpf'),
+													'not_found' =>  __('No quotes found', 'wpf'),
+													'not_found_in_trash' => __('No quotes found in Trash', 'wpf'),
+													);
+
+		
+		$quote_args = array(
+												'labels' => $quote_labels,
+												'description' => __('This is a custom post type for posting quotes', 'wpf'),
+												'public' => true,
+												//'menu_icon' => get_stylesheet_directory_uri() . '/picture.png'.
+												'supports' => array('editor'),
+												'has_archive' => true,
+												);
+		register_post_type('quote', $quote_args);
+	}
+}
+add_action('init', 'wpf_quotes');
+////////////////////////////
+
+if (!function_exists('wpf_quote_setup_meta_boxes')) {
+	function wpf_quote_setup_meta_boxes() {
+		add_action('add_meta_boxes', 'wpf_quote_add_meta_box');
+		
+		add_action('save_post', 'wpf_quote_save', 10, 2);
+	}
+}
+add_action('load-post.php', 'wpf_quote_setup_meta_boxes');
+add_action('load-post-new.php', 'wpf_quote_setup_meta_boxes');
+
+if (!function_exists('wpf_quote_add_meta_box')) {
+	function wpf_quote_add_meta_box() {
+		add_meta_box('person_id', esc_html__('Quote author', 'wpf'), 'wpf_person_meta_box', 'quote', 'normal', 'default');
+	}
+}
+
+if (!function_exists('wpf_person_meta_box')) {
+	function wpf_person_meta_box($post) {
+		//global $post;
+		$values = get_post_meta($post->ID, 'person', true);
+		$person_value = (isset($values['person'])) ? esc_attr($values['person']) : '';
+		
+		wp_nonce_field('nonce_person', 'meta_box_nonce');
+	
+		echo '<pre>';
+		print_r($values);
+		echo '</pre>';
+	
+		echo '<label for="person">' . __('Person: ', 'wpf') . '</label>';
+		echo '<input type="text" name="person" id="person" value="'.$person_value.'"></p>';
+	}
+}
+
+if (!function_exists('wpf_quote_save')) {
+	function wpf_quote_save($post_id) {	
+		// bail if we're doing an auto save
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+		
+		// if our nonce isn't there, ore we can't verify it, bail
+		if (!isset($_POST['meta_box_nonce']) || !wp_verify_nonce($_POST['meta_box_nonce'], 'nonce_person')) return;
+	
+		// if our current user can't edit this post, bail
+		if (!current_user_can('edit_post')) return;
+	
+		// save the data if set
+		if (isset($_POST['person'])) update_post_meta($post_id, 'person', esc_attr($_POST['person']));
+	}
+}
+*/
 
 ?>
