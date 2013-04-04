@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-03-23 20:53+0100\n"
-"PO-Revision-Date: 2013-03-23 20:54+0100\n"
+"POT-Creation-Date: 2013-04-04 02:23+0100\n"
+"PO-Revision-Date: 2013-04-04 02:23+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -10,17 +10,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_n_noop:1,2;_nx:1,2\\r;_nx_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:11
+#: 404.php:10
 msgid "404 error - Page not found!"
 msgstr "404 fout <br> Pagina niet gevonden!"
 
-#: 404.php:14
+#: 404.php:13
 msgid ""
 "Something went wrong! The page you are looking for might have been removed, "
 "had its name changed, or is temporarily unavailable."
@@ -28,28 +28,28 @@ msgstr ""
 "Er is wat fout gegaan! De pagina die je zoekt kan verwijderd, verplaats of "
 "tijdelijk niet beschikbaar zijn."
 
-#: 404.php:16
+#: 404.php:15
 msgid "Please try the following:"
 msgstr "Probeer het volgende uit:"
 
-#: 404.php:18
+#: 404.php:17
 msgid "Check your spelling"
 msgstr "Controleer uw spelling"
 
-#: 404.php:19 content-none.php:8
+#: 404.php:18 content-none.php:8
 #, php-format
 msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
 
-#: 404.php:20
+#: 404.php:19
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 
-#: archive.php:28 index.php:24 search.php:26
+#: archive.php:29 index.php:30 search.php:25
 msgid "&larr; Older posts"
 msgstr "&larr; Oudere artikelen"
 
-#: archive.php:29 index.php:25 search.php:27
+#: archive.php:30 index.php:31 search.php:26
 msgid "Newer posts &rarr;"
 msgstr "Nieuwere artikelen &rarr;"
 
@@ -184,47 +184,47 @@ msgstr ""
 "\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a>"
 
-#: functions.php:257
+#: functions.php:259
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: functions.php:258
+#: functions.php:260
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: functions.php:418
+#: functions.php:367
 msgid "Primary Navigation"
 msgstr "Primaire menu"
 
-#: functions.php:419
+#: functions.php:368
 msgid "Utility Navigation"
 msgstr "Hulp menu"
 
-#: functions.php:429
+#: functions.php:378
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: functions.php:431
+#: functions.php:380
 msgid "This is the sidebar next to the maincontent of a page"
 msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
 
-#: functions.php:439
+#: functions.php:388
 msgid "Footer 1"
 msgstr "Voet 1"
 
-#: functions.php:441 functions.php:451 functions.php:461
+#: functions.php:390 functions.php:400 functions.php:410
 msgid "An optional widget area for your site footer"
 msgstr "Een optionele widget gebied voor de voet van de pagina"
 
-#: functions.php:449
+#: functions.php:398
 msgid "Footer 2"
 msgstr "Voet 2"
 
-#: functions.php:459
+#: functions.php:408
 msgid "Footer 3"
 msgstr "Voet 3"
 
-#: functions.php:520
+#: functions.php:469
 #, php-format
 msgid ""
 "<p>Posted by <a href=\"%s\" rel=\"author\">%s</a> on <a href=\"%s\"><time "
@@ -233,38 +233,184 @@ msgstr ""
 "<p>Geplaatst door <a href=\"%s\" rel=\"author\">%s</a> op <a href=\"%s"
 "\"><time datetime=\"%s\">%s</time></a></p>"
 
-#: functions.php:526
+#: functions.php:475
 msgid "F j, Y"
 msgstr "j F Y"
 
-#: functions.php:539
+#: functions.php:488
 msgid "<span class=\"secondary label\">"
 msgstr "<span class=\"secondary label\">"
 
-#: functions.php:558
+#: functions.php:507
 msgid "Leave a response"
 msgstr "Laat een reactie achter"
 
-#: functions.php:560
+#: functions.php:509
 #, php-format
 msgid "one response"
 msgid_plural "%s responses"
 msgstr[0] "een reactie"
 msgstr[1] "%s reacties"
 
-#: functions.php:565
+#: functions.php:514
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
-#: functions.php:627
+#: functions.php:578
 msgid "Home"
 msgstr "Start"
 
-#: page-full.php:22 page.php:20 single.php:21
+#: functions.php:613
+msgctxt "post type general name"
+msgid "My Quotes"
+msgstr "Mijn Quotes"
+
+#: functions.php:614
+msgctxt "post type singular name"
+msgid "Quote"
+msgstr "Quote"
+
+#: functions.php:615
+msgid "Quotes"
+msgstr "Quotes"
+
+#: functions.php:616
+msgid "All Quotes"
+msgstr "Alle Quotes"
+
+#: functions.php:617
+msgctxt "quote"
+msgid "Add New"
+msgstr "Nieuwe toevoegen"
+
+#: functions.php:618
+msgid "Add New Quote"
+msgstr "Nieuwe quote toevoegen"
+
+#: functions.php:619
+msgid "Edit Quote"
+msgstr "Quote aanpassen"
+
+#: functions.php:620
+msgid "New Quote"
+msgstr "Nieuwe Quote"
+
+#: functions.php:621
+msgid "View Quote"
+msgstr "Bekijk Quote"
+
+#: functions.php:622
+msgid "Search Quotes"
+msgstr "Zoek Quotes"
+
+#: functions.php:623
+msgid "No quotes found"
+msgstr "Geen quotes gevonden"
+
+#: functions.php:624
+msgid "No quotes found in Trash"
+msgstr "Geen quotes gevonden in de prullenbak"
+
+#: functions.php:629
+msgid "This is a custom post type for posting quotes"
+msgstr "Dit is een aangepaste post type voor het plaatsen van quotes"
+
+#: functions.php:702
+#, php-format
+msgid "Quote updated. <a href=\"%s\">View Quote</a>"
+msgstr "Quote updated. <a href=\"%s\">Bekijk Quote</a>"
+
+#: functions.php:703
+msgid "Custom field updated."
+msgstr "Custom veld updated."
+
+#: functions.php:704
+msgid "Custom field deleted."
+msgstr "Custom veld deleted."
+
+#: functions.php:705
+msgid "Quote updated."
+msgstr "Quote updated."
+
+#: functions.php:706
+#, php-format
+msgid "Quote restored to revision from %s"
+msgstr "Quote hersteld naar revisie van %s"
+
+#: functions.php:707
+#, php-format
+msgid "Quote published. <a href=\"%s\">View Quote</a>"
+msgstr "Quote gepubliceerd. <a href=\"%s\">Bekijk Quote</a>"
+
+#: functions.php:708
+msgid "Quote saved."
+msgstr "Quote opgeslagen."
+
+#: functions.php:709
+#, php-format
+msgid "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview Quote</a>"
+msgstr "Quote geplaatst. <a target=\"_blank\" href=\"%s\">Previeuw Quote</a>"
+
+#: functions.php:710
+#, php-format
+msgid ""
+"Quote scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview quote</a>"
+msgstr ""
+"Quote deplaned boor: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview quote</a>"
+
+#: functions.php:710
+msgid "M j, Y @ G:i"
+msgstr "j M Y @ G:i"
+
+#: functions.php:711
+#, php-format
+msgid "Quote draft updated. <a target=\"_blank\" href=\"%s\">Preview Quote</a>"
+msgstr ""
+"Quote concept updated. <a target=\"_blank\" href=\"%s\">Preview Quote</a>"
+
+#: functions.php:733
+msgid "Person: "
+msgstr "Persoon: "
+
+#: functions.php:736
+msgid "Source: "
+msgstr "Bron: "
+
+#: functions.php:738
+msgid "If \"Source\" is a url, use \"http://\" or \"https://\"!"
+msgstr "Als de \"bron\" een url is, gebruik \"http://\" of \"https://\""
+
+#: functions.php:740
+msgid " Check if \"Source\" is a url: "
+msgstr "Selecteer wanneer de \"bron\" een url is: "
+
+#: functions.php:750 functions.php:775
+msgid "Edit"
+msgstr "Aanpassen"
+
+#: functions.php:751
+msgid "Slug"
+msgstr "Slug"
+
+#: functions.php:752
+msgid "Person"
+msgstr "Persoon"
+
+#: functions.php:753 single-quote.php:12
+msgid "Quote"
+msgstr "Quote"
+
+#: functions.php:754
+msgid "Date"
+msgstr "Datum"
+
+#: page-full.php:19 page.php:19 single.php:20
 msgid "Pages:"
 msgstr "Pagina's:"
 
-#: search.php:9
+#: search.php:8
 msgid "Search Results for"
 msgstr "Zoek resultaten voor"
 
