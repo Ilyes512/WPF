@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF Quote\n"
-"POT-Creation-Date: 2013-04-07 20:45+0100\n"
-"PO-Revision-Date: 2013-04-07 20:46+0100\n"
+"POT-Creation-Date: 2013-04-08 23:33+0100\n"
+"PO-Revision-Date: 2013-04-08 23:33+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -158,26 +158,30 @@ msgstr "Quote"
 msgid "Date"
 msgstr "Datum"
 
-#: wpf-quote.php:275
+#: wpf-quote.php:257
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: wpf-quote.php:280
 msgid "Display a random quote"
 msgstr "Willekeurige quote laten zien"
 
-#: wpf-quote.php:277
+#: wpf-quote.php:282
 msgid "Random quotes"
 msgstr "Willekeurige quotes"
 
-#: wpf-quote.php:292
+#: wpf-quote.php:297
 msgid "Title"
 msgstr "Titel"
 
-#: wpf-quote.php:295
+#: wpf-quote.php:300
 msgid "Show \"Read more Quotes\"-link"
 msgstr "Laat de \"Lees meer quotes\"-link zien"
 
-#: wpf-quote.php:319
+#: wpf-quote.php:328
 msgid "Read more quotes"
 msgstr "Lees meer quotes"
 
-#: wpf-quote.php:323
+#: wpf-quote.php:332
 msgid "There are no quotes yet"
 msgstr "Er zijn nog geen quotes beschikbaar"

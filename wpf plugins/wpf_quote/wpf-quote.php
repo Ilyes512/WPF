@@ -157,7 +157,6 @@ if (!function_exists('wpf_quote_metabox')) {
 	}
 }
 
-/*
 if (!function_exists('wpf_quote_custom_post_messages')) {
 	// Adjust the messages for custom post type's
 	function wpf_quote_custom_post_messages($messages) {
@@ -179,7 +178,6 @@ if (!function_exists('wpf_quote_custom_post_messages')) {
 	}
 }
 add_filter('post_updated_messages', 'wpf_quote_custom_post_messages');
-*/
 
 if (!function_exists('wpf_quote_set_quote_columns')) {
 	// manage the admin columns
@@ -253,13 +251,17 @@ if (!function_exists('wpf_quote_print')) {
 	function wpf_quote_print() {
 		// get the meta value's
 		$quote_meta = get_post_custom();
+		
+		$source_is_url = (empty($quote_meta['source_is_url'][0])) ? false : $quote_meta['source_is_url'][0];
+		$quote_source = (empty($quote_meta['quote_source'][0])) ? false : $quote_meta['quote_source'][0];
+		$person = (empty($quote_meta['person'][0])) ? __('Unknown', 'wpf_quote') : $quote_meta['person'][0];;
 
-		// first check if 'source_is_url' and 'quote_source' are not empty and prints the source as url. Else print source within parentheses.
-		if (!empty($quote_meta['source_is_url'][0]) and !empty($quote_meta['quote_source'][0])) {
-			$cite = '<cite><a href="' . $quote_meta['quote_source'][0] . '">' . $quote_meta['person'][0] . '</a></cite>';
+		// first check if 'source_is_url' and 'quote_source' are not empty, when true prints the source as url. Else print source within parentheses.
+		if ($source_is_url and $quote_source) {
+			$cite = '<cite><a href="' . $quote_source . '">' . $person . '</a></cite>';
 		} else {
-			$cite = '<cite>' . $quote_meta['person'][0];
-			if (!empty($quote_meta['quote_source'][0])) $cite .= ' (' . $quote_meta['quote_source'][0] . ')';
+			$cite = '<cite>' . $person;
+			if ($quote_source) $cite .= ' (' . $quote_source . ')';
 			$cite .= '</cite>';
 		}
 		// print the html
@@ -310,7 +312,7 @@ class wpf_quote extends WP_Widget {
 		if (!empty($title)) echo $before_title . $title . $after_title;;
 
 		// The Query
-		$quotes = new WP_Query(array('numberposts' => 1, 'orderby' => 'rand', 'post_type' => 'quote'));
+		$quotes = new WP_Query(array('posts_per_page' => 1, 'orderby' => 'rand', 'post_type' => 'quote'));
 
 		if ($quotes->have_posts()) {
 			// The Loop
