@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.7');
+define('WPF_VERSION', '0.1.8');
 
 /****************************************************
 		Table of contents
@@ -8,8 +8,6 @@ define('WPF_VERSION', '0.1.7');
  *		>FOUNDATION NAVIGATION
  *		>THEME SUPPORT + SIDEBAR
  *		>MISC
- *		>CUSTOM POST TYPE
- *		>QUOTE SPECIFIC FUNCTIONS
 */
 
 /****************************************************
@@ -352,9 +350,6 @@ if (!class_exists('wpf_walker')) {
 *****************************************************/
 if (!function_exists('wpf_theme_support')) {
 	function wpf_theme_support() {
-		// language support
-		load_theme_textdomain('wpf', get_template_directory() . '/lang');
-		
 		// Add post thumbnail supports.
 		add_theme_support('post-thumbnails');
 		// set_post_thumbnail_size(150, 150, false);
@@ -557,7 +552,7 @@ if (!function_exists('wpf_breadcrumb')) {
 																					);	
 				}
 			}
-			// the first child to look for based on the parent
+			// the first child to look is based on the parent's cat_ID
 			$next_child = $breadcrumb[0]['cat_ID'];
 			
 			// starting from the parent we will look for a $cat that has the parent['cat_ID'] in child['parent']
@@ -592,218 +587,5 @@ if (!function_exists('wpf_breadcrumb')) {
 		else return $html_result;	
 	}
 }
-
-if (!function_exists('wpf_main_query')) {
-	function wpf_main_query($query) {
-		if (is_home() and $query->is_main_query() or is_feed())
-			$query->set('post_type', array('post', 'quote'));
-	
-		return $query;
-	}
-}
-add_filter('pre_get_posts', 'wpf_main_query');
-
-/****************************************************
- *		>CUSTOM POST TYPE
-*****************************************************/
-// register post type
-if (!function_exists('wpf_custom_post_types')) {
-	function wpf_custom_post_types() {
-		
-		$quote_labels = array(
-													'name' => _x('My Quotes', 'post type general name', 'wpf'),
-													'singular_name' => _x('Quote', 'post type singular name', 'wpf'),
-													'menu_name' => __('Quotes', 'wpf'),
-													'all_items' => __('All Quotes', 'wpf'),
-													'add_new' => _x('Add New', 'quote', 'wpf'),
-													'add_new_item' => __('Add New Quote', 'wpf'),
-													'edit_item' => __('Edit Quote', 'wpf'),
-													'new_item' => __('New Quote', 'wpf'),
-													'view_item' => __('View Quote', 'wpf'),
-													'search_items' => __('Search Quotes', 'wpf'),
-													'not_found' =>  __('No quotes found', 'wpf'),
-													'not_found_in_trash' => __('No quotes found in Trash', 'wpf'),
-													);
-
-		$quote_args = array(
-												'labels' => $quote_labels,
-												'description' => __('This is a custom post type for posting quotes', 'wpf'),
-												'public' => true,
-												//'menu_icon' => get_stylesheet_directory_uri() . '/picture.png'.
-												'supports' => array('author', 'editor', 'comments'),
-												'has_archive' => true
-												);
-		register_post_type('quote', $quote_args);
-	}
-}
-add_action('init', 'wpf_custom_post_types');
-
-if (!function_exists('wpf_setup_metaboxes')) {
-	function wpf_setup_metaboxes() {
-		add_action('add_meta_boxes', 'wpf_add_metabox');
-		
-		add_action('save_post', 'wpf_metabox_save', 10, 2);
-	}
-}
-add_action('load-post.php', 'wpf_setup_metaboxes');
-add_action('load-post-new.php', 'wpf_setup_metaboxes');
-
-// register the meta box to a post type
-if (!function_exists('wpf_add_metabox')) {
-	function wpf_add_metabox($post_type) {
-		if ($post_type == 'quote') add_meta_box('person_id', esc_html__('Quote optional data', 'wpf'), 'wpf_quote_metabox', 'quote', 'normal');
-	}
-}
-
-if (!function_exists('wpf_metabox_save')) {
-	function wpf_metabox_save($post_id, $post) {
-		// bail if we're doing an auto save
-		if (defined('DOING_AUTOSAVE') and DOING_AUTOSAVE) return;
-		
-		// if our nonce isn't there, ore we can't verify it, bail
-		if (!isset($_POST['meta_box_nonce']) or !wp_verify_nonce($_POST['meta_box_nonce'], 'nonce_person')) return;
-	
-		// if our current user can't edit this post, bail
-		if (!current_user_can('edit_posts')) return;
-		
-		if ($post->post_type == 'quote') {
-			
-			if (!wp_is_post_revision($post_id) and empty($_POST['post_name'])) {
-			
-				// unhook this function so it doesn't loop infinitely
-				remove_action('save_post', 'wpf_metabox_save');
-			
-				// update the post, which calls save_post again
-				wp_update_post(array('ID' => $post_id, 'post_name' => $post->post_type . '-' . $post_id));
-				
-				// re-hook this function
-				add_action('save_post', 'wpf_metabox_save');
-			}
-			
-			// save the data if set
-			if (isset($_POST['person'])) update_post_meta($post_id, 'person', esc_attr($_POST['person']));
-			if (isset($_POST['quote_source'])) update_post_meta($post_id, 'quote_source', esc_attr($_POST['quote_source']));
-			
-			if (isset($_POST['source_is_url'])) {
-				update_post_meta($post_id, 'source_is_url', esc_attr($_POST['source_is_url']));
-			}
-			elseif ($post->post_type == 'quote') {
-				update_post_meta($post_id, 'source_is_url', 0);
-			}
-		}
-	}
-}
-
-if (!function_exists('wpf_custom_post_messages')) {
-	// Adjust the messages for custom post type's
-	function wpf_custom_post_messages($messages) {
-		global $post, $post_ID;
-		$messages['quote'] = array(
-			0 => '', 
-			1 => sprintf(__('Quote updated. <a href="%s">View Quote</a>'), esc_url(get_permalink($post_ID))),
-			2 => __('Custom field updated.'),
-			3 => __('Custom field deleted.'),
-			4 => __('Quote updated.'),
-			5 => isset($_GET['revision']) ? sprintf(__('Quote restored to revision from %s'), wp_post_revision_title((int) $_GET['revision'], false)) : false,
-			6 => sprintf(__('Quote published. <a href="%s">View Quote</a>'), esc_url(get_permalink($post_ID))),
-			7 => __('Quote saved.'),
-			8 => sprintf(__('Quote submitted. <a target="_blank" href="%s">Preview Quote</a>'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
-			9 => sprintf(__('Quote scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview quote</a>'), date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
-			10 => sprintf(__('Quote draft updated. <a target="_blank" href="%s">Preview Quote</a>'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
-		);
-		return $messages;
-	}
-}
-add_filter('post_updated_messages', 'wpf_custom_post_messages');
-
-/****************************************************
- *		>QUOTE SPECIFIC FUNCTIONS
-*****************************************************/
-
-if (!function_exists('wpf_quote_metabox')) {
-	// show the meta boxes on the quote post page
-	function wpf_quote_metabox($post) {		
-		$values = get_post_custom($post->ID);
-		$person_value = (isset($values['person'][0])) ? esc_attr($values['person'][0]) : '';
-		$quote_source_value = (isset($values['quote_source'][0])) ? esc_attr($values['quote_source'][0]) : '';
-		$source_is_url_value = (isset($values['source_is_url'][0])) ? esc_attr($values['source_is_url'][0]) : '';
-		
-		// Use nonce for verification
-		wp_nonce_field('nonce_person', 'meta_box_nonce');
-		
-		echo '<label for="person">' . __('Person: ', 'wpf') . '</label>';
-		echo '<input type="text" name="person" id="person" value="'.$person_value.'">';
-		
-		echo '<br><br><label for="quote_source">' . __('Source: ', 'wpf') . '</label>';
-		echo '<input size="50" type="text" name="quote_source" id="quote_source" value="'.$quote_source_value.'">';
-		echo ' ' . __('If "Source" is a url, use "http://" or "https://"!', 'wpf');
-		
-		echo '<br><br><label for="">' . __(' Check if "Source" is a url: ', 'wpf') .'</label>';
-		echo ' <input type="checkbox" name="source_is_url" id="source_is_url" value="1"' . checked($source_is_url_value, '1', false) . '>';
-	}
-}
-
-if (!function_exists('wpf_set_quote_columns')) {
-	// manage the admin columns
-	function wpf_set_quote_columns($columns) {
-		return array(
-								 'cb' => '<input type="checkbox">',
-								 'edit' => __('Edit', 'wpf'),
-								 'slug' => __('Slug', 'wpf'),
-								 'person' => __('Person', 'wpf'),
-								 'content' => __('Quote', 'wpf'),
-								 'date' => __('Date', 'wpf')
-	    );
-	}
-}
-add_filter('manage_quote_posts_columns' , 'wpf_set_quote_columns');
-
-if (!function_exists('wpf_set_quote_custom_column')) {
-	// Set the output for the custom columns
-	function wpf_set_quote_custom_column($column, $post_id) {
-		switch ($column) {
-			case 'person':
-				echo get_post_meta($post_id, 'person', true);
-				break;
-			case 'slug';
-				global $post;
-				echo $post->post_name;
-				break;	
-			case 'content';
-				echo the_excerpt();
-				break;
-			case 'edit';
-				echo '<strong><a href="' . get_edit_post_link() . '">' . __('Edit', 'wpf') . '</a></strong>';
-				break;
-		}
-	}
-}
-add_action('manage_quote_posts_custom_column', 'wpf_set_quote_custom_column', 10, 2);
-
-if (!function_exists('wpf_set_quote_sortable_columns')) {
-	// make the added columns sortable
-	function wpf_set_quote_sortable_columns($columns) {
-		$columns['person'] = 'person';
-		$columns['slug'] = 'slug';
-		$columns['content'] = 'content';
-	
-		return $columns;
-	}
-}
-add_filter('manage_edit-quote_sortable_columns', 'wpf_set_quote_sortable_columns');
-
-/*
-function wpf_set_quote_column_orderby($query) {
-	if (!is_admin()) return;
-
-	$orderby = $query->get('orderby');
-	
-	if ('person' == $orderby) {
-		$query->set('meta_ket', 'person_sort');
-		$query->set('orderby', 'meta_value_num');
-	}
-}
-add_filter('pre_get_posts', 'wpf_set_quote_column_orderby');
-*/
 
 ?>

@@ -14,16 +14,13 @@
 				</header>
 				<div class="entry-content">
 					<?php
-						$quote_meta = get_post_custom();
-						if ($quote_meta['source_is_url'][0]) {
-							$cite = '<cite><a href="' . $quote_meta['quote_source'][0] . '">' . $quote_meta['person'][0] . '</a></cite>';
+						if (function_exists('wpf_quote_print')) {
+							// this is a function that is used by the plugin "WPF Quote"
+							wpf_quote_print();
 						} else {
-							$cite = '<cite>' . $quote_meta['person'][0];
-							if (isset($quote_meta['quote_source'])) $cite .= ' (' . $quote_meta['quote_source'][0] . ')';
-							$cite .= '</cite>';
+							echo '<p>Please check if "WPF Quote"-plugin is installed and activated!</p>';
 						}
 					?>
-					<blockquote><?php the_content(); echo $cite ?></blockquote>
 				</div>
 				<?php comments_template(); ?>
 			</article>
