@@ -2,7 +2,7 @@
 Theme Name:		WPF
 Theme URI:		https://github.com/MekZii/WPF/
 Description:	WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:			0.1.8 (Foundation 4.1.1)
+Version:			0.1.9 (Foundation 4.1.1)
 Author:				MekZii
 License:			MIT License
 License URI:	http://www.opensource.org/licenses/mit-license.php
@@ -3388,7 +3388,7 @@ form.custom .custom.disabled {
 .top-bar-section ul li > a.button.alert:hover {
   background: #970b0e;
 }
-.top-bar-section ul li.active a {
+.top-bar-section ul li.active > a {
   background: #2b2b2b;
 }
 .top-bar-section .has-form {
@@ -3964,6 +3964,25 @@ ol.commentlist .joyride-tip-guide cite.fn,
   top: 0;
   left: 0;
   cursor: pointer;
+}
+
+.joyride-expose-wrapper {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 3px;
+  z-index: 102;
+  -moz-box-shadow: 0px 0px 30px white;
+  -webkit-box-shadow: 0px 0px 15px white;
+  box-shadow: 0px 0px 15px white;
+}
+
+.joyride-expose-cover {
+  background: transparent;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
 }
 
 /* Styles for screens that are atleast 768px; */

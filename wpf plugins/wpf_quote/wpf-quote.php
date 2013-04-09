@@ -3,7 +3,7 @@
 Plugin Name:	WPF Quote
 Plugin URI:		https://github.com/MekZii/WPF/
 Description:	This plugin is used with the Wordpress theme called WPF (uses Zurb Foundation framework). This plugin will show random quotes (quote post type).
-Version:			0.1
+Version:			0.2
 Author:				MekZii
 License:			MIT License
 License URI:	http://www.opensource.org/licenses/mit-license.php
@@ -286,19 +286,24 @@ class wpf_quote extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field($new_instance['title']);
 		$instance['read_more'] = sanitize_text_field($new_instance['read_more']);
+		$instance['quote_pool'] = (is_int((int) $new_instance['quote_pool']) and (int) $new_instance['quote_pool'] > 0) ? $new_instance['quote_pool'] : 10;
 		return $instance;
 	}
 
  	public function form($instance) {
-		$instance = wp_parse_args((array) $instance, array('title' => '', 'read_more' => 0));
+		$instance = wp_parse_args((array) $instance, array('title' => __('WPF Quotes', 'wpf_quote'), 'read_more' => 0, 'quote_pool' => 10));
 		$title = esc_attr($instance['title']);
 		$read_more = esc_attr($instance['read_more']);
+		$quote_pool = $instance['quote_pool'];
 		
   	echo '<p><label for="' . $this->get_field_id('title') . '">' . __('Title', 'wpf_quote') . ':</label>';
   	echo '<input class="widefat" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . $title . '"></p>';
   	
   	echo '<p><label for="' . $this->get_field_id('read_more') . '">' . __('Show "Read more Quotes"-link', 'wpf_quote') . ':</label>';
   	echo '<input class="widefat" id="' . $this->get_field_id('read_more') . '" name="' . $this->get_field_name('read_more') . '" type="checkbox" value="1"' . checked($read_more, '1', false) . '>';
+  	
+  	echo '<p><label for"' . $this->get_field_id('quote_pool') . '">' . __('Select quote out of ... quotes', 'wpf_quote') . ':</label>';
+  	echo '<input class="widefat" id="' . $this->get_field_id('quote_pool') . '" name="' . $this->get_field_name('quote_pool') . '" type="text" value="' . $quote_pool . '" maxlength="4"></p>';
 	}
 
 	public function widget($args, $instance) {
@@ -306,19 +311,31 @@ class wpf_quote extends WP_Widget {
 		
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 		$read_more = $instance['read_more'];
+		$quote_pool = $instance['quote_pool'];
 
 		echo $before_widget;
 
 		if (!empty($title)) echo $before_title . $title . $after_title;;
 
-		// The Query
-		$quotes = new WP_Query(array('posts_per_page' => 1, 'orderby' => 'rand', 'post_type' => 'quote'));
+		// Query
+		global $wpdb;
+		$wpf_quote_query = $wpdb->prepare("
+			SELECT * FROM (
+					SELECT $wpdb->posts.*
+					FROM $wpdb->posts
+					WHERE $wpdb->posts.post_type = 'quote'
+					AND ($wpdb->posts.post_status = 'publish' or $wpdb->posts.post_status = 'private')
+					ORDER BY $wpdb->posts.post_date
+					DESC LIMIT 0, %u
+				) AS wpf_temp
+				ORDER BY RAND()
+				LIMIT 1", $quote_pool);
+		$quotes = $wpdb->get_results($wpf_quote_query, OBJECT);
 
-		if ($quotes->have_posts()) {
-			// The Loop
-			while ($quotes->have_posts()) {
-				$quotes->the_post();
-				// print the quote
+		if ($quotes) {
+			global $post;
+			foreach ($quotes as $post) {
+				setup_postdata($post);
 				wpf_quote_print();
 			}
 			// Restore $post global to the current post in the main query.

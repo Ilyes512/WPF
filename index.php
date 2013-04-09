@@ -4,7 +4,7 @@
 	
 		<!-- Row for main content area -->
 		<div class="large-8 columns" role="main">
-		
+
 		<?php	if (have_posts()): ?>
 		
 			<?php /* Start the Loop */ ?>

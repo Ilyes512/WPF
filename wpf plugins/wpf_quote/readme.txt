@@ -19,6 +19,10 @@ This plugin is used with the Wordpress theme called WPF (uses Zurb Foundation fr
 
 == Changelog ==
 
+= 0.2 = 
+* Widget will show 1 quote out of the 10* latest quotes. * This number can be changed in the widget menu.
+* nl_NL language updated.
+
 = 0.1 =
 * Initial release
 

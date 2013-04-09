@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.8');
+define('WPF_VERSION', '0.1.9');
 
 /****************************************************
 		Table of contents
@@ -142,6 +142,15 @@ if (!function_exists('wpf_scripts_and_styles')) {
 		}
 	}
 }
+
+if (!function_exists('wpf_admin_head')) {
+	// Add favicon to the header
+	function wpf_admin_head() {
+		echo '<!-- Favicon -->';
+		echo '<link rel="shortcut icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/favicon.png">';
+	}
+}
+add_action('admin_head', 'wpf_admin_head');
 
 /*
 // Post related cleaning
