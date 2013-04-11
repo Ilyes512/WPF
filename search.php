@@ -10,8 +10,14 @@
 		<?php if (have_posts()) : ?>
 		
 			<?php /* Start the Loop */ ?>
-			<?php while (have_posts()) : the_post(); ?>
-				<?php get_template_part('content', get_post_format()); ?>
+			<?php while (have_posts()): the_post(); ?>
+				<?php
+					if (get_post_type() == 'post') {
+						get_template_part('content', get_post_format());
+					} else {
+						get_template_part('content', get_post_type());
+					}
+				?>
 			<?php endwhile; ?>
 			
 			<?php else : ?>

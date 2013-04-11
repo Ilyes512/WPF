@@ -16,9 +16,11 @@
 				<div class="entry-content">
 					<?php the_content(); ?>
 				</div>
-				<footer>
-					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'), 'after' => '</p></nav>' )); ?>
-					<?php wpf_tags('<div class="text-center">', '</div>'); ?>
+				<footer class="row">
+					<div class="large-12 columns">
+						<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'), 'after' => '</p></nav>' )); ?>
+						<?php wpf_tags('<div class="text-center">', '</div>'); ?>
+					</div>
 				</footer>
 				<?php comments_template(); ?>
 			</article>

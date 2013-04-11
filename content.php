@@ -8,8 +8,10 @@
 			<div class="entry-content">
 				<?php the_content(__('Continue reading...', 'wpf')); ?>
 			</div>
-			<footer>
-				<?php wpf_postfooter_meta(); ?>
+			<footer class="row">
+				<div class="large-12 columns">
+					<?php wpf_postfooter_meta(); ?>
+				</div>
 			</footer>
 			<hr>
 		</article>

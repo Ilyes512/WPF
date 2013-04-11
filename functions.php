@@ -1,5 +1,5 @@
 <?php
-define('WPF_VERSION', '0.1.9');
+define('WPF_VERSION', '0.2.0');
 
 /****************************************************
 		Table of contents
@@ -476,7 +476,7 @@ if (!function_exists('wpf_entry_meta')) {
 			get_the_author(),
 			get_month_link(get_the_time('Y'), get_the_time('m')),
 			get_the_time('c'),
-			// translators: this is the date format for the post meta text
+			// Translators: this is the date format for the post meta text
 			get_the_time(__('F j, Y', 'wpf'))
 		);
 	}
@@ -499,10 +499,7 @@ if (!function_exists('wpf_tags')) {
 if (!function_exists('wpf_postfooter_meta')) {
 	// Prints the footer post meta for posts. Also uses wpf_tags().
 	// Prints the category's and show's the comment count (if comments is enabled).
-	function wpf_postfooter_meta($tags=true) {
-		// Translators: used between list items, there is a space after the comma.
-		//$categories_list = get_the_category_list(__(', ', 'wpf'));
-		
+	function wpf_postfooter_meta($tags=true) {		
 		// check if the post has comments enabled
 		if (comments_open()) {
 			// get the number of comments
@@ -514,17 +511,15 @@ if (!function_exists('wpf_postfooter_meta')) {
 				$comment = sprintf(_n('one response', '%s responses', $num_comments, 'wpf'), $num_comments);	
 			}
 			// add the permalink + #respond anchor so it directs the user to the form
-			$comment = '<a href="'.get_permalink().'#respond">'.$comment.'</a>';
+			$comment = '<a href="' . get_permalink() . '#respond">'.$comment.'</a>';
+
 		} else {
 			$comment = __('Comments are locked for this post', 'wpf');
 		}
 		
-		//printf(__('Posted in %s | %s', 'wpf'), $categories_list, $comment);
-		echo '<div class="text-center">'.$comment.'</div>';
+		echo '<div class="text-center">' . $comment . '</div>';
 		
-		if ($tags) {
-			wpf_tags('<br><div class="text-center">', '</div><br>');
-		}
+		if ($tags) wpf_tags('<br><div class="text-center">', '</div><br>');
 	}
 }
 
@@ -535,7 +530,6 @@ if (!function_exists('wpf_breadcrumb')) {
 		$raw_cat = get_the_category();
 		$raw_count = count($raw_cat);
 		$cat_array = array();
-		$html_result = '';
 		
 		if ($raw_count > 0) {
 			foreach ($raw_cat as $cat) {
@@ -563,7 +557,7 @@ if (!function_exists('wpf_breadcrumb')) {
 			}
 			// the first child to look is based on the parent's cat_ID
 			$next_child = $breadcrumb[0]['cat_ID'];
-			
+
 			// starting from the parent we will look for a $cat that has the parent['cat_ID'] in child['parent']
 			for ($i = 0; $i < $raw_count; $i++) {
 				foreach ($cat_array as $cat) {
@@ -577,14 +571,21 @@ if (!function_exists('wpf_breadcrumb')) {
 				// if $breadcrumb is equally sized as $raw_count then that means $breadcrumb is complete
 				if (count($breadcrumb) == $raw_count) break;	
 			}
-			
+
 			// create the final breadcrumb html
-			$html_result .= '<ul class="breadcrumbs">';
-			if($add_home) $html_result .= '<li><a href="'.esc_url(home_url('/')).'">'.__('Home', 'wpf').'</a></li>';
+			$html_result = '<ul class="breadcrumbs">';
+			
+			// Add the Home url if $add_home == true
+			if ($add_home) {
+				if (defined('WPF_BREADCRUMB_HOME_URL')) $home_url = WPF_BREADCRUMB_HOME_URL;
+				$html_result .= '<li><a href="' . esc_url($home_url) . '">' . __('Home', 'wpf') . '</a></li>';
+			}
+			
 			foreach ($breadcrumb as $cat) {
 				// if the current page is the category's archive page then add .current (disable link)
-				if (is_category($cat['cat_ID'])) $class = ' class="current"'; else $class = '';
-				$html_result .= '<li'.$class.'><a href="'.esc_url(get_category_link($cat['cat_ID'])).'">';
+				$class = (is_category($cat['cat_ID'])) ? ' class="current"' : '';
+				
+				$html_result .= '<li' . $class . '><a href="' . esc_url(get_category_link($cat['cat_ID'])) . '">';
 				$html_result .= $cat['name'];
 				$html_result .= '</a></li>';
 			}
