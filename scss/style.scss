@@ -1,13 +1,305 @@
 /*!
-Theme Name:		WPF
-Theme URI:		https://github.com/MekZii/WPF/
-Description:	WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:			0.2.0 (Foundation 4.1.2)
-Author:				MekZii
-License:			MIT License
-License URI:	http://www.opensource.org/licenses/mit-license.php
+Theme Name:  WPF
+Theme URI:   https://github.com/MekZii/WPF/
+Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
+Version:     0.2.1 (Foundation 4.1.5)
+Author:      MekZii
+License:     MIT License
+License URI: http://www.opensource.org/licenses/mit-license.php
 */
 
+
+/* ==========================================================================
+   Foundation
+   ========================================================================== */
+
+
+// Import foundation with all it's (selected) styles
 @import "foundation";
 
-// add you stylesheets here
+
+/* ==========================================================================
+   Table of Contents
+   ==========================================================================
+   :: Temp
+   :: Miscellaneous
+   :: Header
+   :: Content
+   :: Sidebar/(General)Widget
+   :: Footer/(Footer)Widget
+*/
+
+
+/* ==========================================================================
+   Temp
+   ========================================================================== */
+
+
+// add new pagination class for WordPress
+.page-numbers { 
+	@include pagination;
+}
+
+// customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
+.page-numbers li {
+	span:hover a,
+	span a:focus {
+		background: $pagination-link-active-bg;
+	}
+	span.current {
+		background: $pagination-link-current-background;
+		padding: $pagination-link-pad;
+		color: $pagination-link-current-font-color;
+		font-weight: $pagination-link-current-font-weight;
+		cursor: $pagination-link-current-cursor;
+	}
+}
+
+// add some basic comment styles
+ol.commentlist {
+	margin-left: 0;
+	margin-top: 2em;
+	li {
+		list-style: none;
+		margin-bottom: 2em;
+	}
+		.comment-author img {
+			border-radius: 50%;
+			float: left;
+			margin: 0 1em 0 0;
+		}
+		.author-meta {
+			display: inline-block;
+		}
+			cite.fn {
+				@extend h4;
+				margin-right: 0.5em;
+			}
+		section.comment {
+			@include panel(white, 20px);
+		}
+			a.comment-reply-link {
+				float: right;
+				position: relative;
+				bottom: 1em;
+			}
+}
+
+.top-bar .searchsubmit input[type="submit"] {
+	line-height: 2em;
+	height: 2em;
+}
+
+
+/* ==========================================================================
+   Misc
+   ========================================================================== */
+
+
+// Allow only vertical resizing of textareas.
+textarea {
+    resize: vertical;
+}
+
+// Chrome Frame prompt
+.chromeframe {
+	margin: 0.2em;
+	padding: 0.2em;
+	background: #ccc;
+	color: #000;
+}
+
+// These classes get @exted so there will be no multiple classes with the same
+// contents (properties)
+.container {
+	@include grid-row;
+}
+.col {
+	@include grid-column($columns:$total-columns);
+}
+
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+
+// Only needed when using a sticky top-bar.
+.wp-toolbar .fixed {
+	margin-top: 28px;
+}
+.wp-toolbar .expanded {
+	margin-top: 0;
+}
+
+// Site-meta contains the headings (site-title & site-description)
+.site-meta {
+	@extend .container;
+}
+.site-meta hgroup {
+	@include grid-column($columns:12);
+}
+.site-title {
+	margin-bottom: 0;
+}
+
+// The styles for the search form
+.search {
+	@extend .container;
+}
+.searchinput {
+	@include grid-column($columns:8, $collapse:true);
+}
+.searchsubmit {
+	@include grid-column($columns:4, $last-column:true, $collapse:true);
+	input[type="submit"] {
+		@include button($padding:false, $full-width:false, $is-input:false);
+		@include prefix-postfix-base;
+		@include radius($radius:0);
+		@include side-radius($side:right, $radius:$button-radius);
+	}
+}
+
+
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+
+// add's some optional hr markup within panel's (404 and not found page)
+.panel > hr {
+	border: 5px solid $primary-color;
+}
+
+// wp aligning
+.alignright {
+	float: right;
+}
+.alignleft {
+	float: left;
+}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// wp-caption
+.wp-caption {
+	max-width: 100%;
+	padding: 4px;
+}
+.wp-caption img {
+	@include radius;
+}
+.wp-caption-text {
+	font-style: italic;
+	font-size: smaller;
+}
+
+
+/* ==========================================================================
+   Sidebar/(General)Widget
+   ========================================================================== */
+
+
+// Dont show the "dots" for widget list's
+.widget ul {
+	list-style: none;
+}
+
+@media #{$small} {
+	// add some extra margin to ul.widget
+	.widget ul {
+		margin-#{$default-float}: $list-side-margin;
+	}
+}
+
+
+/* ==========================================================================
+   Footer/(Footer)Widget)
+   ========================================================================== */
+
+#colophon section {
+	@extend .container;
+	[class*="widget-"] + [class*="widget-"]:last-child {
+		float: $opposite-direction;
+	}
+}
+
+// widget's footer sizes
+.widget-large {
+	@extend .col;
+}
+.widget-medium {
+	@extend .col;
+}
+.widget-small {
+	@extend .col;
+}
+
+// Contains some site information
+.site-info {
+	@extend .col;
+}
+// Contains the footer menu
+.footer-menu {
+	@extend .col;
+}
+
+
+@media #{$small} {
+	// widget's footer sizes
+	.widget-large {
+		@include grid-column($columns:12, $collapse:null, $float:false);
+	}
+	.widget-medium {
+		@include grid-column($columns:8, $collapse:null, $float:false);
+	}
+	.widget-small {
+		@include grid-column($columns:4, $collapse:null, $float:false);
+	}
+	
+	// Contains some site information
+	.site-info {
+		@include grid-column($columns:6, $collapse:null, $float:false);
+	}
+	// Contains the footer menu
+	.footer-menu {
+		@include grid-column($columns:6, $collapse:null, $float:false, $last-column:true);
+	}
+}
+
+/*
+// HTML5 boilerplate
+
+// Remove text-shadow in selection highlight: h5bp.com/i
+// These selection rule sets have to be separate.
+// Customize the background color to match your design.
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+// Image replacement
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    // IE 6/7 fallback
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+*/

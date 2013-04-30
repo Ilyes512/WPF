@@ -1,173 +1,47 @@
-// Make sure the charset is set appropriately
-//@charset "UTF-8";
+// Setting charset
+@charset "UTF-8";
 
-// Global Foundation Settings
-@import "settings"; // *always required (cause it includes "foundation/foundation-global" wish is required)
-
+// Normalizing css for the different webbrowsers
 @import "normalize";
 
-// Comment the specific parts of Foundation that your not gona use to make the style.css
-// file lighter
+// Global settings and mixins for Foundation
+@import "foundation/variables";
 
-@import "foundation/components/global"; // *always required
+// Comment the different Zurb Foundation modules  to make the stye.css lighter.
+// Keep in mind that there might be dependencies:
+
+@import "foundation/components/global";
 @import "foundation/components/grid";
 @import "foundation/components/visibility";
-@import "foundation/components/block-grid";
+// @import "foundation/components/block-grid";
 @import "foundation/components/type";
 @import "foundation/components/buttons";
-@import "foundation/components/forms"; // *requires components/buttons
-@import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
-@import "foundation/components/button-groups"; // *requires components/buttons
-@import "foundation/components/dropdown-buttons"; // *requires components/buttons
-@import "foundation/components/split-buttons"; // *requires components/buttons
-@import "foundation/components/flex-video";
-@import "foundation/components/section";
-@import "foundation/components/top-bar"; // *requires components/grid
-@import "foundation/components/orbit";
-@import "foundation/components/reveal";
-@import "foundation/components/joyride";
-@import "foundation/components/clearing";
-@import "foundation/components/alert-boxes";
+@import "foundation/components/forms";
+// @import "foundation/components/custom-forms";
+// @import "foundation/components/button-groups";
+// @import "foundation/components/dropdown-buttons";
+// @import "foundation/components/split-buttons";
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+@import "foundation/components/top-bar";
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+// @import "foundation/components/alert-boxes";
 @import "foundation/components/breadcrumbs";
-@import "foundation/components/keystrokes";
+// @import "foundation/components/keystrokes";
 @import "foundation/components/labels";
 @import "foundation/components/inline-lists";
 @import "foundation/components/pagination";
 @import "foundation/components/panels";
-@import "foundation/components/pricing-tables";
-@import "foundation/components/progress-bars";
-@import "foundation/components/side-nav";
-@import "foundation/components/sub-nav";
-@import "foundation/components/switch";
-@import "foundation/components/magellan";
-@import "foundation/components/tables";
-@import "foundation/components/thumbs";
-@import "foundation/components/tooltips";
-@import "foundation/components/dropdown";
-
-/* +++++++++++++++++++++++++++++++++++++++++
-   WPF - Wordpress compatibility
-+++++++++++++++++++++++++++++++++++++++++ */
-
-// adjusting header
-h4.subheader {
-	margin-top: -1em;
-}
-
-// add new pagination class for WordPress
-.page-numbers { @include pagination; }
-
-// customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
-.page-numbers li {
-	span:hover a,
-	span a:focus {
-		background: $pagination-link-active-bg;
-	}
-	span.current {
-		background: $pagination-link-current-background;
-		padding: $pagination-link-pad;
-		color: $pagination-link-current-font-color;
-		font-weight: $pagination-link-current-font-weight;
-		cursor: $pagination-link-current-cursor;
-	}
-}
-
-// add some basic comment styles
-ol.commentlist {
-	margin-left: 0;
-	margin-top: 2em;
-	li {
-		list-style: none;
-		margin-bottom: 2em;
-	}
-		.comment-author img {
-			border-radius: 50%;
-			float: left;
-			margin: 0 1em 0 0;
-		}
-		.author-meta {
-			display: inline-block;
-		}
-			cite.fn {
-				@extend h4;
-				margin-right: 0.5em;
-			}
-		section.comment {
-			@include panel(white, 20px);
-		}
-			a.comment-reply-link {
-				float: right;
-				position: relative;
-				bottom: 1em;
-			}
-}
-
-// add some extra margin to ul.widget
-widget ul {
-	margin-#{$default-float}: $list-side-margin;
-}
-
-// add some margin for images in post
-.container img {
-	margin-bottom: $paragraph-margin-bottom;
-}
-
-// adjust search button on top-bar
-input.postfix.button {
-	line-height: 1;
-}
-
-/*
-// adjust search button on sidebar
-#sidebar input.postfix.button {
-	line-height: 0.7;
-}
-*/
-
-// FIX: A fixed top-bar partly disappears behind the wpadminbar 
-body.logged-in .fixed {
-	top: 28px; // the wpadminbar has a height of 28px
-}
-
-// add's some optional hr markup within panel's (404 and not found page)
-.panel > hr {
-	border: 5px solid $primary-color;
-}
-
-// Dont show the "dots" for widget list's
-.widget ul {
-	list-style: none;
-}
-
-// fix wp-smiley
-img.wp-smiley {
-	margin-bottom: 0;
-}
-
-// wp aligning
-.alignright {
-	float: right;
-}
-.alignleft {
-	float: left;
-}
-.aligncenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-// wp-caption
-.wp-caption {
-	max-width: 100%;
-	padding: 4px;
-}
-.wp-caption img {
-	margin-bottom: 0;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-}
-.wp-caption .wp-caption-text {
-	font-style: italic;
-	font-size: smaller;
-}
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
