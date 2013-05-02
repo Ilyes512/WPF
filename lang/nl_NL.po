@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-04-07 20:26+0100\n"
-"PO-Revision-Date: 2013-04-07 20:26+0100\n"
+"POT-Creation-Date: 2013-05-02 02:46+0100\n"
+"PO-Revision-Date: 2013-05-02 02:46+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -16,11 +16,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:10
+#: 404.php:17
 msgid "404 error - Page not found!"
 msgstr "404 fout <br> Pagina niet gevonden!"
 
-#: 404.php:13
+#: 404.php:19
 msgid ""
 "Something went wrong! The page you are looking for might have been removed, "
 "had its name changed, or is temporarily unavailable."
@@ -28,30 +28,34 @@ msgstr ""
 "Er is wat fout gegaan! De pagina die je zoekt kan verwijderd, verplaats of "
 "tijdelijk niet beschikbaar zijn."
 
-#: 404.php:15
+#: 404.php:21
 msgid "Please try the following:"
 msgstr "Probeer het volgende uit:"
 
-#: 404.php:17
+#: 404.php:23
 msgid "Check your spelling"
 msgstr "Controleer uw spelling"
 
-#: 404.php:18 content-none.php:8
+#: 404.php:24 content-none.php:8
 #, php-format
 msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
 
-#: 404.php:19
+#: 404.php:25
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 
-#: archive.php:29 index.php:29 search.php:25
+#: archive.php:34 index.php:34 search.php:34
 msgid "&larr; Older posts"
 msgstr "&larr; Oudere artikelen"
 
-#: archive.php:30 index.php:30 search.php:26
+#: archive.php:35 index.php:35 search.php:35
 msgid "Newer posts &rarr;"
 msgstr "Nieuwere artikelen &rarr;"
+
+#: buddypress.php:20 page-full.php:19 page.php:26 single.php:28
+msgid "Pages:"
+msgstr "Pagina's:"
 
 #: comments.php:8
 #, php-format
@@ -173,7 +177,7 @@ msgstr ""
 msgid "Continue reading..."
 msgstr "Lees verder…"
 
-#: footer.php:23
+#: footer.php:15
 #, php-format
 msgid ""
 "&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
@@ -184,47 +188,51 @@ msgstr ""
 "\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a>"
 
-#: functions.php:258
+#: functions.php:339
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: functions.php:259
+#: functions.php:340
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: functions.php:366
+#: functions.php:452
+msgid "Add a menu"
+msgstr "Voed een menu toe"
+
+#: functions.php:487
 msgid "Primary Navigation"
 msgstr "Primaire menu"
 
-#: functions.php:367
+#: functions.php:488
 msgid "Utility Navigation"
 msgstr "Hulp menu"
 
-#: functions.php:377
+#: functions.php:503
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: functions.php:379
+#: functions.php:505
 msgid "This is the sidebar next to the maincontent of a page"
 msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
 
-#: functions.php:387
+#: functions.php:513
 msgid "Footer 1"
 msgstr "Voet 1"
 
-#: functions.php:389 functions.php:399 functions.php:409
+#: functions.php:515 functions.php:525 functions.php:535
 msgid "An optional widget area for your site footer"
 msgstr "Een optionele widget gebied voor de voet van de pagina"
 
-#: functions.php:397
+#: functions.php:523
 msgid "Footer 2"
 msgstr "Voet 2"
 
-#: functions.php:407
+#: functions.php:533
 msgid "Footer 3"
 msgstr "Voet 3"
 
-#: functions.php:468
+#: functions.php:656
 #, php-format
 msgid ""
 "<p>Posted by <a href=\"%s\" rel=\"author\">%s</a> on <a href=\"%s\"><time "
@@ -233,42 +241,83 @@ msgstr ""
 "<p>Geplaatst door <a href=\"%s\" rel=\"author\">%s</a> op <a href=\"%s"
 "\"><time datetime=\"%s\">%s</time></a></p>"
 
-#: functions.php:474
+#: functions.php:662
 msgid "F j, Y"
 msgstr "j F Y"
 
-#: functions.php:487
+#: functions.php:678
 msgid "<span class=\"secondary label\">"
 msgstr "<span class=\"secondary label\">"
 
-#: functions.php:506
+#: functions.php:702
 msgid "Leave a response"
 msgstr "Laat een reactie achter"
 
-#: functions.php:508
+#: functions.php:704
 #, php-format
 msgid "one response"
 msgid_plural "%s responses"
 msgstr[0] "een reactie"
 msgstr[1] "%s reacties"
 
-#: functions.php:513
+#: functions.php:710
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
-#: functions.php:577
+#: functions.php:789
 msgid "Home"
 msgstr "Start"
 
-#: page-full.php:19 page.php:19 single.php:20
-msgid "Pages:"
-msgstr "Pagina's:"
+#: functions.php:820
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Dagelijks archief: %s"
 
-#: search.php:8
+#: functions.php:822
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Maandelijks archief: %s"
+
+#: functions.php:822
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: functions.php:824
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Jaarlijkse archief: %s"
+
+#: functions.php:824
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: functions.php:828
+msgid "Archives"
+msgstr "Archief"
+
+#: functions.php:830
 msgid "Search Results for"
 msgstr "Zoek resultaten voor"
 
-#: searchform.php:5 searchform.php:8
+#: header.php:78
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google."
+"com/chromeframe/?redirect=true\">activate Google Chrome Frame</a> to improve "
+"your experience."
+msgstr ""
+"Je gebruikt een <strong>verouderde</strong> browser. <a href=\"http://"
+"browsehappy.com/\">Upgrade</a> uw browser of <a href=\"http://www.google.com/"
+"chromeframe/?redirect=true\">activeer Google Chrome Frame</a> om uw browser "
+"ervaring te verbeteren."
+
+#: page.php:33 single.php:35
+msgid "Edit"
+msgstr "Aanpassen"
+
+#: searchform.php:13 searchform.php:16
 msgid "Search"
 msgstr "Zoeken"
 
@@ -369,9 +418,6 @@ msgstr "Quote"
 
 #~ msgid " Check if \"Source\" is a url: "
 #~ msgstr "Selecteer wanneer de \"bron\" een url is: "
-
-#~ msgid "Edit"
-#~ msgstr "Aanpassen"
 
 #~ msgid "Slug"
 #~ msgstr "Slug"

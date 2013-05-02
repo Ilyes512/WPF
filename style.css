@@ -3,7 +3,7 @@
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:     0.2.1 (Foundation 4.1.5)
+Version:     0.2.2 (Foundation 4.1.5)
 Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -2569,62 +2569,6 @@ small.error {
   display: inline-block;
 }
 
-/* Panels */
-.panel {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d9d9d9;
-  margin-bottom: 1.25em;
-  padding: 1.25em;
-  background: #f2f2f2;
-}
-.panel h1, .panel h2, .panel h3, .panel h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .panel h5, .panel h6, .panel p {
-  color: #333333;
-}
-.panel > :first-child {
-  margin-top: 0;
-}
-.panel > :last-child {
-  margin-bottom: 0;
-}
-.panel h1, .panel h2, .panel h3, .panel h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .panel h5, .panel h6 {
-  line-height: 1;
-  margin-bottom: 0.625em;
-}
-.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel ol.commentlist cite.subheader.fn, ol.commentlist .panel cite.subheader.fn, .panel h5.subheader, .panel h6.subheader {
-  line-height: 1.4;
-}
-.panel.callout {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #2284a1;
-  margin-bottom: 1.25em;
-  padding: 1.25em;
-  background: #2ba6cb;
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-}
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout ol.commentlist cite.fn, ol.commentlist .panel.callout cite.fn, .panel.callout h5, .panel.callout h6, .panel.callout p {
-  color: white;
-}
-.panel.callout > :first-child {
-  margin-top: 0;
-}
-.panel.callout > :last-child {
-  margin-bottom: 0;
-}
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout ol.commentlist cite.fn, ol.commentlist .panel.callout cite.fn, .panel.callout h5, .panel.callout h6 {
-  line-height: 1;
-  margin-bottom: 0.625em;
-}
-.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout ol.commentlist cite.subheader.fn, ol.commentlist .panel.callout cite.subheader.fn, .panel.callout h5.subheader, .panel.callout h6.subheader {
-  line-height: 1.4;
-}
-.panel.radius {
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-
 /* ==========================================================================
    Table of Contents
    ==========================================================================
@@ -2738,11 +2682,6 @@ ol.commentlist a.comment-reply-link {
   bottom: 1em;
 }
 
-.top-bar .searchsubmit input[type="submit"] {
-  line-height: 2em;
-  height: 2em;
-}
-
 /* ==========================================================================
    Misc
    ========================================================================== */
@@ -2757,7 +2696,7 @@ textarea {
   color: #000;
 }
 
-.container, .site-meta, .search, #colophon section {
+.container, .site-meta, .search, .content-area, #colophon section {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -2766,15 +2705,32 @@ textarea {
   max-width: 62.5em;
   *zoom: 1;
 }
-.container:before, .site-meta:before, .search:before, #colophon section:before, .container:after, .site-meta:after, .search:after, #colophon section:after {
+.container:before, .site-meta:before, .search:before, .content-area:before, #colophon section:before, .container:after, .site-meta:after, .search:after, .content-area:after, #colophon section:after {
   content: " ";
   display: table;
 }
-.container:after, .site-meta:after, .search:after, #colophon section:after {
+.container:after, .site-meta:after, .search:after, .content-area:after, #colophon section:after {
   clear: both;
 }
 
-.col, .widget-large, .widget-medium, .widget-small, .site-info, .footer-menu {
+.container-nest {
+  width: auto;
+  margin-left: -0.9375em;
+  margin-right: -0.9375em;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: none;
+  *zoom: 1;
+}
+.container-nest:before, .container-nest:after {
+  content: " ";
+  display: table;
+}
+.container-nest:after {
+  clear: both;
+}
+
+.col, .site-content, .sidebar-container, .widget-large, .widget-medium, .widget-small, .site-info, .footer-menu {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2791,6 +2747,11 @@ textarea {
 
 .wp-toolbar .expanded {
   margin-top: 0;
+}
+
+.top-bar .searchsubmit input[type="submit"] {
+  line-height: 2em;
+  height: 2em;
 }
 
 .site-meta hgroup {
@@ -2868,7 +2829,34 @@ textarea {
 /* ==========================================================================
    Content
    ========================================================================== */
-.panel > hr {
+.panel-404 {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  margin-bottom: 1.25em;
+  padding: 1.25em;
+  background: #f2f2f2;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.panel-404 h1, .panel-404 h2, .panel-404 h3, .panel-404 h4, .panel-404 ol.commentlist cite.fn, ol.commentlist .panel-404 cite.fn, .panel-404 h5, .panel-404 h6, .panel-404 p {
+  color: #333333;
+}
+.panel-404 > :first-child {
+  margin-top: 0;
+}
+.panel-404 > :last-child {
+  margin-bottom: 0;
+}
+.panel-404 h1, .panel-404 h2, .panel-404 h3, .panel-404 h4, .panel-404 ol.commentlist cite.fn, ol.commentlist .panel-404 cite.fn, .panel-404 h5, .panel-404 h6 {
+  line-height: 1;
+  margin-bottom: 0.625em;
+}
+.panel-404 h1.subheader, .panel-404 h2.subheader, .panel-404 h3.subheader, .panel-404 h4.subheader, .panel-404 ol.commentlist cite.subheader.fn, ol.commentlist .panel-404 cite.subheader.fn, .panel-404 h5.subheader, .panel-404 h6.subheader {
+  line-height: 1.4;
+}
+
+.panel-404 hr {
   border: 5px solid #2ba6cb;
 }
 
@@ -2901,6 +2889,12 @@ textarea {
   font-size: smaller;
 }
 
+@media only screen and (min-width: 48em) {
+  .site-content {
+    position: relative;
+    width: 66.66667%;
+  }
+}
 /* ==========================================================================
    Sidebar/(General)Widget
    ========================================================================== */
@@ -2909,6 +2903,12 @@ textarea {
 }
 
 @media only screen and (min-width: 48em) {
+  .sidebar-container {
+    position: relative;
+    width: 33.33333%;
+    float: right;
+  }
+
   .widget ul {
     margin-left: 1.25em;
   }

@@ -69,7 +69,7 @@ $include-html-reveal-classes: $include-html-classes;
 $include-html-alert-classes: $include-html-classes;
 $include-html-nav-classes: true; //$include-html-classes;
 $include-html-label-classes: true; //$include-html-classes;
-$include-html-panel-classes: true; //$include-html-classes;
+$include-html-panel-classes: $include-html-classes;
 $include-html-pricing-classes: $include-html-classes;
 $include-html-progress-classes: $include-html-classes;
 $include-html-magellan-classes: $include-html-classes;

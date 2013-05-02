@@ -1,5 +1,12 @@
-<!-- sidebar.php -->
-		<aside id="sidebar" class="large-4 columns" role="complementary">
-			<?php dynamic_sidebar('sidebar-main'); ?>
-		</aside> <!-- end #sidebar.large-4.columns -->
-<!-- end sidebar.php -->
+<?php
+/**
+ * The sidebar containing the sidebar-main widget area.
+ * 
+ * 
+ */
+?>
+<?php wpf_dev( 'sidebar.php' ); ?>
+<div id="main-sidebar" class="sidebar-container" role="complementary">
+	<?php dynamic_sidebar( 'sidebar-main' ); ?>
+</div><!-- #sidebar -->
+<?php wpf_dev( 'end sidebar.php' ); ?>

@@ -23,7 +23,7 @@
  *
  * @todo Make it optional
  */
-define('WPF_VERSION', '0.2.1');
+define('WPF_VERSION', '0.2.2');
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false 
@@ -39,6 +39,7 @@ define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
  * Optional: you can use "define( 'WPF_BREADCRUMB_HOME_URL' , '#url');" in your child theme.
  */
 //if( ! defined( 'WPF_BREADCRUMB_HOME_URL' ) ) define( 'WPF_BREADCRUMB_HOME_URL' , '#url');
+
 
 /**************************************************************************
  *		>LANG + CLEANUP + ENQUEUE
@@ -502,8 +503,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'name'          => __( 'Sidebar', 'wpf' ),
 			'id'            => 'sidebar-main',
 			'description'   => __( 'This is the sidebar next to the maincontent of a page', 'wpf' ),
-			'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="large-12 columns">',
-			'after_widget'  => '</div></article>',
+			'before_widget' => '<aside id="%1$s" class=" widget %2$s">',
+			'after_widget'  => '</aside>',
 			'before_title'  => '<h6 class="widget-title"><strong>',
 			'after_title'   => '</strong></h6>',
 		) );
@@ -512,8 +513,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'name' => __( 'Footer 1', 'wpf' ),
 			'id' => 'sidebar-footer-1',
 			'description' => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
 			'before_title' => '<h6 class="widget-title"><strong>',
 			'after_title' => '</strong></h6>',
 		) );
@@ -522,8 +523,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'name'          => __( 'Footer 2', 'wpf' ),
 			'id'            => 'sidebar-footer-2',
 			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
 			'before_title'  => '<h6 class="widget-title"><strong>',
 			'after_title'   => '</strong></h6>',
 		) );
@@ -532,8 +533,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'name'          => __( 'Footer 3', 'wpf' ),
 			'id'            => 'sidebar-footer-3',
 			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
 			'before_title'  => '<h6 class="widget-title"><strong>',
 			'after_title'   => '</strong></h6>',
 		) );
@@ -807,4 +808,31 @@ if ( ! function_exists( 'wpf_breadcrumb' ) ) {
 	}
 }
 
+/**
+ * This will alternate the .site-subtitle of the page
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_site_subtitle' ) ) {
+	function wpf_site_subtitle() {
+		if ( is_archive() && have_posts() ) {
+			if ( is_day() )
+				printf( __( 'Daily Archives: %s', 'wpf' ), get_the_date() );
+			elseif ( is_month() )
+				printf( __( 'Monthly Archives: %s', 'wpf' ), get_the_date( _x( 'F Y' , 'monthly archives date format', 'wpf' ) ) );
+			elseif ( is_year() )
+				printf( __( 'Yearly Archives: %s', 'wpf' ), get_the_date( _x( 'Y', 'yearly archives date format', 'wpf' ) ) );
+			elseif ( is_category() )
+				single_cat_title();
+			else
+				_e( 'Archives', 'wpf' );
+		} elseif ( is_search() ) {
+			echo __( 'Search Results for', 'wpf' ) . ' ' . substr( get_search_query(), 0, 50 );
+			if ( strlen( get_search_query() ) > 50 ) echo '...';
+		
+		} else {
+			echo bloginfo( 'description' );
+		}
+	}
+}
 ?>
