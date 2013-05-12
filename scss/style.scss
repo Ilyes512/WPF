@@ -2,7 +2,7 @@
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:     0.2.2 (Foundation 4.1.5)
+Version:     0.2.3 (Foundation 4.1.6)
 Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -33,12 +33,6 @@ License URI: http://www.opensource.org/licenses/mit-license.php
 /* ==========================================================================
    Temp
    ========================================================================== */
-
-
-// add new pagination class for WordPress
-.page-numbers { 
-	@include pagination;
-}
 
 // customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
 .page-numbers li {
@@ -123,12 +117,14 @@ textarea {
 
 
 // Only needed when using a sticky top-bar.
-.wp-toolbar .fixed {
+.wp-toolbar #{$topbar-sticky-class} {
 	margin-top: 28px;
 }
+/*
 .wp-toolbar .expanded {
 	margin-top: 0;
 }
+*/
 
 // Only needed when you use a input within topbar (i.e. searchform)
 .top-bar .searchsubmit input[type="submit"] {
@@ -144,11 +140,11 @@ textarea {
 	@include grid-column($columns:12);
 }
 .site-title {
-	margin-bottom: 0;
+	margin: 0;
 }
 
 // The styles for the search form
-.search {
+.searchform {
 	@extend .container;
 }
 .searchinput {
@@ -172,43 +168,77 @@ textarea {
 .content-area {
 	@extend .container;
 }
-.site-content {
+.site-content, .site-content-fw {
 	@extend .col;
 }
 
-// 404
-.panel-404 {
+// 404 / "No posts found"
+.panel {
 	@include panel;
 	@include radius;
 }
-.panel-404 hr {
+.panel hr {
 	border: 5px solid $primary-color;
 }
 
 // wp aligning
-.alignright {
-	float: right;
-}
-.alignleft {
-	float: left;
-}
-.aligncenter {
+.alignright, .alignleft, .aligncenter {
 	display: block;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: auto;		
 }
 
-// wp-caption
-.wp-caption {
-	max-width: 100%;
-	padding: 4px;
-}
-.wp-caption img {
+// img / caption
+img[class*="wp-image-"] {
 	@include radius;
 }
-.wp-caption-text {
+figcaption {
+	display: block;
+	padding: emCalc(5px) 0 emCalc(20px) 0;
 	font-style: italic;
-	font-size: smaller;
+	text-decoration: underline;
+}
+
+// Breadcrumbs
+.breadcrumbs {
+	@include crumb-container;
+	@include radius($crumb-radius);
+
+	&>* {
+	 	@include crumbs;
+	}
+}
+
+// Pagination
+.page-links {
+	@include pagination($center:true, $base-style:false);
+}
+.page-numbers { 
+	@include pagination;
+}
+.page-links-title {
+	display: block;
+	margin-bottom: emCalc(10px);
+}
+
+// (Post) entry-meta
+.entry-meta {
+	font-style: italic; 
+}
+.author {
+	border: 0;
+	margin: 0 0 emCalc(20px);
+	padding: 0;
+}
+.comments-link {
+	@extend .text-center;
+}
+.post-tags {
+	margin-top: emCalc(20px);
+	@extend .text-center;
+}
+.post-tag {
+	@include label($bg:$secondary-color, $radius:true);
 }
 
 @media #{$small} {
@@ -217,6 +247,28 @@ textarea {
 	}
 	.site-content {
 		@include grid-column($columns:8, $collapse:null, $float:false);
+	}
+
+	// wp aligning
+	.alignright {
+		display: inline-block;
+		float: right;
+		margin: 0 0 emCalc(10px) emCalc(10px);
+	}
+	.alignleft {
+		display: inline-block;
+		float: left;
+		margin: 0 emCalc(10px) emCalc(10px) 0;
+	}
+	
+	// img / caption
+	.wp-caption.alignright img, .wp-caption.alignleft img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	figcaption {
+		padding: emCalc(5px) 0 0 0;
 	}
 }
 
@@ -276,6 +328,10 @@ textarea {
 // Contains the footer menu
 .footer-menu {
 	@extend .col;
+	ul {
+		@include inline-list;
+		float: left;
+	}
 }
 
 
@@ -298,6 +354,9 @@ textarea {
 	// Contains the footer menu
 	.footer-menu {
 		@include grid-column($columns:6, $collapse:null, $float:false, $last-column:true);
+		ul {
+			float: right;
+		}
 	}
 }
 

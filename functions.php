@@ -23,7 +23,7 @@
  *
  * @todo Make it optional
  */
-define('WPF_VERSION', '0.2.2');
+define('WPF_VERSION', '0.2.3');
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false 
@@ -34,7 +34,7 @@ define('WPF_VERSION', '0.2.2');
 define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
 
 /**
- * You can change the "Home" url that is used for the wpf_breadcrumb().
+ * You can change the "Home" url that is used for the wpf_breadcrumb(). Default "home url" is set to home_url( '/' ).
  * 
  * Optional: you can use "define( 'WPF_BREADCRUMB_HOME_URL' , '#url');" in your child theme.
  */
@@ -70,13 +70,10 @@ if ( ! function_exists( 'wpf_cleanup' ) ) {
 		// enqueue base scripts and styles
 		add_action( 'wp_enqueue_scripts', 'wpf_scripts_and_styles', 999 );
 		
-		// additional post related cleaning
-		/* For now it's commented until I come across any problems relating to this
-			add_filter('img_caption_shortcode', 'wpf_cleaner_caption', 10, 3);
-			add_filter('get_image_tag_class', 'wpf_image_tag_class', 0, 4);
-			add_filter('get_image_tag', 'wpf_image_editor', 0, 4);
-			add_filter('the_content', 'wpf_img_cleanup', 30);
-		*/
+		// Use semantic caption
+		add_filter( 'img_caption_shortcode', 'wpf_caption_shortcode', 10, 3 );
+
+		
 	} // end wpf_cleanup()
 }
 
@@ -214,19 +211,17 @@ if ( ! function_exists( 'wpf_admin_head' ) ) {
 	} // end wpf_admin_head()
 }
 
-
-/*
 // Post related cleaning
 
-if ( ! function_exists( 'wpf_cleaner_caption' ) ) {
+if ( ! function_exists( 'wpf_caption_shortcode' ) ) {
 	// Customized the output of caption, you can remove the filter to restore back to the
 	// WP default output. Courtesy of DevPress.
 	// http://devpress.com/blog/captions-in-wordpress/
-	function wpf_cleaner_caption( $output, $attr, $content ) {
+	function wpf_caption_shortcode( $output, $attr, $content ) {
 	
 		// We're not worried about captions in feeds, so just return the output here.
 		if ( is_feed() ) return $output;
-	
+
 		// Set up the default arguments.
 		$defaults = array(
 			'id'      => '',
@@ -234,26 +229,23 @@ if ( ! function_exists( 'wpf_cleaner_caption' ) ) {
 			'width'   => '',
 			'caption' => '',
 		);
-	
-		// Merge the defaults with user input.
-		$attr = shortcode_atts( $defaults, $attr );
-	
+
+		// Merge the defaults with user input and extract.
+		$attr = extract( shortcode_atts( $defaults, $attr ) );
+
 		// If the width is less than 1 or there is no caption, return the content
 		// wrapped between the [caption]< tags.
-		if ( 1 > $attr['width'] || empty( $attr['caption'] ) )
+		if ( 1 > $width || empty( $caption ) )
 			return $content;
 	
-		// Set up the attributes for the caption <div>.
-		$attributes = ' class="figure ' . esc_attr( $attr['align'] ) . '"';
-	
-		// Open the caption <div>.
-		$output = '<figure' . $attributes .'>';
+		// Open the caption <div> including the needed classes.
+		$output = '<figure class="wp-caption ' . esc_attr( $align ) . '">';
 	
 		// Allow shortcodes for the content the caption was created for.
 		$output .= do_shortcode( $content );
 	
 		// Append the caption text.
-		$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
+		$output .= '<figcaption>' . $caption . '</figcaption>';
 	
 		// Close the caption </div>.
 		$output .= '</figure>';
@@ -261,42 +253,8 @@ if ( ! function_exists( 'wpf_cleaner_caption' ) ) {
 		// Return the formatted, clean caption.
 		return $output;
 		
-	} // end wpf_cleaner_caption()
+	} // end wpf_caption_shortcode()
 }
-
-if ( ! function_exists( 'wpf_image_tag_class' ) ) {
-	// Clean the output of attributes of images in editor.
-	// http://www.sitepoint.com/wordpress-change-img-tag-html/
-	function wpf_image_tag_class( $class, $id, $align, $size ) {
-		$align = 'align' . esc_attr( $align );
-		return $align;
-	} // end wpf_image_tag_class()
-	
-	// Remove width and height in editor, for a better responsive world.
-	function wpf_image_editor( $html, $id, $alt, $title ) {
-		return preg_replace( array(
-				'/\s+width="\d+"/i',
-				'/\s+height="\d+"/i',
-				'/alt=""/i',
-			), array(
-				'',
-				'',
-				'',
-				'alt="' . $title . '"',
-			),
-			$html );
-	} //end wpf_image_editor
-}
-
-function ( ! function_exists( 'wpf_img_cleanup' ) ) {
-	// Wrap images with <figure>-tag and remove <p>-tag.
-	// http://interconnectit.com/2175/how-to-remove-p-tags-from-images-in-wordpress/
-	function wpf_img_cleanup( $content ) {
-		$content = preg_replace( '/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $content );
-		return $pee;
-	} // end wpf_img_cleanup()
-}
-*/
 
 add_action( 'admin_bar_menu', 'wpf_remove_wp_logo', 999 );
 /**
@@ -318,51 +276,223 @@ if ( ! function_exists( 'wpf_remove_wp_logo' ) )
 
 
 /**
- * Use Foundation's pagination style on paginate_links() output.
+ * This is an untouched wp_link_pages() as found in wp v3.6-beta3.
+ * 
+ * This function can be deleted as soon as Wordpress 3.6 has been launched. All
+ * temp_wp_link_pages() calls will then need to be replaced by wp_link_pages()
+ * before deleting this function.
  *
- * @todo Code refactoring (incl. css classes)
+ * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/post-template.php
+ * @todo Delete temp_wp_link_pages() as soon as Wordpress 3.6 has been launched
+ * and replace the calls with wp_link_pages().
+ *
+ * @param    string|array    $args Optional. Overwrite the defaults.
+ * @return    string         Formatted output in HTML
  */
-if ( ! function_exists( 'wpf_pagination' ) ) {
-	function wpf_pagination() {
+if ( ! function_exists( 'temp_wp_link_pages' ) ) {
+	function temp_wp_link_pages( $args = '' ) {
+		$defaults = array(
+			'before'           => '<p>' . __( 'Pages:' ),
+			'after'            => '</p>',
+			'link_before'      => '',
+			'link_after'       => '',
+			'next_or_number'   => 'number',
+			'separator'        => ' ',
+			'nextpagelink'     => __( 'Next page' ),
+			'previouspagelink' => __( 'Previous page' ),
+			'pagelink'         => '%',
+			'echo'             => 1
+		);
+	
+		$r = wp_parse_args( $args, $defaults );
+		$r = apply_filters( 'wp_link_pages_args', $r );
+		extract( $r, EXTR_SKIP );
+	
+		global $page, $numpages, $multipage, $more, $pagenow;
+	
+		$output = '';
+		if ( $multipage ) {
+			if ( 'number' == $next_or_number ) {
+				$output .= $before;
+				for ( $i = 1; $i <= $numpages; $i++ ) {
+					$link = $link_before . str_replace( '%', $i, $pagelink ) . $link_after;
+					if ( $i != $page || ! $more && 1 == $page )
+						$link = _wp_link_page( $i ) . $link . '</a>';
+					$link = apply_filters( 'wp_link_pages_link', $link, $i );
+					$output .= $separator . $link;
+				}
+				$output .= $after;
+			} elseif ( $more ) {
+				$output .= $before;
+				$i = $page - 1;
+				if ( $i ) {
+					$link = _wp_link_page( $i ) . $link_before . $previouspagelink . $link_after . '</a>';
+					$link = apply_filters( 'wp_link_pages_link', $link, $i );
+					$output .= $separator . $link;
+				}
+				$i = $page + 1;
+				if ( $i <= $numpages ) {
+					$link = _wp_link_page( $i ) . $link_before . $nextpagelink . $link_after . '</a>';
+					$link = apply_filters( 'wp_link_pages_link', $link, $i );
+					$output .= $separator . $link;
+				}
+				$output .= $after;
+			}
+		}
+	
+		$output = apply_filters( 'wp_link_pages', $output, $args );
+	
+		if ( $echo )
+			echo $output;
+	
+		return $output;
+	}
+}
+
+add_filter( 'wp_link_pages_args', 'wpf_link_pages_args' );
+/**
+ * Add a new way of displaying wp_link_pages().
+ * 
+ * This filter is called in wp_link_pages() to add the ability to display both
+ * the page numbers and next/previous links.
+ *
+ * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/post-template.php
+ * 
+ * @param    array    $args    These are the arguments passed to wp_link_pages().
+ * @return   array             The arguments including the (possible) changes to have next/previous links.
+ */
+if ( ! function_exists( 'wpf_link_pages_args' ) ) {
+	function wpf_link_pages_args( $args ) {
+		if ( 'next_and_number' == $args['next_or_number'] ) {
+			global $page, $numpages, $multipage, $more;
+			$args['next_or_number'] = 'number';
+
+			if ( $multipage && $more ) {
+				$prev = '';
+				$next = '';
+				extract( $args, EXTR_SKIP );
+
+				$i = $page - 1;
+				if ( $i ) {
+					$prev .= _wp_link_page( $i ) . $link_before . $previouspagelink . $link_after . '</a>';
+					$prev  = apply_filters( 'wp_link_pages_link', $prev, $i );
+					$prev  = $separator . $prev;
+				}
+				$i = $page + 1;
+				if ( $i <= $numpages ) {
+					$next .= _wp_link_page( $i ) . $link_before . $nextpagelink . $link_after . '</a>';
+					$next  = apply_filters( 'wp_link_pages_link', $next, $i );
+					$next  = $separator . $next;
+				}
+
+				$args['before'] = $args['before'] . $prev;
+				$args['after'] = $next . $args['after'];
+			}
+		}
+		return $args;
+	} // end wpf_link_pages_args()
+}
+
+add_filter( 'wp_link_pages_link', 'wpf_link_pages_link', 10, 2);
+/**
+ * Adjust the links that wpf_link_pages() outputs.
+ * 
+ * This filter is found in wp_link_pages() and will adjust the pagination the be
+ * able to use Foundation's pagination. It will add <li>-tags (including closing
+ * tag). The current page will receive <span>-tags (including closing tag and
+ * "current" class) if it doesnt contain a link.
+ *
+ * @param    string    $link           The link that is being displayed or the content for the current page. ie. <a...>Content</a>
+ * #param    int       $page_number    This is the pagenumber that get's the $link. 
+ * @return   string                    The link that is going to be displayed after adding some htmlmarkup.
+ */
+if ( ! function_exists( 'wpf_link_pages_link' ) ) {
+	function wpf_link_pages_link( $link, $page_number ) {
+		global $page;
+
+		if ( $page == $page_number ) {
+			// Make sure that there is no <a>-htmltag (For search result page)
+			if ( ! preg_match( '/<a\s+/i', $link ) )
+				return '<li><span class="current">' . $link . '</span></li>';
+		}
+		// default
+		return '<li>' . $link . '</li>';
+		
+	} // end wpf_link_pages_link()
+}
+
+/**
+ * Use Foundation's pagination style for paginate_links().
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_paginate_link' ) ) {
+	function wpf_paginate_link() {
 		global $wp_query;
-	 
+
 		$big = 999999999; // This needs to be an unlikely integer
-	 
+
 		// For more options and info view the docs for paginate_links()
 		// http://codex.wordpress.org/Function_Reference/paginate_links
 		$paginate_links = paginate_links( array(
 			'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
 			'current'   => max( 1, get_query_var( 'paged' ) ),
 			'total'     => $wp_query->max_num_pages,
+			'end_size'  => 2,
 			'mid_size'  => 5,
 			'prev_next' => True,
-			'prev_text' => __( '&laquo;', 'wpf' ),
-			'next_text' => __( '&raquo;', 'wpf' ),
+			'prev_text' => __( '&laquo; Previous', 'wpf' ),
+			'next_text' => __( 'Next &raquo;', 'wpf' ),
 			'type'      => 'list',
 		) );
 	 
 		// Display the pagination if more than one page is found
-		if ( $paginate_links ) {
-			echo '<div class="pagination-centered">';
-			echo $paginate_links;
-			echo '</div><!-- end .pagination -->';
-		}
-	} // end wpf_pagination()
+		if ( $paginate_links )
+			echo '<div class="page-links">' . $paginate_links . '</div><!-- .page-links -->';
+	} // end wpf_paginate_link()
 }
 
-add_filter( 'wp_list_pages', 'wpf_active_list_pages_class' );
 /**
- * Use the active class of ZURB Foundation on wp_list_pages output.
+ * Use Foundation's pagination style for wp_link_pages().
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_link_pages' ) ) {
+	function wpf_link_pages() {
+		switch ( true ) {
+			case is_single() || is_page();
+				temp_wp_link_pages( array( 
+					'before'           => '<div class="page-links"><ul class="page-numbers">',
+					'after'            => '</ul></div>',
+					'next_or_number'   => 'next_and_number',
+					'nextpagelink'     => __('Next page &raquo;', 'wpf'),
+					'previouspagelink' => __('&laquo; Previous page', 'wpf'),
+				) );
+				break;
+			case is_search();
+				temp_wp_link_pages( array( 
+					'before'         => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
+					'after'          => '</ul></div>',
+					'next_or_number' => 'next_and_number',
+				) );
+				break;
+		}
+	} // end wpf_link_pages()
+}
+
+add_filter( 'wp_list_pages', 'wpf_list_pages_active_class' );
+/**
+ * Use the .active class of ZURB Foundation on wp_list_pages output.
  *
  * @todo Code refactoring
  */
-if ( ! function_exists( 'wpf_active_list_pages_class' ) ) {
-	function wpf_active_list_pages_class( $input ) {
+if ( ! function_exists( 'wpf_list_pages_active_class' ) ) {
+	function wpf_list_pages_active_class( $input ) {
 		$pattern = '/current_page_item/';
 		$replace = 'current_page_item active';
 		$output = preg_replace( $pattern, $replace, $input );
 		return $output;
-	} // end wpf_active_list_pages_class()
+	} // end wpf_list_pages_active_class()
 }
 
 add_filter( 'nav_menu_css_class', 'wpf_active_nav_class', 10, 2 );
@@ -447,18 +577,118 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
 	function wpf_nav_menu_fallback( $args ) {
 		// If the user has no rights to change the menu's: abort
 		if ( ! current_user_can( 'edit_theme_options' ) ) return;
-
-		$output  = '<li class="divider"></li>';
-		$output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
-		$output .= '<li class="divider"></li>';
+		
+		$output = '';
+		
+		switch ( $args['theme_location'] ) {
+			case 'primary';
+				$output  = '<li class="divider"></li>';
+				$output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
+				$output .= '<li class="divider"></li>';
+				break;
+			case 'footer';
+				$output = '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
+				break;
+		}
 		
 		// Add the menu wrapper
-		$output = sprintf( $args['items_wrap'], null, null, $output );
-		
+		$output = sprintf( $args['items_wrap'], $args['menu_id'], $args['menu_class'], $output );
+
 		if ( $args['echo'] ) echo $output;
 
 		return $output;
 	} // end wpf_nav_menu_fallback()
+}
+
+/**
+ * Prints the category breadcrumb for a post using foundation's breadcrumb
+ * 
+ * @link: http://foundation.zurb.com/docs/components/breadcrumbs.html
+ *
+ * @param    string  $add_home    To add the "Home"-link to the breadcrumb use "show-home". Default: 'hide-home'.
+ * @param    string  $return      Set to 'print' for printing the breadcrumb or to 'return' for returning the breadcrumb instead. Default: 'print'.
+ * @return   string               When $return equals to 'return' then it will return the breadcrumb html.
+ *
+ * @todo Refactor
+ */
+if ( ! function_exists( 'wpf_breadcrumb' ) ) {
+	function wpf_breadcrumb( $add_home = 'hide-home', $return = 'print' ) {
+		$raw_cat     = get_the_category();
+		$raw_count   = count( $raw_cat );
+		$cat_array   = array();
+		$html_result = '';
+		
+		if ( $raw_count > 0 ) {
+			foreach ( $raw_cat as $cat ) {
+				// turning the object into an array
+				$cat = get_object_vars( $cat );
+				
+				// Parent cat: if there are multiple parents, then the older parent will be overrided!
+				// (so the last parent will be shown)
+				if ( $cat['parent'] == 0 ) {
+					// the parent is the first li-item in the breadcrumb
+					$breadcrumb[0] = array(
+						'cat_ID' => $cat['cat_ID'],
+						'name'   => $cat['name'],
+						'slug'   => $cat['slug'],
+						'parent' => $cat['parent'],
+					);
+				} else {
+					$cat_array[ $cat['cat_ID'] ] = array(
+						'cat_ID' => $cat['cat_ID'],
+						'name'   => $cat['name'],
+						'slug'   => $cat['slug'],
+						'parent' => $cat['parent'],
+					);	
+				}
+			}
+			// the first child to look is based on the parent's cat_ID
+			$next_child = $breadcrumb[0]['cat_ID'];
+
+			// starting from the parent we will look for a $cat that has the parent['cat_ID'] in child['parent']
+			for ( $i = 0; $i < $raw_count; $i++ ) {
+				foreach ( $cat_array as $cat ) {
+					if ( $next_child == $cat['parent'] ) {
+						// add the next breadcrumb li-item
+						$breadcrumb[] = $cat;
+						// set the next child to search for
+						$next_child = $cat['cat_ID'];
+					}
+				}
+				// if $breadcrumb is equally sized as $raw_count then that means $breadcrumb is complete
+				if ( count( $breadcrumb ) == $raw_count )
+					break;	
+			}
+
+			// create the final breadcrumb html
+			$html_result = '<ul class="breadcrumbs">';
+			
+			// Add the Home url if $add_home == 'show-home'
+			if ( $add_home == 'show-home' ) {
+				if ( defined( 'WPF_BREADCRUMB_HOME_URL' ) )
+					$home_url = WPF_BREADCRUMB_HOME_URL;
+				else
+					$home_url = home_url( '/' );
+				$html_result .= '<li><a href="' . esc_url( $home_url ) . '">' . __( 'Home', 'wpf' ) . '</a></li>';
+			}
+			
+			foreach ( $breadcrumb as $cat ) {
+				// if the current page is the category's archive page then add .current (disable link)
+				$class = ( is_category( $cat['cat_ID'] ) ) ? ' class="current"' : '';
+				
+				$html_result .= '<li' . $class . '><a href="' . esc_url( get_category_link( $cat['cat_ID'] ) ) . '">';
+				$html_result .= $cat['name'];
+				$html_result .= '</a></li>';
+			}
+			$html_result .= '</ul>';
+		}
+		
+		// By default the breadcrumb is printed.
+		if ( $return == 'print' )
+			echo $html_result;
+		elseif ( $return == 'return' )
+			return $html_result;	
+	} // end wpf_breadcrumb()
 }
 
 
@@ -485,7 +715,7 @@ if ( ! function_exists( 'wpf_theme_support' ) ) {
 		add_theme_support( 'menus' );
 		register_nav_menus( array(
 			'primary' => __( 'Primary Navigation', 'wpf' ),
-			'utility' => __( 'Utility Navigation', 'wpf' ),
+			'footer' => __( 'Footer Navigation', 'wpf' ),
 		) );
 	} // end wpf_theme_support()
 }
@@ -555,9 +785,9 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 	function wpf_footer_widget() {
 		// 1 = active sidebar, 0 = not active
 		$footer_sidebar = array(
-			( is_active_sidebar('sidebar-footer-1') ? 1 : 0 ),
-			( is_active_sidebar('sidebar-footer-2') ? 1 : 0 ),
-			( is_active_sidebar('sidebar-footer-3') ? 1 : 0 ),
+			( is_active_sidebar( 'sidebar-footer-1' ) ? 1 : 0 ),
+			( is_active_sidebar( 'sidebar-footer-2' ) ? 1 : 0 ),
+			( is_active_sidebar( 'sidebar-footer-3' ) ? 1 : 0 ),
 		);
 		
 		$total_active = implode( '', $footer_sidebar );
@@ -584,10 +814,9 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 			default:
 				$class = array( 'widget-small', 'widget-small', 'widget-small' );//
 		}
-	
-		// return
+		// return to a global for later use
 		$GLOBALS['wpf_widget_classes'] = $class;
-	}
+	} // end wpf_footer_widget()
 }
 
 /**
@@ -595,14 +824,14 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
  * 
  * 
  */
- if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
-	 function wpf_print_footer_sidebar() {
-	 	$sidebar_active =    is_active_sidebar( 'sidebar-footer-1' )
-	 					  or is_active_sidebar( 'sidebar-footer-2' )
-	 					  or is_active_sidebar( 'sidebar-footer-3' );
-	 	
+if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
+	function wpf_print_footer_sidebar() {
+		$sidebar_active =    is_active_sidebar( 'sidebar-footer-1' )
+                          or is_active_sidebar( 'sidebar-footer-2' )
+                          or is_active_sidebar( 'sidebar-footer-3' );
+		
 		if ( $sidebar_active and ! is_404() ) {
-			echo '<section>';
+			echo '<section class="footer-sidebar">';
 			$i = 1;
 			foreach ( $GLOBALS['wpf_widget_classes'] as $class ) {
 				if ( $class ) {
@@ -612,10 +841,10 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 				}
 				$i++;
 			}
-			echo '</section>';
+			echo '</section><!-- .footer-sidebar -->';
 		}
-	 }
- }
+	} // end wpf_print_footer_sidebar()
+}
 
 /**************************************************************************
  *		>MISC
@@ -653,158 +882,14 @@ if ( ! function_exists( 'wpf_dev' ) ) {
 if ( ! function_exists( 'wpf_entry_meta' ) ) {
 	// prints the entry meta for posts.
 	function wpf_entry_meta() {
-		printf( __( '<p>Posted by <a href="%s" rel="author">%s</a> on <a href="%s"><time datetime="%s">%s</time></a></p>', 'wpf' ),
-			get_author_posts_url( get_the_author_meta( 'ID') ),
-			get_the_author(),
-			get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ),
-			get_the_time( 'c' ),
-			// Translators: this is the date format for the post meta text
-			get_the_time( __( 'F j, Y', 'wpf' ) )
+		printf( __( '<span class="author vcard">Posted by <a class="url fn" href="%1$s" title="%2$s" rel="author">%3$s</a> on <a href="%4$s"><time datetime="%5$s">%6$s</time></a></span>', 'wpf' ),
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID') ) ),//
+			esc_attr( sprintf( __( 'View all posts by %s', 'wpf' ), get_the_author() ) ),
+			get_the_author(), //
+			esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ),
+			esc_attr( get_the_time( 'c' ) ),
+			get_the_time( _x( 'F j, Y', 'date format for the post meta text', 'wpf' ) )
 		);
-	}
-}
-
-/**
- * Post the tags with foundation labels
- *
- * @param    string    $before    Will be put before the tags html if has_tag() == true.
- * @param    string    $after     Will be put after the tags html if has_tag() == true.
- */
-if ( ! function_exists( 'wpf_tags' ) ) {
-	function wpf_tags( $before = null, $after = null ) {
-		if ( has_tag() ) {
-			echo $before;
-			// Translators: Only translate "Tags:"
-			the_tags( __( '<span class="secondary label">', 'wpf' ), '</span> <span class="secondary label">', '</span>' );
-			echo $after;
-		}
-	}
-}
-
-/**
- * Print post meta information
- *
- * Prints the footer post meta for posts. Also uses wpf_tags(). Prints the category's
- * and show's the comment count (if comments is enabled).
- *
- * @param    bool    $tags    Wheter to print post tags or not. Default: true
- *
- * @todo Self-Explanatory Flag Values for Function Arguments
- */
-if ( ! function_exists( 'wpf_postfooter_meta' ) ) {
-	function wpf_postfooter_meta( $tags = true ) {		
-		// check if the post has comments enabled
-		if ( comments_open() ) {
-			// get the number of comments
-			$num_comments = get_comments_number();
-			
-			if ($num_comments == 0) {
-				$comment = __( 'Leave a response', 'wpf' );
-			} else {
-				$comment = sprintf( _n( 'one response', '%s responses', $num_comments, 'wpf' ), $num_comments );	
-			}
-			// add the permalink + #respond anchor so it directs the user to the form
-			$comment = '<a href="' . get_permalink() . '#respond">' . $comment . '</a>';
-
-		} else {
-			$comment = __( 'Comments are locked for this post', 'wpf' );
-		}
-		
-		echo '<div class="text-center">' . $comment . '</div>';
-		
-		if ( $tags ) wpf_tags( '<br><div class="text-center">', '</div><br>' );
-	}
-}
-
-/**
- * Prints the category breadcrumb for a post using foundation's breadcrumb
- * 
- * @link: http://foundation.zurb.com/docs/components/breadcrumbs.html
- *
- * @param    bool    $add_home    Wheter to add the "Home"-link within the breadcrumb. Default: false
- * @param    bool    $print       Wether to print (true) or return (false). Default: true
- * @return   string               When $print == false then it will return the breadcrumb html.
- *
- * @todo Refactor
- */
-if ( ! function_exists( 'wpf_breadcrumb' ) ) {
-	function wpf_breadcrumb( $add_home = false, $print = true ) {
-		$raw_cat     = get_the_category();
-		$raw_count   = count( $raw_cat );
-		$cat_array   = array();
-		$html_result = '';
-		
-		if ( $raw_count > 0 ) {
-			foreach ( $raw_cat as $cat ) {
-				// turning the object into an array
-				$cat = get_object_vars( $cat );
-				
-				// Parent cat: if there are multiple parents, then the older parent will be overrided!
-				// (so the last parent will be shown)
-				if ( $cat['parent'] == 0 ) {
-					// the parent is the first li-item in the breadcrumb
-					$breadcrumb[0] = array(
-						'cat_ID' => $cat['cat_ID'],
-						'name'   => $cat['name'],
-						'slug'   => $cat['slug'],
-						'parent' => $cat['parent'],
-					);
-				} else {
-					$cat_array[ $cat['cat_ID'] ] = array(
-						'cat_ID' => $cat['cat_ID'],
-						'name'   => $cat['name'],
-						'slug'   => $cat['slug'],
-						'parent' => $cat['parent'],
-					);	
-				}
-			}
-			// the first child to look is based on the parent's cat_ID
-			$next_child = $breadcrumb[0]['cat_ID'];
-
-			// starting from the parent we will look for a $cat that has the parent['cat_ID'] in child['parent']
-			for ( $i = 0; $i < $raw_count; $i++ ) {
-				foreach ( $cat_array as $cat ) {
-					if ( $next_child == $cat['parent'] ) {
-						// add the next breadcrumb li-item
-						$breadcrumb[] = $cat;
-						// set the next child to search for
-						$next_child = $cat['cat_ID'];
-					}
-				}
-				// if $breadcrumb is equally sized as $raw_count then that means $breadcrumb is complete
-				if ( count( $breadcrumb ) == $raw_count )
-					break;	
-			}
-
-			// create the final breadcrumb html
-			$html_result = '<ul class="breadcrumbs">';
-			
-			// Add the Home url if $add_home == true
-			if ( $add_home ) {
-				// @todo add esc_url() before defining WPF_BREADCRUMB_HOME_URL to $home_url
-				if ( defined( 'WPF_BREADCRUMB_HOME_URL' ) )
-					$home_url = WPF_BREADCRUMB_HOME_URL;
-				else
-					$home_url = home_url( '/' );
-				$html_result .= '<li><a href="' . esc_url( $home_url ) . '">' . __( 'Home', 'wpf' ) . '</a></li>';
-			}
-			
-			foreach ( $breadcrumb as $cat ) {
-				// if the current page is the category's archive page then add .current (disable link)
-				$class = ( is_category( $cat['cat_ID'] ) ) ? ' class="current"' : '';
-				
-				$html_result .= '<li' . $class . '><a href="' . esc_url( get_category_link( $cat['cat_ID'] ) ) . '">';
-				$html_result .= $cat['name'];
-				$html_result .= '</a></li>';
-			}
-			$html_result .= '</ul>';
-		}
-		// By default the breadcrumb is printed.
-		// See wpf_breadcrumb($print = true) at the top
-		if ( $print )
-			echo $html_result;
-		else
-			return $html_result;	
 	}
 }
 
@@ -815,23 +900,32 @@ if ( ! function_exists( 'wpf_breadcrumb' ) ) {
  */
 if ( ! function_exists( 'wpf_site_subtitle' ) ) {
 	function wpf_site_subtitle() {
-		if ( is_archive() && have_posts() ) {
-			if ( is_day() )
+		switch ( true ) {
+			case is_day():
 				printf( __( 'Daily Archives: %s', 'wpf' ), get_the_date() );
-			elseif ( is_month() )
+				break;
+			case is_month():
 				printf( __( 'Monthly Archives: %s', 'wpf' ), get_the_date( _x( 'F Y' , 'monthly archives date format', 'wpf' ) ) );
-			elseif ( is_year() )
+				break;
+			case is_year():
 				printf( __( 'Yearly Archives: %s', 'wpf' ), get_the_date( _x( 'Y', 'yearly archives date format', 'wpf' ) ) );
-			elseif ( is_category() )
+				break;
+			case is_category():
 				single_cat_title();
-			else
+				break;
+			case is_search():
+				echo __( 'Search Results for', 'wpf' ) . ' ' . substr( get_search_query(), 0, 50 );
+				if ( strlen( get_search_query() ) > 50 ) echo '...';
+				break;
+			case is_author():
+				$author = get_userdata( get_query_var( 'author' ) );
+				printf( __( 'Author\'s archive: %s', 'wpf' ), $author->display_name );
+				break;
+			case is_archive():
 				_e( 'Archives', 'wpf' );
-		} elseif ( is_search() ) {
-			echo __( 'Search Results for', 'wpf' ) . ' ' . substr( get_search_query(), 0, 50 );
-			if ( strlen( get_search_query() ) > 50 ) echo '...';
-		
-		} else {
-			echo bloginfo( 'description' );
+				break;
+			default:
+				echo bloginfo( 'description' );
 		}
 	}
 }

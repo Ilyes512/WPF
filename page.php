@@ -17,21 +17,20 @@ get_header(); ?>
 				<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
-						<?php wpf_entry_meta(); ?>
 					</header><!-- .entry-header -->
-	
+
 					<div class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array(
-							'before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpf'),
-							'after' => '</p></nav>',
-						) ); ?>
+						<?php wpf_link_pages(); ?>
 					</div><!-- .entry-content -->
-	
-					<footer class="entry-meta">
-						<?php wpf_tags( '<p>', '</p>' ); ?>
-						<?php edit_post_link( __( 'Edit', 'wpf' ), '<span class="edit-link">', '</span>' ); ?>
-					</footer><!-- .entry-meta -->
+
+					<?php if ( has_tag() ) : ?>	
+						<footer class="entry-meta">
+							<div class="post-tags">
+								<?php the_tags( '<span class="post-tag">', '</span> <span class="post-tag">', '</span>' ); ?>
+							</div><!--post-tags -->
+						</footer><!-- .entry-meta -->
+					<?php endif; ?>
 				</article><!-- #post -->
 	
 				<?php comments_template(); ?>

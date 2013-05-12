@@ -32,10 +32,10 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 
 <body <?php body_class( $body_class ); ?>>
 
-<div id="page" class="container" role="document">
+<div id="page" class="hfeed site" role="document">
 
 	<header id="masthead" class="site-header" role="banner">
-		<div id="navbar" class="fixed contain-to-grid">
+		<div id="navbar" class="contain-to-grid">
 			<nav id="side-navigation" class="top-bar" role="navigation">
 				<ul class="title-area">
 					<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
@@ -47,7 +47,6 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 					'theme_location' => 'primary',
 					'container'      => false,
 					'items_wrap'     => '<ul class="left">%3$s</ul>',
-					'depth'          => 0,
 					'walker'         => new wpf_walker(),
 					'fallback_cb'    => 'wpf_nav_menu_fallback',
 				) ); ?>
@@ -65,7 +64,8 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 				<h4 class="site-subtitle"><?php if ( function_exists( 'wpf_site_subtitle' ) ) wpf_site_subtitle(); ?></h4>
 			</hgroup>
 			<hr>
-		</div>
+		</div><!-- .site-meta -->
+
 	</header><!-- #masthead -->
 <?php
 /**

@@ -16,10 +16,10 @@ wpf_dev( 'footer.php' ); ?>
 			</div> <!-- .site-info -->
 			<div class="footer-menu">
 				<?php wp_nav_menu( array(
-					'theme_location' => 'utility',
+					'theme_location' => 'footer',
 					'container'      => false,
-					'menu_class'     => 'inline-list right',
-					'fallback_cb'    => false,
+					'fallback_cb'    => 'wpf_nav_menu_fallback',
+					'items_wrap'     => '<ul>%3$s</ul>',
 				) ); ?>
 			</div><!-- .footer-menu -->
 		</section>

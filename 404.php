@@ -12,7 +12,7 @@ get_header(); ?>
 		<!-- Row for main content area -->
 		<div id="content" class="site-content" role="main">
 		
-			<div class="panel-404">
+			<div class="panel">
 				<hr>
 				<h1><?php _e( '404 error - Page not found!', 'wpf' ); ?></h1>
 
@@ -25,9 +25,9 @@ get_header(); ?>
 					<li><?php _e( 'Click the <a href="javascript:history.back()">Back</a> button', 'wpf' ); ?></li>
 				</ul>
 				<hr>
-			</div>
+			</div><!-- .panel -->
 	
-		</div> <!-- #content -->
+		</div><!-- #content -->
 		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
 		<?php get_sidebar(); ?>
 	</section><!-- #content -->

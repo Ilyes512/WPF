@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-05-02 02:46+0100\n"
-"PO-Revision-Date: 2013-05-02 02:46+0100\n"
+"POT-Creation-Date: 2013-05-13 00:53+0100\n"
+"PO-Revision-Date: 2013-05-13 01:20+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -36,7 +36,7 @@ msgstr "Probeer het volgende uit:"
 msgid "Check your spelling"
 msgstr "Controleer uw spelling"
 
-#: 404.php:24 content-none.php:8
+#: 404.php:24 content/content-none.php:29
 #, php-format
 msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
@@ -44,18 +44,6 @@ msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
 #: 404.php:25
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
-
-#: archive.php:34 index.php:34 search.php:34
-msgid "&larr; Older posts"
-msgstr "&larr; Oudere artikelen"
-
-#: archive.php:35 index.php:35 search.php:35
-msgid "Newer posts &rarr;"
-msgstr "Nieuwere artikelen &rarr;"
-
-#: buddypress.php:20 page-full.php:19 page.php:26 single.php:28
-msgid "Pages:"
-msgstr "Pagina's:"
 
 #: comments.php:8
 #, php-format
@@ -87,15 +75,15 @@ msgstr ""
 
 #: comments.php:46
 msgid "No Responses to"
-msgstr "Geen reacties aan"
+msgstr "Geen reacties op"
 
 #: comments.php:46
 msgid "One Response to"
-msgstr "Een reactie aan"
+msgstr "1 reactie op"
 
 #: comments.php:46
 msgid "% Responses to"
-msgstr "% Reacties aan"
+msgstr "% Reacties op"
 
 #: comments.php:53
 msgid "&larr; Older comments"
@@ -161,22 +149,6 @@ msgstr "Reactie"
 msgid "Submit Comment"
 msgstr "Plaats een reactie"
 
-#: content-none.php:5
-msgid "Nothing Found"
-msgstr "Niks gevonden"
-
-#: content-none.php:7
-msgid ""
-"Apologies, but no results were found. Perhaps searching will help find a "
-"related post."
-msgstr ""
-"Sorry, maar er zijn geen resultaten gevonden. Probeer de zoekfunctie uit om "
-"gerelateerde artikelen te vinden."
-
-#: content.php:9
-msgid "Continue reading..."
-msgstr "Lees verder…"
-
 #: footer.php:15
 #, php-format
 msgid ""
@@ -188,118 +160,132 @@ msgstr ""
 "\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a>"
 
-#: functions.php:339
-msgid "&laquo;"
-msgstr "&laquo;"
+#: functions.php:295 functions.php:474
+msgid "Pages:"
+msgstr "Pagina's:"
 
-#: functions.php:340
-msgid "&raquo;"
-msgstr "&raquo;"
+#: functions.php:301
+msgid "Next page"
+msgstr "Volgende pagina"
 
-#: functions.php:452
+#: functions.php:302
+msgid "Previous page"
+msgstr "Vorige pagina"
+
+#: functions.php:444
+msgid "&laquo; Previous"
+msgstr "&laquo; Vorige"
+
+#: functions.php:445
+msgid "Next &raquo;"
+msgstr "Volgende &raquo;"
+
+#: functions.php:468
+msgid "Next page &raquo;"
+msgstr "Volgende pagina &raquo;"
+
+#: functions.php:469
+msgid "&laquo; Previous page"
+msgstr "&laquo; Vorige pagina"
+
+#: functions.php:586 functions.php:590
 msgid "Add a menu"
-msgstr "Voed een menu toe"
+msgstr "Voeg een menu toe"
 
-#: functions.php:487
-msgid "Primary Navigation"
-msgstr "Primaire menu"
-
-#: functions.php:488
-msgid "Utility Navigation"
-msgstr "Hulp menu"
-
-#: functions.php:503
-msgid "Sidebar"
-msgstr "Zijbalk"
-
-#: functions.php:505
-msgid "This is the sidebar next to the maincontent of a page"
-msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
-
-#: functions.php:513
-msgid "Footer 1"
-msgstr "Voet 1"
-
-#: functions.php:515 functions.php:525 functions.php:535
-msgid "An optional widget area for your site footer"
-msgstr "Een optionele widget gebied voor de voet van de pagina"
-
-#: functions.php:523
-msgid "Footer 2"
-msgstr "Voet 2"
-
-#: functions.php:533
-msgid "Footer 3"
-msgstr "Voet 3"
-
-#: functions.php:656
-#, php-format
-msgid ""
-"<p>Posted by <a href=\"%s\" rel=\"author\">%s</a> on <a href=\"%s\"><time "
-"datetime=\"%s\">%s</time></a></p>"
-msgstr ""
-"<p>Geplaatst door <a href=\"%s\" rel=\"author\">%s</a> op <a href=\"%s"
-"\"><time datetime=\"%s\">%s</time></a></p>"
-
-#: functions.php:662
-msgid "F j, Y"
-msgstr "j F Y"
-
-#: functions.php:678
-msgid "<span class=\"secondary label\">"
-msgstr "<span class=\"secondary label\">"
-
-#: functions.php:702
-msgid "Leave a response"
-msgstr "Laat een reactie achter"
-
-#: functions.php:704
-#, php-format
-msgid "one response"
-msgid_plural "%s responses"
-msgstr[0] "een reactie"
-msgstr[1] "%s reacties"
-
-#: functions.php:710
-msgid "Comments are locked for this post"
-msgstr "Reacties zijn voor dit artikel gesloten"
-
-#: functions.php:789
+#: functions.php:672
 msgid "Home"
 msgstr "Start"
 
-#: functions.php:820
+#: functions.php:717
+msgid "Primary Navigation"
+msgstr "Primaire menu"
+
+#: functions.php:718
+msgid "Footer Navigation"
+msgstr "Voet menu"
+
+#: functions.php:733
+msgid "Sidebar"
+msgstr "Zijbalk"
+
+#: functions.php:735
+msgid "This is the sidebar next to the maincontent of a page"
+msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
+
+#: functions.php:743
+msgid "Footer 1"
+msgstr "Voet 1"
+
+#: functions.php:745 functions.php:755 functions.php:765
+msgid "An optional widget area for your site footer"
+msgstr "Een optionele widget gebied voor de voet van de pagina"
+
+#: functions.php:753
+msgid "Footer 2"
+msgstr "Voet 2"
+
+#: functions.php:763
+msgid "Footer 3"
+msgstr "Voet 3"
+
+#: functions.php:885
+#, php-format
+msgid ""
+"<span class=\"author vcard\">Posted by <a class=\"url fn\" href=\"%1$s\" "
+"title=\"%2$s\" rel=\"author\">%3$s</a> on <a href=\"%4$s\"><time datetime="
+"\"%5$s\">%6$s</time></a></span>"
+msgstr ""
+"<span class=\"author vcard\">Geplaatst door <a class=\"url fn\" href=\"%1$s"
+"\" title=\"%2$s\" rel=\"author\">%3$s</a> op <a href=\"%4$s\"><time datetime="
+"\"%5$s\">%6$s</time></a></span>"
+
+#: functions.php:887
+#, php-format
+msgid "View all posts by %s"
+msgstr "Bekijk alle artikelen van %s"
+
+#: functions.php:891
+msgctxt "date format for the post meta text"
+msgid "F j, Y"
+msgstr "j F Y"
+
+#: functions.php:905
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Dagelijks archief: %s"
 
-#: functions.php:822
+#: functions.php:908
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Maandelijks archief: %s"
 
-#: functions.php:822
+#: functions.php:908
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: functions.php:824
+#: functions.php:911
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Jaarlijkse archief: %s"
 
-#: functions.php:824
+#: functions.php:911
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: functions.php:828
-msgid "Archives"
-msgstr "Archief"
-
-#: functions.php:830
+#: functions.php:917
 msgid "Search Results for"
 msgstr "Zoek resultaten voor"
+
+#: functions.php:922
+#, php-format
+msgid "Author's archive: %s"
+msgstr "Auteurs archief: %s"
+
+#: functions.php:925
+msgid "Archives"
+msgstr "Archief"
 
 #: header.php:78
 msgid ""
@@ -313,17 +299,82 @@ msgstr ""
 "chromeframe/?redirect=true\">activeer Google Chrome Frame</a> om uw browser "
 "ervaring te verbeteren."
 
-#: page.php:33 single.php:35
-msgid "Edit"
-msgstr "Aanpassen"
-
 #: searchform.php:13 searchform.php:16
 msgid "Search"
 msgstr "Zoeken"
 
-#: single-quote.php:12
+#: content/content-none.php:14
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Klaar om je eerste post te publiceren? <a href=\"%1$s\">Ga hier aan de slag</"
+"a>."
+
+#: content/content-none.php:18 content/content-none.php:26
+msgid "Nothing Found"
+msgstr "Niks gevonden"
+
+#: content/content-none.php:20
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+"Sorry, maar er is geen match gevonden met uw zoek termen. Probeer andere "
+"zoek termen uit."
+
+#: content/content-none.php:28
+msgid ""
+"Apologies, but no results were found. Perhaps searching will help find a "
+"related post."
+msgstr ""
+"Sorry, maar er zijn geen resultaten gevonden. Probeer de zoekfunctie uit om "
+"gerelateerde artikelen te vinden."
+
+#: content/content.php:29
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink naar %s"
+
+#: content/content.php:35
+msgid "Edit"
+msgstr "Aanpassen"
+
+#: content/content.php:46
+msgid "Continue reading..."
+msgstr "Lees verder…"
+
+#: content/content.php:54
+msgid "Leave a response"
+msgstr "Laat een reactie achter"
+
+#: content/content.php:54
+msgid "one response"
+msgstr "1 reactie"
+
+#: content/content.php:54
+msgid "% responses"
+msgstr "% reacties"
+
+#: content/content.php:58
+msgid "Comments are locked for this post"
+msgstr "Reacties zijn voor dit artikel gesloten"
+
+#: hide/single-quote.php:12
 msgid "Quote"
 msgstr "Quote"
+
+#~ msgid "&larr; Older posts"
+#~ msgstr "&larr; Oudere artikelen"
+
+#~ msgid "Newer posts &rarr;"
+#~ msgstr "Nieuwere artikelen &rarr;"
+
+#~ msgid "Utility Navigation"
+#~ msgstr "Hulp menu"
+
+#~ msgid "<span class=\"secondary label\">"
+#~ msgstr "<span class=\"secondary label\">"
 
 #~ msgctxt "post type general name"
 #~ msgid "My Quotes"
