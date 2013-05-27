@@ -1,8 +1,8 @@
 <?php 
 /**
  * The template for displaying the Search form
- * 
- * @todo Replace non-semantic classes
+ *
+ *
  */
 ?>
 

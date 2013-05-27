@@ -3,8 +3,6 @@
  * The footer for the WPF theme.
  * 
  * Contains footer content and the closing of the #page div element.
- *
- * @todo Remove the javascript beneath wp_footer();
  */
 wpf_dev( 'footer.php' ); ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
@@ -28,10 +26,6 @@ wpf_dev( 'footer.php' ); ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<?php /* @todo Better javascript control */ ?>
-<script>
-	jQuery(document).foundation();
-</script>
 </body>
 </html>
 <?php wpf_dev( 'end footer.php' );?>

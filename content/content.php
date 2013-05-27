@@ -8,11 +8,11 @@
 <?php wpf_dev( 'content.php' ); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php /* if ( has_post_thumbnail() && ! post_password_required() ) : ?>
+		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>
-		<?php endif; */?>
+		<?php endif; ?>
 		
 		<div class="entry-meta">
 			<?php if ( is_home() ) : ?>

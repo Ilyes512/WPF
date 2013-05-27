@@ -28,10 +28,11 @@ line_comments = false
 # If you use compass then this little snippit will move you style.css file out
 # of the /css/ folder.
 # source: http://css-tricks.com/compass-compiling-and-wordpress-themes/
+
 require 'fileutils'
 on_stylesheet_saved do |file|
-  if File.exists?(file) && File.basename(file) == "style.css"
-    puts "Moving: #{file}"
-    FileUtils.mv(file, File.dirname(file) + "/../" + File.basename(file))
-  end
+	if File.exists?(file) && File.basename(file) == "style.css"
+		puts "Moving: #{file}"
+		FileUtils.mv(file, File.dirname(file) + "/../" + File.basename(file))
+	end
 end

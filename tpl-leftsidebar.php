@@ -1,17 +1,17 @@
-<?php /* Template Name: No sidebar */
+<?php /* Template Name: Left sidebar */
 /**
- * The template for displaying pages without the sidebar.
+ * The template for displaying pages with the sidebar on the left side.
  * 
  * 
  */
-
+ 
 get_header(); ?>
-<?php wpf_dev( 'tpl-nosidebar.php' ); ?>
-	<section id='primary' class="content-area">
+<?php wpf_dev( 'tpl-leftsidebar.php' ); ?>
+	<section id='primary' class="content-area leftsb">
 
 		<!-- Row for main content area -->
-		<div id="content" class="site-content-fw" role="main">
-		
+		<div id="content" class="site-content" role="main">
+
 			<?php /* Start loop */ ?>
 			<?php while ( have_posts() ): the_post(); ?>
 				<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -36,7 +36,10 @@ get_header(); ?>
 				<?php comments_template(); ?>
 			<?php endwhile; ?>
 	
-		</div><!-- #content -->
-	</section>
-<?php wpf_dev( 'end tpl-nosidebar.php' ); ?>
+		</div><!-- #content -->	
+		<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
+		<?php get_sidebar(); ?>
+
+	</section><!-- #primary -->
+<?php wpf_dev( 'end tpl-leftsidebar.php' ); ?>
 <?php get_footer(); ?>

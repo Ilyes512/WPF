@@ -4,9 +4,11 @@
 		Table of contents
  **************************************************************************
  *		>SETTINGS
- *		>LANG + CLEANUP + ENQUEUE
- *		>FOUNDATION NAVIGATION
- *		>THEME SUPPORT + SIDEBAR
+ *		>WPF SETUP
+ *		>FOUNDATION NAVIGATION + BREADCRUMB
+ *		>SIDEBAR
+ *		>WP-LOGIN
+ *		>ADMIN
  *		>MISC
  */
 
@@ -20,10 +22,8 @@
  * The current WPF version (used to add version number to WPF css/js files).
  *
  * Required: see the function wpf_scripts_and_styles()
- *
- * @todo Make it optional
  */
-define('WPF_VERSION', '0.2.3');
+define('WPF_VERSION', '0.2.4');
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false 
@@ -42,108 +42,133 @@ define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
 
 
 /**************************************************************************
- *		>LANG + CLEANUP + ENQUEUE
+ *		>WPF SETUP
  **************************************************************************/
- 
- 
-add_action( 'after_setup_theme', 'wpf_cleanup' );
-/**
- * Cleaning up WP source and adding language support
- * 
- * @todo clean up the "cleanup functions"
- */
-if ( ! function_exists( 'wpf_cleanup' ) ) {
-	// Add language support, start cleaning up <head> and add the necessary css and javascript files
-	function wpf_cleanup() {
-		// add language support
-		load_theme_textdomain( 'wpf', get_template_directory() . '/lang' );
-	
-		// launching operation cleanup
-		add_action( 'init', 'wpf_head_cleanup' );
-		// remove pesky injected css for recent comments widget
-		//add_filter('wp_head', 'wpf_remove_wp_widget_recent_comments_style', 1);
-		// clean up comment styles in the head
-		add_action( 'wp_head', 'wpf_remove_recent_comments_style', 1 );
-		// clean up gallery output in wp
-		//add_filter('gallery_style', 'wpf_gallery_style');
-		
-		// enqueue base scripts and styles
-		add_action( 'wp_enqueue_scripts', 'wpf_scripts_and_styles', 999 );
-		
-		// Use semantic caption
-		add_filter( 'img_caption_shortcode', 'wpf_caption_shortcode', 10, 3 );
 
+/**
+ * Sets up the content width value based on the theme's design.
+ * 
+ * 
+ */
+if ( ! isset( $content_width ) )
+	$content_width = 637;
+ 
+add_action( 'after_setup_theme', 'wpf_setup' );
+/**
+ * Setting up WPF theme.
+ * 
+ * @todo add editor_styles and post_formats
+ */
+if ( ! function_exists( 'wpf_setup' ) ) {
+	function wpf_setup() {
+		/*
+		 * Makes wpf available for translation.
+		 * 
+		 * Translations can be added to the /languages/ directory.
+		 */
+		load_theme_textdomain( 'wpf', get_template_directory() . '/languages' );
+
+		/*
+		 * This theme styles the visual editor to resemble the theme style,
+		 * specifically font, colors, and column width.
+		 *
+		 * @todo add editor_styles
+		 */
+/*
+		add_editor_style( 'css/editor-style.css' );
+*/		
+		// Adds RSS feed links to <head> for posts and comments.
+		add_theme_support( 'automatic-feed-links' );
 		
-	} // end wpf_cleanup()
+		/*
+		 * This theme does not support all available post formats YET!
+		 * See http://codex.wordpress.org/Post_Formats
+		 *
+		 * Structured post formats:
+		 * @link http://core.trac.wordpress.org/ticket/23347
+		 */
+/*
+		add_theme_support( 'structured-post-formats', array(
+			'link', 'video'
+		) );
+		add_theme_support( 'post-formats', array(
+			'aside', 'audio', 'chat', 'gallery', 'image', 'quote', 'status'
+		) );
+*/
+
+		/*
+		 * Custom callback to make it easier for our fixed navbar to coexist with
+		 * the WordPress toolbar. See `.wp-toolbar` in style.css.
+		 *
+		 * @see WP_Admin_Bar::initialize()
+		 */
+		add_theme_support( 'admin-bar', array(
+			'callback' => '__return_false'
+		) );
+
+		// This theme uses wp_nav_menu() on two locations.
+		register_nav_menus( array(
+			'primary' => __( 'Primary Navigation', 'wpf' ),
+			'footer'  => __( 'Footer Navigation', 'wpf' ),
+		) );
+
+		/*
+		 * This theme uses a custom image size for featured images, displayed on
+		 * "standard" posts and pages.
+		 */
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 637, 0, true );
+		
+		// Clean up gallery output in wp
+		add_filter( 'use_default_gallery_style', '__return_false' );
+			
+		// This theme cleans up some of wordpress's mess.
+		add_action( 'init', 'wpf_head_cleanup' );
+
+		// Clean up comment styles in the head
+		add_action( 'wp_head', 'wpf_remove_recent_comments_style', 1 );
+
+		// fix caption output to be (more) semantic.
+		add_filter( 'img_caption_shortcode', 'wpf_caption_shortcode', 10, 3 );
+		
+		// Remove the wp logo from the wordpress admin bar
+		add_action( 'admin_bar_menu', function ( $wp_admin_bar ) { $wp_admin_bar->remove_node( 'wp-logo' ); }, 999 );
+	} // end wpf_setup()
 }
 
 /**
  * Cleaning up the head
  * 
- * @todo clean up the function
+ *
  */
 if ( ! function_exists( 'wpf_head_cleanup' ) ) {
 	function wpf_head_cleanup() {
-		// category feeds
-		// remove_action('wp_head', 'feed_links_extra', 3);
-		// post and comment feeds
-		// remove_action('wp_head', 'feed_links', 2);
-		// EditURI link
+		// Remove the links to the extra feeds such as category feeds.
+		remove_action( 'wp_head', 'feed_links_extra', 3 );
+
+		// Remove the (EditUri) link to the Really Simple Discovery service endpoint.
 		remove_action( 'wp_head', 'rsd_link' );
-		// windows live writer
+
+		// Remove the link to the Windows Live Writer manifest file.
 		remove_action( 'wp_head', 'wlwmanifest_link' );
-		// index link
-		remove_action( 'wp_head', 'index_rel_link' );
-		// previous link
-		remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-		// start link
-		remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-		// links for adjacent posts
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-		// WP version
+
+		// Remove relational links (previous and next) for the posts adjacent to the current post.
+		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
+
+		// Remove the generator meta information
 		remove_action( 'wp_head', 'wp_generator' );
-		// remove WP version from css
-		add_filter( 'style_loader_src', 'wpf_remove_wp_ver_css_js', 999 );
-		// remove Wp version from scripts
-		add_filter( 'script_loader_src', 'wpf_remove_wp_ver_css_js', 999 );
-	} // end head cleanup()
-}
 
-/**
- * Remove WP version from scripts
- * 
- * @todo change this so it only deletes wp version ver={current_wp_version} in strpos()
- */
-if ( ! function_exists( 'wpf_remove_wp_ver_css_js' ) ) {
-	function wpf_remove_wp_ver_css_js( $src ) {
-		if ( strpos( $src, 'ver=' ) )
-			$src = remove_query_arg( 'ver', $src );
-		return $src;
-	} // end wpf_remove_wp_ver_css_js()
+		// Remove the rel shortlink-link
+		remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+	} // end head_cleanup()
 }
-
-/**
- * Remove injected CSS for recent comments widget
- * 
- * @todo see wpf_remove_recent_comments_style
- */
-/*
-if ( ! function_exists( 'wpf_remove_wp_widget_recent_comments_style' ) ) {
-	function wpf_remove_wp_widget_recent_comments_style() {
-		if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
-			remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
-		}
-	} // end wpf_remove_wp_widget_recent_comments_style()
-}
-*/
 
 /**
  * Remove injected CSS from recent comments widget
  * 
- * @todo see wpf_remove_wp_widget_recent_comments_style
+ *
  */
 if ( ! function_exists( 'wpf_remove_recent_comments_style' ) ) {
-	// remove injected CSS from recent comments widget
 	function wpf_remove_recent_comments_style() {
 		global $wp_widget_factory;
 		if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
@@ -152,71 +177,63 @@ if ( ! function_exists( 'wpf_remove_recent_comments_style' ) ) {
 	} //  end wpf_remove_recent_comments_style()
 }
 
+add_action( 'wp_enqueue_scripts', 'wpf_scripts_and_styles' );
 /**
- * Remove injected CSS from gallery
+ * Enqueues scripts and styles for front end.
  *
- *
- */
-/*
-if ( ! function_exists( 'wpf_gallery_style' ) ) {
-	function wpf_gallery_style( $css ) {
-		return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
-	} // end wpf_gallery_style()
-}
-*/
-
-/**
- * Enqueue CSS and (JS)scripts
- *
- *
+ * @return void
  */
 if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 	function wpf_scripts_and_styles() {
-		if ( ! is_admin() ) {
-			// load style.css
-			wp_register_style( 'wpf-stylesheet', get_stylesheet_uri(), array(), WPF_VERSION, 'all' );
-			
-			// deregister WordPress built in jQuery
-			wp_deregister_script( 'jquery' );
-			
-			// register Google jQuery
-			wp_register_script( 'jquery', "http" . ( $_SERVER['SERVER_PORT'] == 443 ? "s" : "" ) . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true );
-			
-			// modernizr (without html5shiv. html5shiv will still be loaded seperatly, but only if needed - see header.php)
-			wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr-2.6.2.min.js', array(), '2.6.2', false );
-			
-			// adding Foundation scripts file in the footer
-			wp_register_script( 'wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array( 'jquery' ), WPF_VERSION, true );
-	
-			// enqueue styles and scripts
-			wp_enqueue_style( 'wpf-stylesheet' );
-			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'wpf-modernizr' );
-			wp_enqueue_script( 'wpf-js' );
-			// comment reply script for threaded comments
-			if ( get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' );
-		}
+		/*
+		 * Adds JavaScript to pages with the comment form to support sites with
+		 * threaded comments (when in use).
+		 */
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+			wp_enqueue_script( 'comment-reply' );
+
+		/*
+		 * Deregister built-in jQuery and register it again with Google's jQuery.
+		 * 
+		 * @todo Find a better/safer way of doing this.
+		 */
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', "http" . ( $_SERVER['SERVER_PORT'] == 443 ? "s" : "" ) . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true );
+
+		// register modernizr jsscript in the header
+		wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false );
+		
+		// register Foundation jsscript in the footer
+		wp_register_script( 'wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array( 'jquery', 'wpf-modernizr' ), WPF_VERSION, true );
+
+		// Add style.css
+		wp_enqueue_style( 'wpf-stylesheet', get_stylesheet_uri(), array(), WPF_VERSION );
+		
+		// Add wpf-js script and all it's dependencies
+		wp_enqueue_script( 'wpf-js' );
 	} // end wpf_scripts_and_styles()
 }
 
-add_action( 'admin_head', 'wpf_admin_head' );
+add_action( 'wp_footer', 'wpf_foundation_jquery', 21 );
 /**
- * Add favicon the the head in the WP_admin area
- *
- *
+ * Initiate the necessary jQuery-scripts used by Foundation
+ * 
+ * Initiate the necessary jQuery-scripts used by Foundation after the scripts
+ * are enqueued in wpf_scripts_and_styles(). The wp_enqueue_scripts hook is
+ * loaded with priority 20 within the wp_footer function.
  */
-if ( ! function_exists( 'wpf_admin_head' ) ) {
-	function wpf_admin_head() {
-		echo '<link rel="shortcut icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/favicon.png">';
-	} // end wpf_admin_head()
+if ( ! function_exists( 'wpf_foundation_jquery' ) ) {
+	function wpf_foundation_jquery() { ?>
+		<script>jQuery(document).foundation();</script>
+	<?php } // end wpf_foundation_jquery()
 }
 
-// Post related cleaning
-
+/**
+ * Produce a more semantic output for img-caption's.
+ * 
+ * @todo check if wp 3.6 produce a (more) semantic caption
+ */
 if ( ! function_exists( 'wpf_caption_shortcode' ) ) {
-	// Customized the output of caption, you can remove the filter to restore back to the
-	// WP default output. Courtesy of DevPress.
-	// http://devpress.com/blog/captions-in-wordpress/
 	function wpf_caption_shortcode( $output, $attr, $content ) {
 	
 		// We're not worried about captions in feeds, so just return the output here.
@@ -256,22 +273,9 @@ if ( ! function_exists( 'wpf_caption_shortcode' ) ) {
 	} // end wpf_caption_shortcode()
 }
 
-add_action( 'admin_bar_menu', 'wpf_remove_wp_logo', 999 );
-/**
- * Remove the wp logo in the wordpress admin bar
- *
- *
- */
-if ( ! function_exists( 'wpf_remove_wp_logo' ) )
-{
-	function wpf_remove_wp_logo( $wp_admin_bar ) {
-	    $wp_admin_bar->remove_node( 'wp-logo' );
-	}
-}
-
 
 /**************************************************************************
- *		>FOUNDATION NAVIGATION
+ *		>FOUNDATION NAVIGATION + BREADCRUMB
  **************************************************************************/
 
 
@@ -370,7 +374,7 @@ if ( ! function_exists( 'wpf_link_pages_args' ) ) {
 			if ( $multipage && $more ) {
 				$prev = '';
 				$next = '';
-				extract( $args, EXTR_SKIP );
+				extract( $args );
 
 				$i = $page - 1;
 				if ( $i ) {
@@ -465,8 +469,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 					'before'           => '<div class="page-links"><ul class="page-numbers">',
 					'after'            => '</ul></div>',
 					'next_or_number'   => 'next_and_number',
-					'nextpagelink'     => __('Next page &raquo;', 'wpf'),
-					'previouspagelink' => __('&laquo; Previous page', 'wpf'),
+					'nextpagelink'     => __( 'Next page &raquo;', 'wpf' ),
+					'previouspagelink' => __( '&laquo; Previous page', 'wpf' ),
 				) );
 				break;
 			case is_search();
@@ -474,6 +478,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 					'before'         => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
 					'after'          => '</ul></div>',
 					'next_or_number' => 'next_and_number',
+					'nextpagelink'     => __( 'Next page &raquo;', 'wpf' ),
+					'previouspagelink' => __( '&laquo; Previous page', 'wpf' ),
 				) );
 				break;
 		}
@@ -484,7 +490,7 @@ add_filter( 'wp_list_pages', 'wpf_list_pages_active_class' );
 /**
  * Use the .active class of ZURB Foundation on wp_list_pages output.
  *
- * @todo Code refactoring
+ *
  */
 if ( ! function_exists( 'wpf_list_pages_active_class' ) ) {
 	function wpf_list_pages_active_class( $input ) {
@@ -499,7 +505,7 @@ add_filter( 'nav_menu_css_class', 'wpf_active_nav_class', 10, 2 );
 /**
  * Add Foundation 'active' class for the wp_nav_menu output.
  *
- * @todo Code refactoring
+ *
  */
 if ( ! function_exists( 'wpf_active_nav_class' ) ) {
 	function wpf_active_nav_class( $classes, $item ) {
@@ -515,7 +521,6 @@ if ( ! function_exists( 'wpf_active_nav_class' ) ) {
  *
  * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/nav-menu-template.php
  * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
- * @todo Code refactoring
  */
 if ( ! class_exists( 'wpf_walker' ) ) {
 	class wpf_walker extends Walker_Nav_menu {
@@ -568,7 +573,7 @@ if ( ! class_exists( 'wpf_walker' ) ) {
 }
 
 /**
- * This is the fallback function for the (main WPF) wp_nav_menu().
+ * This is the fallback function for the wp_nav_menu()'s used by WPF.
  *
  * @param    array    $args    It receives the array $args from wp_nav_menu().
  * @return   string            It retuns the html output that is used as the fallback menu.
@@ -661,7 +666,7 @@ if ( ! function_exists( 'wpf_breadcrumb' ) ) {
 			}
 
 			// create the final breadcrumb html
-			$html_result = '<ul class="breadcrumbs">';
+			$html_result = '<ul class="category-list">';
 			
 			// Add the Home url if $add_home == 'show-home'
 			if ( $add_home == 'show-home' ) {
@@ -693,32 +698,9 @@ if ( ! function_exists( 'wpf_breadcrumb' ) ) {
 
 
 /**************************************************************************
- *		>THEME SUPPORT + SIDEBAR
+ *		>SIDEBAR
  **************************************************************************/
 
-add_action( 'after_setup_theme', 'wpf_theme_support' );
-/**
- * Adding theme support
- *
- * @todo handle tumbnail sizes
- */
-if ( ! function_exists( 'wpf_theme_support' ) ) {
-	function wpf_theme_support() {
-		// Add post thumbnail supports.
-		add_theme_support( 'post-thumbnails' );
-		// set_post_thumbnail_size(150, 150, false);
-
-		// rss
-		add_theme_support( 'automatic-feed-links' );
-		
-		// Add menu supports.
-		add_theme_support( 'menus' );
-		register_nav_menus( array(
-			'primary' => __( 'Primary Navigation', 'wpf' ),
-			'footer' => __( 'Footer Navigation', 'wpf' ),
-		) );
-	} // end wpf_theme_support()
-}
 
 add_action( 'widgets_init', 'wpf_sidebar_support' );
 /**
@@ -740,13 +722,13 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 		) );
 		
 		register_sidebar( array(
-			'name' => __( 'Footer 1', 'wpf' ),
-			'id' => 'sidebar-footer-1',
-			'description' => __( 'An optional widget area for your site footer', 'wpf' ),
+			'name'          => __( 'Footer 1', 'wpf' ),
+			'id'            => 'sidebar-footer-1',
+			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h6 class="widget-title"><strong>',
-			'after_title' => '</strong></h6>',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h6 class="widget-title"><strong>',
+			'after_title'   => '</strong></h6>',
 		) );
 		
 		register_sidebar( array(
@@ -768,11 +750,13 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'before_title'  => '<h6 class="widget-title"><strong>',
 			'after_title'   => '</strong></h6>',
 		) );
-		
-		// wpf_footer_widget() will return a $GLOBAL['wpf_widget_classes']
-		// containing the 3 footer grid classes
+
+		/*
+		 * wpf_footer_widget() will return a $GLOBAL['wpf_widget_classes'] containing
+		 * the 3 footer grid classes.
+		 */
 		wpf_footer_widget();
-	} // end wpf_sidebar_support();
+	} // end wpf_sidebar_support()
 }
 
 /**
@@ -846,6 +830,78 @@ if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
 	} // end wpf_print_footer_sidebar()
 }
 
+
+/**************************************************************************
+ *		>WP-LOGIN
+ **************************************************************************/
+
+
+add_action( 'login_head', 'wpf_login_head' );
+/**
+ * Add an extra stylesheet to the login head.
+ * 
+ * @link http://codex.wordpress.org/Customizing_the_Login_Form
+ *
+ * @todo WPF is html5. Should I use the closing tag? " />"
+ */
+if ( ! function_exists( 'wpf_login_head' ) ) {
+	function wpf_login_head() { ?>
+		<style type="text/css">
+			body.login div#login h1 a {
+				background-image: url("<?php echo get_stylesheet_directory_uri(); ?>/img/logo-wpf.png");
+				background-size: 289px 134px;
+				width: 289px;
+				height: 134px;
+				margin: 0 auto;
+			}
+		</style>
+	<?php } // end wpf_login_head()
+}
+
+
+add_filter( 'login_headerurl', 'wpf_login_headerurl' );
+/**
+ * Change the headerurl that is used for the form on wp-login.php
+ * 
+ * 
+ */
+if ( ! function_exists( 'wpf_login_headerurl' ) ) {
+	function wpf_login_headerurl() {
+		return esc_url ( home_url( '/' ) );
+	} // end wpf_login_headerurl()
+}
+
+add_filter( 'login_headertitle', 'wpf_login_headertitle' );
+/**
+ * Change the headertitle that is used for the form on wp-login.php
+ * 
+ * 
+ */
+if ( ! function_exists( 'wpf_login_headertitle' ) ) {
+	function wpf_login_headertitle() {
+		return esc_attr ( __( 'Go back to the homepage' , 'wpf') );
+	} // end wpf_login_headertitle()
+}
+
+
+/**************************************************************************
+ *		>ADMIN
+ **************************************************************************/
+
+
+add_action( 'admin_head', 'wpf_admin_head' );
+/**
+ * Add favicon the the head in the WP_admin area
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_admin_head' ) ) {
+	function wpf_admin_head() {
+		echo '<link rel="shortcut icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/favicon.png">';
+	} // end wpf_admin_head()
+}
+
+
 /**************************************************************************
  *		>MISC
  **************************************************************************/
@@ -854,24 +910,22 @@ if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
 /**
  * Print developer comments
  *
- * This function will only print the comments when WPF_DEV_MODE is equal to true.
- * The comment will get contained within <!-- and -->.
+ * This function will only print the developers helping comments when
+ * WPF_DEV_MODE is equal to true. The comment will get contained within
+ * <!-- and -->.
  *
- * @param    string    $report    The comment that will be printed.
- * @param    bool      $echo      Print $report.
- * @return   string               It will always return $report.
- *
- * @todo Self-Explanatory Flag Values for Function Arguments
+ * @param    string        $report    The comment that will be printed.
+ * @param    bool          $echo      Print $report.
+ * @return   string/bool              Returns the variable $report. Default: false
  */
 if ( ! function_exists( 'wpf_dev' ) ) {
-	function wpf_dev( $report = '', $echo = true ) {
+	function wpf_dev( $report = false, $echo = true ) {
 		if ( defined( 'WPF_DEV_MODE' ) && WPF_DEV_MODE ) {
 			$report = '<!-- ' . $report . ' -->' . "\n";
 			if ( $echo ) echo $report;
 		}
-		
 		return $report;
-	}
+	} // end wpf_dev()
 }
 
 /**
@@ -880,7 +934,6 @@ if ( ! function_exists( 'wpf_dev' ) ) {
  *
  */
 if ( ! function_exists( 'wpf_entry_meta' ) ) {
-	// prints the entry meta for posts.
 	function wpf_entry_meta() {
 		printf( __( '<span class="author vcard">Posted by <a class="url fn" href="%1$s" title="%2$s" rel="author">%3$s</a> on <a href="%4$s"><time datetime="%5$s">%6$s</time></a></span>', 'wpf' ),
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID') ) ),//
@@ -890,7 +943,7 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 			esc_attr( get_the_time( 'c' ) ),
 			get_the_time( _x( 'F j, Y', 'date format for the post meta text', 'wpf' ) )
 		);
-	}
+	} // end wpf_entry_meta()
 }
 
 /**
@@ -927,6 +980,7 @@ if ( ! function_exists( 'wpf_site_subtitle' ) ) {
 			default:
 				echo bloginfo( 'description' );
 		}
-	}
+	} // end wpf_site_subtitle()
 }
+
 ?>

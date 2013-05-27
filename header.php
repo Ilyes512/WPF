@@ -19,14 +19,6 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 
 <meta name="viewport" content="width=device-width">
 <link rel="shortcut icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png">
-
-<?php global $is_IE; ?>
-<?php if ( $is_IE ): ?>
-<!--[if lt IE 9]>
-	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<?php endif; ?>
-
 <?php wp_head(); ?>
 </head>
 
@@ -57,7 +49,9 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 				</section>
 			</nav><!-- #site-navigation -->
 		</div><!-- #nav-bar -->
-
+<!--[if lt IE 7]>
+<p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
+<![endif]-->
 		<div class="site-meta">
 			<hgroup>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -67,15 +61,5 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 		</div><!-- .site-meta -->
 
 	</header><!-- #masthead -->
-<?php
-/**
- * @todo Add some better styling i.e. div container class with margin: 0 auto;.
- *
- *
- */
-?>
-<!--[if lt IE 7]>
-	<p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
-<![endif]-->
 <?php wpf_dev( 'end header.php' );
 ?>

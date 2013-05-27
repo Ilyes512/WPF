@@ -3,7 +3,7 @@
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:     0.2.3 (Foundation 4.1.6)
+Version:     0.2.4 (Foundation 4.1.6+)
 Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -244,7 +244,7 @@ figure {
  * Define consistent border, margin, and padding.
  */
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -411,6 +411,11 @@ body {
   font-style: normal;
   line-height: 1;
   position: relative;
+  cursor: default;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 a:focus {
@@ -620,6 +625,11 @@ select {
     width: 100%;
   }
 
+  .small-offset-0 {
+    position: relative;
+    margin-left: 0%;
+  }
+
   .small-offset-1 {
     position: relative;
     margin-left: 8.33333%;
@@ -746,6 +756,11 @@ select {
   .large-12 {
     position: relative;
     width: 100%;
+  }
+
+  .row .large-offset-0 {
+    position: relative;
+    margin-left: 0%;
   }
 
   .row .large-offset-1 {
@@ -1607,7 +1622,7 @@ blockquote p {
 @media print {
   * {
     background: transparent !important;
-    color: black !important;
+    color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important;
@@ -1634,7 +1649,7 @@ blockquote p {
 
   pre,
   blockquote {
-    border: 1px solid #999999;
+    border: 1px solid #999;
     page-break-inside: avoid;
   }
 
@@ -1684,356 +1699,16 @@ blockquote p {
     display: inherit !important;
   }
 }
-/* Standard Forms */
-form {
-  margin: 0 0 1em;
-}
-
-/* Using forms within rows, we need to set some defaults */
-form .row .row {
-  margin: 0 -0.5em;
-}
-form .row .row .column,
-form .row .row .columns {
-  padding: 0 0.5em;
-}
-form .row .row.collapse {
-  margin: 0;
-}
-form .row .row.collapse .column,
-form .row .row.collapse .columns {
-  padding: 0;
-}
-form .row input.column,
-form .row input.columns,
-form .row textarea.column,
-form .row textarea.columns {
-  padding-left: 0.5em;
-}
-
-/* Label Styles */
-label {
-  font-size: 0.875em;
-  color: #4d4d4d;
-  cursor: pointer;
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.1875em;
-}
-label.right {
-  float: none;
-  text-align: right;
-}
-label.inline {
-  margin: 0 0 1em 0;
-  padding: 0.625em 0;
-}
-
-/* Attach elements to the beginning or end of an input */
-.prefix,
-.postfix {
-  display: block;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-  border-style: solid;
-  border-width: 1px;
-  overflow: hidden;
-  font-size: 0.875em;
-  height: 2.3125em;
-  line-height: 2.3125em;
-}
-
-/* Adjust padding, alignment and radius if pre/post element is a button */
-.postfix.button {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  text-align: center;
-  line-height: 2.125em;
-}
-
-.prefix.button {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  text-align: center;
-  line-height: 2.125em;
-}
-
-.prefix.button.radius {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-}
-
-.postfix.button.radius {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.prefix.button.round {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-bottomleft: 1000px;
-  -moz-border-radius-topleft: 1000px;
-  -webkit-border-bottom-left-radius: 1000px;
-  -webkit-border-top-left-radius: 1000px;
-  border-bottom-left-radius: 1000px;
-  border-top-left-radius: 1000px;
-}
-
-.postfix.button.round {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topright: 1000px;
-  -moz-border-radius-bottomright: 1000px;
-  -webkit-border-top-right-radius: 1000px;
-  -webkit-border-bottom-right-radius: 1000px;
-  border-top-right-radius: 1000px;
-  border-bottom-right-radius: 1000px;
-}
-
-/* Separate prefix and postfix styles when on span so buttons keep their own */
-span.prefix {
-  background: #f2f2f2;
-  border-color: #d9d9d9;
-  border-right: none;
-  color: #333333;
-}
-span.prefix.radius {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-}
-
-span.postfix {
-  background: #f2f2f2;
-  border-color: #cccccc;
-  border-left: none;
-  color: #333333;
-}
-span.postfix.radius {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-/* Input groups will automatically style first and last elements of the group */
-.input-group.radius > *:first-child, .input-group.radius > *:first-child * {
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-}
-.input-group.radius > *:last-child, .input-group.radius > *:last-child * {
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.input-group.round > *:first-child, .input-group.round > *:first-child * {
-  -moz-border-radius-bottomleft: 1000px;
-  -moz-border-radius-topleft: 1000px;
-  -webkit-border-bottom-left-radius: 1000px;
-  -webkit-border-top-left-radius: 1000px;
-  border-bottom-left-radius: 1000px;
-  border-top-left-radius: 1000px;
-}
-.input-group.round > *:last-child, .input-group.round > *:last-child * {
-  -moz-border-radius-topright: 1000px;
-  -moz-border-radius-bottomright: 1000px;
-  -webkit-border-top-right-radius: 1000px;
-  -webkit-border-bottom-right-radius: 1000px;
-  border-top-right-radius: 1000px;
-  border-bottom-right-radius: 1000px;
-}
-
-/* We use this to get basic styling on all basic form elements */
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea {
-  background-color: white;
-  font-family: inherit;
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
-  display: block;
-  font-size: 0.875em;
-  margin: 0 0 1em 0;
-  padding: 0.5em;
-  height: 2.3125em;
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
-  -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
-}
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="time"]:focus,
-input[type="url"]:focus,
-textarea:focus {
-  -webkit-box-shadow: 0 0 5px #999999;
-  -moz-box-shadow: 0 0 5px #999999;
-  box-shadow: 0 0 5px #999999;
-  border-color: #999999;
-}
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="time"]:focus,
-input[type="url"]:focus,
-textarea:focus {
-  background: #fafafa;
-  border-color: #999999;
-  outline: none;
-}
-input[type="text"][disabled],
-input[type="password"][disabled],
-input[type="date"][disabled],
-input[type="datetime"][disabled],
-input[type="datetime-local"][disabled],
-input[type="month"][disabled],
-input[type="week"][disabled],
-input[type="email"][disabled],
-input[type="number"][disabled],
-input[type="search"][disabled],
-input[type="tel"][disabled],
-input[type="time"][disabled],
-input[type="url"][disabled],
-textarea[disabled] {
-  background-color: #dddddd;
-}
-
-/* Adjust margin for form elements below */
-input[type="file"],
-input[type="checkbox"],
-input[type="radio"],
-select {
-  margin: 0 0 1em 0;
-}
-
-/* Normalize file input width */
-input[type="file"] {
-  width: 100%;
-}
-
-/* We add basic fieldset styling */
-fieldset {
-  border: solid 1px #dddddd;
-  padding: 1.25em;
-  margin: 1.125em 0;
-}
-fieldset legend {
-  font-weight: bold;
-  background: white;
-  padding: 0 0.1875em;
-  margin: 0;
-  margin-left: -0.1875em;
-}
-
-/* Error Handling */
-.error input,
-input.error,
-.error textarea,
-textarea.error {
-  border-color: #c60f13;
-  background-color: rgba(198, 15, 19, 0.1);
-}
-.error input:focus,
-input.error:focus,
-.error textarea:focus,
-textarea.error:focus {
-  background: #fafafa;
-  border-color: #999999;
-}
-
-.error label,
-label.error {
-  color: #c60f13;
-}
-
-.error small,
-small.error {
-  display: block;
-  padding: 0.375em 0.25em;
-  margin-top: -1.3125em;
-  margin-bottom: 1em;
-  font-size: 0.75em;
-  font-weight: bold;
-  background: #c60f13;
-  color: white;
-}
-
 /* Wrapped around .top-bar to contain to grid width */
 .contain-to-grid {
   width: 100%;
   background: #111111;
 }
+.contain-to-grid .top-bar {
+  margin-bottom: 0;
+}
 
-.sticky {
+.fixed {
   width: 100%;
   left: 0;
   position: fixed;
@@ -2313,7 +1988,6 @@ small.error {
   .contain-to-grid .top-bar {
     max-width: 62.5em;
     margin: 0 auto;
-    margin-bottom: 0.9375em;
   }
 
   .top-bar-section {
@@ -2361,7 +2035,7 @@ small.error {
   .top-bar-section .has-dropdown.moved > .dropdown {
     visibility: hidden;
   }
-  .top-bar-section .has-dropdown:hover > .dropdown, .top-bar-section .has-dropdown:active > .dropdown {
+  .top-bar-section .has-dropdown.hover > .dropdown {
     visibility: visible;
   }
   .top-bar-section .has-dropdown .dropdown li.has-dropdown > a:after {
@@ -2413,70 +2087,6 @@ small.error {
     right: 100%;
   }
 }
-/* Breadcrumbs */
-.breadcrumbs {
-  display: block;
-  padding: 0.5625em 0.875em 0.5625em;
-  overflow: hidden;
-  margin-left: 0;
-  list-style: none;
-  border-style: solid;
-  border-width: 1px;
-  background-color: #f6f6f6;
-  border-color: gainsboro;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.breadcrumbs > * {
-  margin: 0;
-  float: left;
-  font-size: 0.6875em;
-  text-transform: uppercase;
-  color: #2ba6cb;
-}
-.breadcrumbs > *:hover a, .breadcrumbs > *:focus a {
-  text-decoration: underline;
-}
-.breadcrumbs > * a,
-.breadcrumbs > * span {
-  text-transform: uppercase;
-  color: #2ba6cb;
-}
-.breadcrumbs > *.current {
-  cursor: default;
-  color: #333333;
-}
-.breadcrumbs > *.current a {
-  cursor: default;
-  color: #333333;
-}
-.breadcrumbs > *.current:hover, .breadcrumbs > *.current:hover a, .breadcrumbs > *.current:focus, .breadcrumbs > *.current:focus a {
-  text-decoration: none;
-}
-.breadcrumbs > *.unavailable {
-  color: #999999;
-}
-.breadcrumbs > *.unavailable a {
-  color: #999999;
-}
-.breadcrumbs > *.unavailable:hover, .breadcrumbs > *.unavailable:hover a, .breadcrumbs > *.unavailable:focus,
-.breadcrumbs > *.unavailable a:focus {
-  text-decoration: none;
-  color: #999999;
-  cursor: default;
-}
-.breadcrumbs > *:before {
-  content: "/";
-  color: #aaaaaa;
-  margin: 0 0.75em;
-  position: relative;
-  top: 1px;
-}
-.breadcrumbs > *:first-child:before {
-  content: " ";
-  margin: 0;
-}
-
 /* Inline Lists */
 .inline-list {
   margin: 0 auto 1.0625em auto;
@@ -2494,54 +2104,6 @@ small.error {
 }
 .inline-list > li > * {
   display: block;
-}
-
-/* Pagination */
-.pagination {
-  display: block;
-  height: 1.5em;
-  margin-left: -0.3125em;
-}
-.pagination li {
-  display: block;
-  float: left;
-  height: 1.5em;
-  color: #222222;
-  font-size: 0.875em;
-  margin-left: 0.3125em;
-}
-.pagination li a {
-  display: block;
-  padding: 0.0625em 0.4375em 0.0625em;
-  color: #999999;
-}
-.pagination li:hover a,
-.pagination li a:focus {
-  background: #e6e6e6;
-}
-.pagination li.unavailable a {
-  cursor: default;
-  color: #999999;
-}
-.pagination li.unavailable:hover a, .pagination li.unavailable a:focus {
-  background: transparent;
-}
-.pagination li.current a {
-  background: #2ba6cb;
-  color: white;
-  font-weight: bold;
-  cursor: default;
-}
-.pagination li.current a:hover, .pagination li.current a:focus {
-  background: #2ba6cb;
-}
-
-.pagination-centered {
-  text-align: center;
-}
-.pagination-centered ul > li {
-  float: none;
-  display: inline-block;
 }
 
 /* ==========================================================================
@@ -2626,7 +2188,7 @@ textarea {
 }
 
 .chromeframe {
-  margin: 0.2em;
+  margin: 1em;
   padding: 0.2em;
   background: #ccc;
   color: #000;
@@ -2674,18 +2236,147 @@ textarea {
   float: left;
 }
 
+form {
+  margin: 0 0 1em;
+}
+
+label {
+  font-size: 0.875em;
+  color: #4d4d4d;
+  cursor: pointer;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.1875em;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  background-color: white;
+  font-family: inherit;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
+  display: block;
+  font-size: 0.875em;
+  margin: 0 0 1em 0;
+  padding: 0.5em;
+  height: 2.3125em;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+textarea:focus {
+  -webkit-box-shadow: 0 0 5px #999999;
+  -moz-box-shadow: 0 0 5px #999999;
+  box-shadow: 0 0 5px #999999;
+  border-color: #999999;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+textarea:focus {
+  background: #fafafa;
+  border-color: #999999;
+  outline: none;
+}
+input[type="text"][disabled],
+input[type="password"][disabled],
+input[type="date"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="month"][disabled],
+input[type="week"][disabled],
+input[type="email"][disabled],
+input[type="number"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="time"][disabled],
+input[type="url"][disabled],
+textarea[disabled] {
+  background-color: #dddddd;
+}
+
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+  margin: 0 0 1em 0;
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+fieldset {
+  border: solid 1px #dddddd;
+  padding: 1.25em;
+  margin: 1.125em 0;
+}
+fieldset legend {
+  font-weight: bold;
+  background: white;
+  padding: 0 0.1875em;
+  margin: 0;
+  margin-left: -0.1875em;
+}
+
+.top-bar input[type="text"],
+.top-bar input[type="submit"] {
+  height: 2em;
+  margin-bottom: 0;
+}
+
 /* ==========================================================================
    Header
    ========================================================================== */
-.wp-toolbar .sticky {
+.wp-toolbar {
   margin-top: 28px;
 }
 
-/*
-.wp-toolbar .expanded {
-	margin-top: 0;
+.wp-toolbar #navbar.fixed {
+  top: 28px;
 }
-*/
+
 .top-bar .searchsubmit input[type="submit"] {
   line-height: 2em;
   height: 2em;
@@ -2815,7 +2506,7 @@ figcaption {
   text-decoration: underline;
 }
 
-.breadcrumbs {
+.category-list {
   display: block;
   padding: 0.5625em 0.875em 0.5625em;
   overflow: hidden;
@@ -2828,54 +2519,63 @@ figcaption {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.breadcrumbs > * {
+.category-list > * {
   margin: 0;
   float: left;
   font-size: 0.6875em;
   text-transform: uppercase;
   color: #2ba6cb;
 }
-.breadcrumbs > *:hover a, .breadcrumbs > *:focus a {
+.category-list > *:hover a, .category-list > *:focus a {
   text-decoration: underline;
 }
-.breadcrumbs > * a,
-.breadcrumbs > * span {
+.category-list > * a,
+.category-list > * span {
   text-transform: uppercase;
   color: #2ba6cb;
 }
-.breadcrumbs > *.current {
+.category-list > *.current {
   cursor: default;
   color: #333333;
 }
-.breadcrumbs > *.current a {
+.category-list > *.current a {
   cursor: default;
   color: #333333;
 }
-.breadcrumbs > *.current:hover, .breadcrumbs > *.current:hover a, .breadcrumbs > *.current:focus, .breadcrumbs > *.current:focus a {
+.category-list > *.current:hover, .category-list > *.current:hover a, .category-list > *.current:focus, .category-list > *.current:focus a {
   text-decoration: none;
 }
-.breadcrumbs > *.unavailable {
+.category-list > *.unavailable {
   color: #999999;
 }
-.breadcrumbs > *.unavailable a {
+.category-list > *.unavailable a {
   color: #999999;
 }
-.breadcrumbs > *.unavailable:hover, .breadcrumbs > *.unavailable:hover a, .breadcrumbs > *.unavailable:focus,
-.breadcrumbs > *.unavailable a:focus {
+.category-list > *.unavailable:hover, .category-list > *.unavailable:hover a, .category-list > *.unavailable:focus,
+.category-list > *.unavailable a:focus {
   text-decoration: none;
   color: #999999;
   cursor: default;
 }
-.breadcrumbs > *:before {
+.category-list > *:before {
   content: "/";
   color: #aaaaaa;
   margin: 0 0.75em;
   position: relative;
   top: 1px;
 }
-.breadcrumbs > *:first-child:before {
+.category-list > *:first-child:before {
   content: " ";
   margin: 0;
+}
+
+.entry-thumbnail + .entry-meta .category-list {
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .page-links {
@@ -2966,6 +2666,15 @@ figcaption {
     width: 66.66667%;
   }
 
+  .leftsb .site-content {
+    position: relative;
+    padding-left: 0.9375em;
+    padding-right: 0.9375em;
+    left: 33.33333%;
+    right: auto;
+    float: left;
+  }
+
   .alignright {
     display: inline-block;
     float: right;
@@ -3000,6 +2709,15 @@ figcaption {
     position: relative;
     width: 33.33333%;
     float: right;
+  }
+
+  .leftsb .sidebar-container {
+    position: relative;
+    padding-left: 0.9375em;
+    padding-right: 0.9375em;
+    right: 66.66667%;
+    left: auto;
+    float: left;
   }
 
   .widget ul {

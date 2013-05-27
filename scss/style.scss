@@ -2,7 +2,7 @@
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:     0.2.3 (Foundation 4.1.6)
+Version:     0.2.4 (Foundation 4.1.6+)
 Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -57,26 +57,26 @@ ol.commentlist {
 		list-style: none;
 		margin-bottom: 2em;
 	}
-		.comment-author img {
-			border-radius: 50%;
-			float: left;
-			margin: 0 1em 0 0;
-		}
-		.author-meta {
-			display: inline-block;
-		}
-			cite.fn {
-				@extend h4;
-				margin-right: 0.5em;
-			}
-		section.comment {
-			@include panel(white, 20px);
-		}
-			a.comment-reply-link {
-				float: right;
-				position: relative;
-				bottom: 1em;
-			}
+	.comment-author img {
+		border-radius: 50%;
+		float: left;
+		margin: 0 1em 0 0;
+	}
+	.author-meta {
+		display: inline-block;
+	}
+	cite.fn {
+		@extend h4;
+		margin-right: 0.5em;
+	}
+	section.comment {
+		@include panel(white, 20px);
+	}
+	a.comment-reply-link {
+		float: right;
+		position: relative;
+		bottom: 1em;
+	}
 }
 
 
@@ -92,7 +92,7 @@ textarea {
 
 // Chrome Frame prompt
 .chromeframe {
-	margin: 0.2em;
+	margin: 1em;
 	padding: 0.2em;
 	background: #ccc;
 	color: #000;
@@ -110,22 +110,75 @@ textarea {
 	@include grid-column($columns:$total-columns);
 }
 
+// Form
+form {
+	margin: 0 0 $form-spacing;
+}
+
+// Label Styles
+label {
+	@include form-label;
+}
+
+// We use this to get basic styling on all basic form elements
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+	@include form-element;
+	@if not $input-include-glowing-effect {
+	    @include single-transition(all, 0.15s, linear);
+	}
+}
+
+// Adjust margin for form elements below
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+	margin: 0 0 $form-spacing 0;
+}
+
+// Normalize file input width
+input[type="file"] {
+	width:100%;
+}
+
+// We add basic fieldset styling
+fieldset {
+	@include fieldset;
+}
+
+// Top-bar-fix
+.top-bar input[type="text"],
+.top-bar input[type="submit"] {
+	height: emCalc(32px);
+	margin-bottom: 0;
+}
+
 
 /* ==========================================================================
    Header
    ========================================================================== */
 
-
-// Only needed when using a sticky top-bar.
-.wp-toolbar #{$topbar-sticky-class} {
+ 
+.wp-toolbar {
 	margin-top: 28px;
 }
-/*
-.wp-toolbar .expanded {
-	margin-top: 0;
+// Only needed when using a sticky top-bar.
+.wp-toolbar #navbar#{$topbar-sticky-class} {
+		top: 28px;
 }
-*/
-
 // Only needed when you use a input within topbar (i.e. searchform)
 .top-bar .searchsubmit input[type="submit"] {
 	line-height: 2em;
@@ -200,13 +253,15 @@ figcaption {
 }
 
 // Breadcrumbs
-.breadcrumbs {
+.category-list {
 	@include crumb-container;
 	@include radius($crumb-radius);
-
 	&>* {
 	 	@include crumbs;
 	}
+}
+.entry-thumbnail + .entry-meta .category-list {
+	@include side-radius(top, 0); // reset the top corners
 }
 
 // Pagination
@@ -248,7 +303,9 @@ figcaption {
 	.site-content {
 		@include grid-column($columns:8, $collapse:null, $float:false);
 	}
-
+	.leftsb .site-content {
+		@include grid-column($push:4);
+	}
 	// wp aligning
 	.alignright {
 		display: inline-block;
@@ -290,6 +347,9 @@ figcaption {
 @media #{$small} {
 	.sidebar-container {
 		@include grid-column($columns:4, $collapse:null, $float:false, $last-column:true);
+	}
+	.leftsb .sidebar-container {
+		@include grid-column($pull:8);
 	}
 
 	// add some extra margin to ul.widget
@@ -359,37 +419,3 @@ figcaption {
 		}
 	}
 }
-
-/*
-// HTML5 boilerplate
-
-// Remove text-shadow in selection highlight: h5bp.com/i
-// These selection rule sets have to be separate.
-// Customize the background color to match your design.
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-/*
-// Image replacement
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    // IE 6/7 fallback
-    *text-indent: -9999px;
-}
-
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
-}
-*/
