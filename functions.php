@@ -717,8 +717,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'description'   => __( 'This is the sidebar next to the maincontent of a page', 'wpf' ),
 			'before_widget' => '<aside id="%1$s" class=" widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h6 class="widget-title"><strong>',
-			'after_title'   => '</strong></h6>',
+			'before_title'  => '<h5 class="widget-title"><strong>',
+			'after_title'   => '</strong></h5>',
 		) );
 		
 		register_sidebar( array(
@@ -727,8 +727,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h6 class="widget-title"><strong>',
-			'after_title'   => '</strong></h6>',
+			'before_title'  => '<h5 class="widget-title"><strong>',
+			'after_title'   => '</strong></h5>',
 		) );
 		
 		register_sidebar( array(
@@ -737,8 +737,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h6 class="widget-title"><strong>',
-			'after_title'   => '</strong></h6>',
+			'before_title'  => '<h5 class="widget-title"><strong>',
+			'after_title'   => '</strong></h5>',
 		) );
 		
 		register_sidebar( array(
@@ -747,8 +747,8 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h6 class="widget-title"><strong>',
-			'after_title'   => '</strong></h6>',
+			'before_title'  => '<h5 class="widget-title"><strong>',
+			'after_title'   => '</strong></h5>',
 		) );
 
 		/*
@@ -787,16 +787,16 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 				$class = array( false, false, 'widget-large' );
 				break;
 			case '110':
-				$class = array( 'widget-small', 'widget-medium', false );//
+				$class = array( 'widget-small', 'widget-medium', false );
 				break;
 			case '101':
-				$class = array( 'widget-medium', false, 'widget-small' );//
+				$class = array( 'widget-medium', false, 'widget-small' );
 				break;
 			case '011':
-				$class = array( false, 'widget-medium', 'widget-small' );//
+				$class = array( false, 'widget-medium', 'widget-small' );
 				break;
 			default:
-				$class = array( 'widget-small', 'widget-small', 'widget-small' );//
+				$class = array( 'widget-small', 'widget-small', 'widget-small' );
 		}
 		// return to a global for later use
 		$GLOBALS['wpf_widget_classes'] = $class;

@@ -30,23 +30,23 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 		<div id="navbar" class="contain-to-grid">
 			<nav id="side-navigation" class="top-bar" role="navigation">
 				<ul class="title-area">
-					<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
-					<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+					<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span><?php _e( 'Menu', 'wpf' ); ?></span></a></li>
 				</ul>
 				<section class="top-bar-section">
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'container'      => false,
-					'items_wrap'     => '<ul class="left">%3$s</ul>',
-					'walker'         => new wpf_walker(),
-					'fallback_cb'    => 'wpf_nav_menu_fallback',
-				) ); ?>
+					<?php
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'container'      => false,
+						'items_wrap'     => '<ul class="left">%3$s</ul>',
+						'walker'         => new wpf_walker(),
+						'fallback_cb'    => 'wpf_nav_menu_fallback',
+					) ); ?>
 					<ul class="right hide-for-medium-down">
 						<li class="divider"></li>
 						<li class="has-form"><?php get_search_form(); ?></li>
 					</ul>
-				</section>
+				</section><!-- .top-bar-section -->
 			</nav><!-- #site-navigation -->
 		</div><!-- #nav-bar -->
 <!--[if lt IE 7]>
@@ -54,12 +54,11 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 <![endif]-->
 		<div class="site-meta">
 			<hgroup>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h4 class="site-subtitle"><?php if ( function_exists( 'wpf_site_subtitle' ) ) wpf_site_subtitle(); ?></h4>
 			</hgroup>
 			<hr>
 		</div><!-- .site-meta -->
 
 	</header><!-- #masthead -->
-<?php wpf_dev( 'end header.php' );
-?>
+<?php wpf_dev( 'end header.php' ); ?>

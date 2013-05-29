@@ -34,6 +34,7 @@ License URI: http://www.opensource.org/licenses/mit-license.php
    Temp
    ========================================================================== */
 
+
 // customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
 .page-numbers li {
 	span:hover a,
@@ -218,6 +219,7 @@ fieldset {
    Content
    ========================================================================== */
 
+
 .content-area {
 	@extend .container;
 }
@@ -363,6 +365,7 @@ span.author {
    Footer/(Footer)Widget)
    ========================================================================== */
 
+
 #colophon section {
 	@extend .container;
 	[class*="widget-"] + [class*="widget-"]:last-child {
@@ -390,10 +393,10 @@ span.author {
 	@extend .col;
 	ul {
 		@include inline-list;
+		margin-bottom: 0;
 		float: left;
 	}
 }
-
 
 @media #{$small} {
 	// widget's footer sizes

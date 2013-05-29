@@ -2738,6 +2738,7 @@ span.author {
   padding: 0;
   list-style: none;
   overflow: hidden;
+  margin-bottom: 0;
   float: left;
 }
 .footer-menu ul > li {

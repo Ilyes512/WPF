@@ -18,6 +18,7 @@ wpf_dev( 'footer.php' ); ?>
 					'container'      => false,
 					'fallback_cb'    => 'wpf_nav_menu_fallback',
 					'items_wrap'     => '<ul>%3$s</ul>',
+					'depth' => '-1',
 				) ); ?>
 			</div><!-- .footer-menu -->
 		</section>
@@ -28,4 +29,4 @@ wpf_dev( 'footer.php' ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>
-<?php wpf_dev( 'end footer.php' );?>
+<?php wpf_dev( 'end footer.php' ); ?>
