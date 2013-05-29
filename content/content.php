@@ -58,12 +58,15 @@
 				<?php _e( 'Comments are locked for this post', 'wpf' ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
-		
 
 		<?php if ( has_tag() ) : ?>
 			<div class="post-tags">
 				<?php the_tags( '<span class="post-tag">', '</span> <span class="post-tag">', '</span>' ); ?>
 			</div><!--post-tags -->
+		<?php endif; ?>
+		
+		<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
+			<?php get_template_part( 'author-bio' ); ?>
 		<?php endif; ?>
 		<hr>
 	</footer><!-- .entry-meta -->

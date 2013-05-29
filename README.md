@@ -2,7 +2,7 @@
 Please, if you have tips or idea's, then please share them! Just put them under the issues.
 
 # WPF - WordPress Foundation
-WPF is a Wordpress theme based on Zurb's Foundation HTML Framework. Foundation is designed with "mobile first" in mind. Also the theme is (more) [SEMANTIC](https://en.wikipedia.org/wiki/Semantic_HTML)! For more info see [Foundation](http://foundation.zurb.com/).
+WPF is a Wordpress theme based on Zurb's Foundation HTML Framework. Foundation is designed with "mobile first" in mind. Also the theme is (more) [SEMANTIC](https://en.wikipedia.org/wiki/Semantic_HTML) now! For more info see [Foundation](http://foundation.zurb.com/).
 
 # Version
 This theme uses the latest Foundation `v4.1.6` (including some commits planned for the release of v4.1.7) and works on the latest Wordpress version `v3.5.1`. The current WPF version is `v0.2.4`.
@@ -20,3 +20,4 @@ This theme uses the latest Foundation `v4.1.6` (including some commits planned f
 * [Zurb Foundation](http://foundation.zurb.com/)
 * [Reverie](http://themefortress.com/reverie/)
 * [Required+](http://themes.required.ch/)
+* [Wordpress Twenty Thirteen theme](http://twentythirteendemo.wordpress.com/)

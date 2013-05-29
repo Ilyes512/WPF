@@ -25,8 +25,8 @@ License URI: http://www.opensource.org/licenses/mit-license.php
    :: Miscellaneous
    :: Header
    :: Content
-   :: Sidebar/(General)Widget
-   :: Footer/(Footer)Widget
+   :: Sidebar & General-widget
+   :: Footer & Footer-widget
 */
 
 
@@ -298,6 +298,26 @@ span.author {
 	@include label($bg:$secondary-color, $radius:true);
 }
 
+/* author-bio
+   ========================================================================== */
+.author-info {
+	@extend .panel;
+}
+.single .author-info {
+	margin-top: emCalc(40px);
+}
+.author-avatar {
+	float: left;
+	margin: 0 emCalc(20px) emCalc(10px) 0;
+}
+.author-description {
+	h2 {
+		font-size: emCalc(25px);
+		margin-top: 0;
+	}
+}
+
+
 @media #{$small} {
 	.content-area {
 		@extend .container-nest;
@@ -333,7 +353,7 @@ span.author {
 
 
 /* ==========================================================================
-   Sidebar/(General)Widget
+   Sidebar & General-widget
    ========================================================================== */
 
 
@@ -362,7 +382,7 @@ span.author {
 
 
 /* ==========================================================================
-   Footer/(Footer)Widget)
+   Footer & Footer-widget
    ========================================================================== */
 
 

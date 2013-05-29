@@ -2113,8 +2113,8 @@ blockquote p {
    :: Miscellaneous
    :: Header
    :: Content
-   :: Sidebar/(General)Widget
-   :: Footer/(Footer)Widget
+   :: Sidebar & General-widget
+   :: Footer & Footer-widget
 */
 /* ==========================================================================
    Temp
@@ -2457,7 +2457,7 @@ fieldset legend {
 /* ==========================================================================
    Content
    ========================================================================== */
-.panel {
+.panel, .author-info {
   border-style: solid;
   border-width: 1px;
   border-color: #d9d9d9;
@@ -2467,24 +2467,24 @@ fieldset legend {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.panel h1, .panel h2, .panel h3, .panel h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .panel h5, .panel h6, .panel p {
+.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6, .panel p, .author-info p {
   color: #333333;
 }
-.panel > :first-child {
+.panel > :first-child, .author-info > :first-child {
   margin-top: 0;
 }
-.panel > :last-child {
+.panel > :last-child, .author-info > :last-child {
   margin-bottom: 0;
 }
-.panel h1, .panel h2, .panel h3, .panel h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .panel h5, .panel h6 {
+.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
-.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel ol.commentlist cite.subheader.fn, ol.commentlist .panel cite.subheader.fn, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .author-info h1.subheader, .panel h2.subheader, .author-info h2.subheader, .panel h3.subheader, .author-info h3.subheader, .panel h4.subheader, .author-info h4.subheader, .panel ol.commentlist cite.subheader.fn, ol.commentlist .panel cite.subheader.fn, .author-info ol.commentlist cite.subheader.fn, ol.commentlist .author-info cite.subheader.fn, .panel h5.subheader, .author-info h5.subheader, .panel h6.subheader, .author-info h6.subheader {
   line-height: 1.4;
 }
 
-.panel hr {
+.panel hr, .author-info hr {
   border: 5px solid #2ba6cb;
 }
 
@@ -2660,6 +2660,22 @@ span.author {
   border-radius: 3px;
 }
 
+/* author-bio
+   ========================================================================== */
+.single .author-info {
+  margin-top: 2.5em;
+}
+
+.author-avatar {
+  float: left;
+  margin: 0 1.25em 0.625em 0;
+}
+
+.author-description h2 {
+  font-size: 1.5625em;
+  margin-top: 0;
+}
+
 @media only screen and (min-width: 768px) {
   .site-content {
     position: relative;
@@ -2698,7 +2714,7 @@ span.author {
   }
 }
 /* ==========================================================================
-   Sidebar/(General)Widget
+   Sidebar & General-widget
    ========================================================================== */
 .widget ul {
   list-style: none;
@@ -2725,7 +2741,7 @@ span.author {
   }
 }
 /* ==========================================================================
-   Footer/(Footer)Widget)
+   Footer & Footer-widget
    ========================================================================== */
 #colophon section [class*="widget-"] + [class*="widget-"]:last-child {
   float: right;
