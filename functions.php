@@ -23,7 +23,7 @@
  *
  * Required: see the function wpf_scripts_and_styles()
  */
-define('WPF_VERSION', '0.2.4');
+define('WPF_VERSION', '0.2.5');
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false 
