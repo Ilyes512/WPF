@@ -278,14 +278,27 @@ figcaption {
 	margin-bottom: emCalc(10px);
 }
 
+// Post entry-title
+h1.entry-title {
+	margin-bottom: 5px;
+}
+
 // (Post) entry-meta
 .entry-meta {
-	font-style: italic; 
+	margin-bottom: emCalc(20px);
+	font-style: italic;
+	& > span {
+		margin-right: emCalc(20px);
+	}
 }
 span.author {
 	border: 0;
-	margin: 0 0 emCalc(20px);
+	margin-bottom: 0;
 	padding: 0;
+	&.vcard .fn {
+		font-weight: normal;
+		font-size: emCalc(16px);
+	}
 }
 .comments-link {
 	@extend .text-center;

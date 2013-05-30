@@ -2630,14 +2630,26 @@ figcaption {
   margin-bottom: 0.625em;
 }
 
+h1.entry-title {
+  margin-bottom: 5px;
+}
+
 .entry-meta {
+  margin-bottom: 1.25em;
   font-style: italic;
+}
+.entry-meta > span {
+  margin-right: 1.25em;
 }
 
 span.author {
   border: 0;
-  margin: 0 0 1.25em;
+  margin-bottom: 0;
   padding: 0;
+}
+span.author.vcard .fn {
+  font-weight: normal;
+  font-size: 1em;
 }
 
 .post-tags {

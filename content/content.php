@@ -14,13 +14,11 @@
 		</div>
 		<?php endif; ?>
 		
-		<div class="entry-meta">
-			<?php if ( is_home() ) : ?>
-				<?php wpf_breadcrumb(); ?>
-			<?php elseif ( is_archive() || is_single() ) : ?>
-				<?php wpf_breadcrumb( 'show-home' ); ?>
-			<?php endif; ?>
-		</div><!-- .entry-meta -->
+		<?php if ( is_home() ) : ?>
+			<?php wpf_breadcrumb(); ?>
+		<?php elseif ( is_archive() || is_single() ) : ?>
+			<?php wpf_breadcrumb( 'show-home' ); ?>
+		<?php endif; ?>
 	
 		<?php if ( is_single() ) : ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>

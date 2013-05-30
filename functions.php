@@ -935,14 +935,26 @@ if ( ! function_exists( 'wpf_dev' ) ) {
  */
 if ( ! function_exists( 'wpf_entry_meta' ) ) {
 	function wpf_entry_meta() {
-		printf( __( '<span class="author vcard">Posted by <a class="url fn" href="%1$s" title="%2$s" rel="author">%3$s</a> on <a href="%4$s"><time datetime="%5$s">%6$s</time></a></span>', 'wpf' ),
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID') ) ),//
-			esc_attr( sprintf( __( 'View all posts by %s', 'wpf' ), get_the_author() ) ),
-			get_the_author(), //
+		// Post sticky
+		if ( is_sticky() && is_home() && ! is_paged() )
+			echo '<span class="featured-post">' . __( 'Sticky', 'wpf' ) . '</span>';
+		
+		// Post date
+		printf( '<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 			esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ),
-			esc_attr( get_the_time( 'c' ) ),
-			get_the_time( _x( 'F j, Y', 'date format for the post meta text', 'wpf' ) )
+			esc_attr( sprintf( __( 'Permalink to the month archive for %s', 'wpf' ), get_the_date( 'F' ) ) ),
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() )
 		);
+
+		// Post author
+		if ( 'post' == get_post_type() ) {
+			printf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				esc_attr( sprintf( __( 'View all posts by %s', 'wpf' ), get_the_author() ) ),
+				get_the_author()
+			);
+		}
 	} // end wpf_entry_meta()
 }
 
