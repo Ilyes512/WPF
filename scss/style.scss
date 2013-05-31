@@ -167,6 +167,42 @@ fieldset {
 	margin-bottom: 0;
 }
 
+// No wrap @link http://www.impressivewebs.com/css-white-space/
+.nowrap {
+	white-space: nowrap;
+}
+
+/* Font icons (FontAwesome v3.1.1 @http://fortawesome.github.io/Font-Awesome/)
+   ========================================================================== */
+@font-face { 
+  font-family: 'FontAwesome';
+  src: url('font/fontawesome-webfont.eot?v=3.1.0');
+  src: url('font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'),
+       url('font/fontawesome-webfont.woff?v=3.1.0') format('woff'),
+       url('font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'),
+       url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.FontAwesome-meta {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	margin-right: emCalc(10px);
+	-webkit-font-smoothing: antialiased;
+	color: $primary-color;
+	line-height: inherit;
+	font-family: 'FontAwesome';
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: baseline;
+	speak: none;
+}
+a.FontAwesome-meta:hover {
+	color: $anchor-font-color-hover;
+}
+
 
 /* ==========================================================================
    Header
@@ -285,19 +321,50 @@ h1.entry-title {
 
 // (Post) entry-meta
 .entry-meta {
-	margin-bottom: emCalc(20px);
 	font-style: italic;
+	color: $primary-color;
 	& > span {
-		margin-right: emCalc(20px);
+		display: inline-block;
+		margin: 0 emCalc(20px) emCalc(15px) 0;
 	}
-}
-span.author {
-	border: 0;
-	margin-bottom: 0;
-	padding: 0;
-	&.vcard .fn {
-		font-weight: normal;
-		font-size: emCalc(16px);
+	// featured-post
+	.featured-post {
+		@extend .nowrap;
+		&:before {
+			@extend .FontAwesome-meta;
+			content: '\f08D';
+		}
+	}
+	// date
+	.date {
+		@extend .nowrap;
+		a:before {
+			@extend .FontAwesome-meta;
+			content: '\f073';
+		}
+	}
+	// author
+	.author {
+		@extend .nowrap;
+		border: 0;
+		margin-bottom: 0;
+		padding: 0;
+		&.vcard .fn {
+			font-weight: normal;
+			font-size: emCalc(16px);
+		}
+		a:before {
+			@extend .FontAwesome-meta;
+			content: '\f007';
+		}
+	}
+	// edit-link
+	.edit-link {
+		@extend .nowrap;
+		a:before {
+			@extend .FontAwesome-meta;
+			content: '\f044';
+		}
 	}
 }
 .comments-link {

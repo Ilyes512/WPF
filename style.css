@@ -2366,6 +2366,40 @@ fieldset legend {
   margin-bottom: 0;
 }
 
+.nowrap, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link {
+  white-space: nowrap;
+}
+
+/* Font icons (FontAwesome v3.1.1 @http://fortawesome.github.io/Font-Awesome/)
+   ========================================================================== */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("font/fontawesome-webfont.eot?v=3.1.0");
+  src: url("font/fontawesome-webfont.eot?#iefix&v=3.1.0") format("embedded-opentype"), url("font/fontawesome-webfont.woff?v=3.1.0") format("woff"), url("font/fontawesome-webfont.ttf?v=3.1.0") format("truetype"), url("font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.FontAwesome-meta, .entry-meta .featured-post:before, .entry-meta .date a:before, .entry-meta .author a:before, .entry-meta .edit-link a:before {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin-right: 0.625em;
+  -webkit-font-smoothing: antialiased;
+  color: #2ba6cb;
+  line-height: inherit;
+  font-family: 'FontAwesome';
+  text-decoration: inherit;
+  font-weight: normal;
+  font-style: normal;
+  vertical-align: baseline;
+  speak: none;
+}
+
+a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before {
+  color: #2795b6;
+}
+
 /* ==========================================================================
    Header
    ========================================================================== */
@@ -2635,21 +2669,33 @@ h1.entry-title {
 }
 
 .entry-meta {
-  margin-bottom: 1.25em;
   font-style: italic;
+  color: #2ba6cb;
 }
 .entry-meta > span {
-  margin-right: 1.25em;
+  display: inline-block;
+  margin: 0 1.25em 0.9375em 0;
 }
-
-span.author {
+.entry-meta .featured-post:before {
+  content: '\f08D';
+}
+.entry-meta .date a:before {
+  content: '\f073';
+}
+.entry-meta .author {
   border: 0;
   margin-bottom: 0;
   padding: 0;
 }
-span.author.vcard .fn {
+.entry-meta .author.vcard .fn {
   font-weight: normal;
   font-size: 1em;
+}
+.entry-meta .author a:before {
+  content: '\f007';
+}
+.entry-meta .edit-link a:before {
+  content: '\f044';
 }
 
 .post-tags {
