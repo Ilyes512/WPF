@@ -319,6 +319,11 @@ h1.entry-title {
 	margin-bottom: 5px;
 }
 
+// more-link
+.more-link {
+	@extend .nowrap;
+}
+
 // (Post) entry-meta
 .entry-meta {
 	font-style: italic;

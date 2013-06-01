@@ -2366,7 +2366,7 @@ fieldset legend {
   margin-bottom: 0;
 }
 
-.nowrap, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link {
+.nowrap, .more-link, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link {
   white-space: nowrap;
 }
 
