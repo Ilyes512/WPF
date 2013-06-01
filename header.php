@@ -57,8 +57,7 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h4 class="site-subtitle"><?php if ( function_exists( 'wpf_site_subtitle' ) ) wpf_site_subtitle(); ?></h4>
 			</hgroup>
-			<hr>
 		</div><!-- .site-meta -->
-
+		<hr>
 	</header><!-- #masthead -->
 <?php wpf_dev( 'end header.php' ); ?>

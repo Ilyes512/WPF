@@ -2428,6 +2428,10 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   margin: 0;
 }
 
+.site-subtitle {
+  margin-bottom: 0;
+}
+
 .searchinput {
   position: relative;
   padding-left: 0;
