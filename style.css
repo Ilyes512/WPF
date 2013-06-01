@@ -1482,6 +1482,10 @@ dl {
   font-family: inherit;
 }
 
+ul, ol {
+  margin-left: 1.25em;
+}
+
 /* Unordered Lists */
 ul li ul,
 ul li ol {
@@ -1745,6 +1749,7 @@ blockquote p {
 }
 .top-bar .title-area {
   position: relative;
+  margin: 0;
 }
 .top-bar .name {
   height: 45px;
@@ -1851,7 +1856,7 @@ blockquote p {
   font-weight: bold;
   background: #222222;
 }
-.top-bar-section ul li > a:hover {
+.top-bar-section ul li > a.hover {
   background: #090909;
   color: white;
 }
@@ -1859,25 +1864,25 @@ blockquote p {
   background: #2ba6cb;
   font-size: 0.8125em;
 }
-.top-bar-section ul li > a.button:hover {
+.top-bar-section ul li > a.button.hover {
   background: #2284a1;
 }
 .top-bar-section ul li > a.button.secondary {
   background: #e9e9e9;
 }
-.top-bar-section ul li > a.button.secondary:hover {
+.top-bar-section ul li > a.button.secondary.hover {
   background: #d0d0d0;
 }
 .top-bar-section ul li > a.button.success {
   background: #5da423;
 }
-.top-bar-section ul li > a.button.success:hover {
+.top-bar-section ul li > a.button.success.hover {
   background: #457a1a;
 }
 .top-bar-section ul li > a.button.alert {
   background: #c60f13;
 }
-.top-bar-section ul li > a.button.alert:hover {
+.top-bar-section ul li > a.button.alert.hover {
   background: #970b0e;
 }
 .top-bar-section ul li.active > a {
@@ -1919,6 +1924,7 @@ blockquote p {
 }
 .top-bar-section .dropdown li {
   width: 100%;
+  height: auto;
 }
 .top-bar-section .dropdown li a {
   font-weight: normal;
@@ -2012,7 +2018,7 @@ blockquote p {
     line-height: 45px;
     background: #111111;
   }
-  .top-bar-section li a:not(.button):hover {
+  .top-bar-section li a:not(.button).hover {
     background: black;
   }
   .top-bar-section .has-dropdown > a {
@@ -2407,7 +2413,7 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   margin-top: 28px;
 }
 
-.wp-toolbar #navbar.fixed {
+.wp-toolbar #navbar.sticky-top-bar {
   top: 28px;
 }
 
