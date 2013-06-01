@@ -208,14 +208,14 @@ a.FontAwesome-meta:hover {
    Header
    ========================================================================== */
 
- 
+// wp-adminbar & fixed topbar
 .wp-toolbar {
 	margin-top: 28px;
 }
-// Only needed when using a sticky top-bar.
-.wp-toolbar #navbar#{$topbar-sticky-class} {
-		top: 28px;
+.wp-toolbar #navbar.fixed {
+	top: 28px;
 }
+
 // Only needed when you use a input within topbar (i.e. searchform)
 .top-bar .searchsubmit input[type="submit"] {
 	line-height: 2em;

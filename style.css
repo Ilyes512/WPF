@@ -2413,7 +2413,7 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   margin-top: 28px;
 }
 
-.wp-toolbar #navbar.sticky-top-bar {
+.wp-toolbar #navbar.fixed {
   top: 28px;
 }
 
