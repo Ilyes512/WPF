@@ -1726,7 +1726,7 @@ blockquote p {
   line-height: 45px;
   position: relative;
   background: #111111;
-  margin-bottom: 0.9375em;
+  margin-bottom: 1.875em;
 }
 .top-bar ul {
   margin-bottom: 0;
@@ -2538,6 +2538,15 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   margin-right: auto;
 }
 
+.wp-post-image {
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
 img[class*="wp-image-"] {
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2613,7 +2622,7 @@ figcaption {
   margin: 0;
 }
 
-.entry-thumbnail + .entry-meta .category-list {
+.entry-thumbnail + .category-list {
   -moz-border-radius-topright: 0;
   -moz-border-radius-topleft: 0;
   -webkit-border-top-right-radius: 0;

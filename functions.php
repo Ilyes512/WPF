@@ -117,7 +117,7 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		 * "standard" posts and pages.
 		 */
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 637, 0, true );
+		set_post_thumbnail_size( 637, 300, true );
 		
 		// Clean up gallery output in wp
 		add_filter( 'use_default_gallery_style', '__return_false' );
@@ -993,6 +993,33 @@ if ( ! function_exists( 'wpf_site_subtitle' ) ) {
 				echo bloginfo( 'description' );
 		}
 	} // end wpf_site_subtitle()
+}
+
+/**
+ * This function takes care of post thumbnails
+ * 
+ * It will post the thumbnail when available and will make the thumbnail
+ * clickable (permalink to post). Also it will only show the thumbnail on the
+ * first page of the post.
+ */
+if ( ! function_exists( 'wpf_post_thumbnail' ) ) {
+	function wpf_post_thumbnail() {
+		if ( has_post_thumbnail() && ! post_password_required() ) {
+		
+			$prefix = '<div class="entry-thumbnail">';
+			$postfix = '</div>';
+			
+			if ( is_single() ) {
+				global $page;
+				if ( $page == 1 )
+					echo $prefix . get_the_post_thumbnail() . $postfix;
+			} else {
+				echo $prefix;
+				echo '<a href="' . get_permalink() . '" title="' . esc_attr( sprintf( __( 'Permalink to %s', 'wpf' ), the_title_attribute( 'echo=0' ) ) ). '" rel="bookmark">' . get_the_post_thumbnail() . '</a>';
+				echo $postfix;
+			}
+		}		
+	} // end wpf_post_thumbnail()
 }
 
 ?>

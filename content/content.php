@@ -8,12 +8,9 @@
 <?php wpf_dev( 'content.php' ); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-		<div class="entry-thumbnail">
-			<?php the_post_thumbnail(); ?>
-		</div>
-		<?php endif; ?>
 		
+		<?php wpf_post_thumbnail(); ?>
+				
 		<?php if ( is_home() ) : ?>
 			<?php wpf_breadcrumb(); ?>
 		<?php elseif ( is_archive() || is_single() ) : ?>
@@ -21,7 +18,8 @@
 		<?php endif; ?>
 	
 		<?php if ( is_single() ) : ?>
-			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<?php global $page; ?>
+			<h1 class="entry-title"><?php echo ( $page > 1 ) ? get_the_title() . sprintf( __( ' - page %d', 'wpf' ), $page ) : get_the_title(); ?></h1>
 		<?php else : ?>
 			<h1 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpf' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>

@@ -282,6 +282,11 @@ a.FontAwesome-meta:hover {
 	margin-right: auto;		
 }
 
+// post thumbnail
+.wp-post-image {
+	@include side-radius(top, $crumb-radius);
+}
+
 // img / caption
 img[class*="wp-image-"] {
 	@include radius;
@@ -301,7 +306,7 @@ figcaption {
 	 	@include crumbs;
 	}
 }
-.entry-thumbnail + .entry-meta .category-list {
+.entry-thumbnail + .category-list {
 	@include side-radius(top, 0); // reset the top corners
 }
 
