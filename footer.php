@@ -11,7 +11,7 @@ wpf_dev( 'footer.php' ); ?>
 		<section>
 			<div class="site-info">
 				<p><?php printf( __( '&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a>', 'wpf' ), date( 'Y' ) ); ?></p>
-			</div> <!-- .site-info -->
+			</div><!-- .site-info -->
 			<div class="footer-menu">
 				<?php wp_nav_menu( array(
 					'theme_location' => 'footer',

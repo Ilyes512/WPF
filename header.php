@@ -28,7 +28,7 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 
 	<header id="masthead" class="site-header" role="banner">
 		<div id="navbar" class="contain-to-grid fixed">
-			<nav id="side-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar; back_text:<?php _e( 'back', 'wpf' ); ?>">
+			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar; back_text:<?php _e( 'back', 'wpf' ); ?>">
 				<ul class="title-area">
 					<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
 					<li class="toggle-topbar menu-icon"><a href="#"><span><?php _e( 'Menu', 'wpf' ); ?></span></a></li>
