@@ -35,21 +35,6 @@ License URI: http://www.opensource.org/licenses/mit-license.php
    ========================================================================== */
 
 
-// customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
-.page-numbers li {
-	span:hover a,
-	span a:focus {
-		background: $pagination-link-active-bg;
-	}
-	span.current {
-		background: $pagination-link-current-background;
-		padding: $pagination-link-pad;
-		color: $pagination-link-current-font-color;
-		font-weight: $pagination-link-current-font-weight;
-		cursor: $pagination-link-current-cursor;
-	}
-}
-
 // add some basic comment styles
 ol.commentlist {
 	margin-left: 0;

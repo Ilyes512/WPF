@@ -2125,18 +2125,6 @@ blockquote p {
 /* ==========================================================================
    Temp
    ========================================================================== */
-.page-numbers li span:hover a,
-.page-numbers li span a:focus {
-  background: #e6e6e6;
-}
-.page-numbers li span.current {
-  background: #2ba6cb;
-  padding: 0.0625em 0.4375em 0.0625em;
-  color: white;
-  font-weight: bold;
-  cursor: default;
-}
-
 ol.commentlist {
   margin-left: 0;
   margin-top: 2em;
