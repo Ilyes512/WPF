@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-05-28 19:33+0100\n"
-"PO-Revision-Date: 2013-05-28 19:34+0100\n"
+"POT-Creation-Date: 2013-06-02 17:13+0100\n"
+"PO-Revision-Date: 2013-06-02 17:16+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -44,6 +44,16 @@ msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
 #: 404.php:25
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
+
+#: author-bio.php:16
+#, php-format
+msgid "About %s"
+msgstr "Over %s"
+
+#: author-bio.php:21
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Bekijk alle berichten van %s <span class=\"meta-nav\">&rarr;</span>"
 
 #: comments.php:8
 #, php-format
@@ -232,64 +242,70 @@ msgstr "Voet 3"
 msgid "Go back to the homepage"
 msgstr "Terug naar de startpagina"
 
-#: functions.php:938
-#, php-format
-msgid ""
-"<span class=\"author vcard\">Posted by <a class=\"url fn\" href=\"%1$s\" "
-"title=\"%2$s\" rel=\"author\">%3$s</a> on <a href=\"%4$s\"><time datetime="
-"\"%5$s\">%6$s</time></a></span>"
-msgstr ""
-"<span class=\"author vcard\">Geplaatst door <a class=\"url fn\" href=\"%1$s"
-"\" title=\"%2$s\" rel=\"author\">%3$s</a> op <a href=\"%4$s\"><time datetime="
-"\"%5$s\">%6$s</time></a></span>"
-
 #: functions.php:940
+msgid "Sticky"
+msgstr "Sticky"
+
+#: functions.php:945
+#, php-format
+msgid "Permalink to the month archive for %s"
+msgstr "Permalink naar de maand archief van %s"
+
+#: functions.php:954
 #, php-format
 msgid "View all posts by %s"
 msgstr "Bekijk alle artikelen van %s"
 
-#: functions.php:944
-msgctxt "date format for the post meta text"
-msgid "F j, Y"
-msgstr "j F Y"
-
-#: functions.php:958
+#: functions.php:970
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Dagelijks archief: %s"
 
-#: functions.php:961
+#: functions.php:973
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Maandelijks archief: %s"
 
-#: functions.php:961
+#: functions.php:973
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: functions.php:964
+#: functions.php:976
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Jaarlijkse archief: %s"
 
-#: functions.php:964
+#: functions.php:976
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: functions.php:970
+#: functions.php:982
 msgid "Search Results for"
 msgstr "Zoek resultaten voor"
 
-#: functions.php:975
+#: functions.php:987
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: functions.php:978
+#: functions.php:990
 msgid "Archives"
 msgstr "Archief"
+
+#: functions.php:1018 content/content.php:25
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink naar %s"
+
+#: header.php:31
+msgid "back"
+msgstr "terug"
+
+#: header.php:34
+msgid "Menu"
+msgstr "Menu"
 
 #: header.php:53
 msgid ""
@@ -335,34 +351,47 @@ msgstr ""
 "Sorry, maar er zijn geen resultaten gevonden. Probeer de zoekfunctie uit om "
 "gerelateerde artikelen te vinden."
 
-#: content/content.php:29
+#: content/content.php:22
 #, php-format
-msgid "Permalink to %s"
-msgstr "Permalink naar %s"
+msgid " - page %d"
+msgstr " - pagina %d"
 
-#: content/content.php:35
+#: content/content.php:31
 msgid "Edit"
 msgstr "Aanpassen"
 
-#: content/content.php:46
+#: content/content.php:42
 msgid "Continue reading..."
 msgstr "Lees verder…"
 
-#: content/content.php:54
+#: content/content.php:50
 msgid "Leave a response"
 msgstr "Laat een reactie achter"
 
-#: content/content.php:54
+#: content/content.php:50
 msgid "one response"
 msgstr "1 reactie"
 
-#: content/content.php:54
+#: content/content.php:50
 msgid "% responses"
 msgstr "% reacties"
 
-#: content/content.php:58
+#: content/content.php:54
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
+
+#~ msgid ""
+#~ "<span class=\"author vcard\">Posted by <a class=\"url fn\" href=\"%1$s\" "
+#~ "title=\"%2$s\" rel=\"author\">%3$s</a> on <a href=\"%4$s\"><time datetime="
+#~ "\"%5$s\">%6$s</time></a></span>"
+#~ msgstr ""
+#~ "<span class=\"author vcard\">Geplaatst door <a class=\"url fn\" href="
+#~ "\"%1$s\" title=\"%2$s\" rel=\"author\">%3$s</a> op <a href=\"%4$s\"><time "
+#~ "datetime=\"%5$s\">%6$s</time></a></span>"
+
+#~ msgctxt "date format for the post meta text"
+#~ msgid "F j, Y"
+#~ msgstr "j F Y"
 
 #~ msgid "Quote"
 #~ msgstr "Quote"
