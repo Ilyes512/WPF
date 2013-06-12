@@ -1483,7 +1483,7 @@ dl {
 }
 
 ul, ol {
-  margin-left: 1.25em;
+  margin-left: 0;
 }
 
 /* Unordered Lists */
@@ -2152,14 +2152,14 @@ ol.commentlist section.comment {
   padding: 20px;
   background: white;
 }
-ol.commentlist section.comment h1, ol.commentlist section.comment h2, ol.commentlist section.comment h3, ol.commentlist section.comment h4, ol.commentlist section.comment cite.fn, ol.commentlist section.comment h5, ol.commentlist section.comment h6, ol.commentlist section.comment p {
-  color: #333333;
-}
 ol.commentlist section.comment > :first-child {
   margin-top: 0;
 }
 ol.commentlist section.comment > :last-child {
   margin-bottom: 0;
+}
+ol.commentlist section.comment h1, ol.commentlist section.comment h2, ol.commentlist section.comment h3, ol.commentlist section.comment h4, ol.commentlist section.comment cite.fn, ol.commentlist section.comment h5, ol.commentlist section.comment h6, ol.commentlist section.comment p {
+  color: #333333;
 }
 ol.commentlist section.comment h1, ol.commentlist section.comment h2, ol.commentlist section.comment h3, ol.commentlist section.comment h4, ol.commentlist section.comment cite.fn, ol.commentlist section.comment h5, ol.commentlist section.comment h6 {
   line-height: 1;
@@ -2499,14 +2499,14 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6, .panel p, .author-info p {
-  color: #333333;
-}
 .panel > :first-child, .author-info > :first-child {
   margin-top: 0;
 }
 .panel > :last-child, .author-info > :last-child {
   margin-bottom: 0;
+}
+.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6, .panel p, .author-info p {
+  color: #333333;
 }
 .panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6 {
   line-height: 1;
@@ -2802,7 +2802,7 @@ h1.entry-title {
   }
 
   .widget ul {
-    margin-left: 1.25em;
+    margin-left: 0;
   }
 }
 /* ==========================================================================
