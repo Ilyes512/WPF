@@ -159,7 +159,7 @@ fieldset {
 
 /* Font icons (FontAwesome v3.1.1 @http://fortawesome.github.io/Font-Awesome/)
    ========================================================================== */
-@font-face { 
+@font-face {
   font-family: 'FontAwesome';
   src: url('font/fontawesome-webfont.eot?v=3.1.0');
   src: url('font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'),
@@ -264,7 +264,7 @@ a.FontAwesome-meta:hover {
 .alignright, .alignleft, .aligncenter {
 	display: block;
 	margin-left: auto;
-	margin-right: auto;		
+	margin-right: auto;
 }
 
 // post thumbnail
@@ -299,8 +299,15 @@ figcaption {
 .page-links {
 	@include pagination($center:true, $base-style:false);
 }
-.page-numbers { 
+.page-numbers {
 	@include pagination;
+	span.current {
+		display: block;
+		padding: $pagination-link-pad;
+		background: $pagination-link-current-background;
+		color: $pagination-link-current-font-color;
+		font-weight: $pagination-link-current-font-weight;
+	}
 }
 .page-links-title {
 	display: block;
@@ -417,7 +424,7 @@ h1.entry-title {
 		float: left;
 		margin: 0 emCalc(10px) emCalc(10px) 0;
 	}
-	
+
 	// img / caption
 	.wp-caption.alignright img, .wp-caption.alignleft img {
 		display: block;
@@ -507,7 +514,7 @@ h1.entry-title {
 	.widget-small {
 		@include grid-column($columns:4, $collapse:null, $float:false);
 	}
-	
+
 	// Contains some site information
 	.site-info {
 		@include grid-column($columns:6, $collapse:null, $float:false);
