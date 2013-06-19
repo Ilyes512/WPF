@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-06-19 15:13+0100\n"
-"PO-Revision-Date: 2013-06-19 15:13+0100\n"
+"POT-Creation-Date: 2013-07-01 00:51+0100\n"
+"PO-Revision-Date: 2013-07-01 00:59+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -50,7 +50,7 @@ msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 msgid "About %s"
 msgstr "Over %s"
 
-#: author-bio.php:21 functions.php:972
+#: author-bio.php:21 functions.php:994
 #, php-format
 msgid "View all posts by %s"
 msgstr "Bekijk alle artikelen van %s"
@@ -170,127 +170,127 @@ msgstr ""
 "\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a>"
 
-#: functions.php:111
+#: functions.php:133
 msgid "Primary Navigation"
 msgstr "Primaire menu"
 
-#: functions.php:112
+#: functions.php:134
 msgid "Footer Navigation"
 msgstr "Voet menu"
 
-#: functions.php:316 functions.php:497
+#: functions.php:338 functions.php:519
 msgid "Pages:"
 msgstr "Pagina's:"
 
-#: functions.php:322
+#: functions.php:344
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: functions.php:323
+#: functions.php:345
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: functions.php:467
+#: functions.php:489
 msgid "&#xf053; Previous"
 msgstr "&#xf053; Vorige"
 
-#: functions.php:468
+#: functions.php:490
 msgid "Next &#xf054;"
 msgstr "Volgende &#xf054;"
 
-#: functions.php:491 functions.php:500
+#: functions.php:513 functions.php:522
 msgid "Next page &#xf054;"
 msgstr "Volgende pagina &#xf054;"
 
-#: functions.php:492 functions.php:501
+#: functions.php:514 functions.php:523
 msgid "&#xf053; Previous page"
 msgstr "&#xf053; Vorige pagina"
 
-#: functions.php:610 functions.php:614
+#: functions.php:632 functions.php:636
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
 
-#: functions.php:696
+#: functions.php:718
 msgid "Home"
 msgstr "Start"
 
-#: functions.php:734
+#: functions.php:756
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: functions.php:736
+#: functions.php:758
 msgid "This is the sidebar next to the maincontent of a page"
 msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
 
-#: functions.php:744
+#: functions.php:766
 msgid "Footer 1"
 msgstr "Voet 1"
 
-#: functions.php:746 functions.php:756 functions.php:766
+#: functions.php:768 functions.php:778 functions.php:788
 msgid "An optional widget area for your site footer"
 msgstr "Een optionele widget gebied voor de voet van de pagina"
 
-#: functions.php:754
+#: functions.php:776
 msgid "Footer 2"
 msgstr "Voet 2"
 
-#: functions.php:764
+#: functions.php:786
 msgid "Footer 3"
 msgstr "Voet 3"
 
-#: functions.php:900
+#: functions.php:922
 msgid "Go back to the homepage"
 msgstr "Terug naar de startpagina"
 
-#: functions.php:958
+#: functions.php:980
 msgid "Sticky"
 msgstr "Sticky"
 
-#: functions.php:963
+#: functions.php:985
 #, php-format
 msgid "Permalink to the month archive for %s"
 msgstr "Permalink naar de maand archief van %s"
 
-#: functions.php:988
+#: functions.php:1010
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Dagelijks archief: %s"
 
-#: functions.php:991
+#: functions.php:1013
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Maandelijks archief: %s"
 
-#: functions.php:991
+#: functions.php:1013
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: functions.php:994
+#: functions.php:1016
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Jaarlijkse archief: %s"
 
-#: functions.php:994
+#: functions.php:1016
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: functions.php:1008
+#: functions.php:1030
 #, php-format
 msgid "The search results for \"%s\""
 msgstr "De zoekresultaten voor \"%s\""
 
-#: functions.php:1012
+#: functions.php:1034
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: functions.php:1015
+#: functions.php:1037
 msgid "Archives"
 msgstr "Archief"
 
-#: functions.php:1043 content/content.php:25
+#: functions.php:1065 content/content.php:25
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
@@ -318,6 +318,46 @@ msgstr ""
 #: searchform.php:13
 msgid "Search"
 msgstr "Zoeken"
+
+#: tpl-contact.php:19 content/content.php:31
+msgid "Edit"
+msgstr "Aanpassen"
+
+#: tpl-contact.php:40
+msgid "Name (required)"
+msgstr "Naam (verplicht)"
+
+#: tpl-contact.php:41
+msgid "Your name please"
+msgstr "Uw naam alstublieft"
+
+#: tpl-contact.php:47
+msgid "Email (required)"
+msgstr "Email (verplicht)"
+
+#: tpl-contact.php:48
+msgid "Your email please"
+msgstr "Uw email alstublieft"
+
+#: tpl-contact.php:54
+msgid "Subject (required)"
+msgstr "Onderwerp (verplicht)"
+
+#: tpl-contact.php:55
+msgid "Your subject please"
+msgstr "Uw onderwerp alstublieft"
+
+#: tpl-contact.php:61
+msgid "Content (required)"
+msgstr "Inhoud (verplicht)"
+
+#: tpl-contact.php:62
+msgid "Your content please"
+msgstr "Uw inhoud alstublieft"
+
+#: tpl-contact.php:67
+msgid "Send mail"
+msgstr "Verzend mail"
 
 #: content/content-none.php:14
 #, php-format
@@ -352,10 +392,6 @@ msgstr ""
 msgid " - page %d"
 msgstr " - pagina %d"
 
-#: content/content.php:31
-msgid "Edit"
-msgstr "Aanpassen"
-
 #: content/content.php:42
 msgid "Continue reading"
 msgstr "Lees verder"
@@ -379,6 +415,59 @@ msgstr "% reacties"
 #: content/content.php:59
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
+
+#: inc/mail.inc.php:66
+msgid ""
+"The settings in /inc/mail.inc.php haven't been set. Please adjust the "
+"settings."
+msgstr ""
+"De instelling in /inc/mail.inc.php zijn niet bijgewerkt. Pas deze instelling "
+"alstublieft aan."
+
+#: inc/mail.inc.php:69
+msgid "Please try again later! The contact form hasn't been setup yet."
+msgstr ""
+"Probeer het later opnieuw! De contact formulier is nog niet geïnstalleerd."
+
+#: inc/mail.inc.php:87
+msgid "Please fill in a name!"
+msgstr "Vul alstublieft een naam in!"
+
+#: inc/mail.inc.php:92
+msgid "This email seems to be incorrect!"
+msgstr "De email blijkt incorrect te zijn!"
+
+#: inc/mail.inc.php:97
+msgid "Please fill in a subject!"
+msgstr "Vul alstublieft een onderwerp in!"
+
+#: inc/mail.inc.php:102
+msgid "Please let us know what you want to say or ask!"
+msgstr "Laat ons alstublieft weten wat u ons wil zeggen of vragen!"
+
+#: inc/mail.inc.php:108
+msgid ""
+"There seem to be 1 or multiple errors. Please check the individual messages "
+"below."
+msgstr ""
+"Er zijn 1 of meerdere foutmeldingen. Controleer alstublieft de individuele "
+"meldingen onder."
+
+#: inc/mail.inc.php:150
+msgid "To view the message, please use an HTML compatible email viewer!"
+msgstr ""
+"Om dit bericht te kunnen lezen moet u een email programma gebruiken die HTML "
+"kan lezen."
+
+#: inc/mail.inc.php:158
+msgid "Something went wrong sending the mail! Try again or come back later."
+msgstr ""
+"Er is wat fout gegaan met het verzenden van uw mail! Probeer het later "
+"opnieuw of kom later terug."
+
+#: inc/mail.inc.php:162
+msgid "Mail sended! We will contact you as soon as possible!"
+msgstr "Uw email is verzonden! We nemen zo spoedig mogelijk contact met u op!"
 
 #~ msgid "Next &raquo;"
 #~ msgstr "Volgende &raquo;"

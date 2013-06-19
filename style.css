@@ -2183,7 +2183,7 @@ textarea {
   color: #000;
 }
 
-.container, .site-meta, .searchform, .content-area, #colophon section {
+.container, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -2192,11 +2192,11 @@ textarea {
   max-width: 62.5em;
   *zoom: 1;
 }
-.container:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, .container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after {
+.container:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   content: " ";
   display: table;
 }
-.container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after {
+.container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   clear: both;
 }
 
@@ -2217,10 +2217,18 @@ textarea {
   clear: both;
 }
 
-.col, .site-content, .site-content-fw, .sidebar-container, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info {
+.col, .site-content, .site-content-fw, .sidebar-container, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
+  width: 100%;
+  float: left;
+}
+
+.col-colapsed, form#wpf_contact label {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
   width: 100%;
   float: left;
 }
@@ -2386,6 +2394,53 @@ fieldset legend {
 
 a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before, .leave-reply a:hover:before, a.reply-closed:hover:before, .post-tag a:hover:before, a.author-link:hover:after {
   color: #2795b6;
+}
+
+[class*="msgbox-"] {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1.25em;
+  position: relative;
+  padding: 0.6875em 1.3125em 0.75em 0.6875em;
+  font-size: 0.875em;
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+[class*="msgbox-"] a {
+  font-size: 1.375em;
+  padding: 5px 4px 4px;
+  line-height: 0;
+  position: absolute;
+  top: 0.4375em;
+  right: 0.3125em;
+  color: #333333;
+  opacity: 0.3;
+}
+[class*="msgbox-"] a:hover, [class*="msgbox-"] a:focus {
+  opacity: 0.5;
+}
+
+.msgbox-alert {
+  background-color: #c60f13;
+  border-color: #970b0e;
+  color: white;
+}
+
+.msgbox-succes {
+  background-color: #5da423;
+  border-color: #457a1a;
+  color: white;
+}
+
+.msgbox-secondary {
+  background-color: #e9e9e9;
+  border-color: #d0d0d0;
+  color: #505050;
 }
 
 /* ==========================================================================
@@ -2923,5 +2978,102 @@ h1.entry-title {
     width: 50%;
     right: 50%;
     left: auto;
+  }
+}
+/* ==========================================================================
+   Contact (template)
+   ========================================================================== */
+form#wpf_contact fieldset {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+form#wpf_contact div.error label {
+  color: #c60f13;
+}
+form#wpf_contact div.error input, form#wpf_contact div.error textarea {
+  border-color: #c60f13;
+  background-color: rgba(198, 15, 19, 0.1);
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+form#wpf_contact div.error input:focus, form#wpf_contact div.error textarea:focus {
+  background: #fafafa;
+  border-color: #999999;
+}
+form#wpf_contact div.error small {
+  display: block;
+  padding: 0.375em 0.25em;
+  margin-top: -1.3125em;
+  margin-bottom: 1em;
+  font-size: 0.75em;
+  font-weight: bold;
+  background: #c60f13;
+  color: white;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+form#wpf_contact textarea {
+  min-height: 12.5em;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+form#wpf_contact input[type="submit"] {
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0 0 1.25em;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 0.75em;
+  padding-right: 1.5em;
+  padding-bottom: 0.8125em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  float: right;
+}
+form#wpf_contact input[type="submit"]:hover, form#wpf_contact input[type="submit"]:focus {
+  background-color: #2284a1;
+}
+form#wpf_contact input[type="submit"]:hover, form#wpf_contact input[type="submit"]:focus {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  form#wpf_contact label {
+    position: relative;
+    padding-left: 0.9375em;
+    padding-right: 0.9375em;
+    width: 25%;
+    text-align: right;
+    margin: 0 0 1em 0;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+  }
+  form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea, form#wpf_contact div.error small {
+    position: relative;
+    width: 75%;
+    float: right;
   }
 }

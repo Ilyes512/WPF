@@ -4,6 +4,7 @@
 		Table of contents
  **************************************************************************
  *		>SETTINGS
+ *      >INCLUDING FILES
  *		>WPF SETUP
  *		>FOUNDATION NAVIGATION + BREADCRUMB
  *		>SIDEBAR
@@ -40,6 +41,27 @@ define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
  */
 //if( ! defined( 'WPF_BREADCRUMB_HOME_URL' ) ) define( 'WPF_BREADCRUMB_HOME_URL' , '#url');
 
+/**************************************************************************
+ *		>INCLUDING FILES
+ **************************************************************************/
+
+add_action( 'template_redirect', 'wpf_contact' );
+/**
+ * Contains the logic for tpl-contact.php
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_contact' ) ) {
+	function wpf_contact() {
+		if ( is_page_template( 'tpl-contact.php' ) ) {
+			if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/mail.inc.php' ) ) {
+				require_once( get_stylesheet_directory() . '/inc/mail.inc.php' );
+			} else {
+				require_once( get_template_directory() . '/inc/mail.inc.php');
+			}
+		}
+	} // end wpf_contact()
+}
 
 /**************************************************************************
  *		>WPF SETUP

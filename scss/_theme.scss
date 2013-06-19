@@ -75,6 +75,9 @@ textarea {
 .col {
 	@include grid-column($columns:$total-columns);
 }
+.col-colapsed {
+	@include grid-column($columns:$total-columns, $collapse:true)
+}
 
 // Form
 form {
@@ -165,6 +168,24 @@ fieldset {
 }
 a.FontAwesome:hover {
 	color: $anchor-font-color-hover;
+}
+
+// Alert message
+[class*="msgbox-"] {
+	@include alert;
+	@include radius($global-radius);
+	a {
+		@include alert-close;
+	}
+}
+.msgbox-alert {
+	@include alert-style($alert-color);
+}
+.msgbox-succes {
+	@include alert-style($success-color);
+}
+.msgbox-secondary {
+	@include alert-style($secondary-color);
 }
 
 
@@ -575,5 +596,69 @@ h1.entry-title {
 	.site-info {
 		@include grid-column($columns:6, $collapse:null, $pull:6, $float:false);
 	}
+}
 
+
+/* ==========================================================================
+   Contact (template)
+   ========================================================================== */
+
+
+form#wpf_contact {
+	fieldset {
+		@include radius;
+	}
+	div {
+		@extend .container;
+		&.error {
+			label {
+				@include form-label-error-color;
+			}
+			input, textarea {
+				@include form-error-color;
+				@include side-radius(bottom, 0);
+			}
+			small {
+				@extend .col;
+				@include form-error-message;
+				@include side-radius(bottom, $global-radius);
+			}
+		}
+	}
+	label {
+		@extend .col-colapsed;
+	}
+	input[type="text"], input[type="email"], textarea {
+		@extend .col;
+		@include radius;
+	}
+	textarea {
+		min-height: emCalc(200px);
+		@include radius;
+	}
+	input[type="submit"] {
+		@include button-base;
+		@include button-size;
+		@include button-style($radius:true);
+		float: right;
+	}
+}
+
+@media #{$small} {
+	form#wpf_contact {
+		label {
+			@include grid-column($columns:3, $collapse:false, $float:false);
+			text-align: right;
+			// @todo See if push request get's accepted or not. Either remove this comment or use the mixin
+			// @include form-label($alignment:inline, $base-style:false);
+			// Will not work cause it will set padding: $form-spacing / 2 + emCalc($input-border-width * 2) 0;
+			// I have made a push request to change this.
+			margin: 0 0 $form-spacing 0;
+			padding-top: $form-spacing / 2 + emCalc($input-border-width * 2);
+			padding-bottom: $form-spacing / 2 + emCalc($input-border-width * 2);
+		}
+		input[type="text"], input[type="email"], textarea, div.error small {
+			@include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
+		}
+	}
 }
