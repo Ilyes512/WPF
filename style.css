@@ -3,7 +3,7 @@
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
-Version:     0.2.6 (Foundation 4.2.1)
+Version:     0.2.6 (Foundation 4.2.3)
 Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -1858,10 +1858,6 @@ blockquote p {
   font-weight: bold;
   background: #222222;
 }
-.top-bar-section ul li > a.hover {
-  background: #090909;
-  color: white;
-}
 .top-bar-section ul li > a.button {
   background: #2ba6cb;
   font-size: 0.8125em;
@@ -1886,6 +1882,10 @@ blockquote p {
 }
 .top-bar-section ul li > a.button.alert.hover {
   background: #970b0e;
+}
+.top-bar-section ul li.hover > a {
+  background: #090909;
+  color: white;
 }
 .top-bar-section ul li.active > a {
   background: #090909;
@@ -2094,26 +2094,19 @@ blockquote p {
   .top-bar-section ul.right li .dropdown li .dropdown {
     right: 100%;
   }
-}
-/* Inline Lists */
-.inline-list {
-  margin: 0 auto 1.0625em auto;
-  margin-left: -1.375em;
-  margin-right: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-}
-.inline-list > li {
-  list-style: none;
-  float: left;
-  margin-left: 1.375em;
-  display: block;
-}
-.inline-list > li > * {
-  display: block;
-}
 
+  .no-js .top-bar-section ul li:hover > a {
+    background: #090909;
+    color: white;
+  }
+  .no-js .top-bar-section ul li:active > a {
+    background: #090909;
+    color: white;
+  }
+  .no-js .top-bar-section .has-dropdown:hover > .dropdown {
+    visibility: visible;
+  }
+}
 /* ==========================================================================
    Table of Contents
    ==========================================================================
@@ -2582,7 +2575,6 @@ figcaption {
   float: left;
   font-size: 0.6875em;
   text-transform: uppercase;
-  color: #2ba6cb;
 }
 .category-list > *:hover a, .category-list > *:focus a {
   text-decoration: underline;
@@ -2636,10 +2628,7 @@ figcaption {
   border-top-left-radius: 0;
 }
 
-.page-links {
-  text-align: center;
-}
-.page-links ul > li {
+.page-links li {
   float: none;
   display: inline-block;
 }
@@ -2651,8 +2640,6 @@ figcaption {
   font-family: "FontAwesome", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 .page-numbers li {
-  display: block;
-  float: left;
   height: 1.5em;
   color: #222222;
   font-size: 0.875em;
@@ -2682,6 +2669,10 @@ figcaption {
 }
 .page-numbers li.current a:hover, .page-numbers li.current a:focus {
   background: #2ba6cb;
+}
+.page-numbers li {
+  float: left;
+  display: block;
 }
 .page-numbers span.current {
   display: block;
