@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-06-02 17:13+0100\n"
-"PO-Revision-Date: 2013-06-02 17:16+0100\n"
+"POT-Creation-Date: 2013-06-19 15:13+0100\n"
+"PO-Revision-Date: 2013-06-19 15:13+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -50,10 +50,10 @@ msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 msgid "About %s"
 msgstr "Over %s"
 
-#: author-bio.php:21
+#: author-bio.php:21 functions.php:972
 #, php-format
-msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Bekijk alle berichten van %s <span class=\"meta-nav\">&rarr;</span>"
+msgid "View all posts by %s"
+msgstr "Bekijk alle artikelen van %s"
 
 #: comments.php:8
 #, php-format
@@ -159,7 +159,7 @@ msgstr "Reactie"
 msgid "Submit Comment"
 msgstr "Plaats een reactie"
 
-#: footer.php:13
+#: footer.php:24
 #, php-format
 msgid ""
 "&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
@@ -178,123 +178,119 @@ msgstr "Primaire menu"
 msgid "Footer Navigation"
 msgstr "Voet menu"
 
-#: functions.php:299 functions.php:478
+#: functions.php:316 functions.php:497
 msgid "Pages:"
 msgstr "Pagina's:"
 
-#: functions.php:305
+#: functions.php:322
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: functions.php:306
+#: functions.php:323
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: functions.php:448
-msgid "&laquo; Previous"
-msgstr "&laquo; Vorige"
+#: functions.php:467
+msgid "&#xf053; Previous"
+msgstr "&#xf053; Vorige"
 
-#: functions.php:449
-msgid "Next &raquo;"
-msgstr "Volgende &raquo;"
+#: functions.php:468
+msgid "Next &#xf054;"
+msgstr "Volgende &#xf054;"
 
-#: functions.php:472 functions.php:481
-msgid "Next page &raquo;"
-msgstr "Volgende pagina &raquo;"
+#: functions.php:491 functions.php:500
+msgid "Next page &#xf054;"
+msgstr "Volgende pagina &#xf054;"
 
-#: functions.php:473 functions.php:482
-msgid "&laquo; Previous page"
-msgstr "&laquo; Vorige pagina"
+#: functions.php:492 functions.php:501
+msgid "&#xf053; Previous page"
+msgstr "&#xf053; Vorige pagina"
 
-#: functions.php:591 functions.php:595
+#: functions.php:610 functions.php:614
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
 
-#: functions.php:677
+#: functions.php:696
 msgid "Home"
 msgstr "Start"
 
-#: functions.php:715
+#: functions.php:734
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: functions.php:717
+#: functions.php:736
 msgid "This is the sidebar next to the maincontent of a page"
 msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
 
-#: functions.php:725
+#: functions.php:744
 msgid "Footer 1"
 msgstr "Voet 1"
 
-#: functions.php:727 functions.php:737 functions.php:747
+#: functions.php:746 functions.php:756 functions.php:766
 msgid "An optional widget area for your site footer"
 msgstr "Een optionele widget gebied voor de voet van de pagina"
 
-#: functions.php:735
+#: functions.php:754
 msgid "Footer 2"
 msgstr "Voet 2"
 
-#: functions.php:745
+#: functions.php:764
 msgid "Footer 3"
 msgstr "Voet 3"
 
-#: functions.php:882
+#: functions.php:900
 msgid "Go back to the homepage"
 msgstr "Terug naar de startpagina"
 
-#: functions.php:940
+#: functions.php:958
 msgid "Sticky"
 msgstr "Sticky"
 
-#: functions.php:945
+#: functions.php:963
 #, php-format
 msgid "Permalink to the month archive for %s"
 msgstr "Permalink naar de maand archief van %s"
 
-#: functions.php:954
-#, php-format
-msgid "View all posts by %s"
-msgstr "Bekijk alle artikelen van %s"
-
-#: functions.php:970
+#: functions.php:988
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Dagelijks archief: %s"
 
-#: functions.php:973
+#: functions.php:991
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Maandelijks archief: %s"
 
-#: functions.php:973
+#: functions.php:991
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: functions.php:976
+#: functions.php:994
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Jaarlijkse archief: %s"
 
-#: functions.php:976
+#: functions.php:994
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: functions.php:982
-msgid "Search Results for"
-msgstr "Zoek resultaten voor"
+#: functions.php:1008
+#, php-format
+msgid "The search results for \"%s\""
+msgstr "De zoekresultaten voor \"%s\""
 
-#: functions.php:987
+#: functions.php:1012
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: functions.php:990
+#: functions.php:1015
 msgid "Archives"
 msgstr "Archief"
 
-#: functions.php:1018 content/content.php:25
+#: functions.php:1043 content/content.php:25
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
@@ -319,7 +315,7 @@ msgstr ""
 "chromeframe/?redirect=true\">activeer Google Chrome Frame</a> om uw browser "
 "ervaring te verbeteren."
 
-#: searchform.php:13 searchform.php:16
+#: searchform.php:13
 msgid "Search"
 msgstr "Zoeken"
 
@@ -361,24 +357,34 @@ msgid "Edit"
 msgstr "Aanpassen"
 
 #: content/content.php:42
-msgid "Continue reading..."
-msgstr "Lees verder…"
+msgid "Continue reading"
+msgstr "Lees verder"
 
-#: content/content.php:50
+#: content/content.php:51
+msgid "Reply on "
+msgstr "Reactie op "
+
+#: content/content.php:52
 msgid "Leave a response"
 msgstr "Laat een reactie achter"
 
-#: content/content.php:50
+#: content/content.php:52
 msgid "one response"
 msgstr "1 reactie"
 
-#: content/content.php:50
+#: content/content.php:52
 msgid "% responses"
 msgstr "% reacties"
 
-#: content/content.php:54
+#: content/content.php:59
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
+
+#~ msgid "Next &raquo;"
+#~ msgstr "Volgende &raquo;"
+
+#~ msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+#~ msgstr "Bekijk alle berichten van %s <span class=\"meta-nav\">&rarr;</span>"
 
 #~ msgid ""
 #~ "<span class=\"author vcard\">Posted by <a class=\"url fn\" href=\"%1$s\" "

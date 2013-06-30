@@ -385,6 +385,11 @@ table {
   border-spacing: 0;
 }
 
+/* Comment the different Zurb Foundation modules to make the compiled stye.css
+   lighter. Also keep in mind that there might be dependencies (check the
+   documentation at http://foundation.zurb.com/docs/.
+
+   ! Make sure the last non-commented line has the semi-collon (";") */
 *,
 *:before,
 *:after {
@@ -1397,8 +1402,8 @@ p aside {
 
 /* Default header styles */
 h1, h2, h3, h4, ol.commentlist cite.fn, h5, h6 {
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   font-style: normal;
   color: #222222;
   text-rendering: optimizeLegibility;
@@ -2219,7 +2224,7 @@ textarea {
   clear: both;
 }
 
-.col, .site-content, .site-content-fw, .sidebar-container, .widget-large, .widget-medium, .widget-small, .site-info, .footer-menu {
+.col, .site-content, .site-content-fw, .sidebar-container, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2357,25 +2362,24 @@ fieldset legend {
   margin-bottom: 0;
 }
 
-.nowrap, .more-link, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link {
+.nowrap, .more-link, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link, .leave-reply, .reply-closed, .post-tag {
   white-space: nowrap;
 }
 
-/* Font icons (FontAwesome v3.1.1 @http://fortawesome.github.io/Font-Awesome/)
+/* Font icons (FontAwesome v3.2.0 @http://fortawesome.github.io/Font-Awesome/)
    ========================================================================== */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("font/fontawesome-webfont.eot?v=3.1.0");
-  src: url("font/fontawesome-webfont.eot?#iefix&v=3.1.0") format("embedded-opentype"), url("font/fontawesome-webfont.woff?v=3.1.0") format("woff"), url("font/fontawesome-webfont.ttf?v=3.1.0") format("truetype"), url("font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0") format("svg");
+  src: url("font/fontawesome-webfont.eot?v=3.2.1");
+  src: url("font/fontawesome-webfont.eot?#iefix&v=3.2.1") format("embedded-opentype"), url("font/fontawesome-webfont.woff?v=3.2.1") format("woff"), url("font/fontawesome-webfont.ttf?v=3.2.1") format("truetype"), url("font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-.FontAwesome-meta, .entry-meta .featured-post:before, .entry-meta .date a:before, .entry-meta .author a:before, .entry-meta .edit-link a:before {
+.FontAwesome, .searchsubmit input, .category-list, .more-link:after, .entry-meta .featured-post:before, .entry-meta .date a:before, .entry-meta .author a:before, .entry-meta .edit-link a:before, .leave-reply a:before, .reply-closed:before, .post-tag a:before, .author-link:after {
   display: inline-block;
   width: auto;
   height: auto;
-  margin-right: 0.625em;
   -webkit-font-smoothing: antialiased;
   color: #2ba6cb;
   line-height: inherit;
@@ -2387,7 +2391,7 @@ fieldset legend {
   speak: none;
 }
 
-a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before {
+a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before, .leave-reply a:hover:before, a.reply-closed:hover:before, .post-tag a:hover:before, a.author-link:hover:after {
   color: #2795b6;
 }
 
@@ -2402,12 +2406,16 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   top: 28px;
 }
 
+.no-js body {
+  padding-top: 45px;
+}
+
 .top-bar .searchsubmit input[type="submit"] {
   line-height: 2em;
   height: 2em;
 }
 
-.site-meta hgroup {
+.site-meta section {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2421,25 +2429,36 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
 
 .site-subtitle {
   margin-bottom: 0;
+  clear: left;
+  font-size: 0.52272727em;
+  line-height: 1.4;
 }
 
 .searchinput {
   position: relative;
   padding-left: 0;
   padding-right: 0;
-  width: 66.66667%;
+  width: 75%;
   float: left;
+}
+.searchinput input {
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .searchsubmit {
   position: relative;
   padding-left: 0;
   padding-right: 0;
-  width: 33.33333%;
+  width: 25%;
   float: right;
   float: left;
 }
-.searchsubmit input[type="submit"] {
+.searchsubmit input {
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
@@ -2467,19 +2486,19 @@ a.FontAwesome-meta:hover, .entry-meta a.featured-post:hover:before, .entry-meta 
   font-size: 0.875em;
   height: 2.3125em;
   line-height: 2.3125em;
-  -webkit-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius-topright: 3px;
   -moz-border-radius-bottomright: 3px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+  margin-right: 0.625em;
+  font-family: "FontAwesome", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
-.searchsubmit input[type="submit"]:hover, .searchsubmit input[type="submit"]:focus {
+.searchsubmit input:hover, .searchsubmit input:focus {
   background-color: #2284a1;
 }
-.searchsubmit input[type="submit"]:hover, .searchsubmit input[type="submit"]:focus {
+.searchsubmit input:hover, .searchsubmit input:focus {
   color: white;
 }
 
@@ -2556,6 +2575,7 @@ figcaption {
   border-color: gainsboro;
   -webkit-border-radius: 3px;
   border-radius: 3px;
+  font-size: "FontAwesome", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 .category-list > * {
   margin: 0;
@@ -2596,7 +2616,7 @@ figcaption {
   cursor: default;
 }
 .category-list > *:before {
-  content: "/";
+  content: "\f054";
   color: #aaaaaa;
   margin: 0 0.75em;
   position: relative;
@@ -2628,6 +2648,7 @@ figcaption {
   display: block;
   height: 1.5em;
   margin-left: -0.3125em;
+  font-family: "FontAwesome", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 .page-numbers li {
   display: block;
@@ -2679,6 +2700,11 @@ h1.entry-title {
   margin-bottom: 5px;
 }
 
+.more-link:after {
+  margin-left: 0.625em;
+  content: '\f178';
+}
+
 .entry-meta {
   font-style: italic;
   color: #2ba6cb;
@@ -2688,9 +2714,11 @@ h1.entry-title {
   margin: 0 1.25em 0.9375em 0;
 }
 .entry-meta .featured-post:before {
+  margin-right: 0.625em;
   content: '\f08D';
 }
 .entry-meta .date a:before {
+  margin-right: 0.625em;
   content: '\f073';
 }
 .entry-meta .author {
@@ -2703,10 +2731,22 @@ h1.entry-title {
   font-size: 1em;
 }
 .entry-meta .author a:before {
+  margin-right: 0.625em;
   content: '\f007';
 }
 .entry-meta .edit-link a:before {
+  margin-right: 0.625em;
   content: '\f044';
+}
+
+.leave-reply a:before {
+  margin-right: 0.625em;
+  content: '\f086';
+}
+
+.reply-closed:before {
+  margin-right: 0.625em;
+  content: '\f023';
 }
 
 .post-tags {
@@ -2728,6 +2768,10 @@ h1.entry-title {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
+.post-tag a:before {
+  margin-right: 0.625em;
+  content: '\f02B';
+}
 
 /* author-bio
    ========================================================================== */
@@ -2739,10 +2783,19 @@ h1.entry-title {
   float: left;
   margin: 0 1.25em 0.625em 0;
 }
+.author-avatar img {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
 
 .author-description h2 {
   font-size: 1.5625em;
   margin-top: 0;
+}
+
+.author-link:after {
+  margin-right: 0;
+  content: '\f178';
 }
 
 @media only screen and (min-width: 768px) {
@@ -2816,6 +2869,14 @@ h1.entry-title {
   float: right;
 }
 
+.footer-sidebar h5 {
+  margin-top: 0;
+}
+
+.site-footer-meta {
+  padding: 0.3125em 0;
+}
+
 .footer-menu ul {
   margin: 0 auto 1.0625em auto;
   margin-left: -1.375em;
@@ -2836,6 +2897,10 @@ h1.entry-title {
   display: block;
 }
 
+.site-info p {
+  margin-bottom: 0;
+}
+
 @media only screen and (min-width: 768px) {
   .widget-large {
     position: relative;
@@ -2852,17 +2917,20 @@ h1.entry-title {
     width: 33.33333%;
   }
 
-  .site-info {
-    position: relative;
-    width: 50%;
-  }
-
   .footer-menu {
     position: relative;
     width: 50%;
-    float: right;
+    left: 50%;
+    right: auto;
   }
   .footer-menu ul {
     float: right;
+  }
+
+  .site-info {
+    position: relative;
+    width: 50%;
+    right: 50%;
+    left: auto;
   }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * The template for displaying the Search form
  *
@@ -13,7 +13,7 @@
 			<input type="text" value="" name="s" placeholder="<?php _e( 'Search', 'wpf' ); ?>">
 		</div>
 		<div class="searchsubmit">
-			<input type="submit" value="<?php _e( 'Search', 'wpf' ); ?>">
+			<input type="submit" value="&#xf002;">
 		</div>
 	</div><!-- .searchform -->
 </form>

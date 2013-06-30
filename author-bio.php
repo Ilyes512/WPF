@@ -18,7 +18,7 @@
 			<?php the_author_meta( 'description' ); ?>
 			<?php if ( ! is_author() ) : ?>
 				<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-					<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'wpf' ), get_the_author() ); ?>
+					<?php printf( __( 'View all posts by %s', 'wpf' ), get_the_author() ); ?>
 				</a>
 			<?php endif; ?>
 		</p>

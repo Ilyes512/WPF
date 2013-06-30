@@ -185,6 +185,7 @@ add_action( 'wp_enqueue_scripts', 'wpf_scripts_and_styles' );
  */
 if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 	function wpf_scripts_and_styles() {
+		$protocol = is_ssl() ? 'https' : 'http';
 		/*
 		 * Adds JavaScript to pages with the comment form to support sites with
 		 * threaded comments (when in use).
@@ -198,7 +199,7 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		 * @todo Find a better/safer way of doing this.
 		 */
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', "http" . ( $_SERVER['SERVER_PORT'] == 443 ? "s" : "" ) . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true );
+		wp_register_script( 'jquery', $protocol . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true );
 
 		// register modernizr jsscript in the header
 		wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false );
@@ -209,9 +210,25 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		// Add style.css
 		wp_enqueue_style( 'wpf-stylesheet', get_stylesheet_uri(), array(), WPF_VERSION );
 
+		// Add Google Fonts
+		$query_args = array( 'family' => 'Open+Sans:300' );
+		wp_enqueue_style( 'open-sans', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+
 		// Add wpf-js script and all it's dependencies
 		wp_enqueue_script( 'wpf-js' );
 	} // end wpf_scripts_and_styles()
+}
+
+add_action('wp_enqueue_scripts', 'qmodo_setup', 11);
+/**
+ * Adding Google Fonts
+ *
+ * @return void
+ */
+function qmodo_setup() {
+	$protocol = is_ssl() ? 'https' : 'http';
+	$query_args = array( 'family' => 'Open+Sans:300' );
+	wp_enqueue_style( 'open-sans', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 }
 
 add_action( 'wp_footer', 'wpf_foundation_jquery', 21 );
@@ -305,7 +322,7 @@ if ( ! function_exists( 'temp_wp_link_pages' ) ) {
 			'nextpagelink'     => __( 'Next page' ),
 			'previouspagelink' => __( 'Previous page' ),
 			'pagelink'         => '%',
-			'echo'             => 1
+			'echo'             => 1,
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -320,8 +337,9 @@ if ( ! function_exists( 'temp_wp_link_pages' ) ) {
 				$output .= $before;
 				for ( $i = 1; $i <= $numpages; $i++ ) {
 					$link = $link_before . str_replace( '%', $i, $pagelink ) . $link_after;
-					if ( $i != $page || ! $more && 1 == $page )
+					if ( $i != $page || ! $more && 1 == $page ) {
 						$link = _wp_link_page( $i ) . $link . '</a>';
+					}
 					$link = apply_filters( 'wp_link_pages_link', $link, $i );
 					$output .= $separator . $link;
 				}
@@ -346,8 +364,9 @@ if ( ! function_exists( 'temp_wp_link_pages' ) ) {
 
 		$output = apply_filters( 'wp_link_pages', $output, $args );
 
-		if ( $echo )
+		if ( $echo ) {
 			echo $output;
+		}
 
 		return $output;
 	}
@@ -407,7 +426,7 @@ add_filter( 'wp_link_pages_link', 'wpf_link_pages_link', 10, 2);
  * "current" class) if it doesnt contain a link.
  *
  * @param    string    $link           The link that is being displayed or the content for the current page. ie. <a...>Content</a>
- * #param    int       $page_number    This is the pagenumber that get's the $link.
+ * @param    int       $page_number    This is the pagenumber that get's the $link.
  * @return   string                    The link that is going to be displayed after adding some htmlmarkup.
  */
 if ( ! function_exists( 'wpf_link_pages_link' ) ) {
@@ -445,9 +464,9 @@ if ( ! function_exists( 'wpf_paginate_link' ) ) {
 			'end_size'  => 2,
 			'mid_size'  => 5,
 			'prev_next' => True,
-			'prev_text' => __( '&laquo; Previous', 'wpf' ),
-			'next_text' => __( 'Next &raquo;', 'wpf' ),
-			'type'      => 'list',
+			'prev_text' => __( '&#xf053; Previous', 'wpf' ),
+			'next_text' => __( 'Next &#xf054;', 'wpf' ),
+			'type'      => 'list'
 		) );
 
 		// Display the pagination if more than one page is found
@@ -469,8 +488,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 					'before'           => '<div class="page-links"><ul class="page-numbers">',
 					'after'            => '</ul></div>',
 					'next_or_number'   => 'next_and_number',
-					'nextpagelink'     => __( 'Next page &raquo;', 'wpf' ),
-					'previouspagelink' => __( '&laquo; Previous page', 'wpf' ),
+					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
+					'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
 				) );
 				break;
 			case is_search();
@@ -478,8 +497,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 					'before'           => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
 					'after'            => '</ul></div>',
 					'next_or_number'   => 'next_and_number',
-					'nextpagelink'     => __( 'Next page &raquo;', 'wpf' ),
-					'previouspagelink' => __( '&laquo; Previous page', 'wpf' ),
+					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
+					'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
 				) );
 				break;
 		}
@@ -777,6 +796,9 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 		$total_active = implode( '', $footer_sidebar );
 
 		switch ( $total_active ){
+			case '000':
+				$GLOBALS['wpf_widget_active'] = false;
+				break;
 			case '100':
 				$class = array( 'widget-large', false, false );
 				break;
@@ -799,7 +821,9 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 				$class = array( 'widget-small', 'widget-small', 'widget-small' );
 		}
 		// return to a global for later use
-		$GLOBALS['wpf_widget_classes'] = $class;
+		$GLOBALS['wpf_widget_classes'] = ( isset ( $class ) ) ? $class : array();
+		if ( ! isset( $GLOBALS['wpf_widget_active'] ) )
+			$GLOBALS['wpf_widget_active'] = true; // Return that there are widget active
 	} // end wpf_footer_widget()
 }
 
@@ -810,11 +834,7 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
  */
 if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
 	function wpf_print_footer_sidebar() {
-		$sidebar_active =    is_active_sidebar( 'sidebar-footer-1' )
-                          or is_active_sidebar( 'sidebar-footer-2' )
-                          or is_active_sidebar( 'sidebar-footer-3' );
-
-		if ( $sidebar_active and ! is_404() ) {
+		if ( $GLOBALS['wpf_widget_active'] and ! is_404() ) {
 			echo '<section class="footer-sidebar">';
 			$i = 1;
 			foreach ( $GLOBALS['wpf_widget_classes'] as $class ) {
@@ -841,8 +861,6 @@ add_action( 'login_head', 'wpf_login_head' );
  * Add an extra stylesheet to the login head.
  *
  * @link http://codex.wordpress.org/Customizing_the_Login_Form
- *
- * @todo WPF is html5. Should I use the closing tag? " />"
  */
 if ( ! function_exists( 'wpf_login_head' ) ) {
 	function wpf_login_head() { ?>
@@ -979,8 +997,15 @@ if ( ! function_exists( 'wpf_site_subtitle' ) ) {
 				single_cat_title();
 				break;
 			case is_search():
-				echo __( 'Search Results for', 'wpf' ) . ' ' . substr( get_search_query(), 0, 50 );
-				if ( strlen( get_search_query() ) > 50 ) echo '...';
+				// Get the search query
+				$search_query = get_search_query();
+
+				// If the search query is longer then 100 char's then get the first 100
+				// char's and add '...' to the end.
+				if ( strlen( $search_query ) > 100 ) {
+					$search_query = substr( $search_query, 0, 100 ) . '...';
+				}
+				printf( __( 'The search results for "%s"', 'wpf' ), $search_query );
 				break;
 			case is_author():
 				$author = get_userdata( get_query_var( 'author' ) );

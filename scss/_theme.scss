@@ -137,23 +137,22 @@ fieldset {
 	white-space: nowrap;
 }
 
-/* Font icons (FontAwesome v3.1.1 @http://fortawesome.github.io/Font-Awesome/)
+/* Font icons (FontAwesome v3.2.0 @http://fortawesome.github.io/Font-Awesome/)
    ========================================================================== */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('font/fontawesome-webfont.eot?v=3.1.0');
-  src: url('font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'),
-       url('font/fontawesome-webfont.woff?v=3.1.0') format('woff'),
-       url('font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'),
-       url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  src: url('font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
+       url('font/fontawesome-webfont.woff?v=3.2.1') format('woff'),
+       url('font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'),
+       url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-.FontAwesome-meta {
+.FontAwesome {
 	display: inline-block;
 	width: auto;
 	height: auto;
-	margin-right: emCalc(10px);
 	-webkit-font-smoothing: antialiased;
 	color: $primary-color;
 	line-height: inherit;
@@ -164,7 +163,7 @@ fieldset {
 	vertical-align: baseline;
 	speak: none;
 }
-a.FontAwesome-meta:hover {
+a.FontAwesome:hover {
 	color: $anchor-font-color-hover;
 }
 
@@ -173,12 +172,16 @@ a.FontAwesome-meta:hover {
    Header
    ========================================================================== */
 
-// wp-adminbar & fixed topbar
+// wp-adminbar
 .wp-toolbar {
 	margin-top: 28px;
 }
 .wp-toolbar #navbar.fixed {
 	top: 28px;
+}
+// if your not using a sticky top-bar then comment the style below
+.no-js body {
+	padding-top: $topbar-height;
 }
 
 // Only needed when you use a input within topbar (i.e. searchform)
@@ -191,7 +194,7 @@ a.FontAwesome-meta:hover {
 .site-meta {
 	@extend .container;
 }
-.site-meta hgroup {
+.site-meta section {
 	@include grid-column($columns:12);
 }
 .site-title {
@@ -199,6 +202,10 @@ a.FontAwesome-meta:hover {
 }
 .site-subtitle {
 	margin-bottom: 0;
+	clear: left;
+	font-size: 0.52272727em;
+	line-height: 1.4;
+
 }
 
 // The styles for the search form
@@ -206,15 +213,20 @@ a.FontAwesome-meta:hover {
 	@extend .container;
 }
 .searchinput {
-	@include grid-column($columns:8, $collapse:true);
+	@include grid-column($columns:9, $collapse:true);
+	input {
+		@include side-radius($side:left, $radius:$button-radius);
+	}
 }
 .searchsubmit {
-	@include grid-column($columns:4, $last-column:true, $collapse:true);
-	input[type="submit"] {
+	@include grid-column($columns:3, $last-column:true, $collapse:true);
+	input {
 		@include button($padding:false, $full-width:false, $is-input:false);
 		@include prefix-postfix-base;
-		@include radius($radius:0);
 		@include side-radius($side:right, $radius:$button-radius);
+		@extend .FontAwesome;
+		margin-right: emCalc(10px);
+		font-family: 'FontAwesome', $body-font-family;
 	}
 }
 
@@ -267,6 +279,8 @@ figcaption {
 .category-list {
 	@include crumb-container;
 	@include radius($crumb-radius);
+	@extend .FontAwesome;
+	font-size: "FontAwesome", $body-font-family;
 	&>* {
 	 	@include crumbs;
 	}
@@ -281,6 +295,7 @@ figcaption {
 }
 .page-numbers {
 	@include pagination;
+	font-family: "FontAwesome", $body-font-family;
 	span.current {
 		display: block;
 		padding: $pagination-link-pad;
@@ -288,6 +303,7 @@ figcaption {
 		color: $pagination-link-current-font-color;
 		font-weight: $pagination-link-current-font-weight;
 	}
+
 }
 .page-links-title {
 	display: block;
@@ -302,6 +318,11 @@ h1.entry-title {
 // more-link
 .more-link {
 	@extend .nowrap;
+	&:after {
+		@extend .FontAwesome;
+		margin-left: emCalc(10px);
+		content: '\f178';
+	}
 }
 
 // (Post) entry-meta
@@ -316,7 +337,8 @@ h1.entry-title {
 	.featured-post {
 		@extend .nowrap;
 		&:before {
-			@extend .FontAwesome-meta;
+			@extend .FontAwesome;
+			margin-right: emCalc(10px);
 			content: '\f08D';
 		}
 	}
@@ -324,7 +346,8 @@ h1.entry-title {
 	.date {
 		@extend .nowrap;
 		a:before {
-			@extend .FontAwesome-meta;
+			@extend .FontAwesome;
+			margin-right: emCalc(10px);
 			content: '\f073';
 		}
 	}
@@ -339,7 +362,8 @@ h1.entry-title {
 			font-size: emCalc(16px);
 		}
 		a:before {
-			@extend .FontAwesome-meta;
+			@extend .FontAwesome;
+			margin-right: emCalc(10px);
 			content: '\f007';
 		}
 	}
@@ -347,7 +371,8 @@ h1.entry-title {
 	.edit-link {
 		@extend .nowrap;
 		a:before {
-			@extend .FontAwesome-meta;
+			@extend .FontAwesome;
+			margin-right: emCalc(10px);
 			content: '\f044';
 		}
 	}
@@ -355,12 +380,34 @@ h1.entry-title {
 .comments-link {
 	@extend .text-center;
 }
+.leave-reply {
+	@extend .nowrap;
+	a:before {
+		@extend .FontAwesome;
+		margin-right: emCalc(10px);
+		content: '\f086';
+	}
+}
+.reply-closed {
+	@extend .nowrap;
+	&:before {
+		@extend .FontAwesome;
+		margin-right: emCalc(10px);
+		content: '\f023';
+	}
+}
 .post-tags {
 	margin-top: emCalc(20px);
 	@extend .text-center;
 }
 .post-tag {
 	@include label($bg:$secondary-color, $radius:true);
+	@extend .nowrap;
+	a:before {
+		@extend .FontAwesome;
+		margin-right: emCalc(10px);
+		content: '\f02B';
+	}
 }
 
 /* author-bio
@@ -374,12 +421,20 @@ h1.entry-title {
 .author-avatar {
 	float: left;
 	margin: 0 emCalc(20px) emCalc(10px) 0;
+	img {
+		@include radius;
+	}
 }
 .author-description {
 	h2 {
 		font-size: emCalc(25px);
 		margin-top: 0;
 	}
+}
+.author-link:after {
+	@extend .FontAwesome;
+	margin-right: 0;
+	content: '\f178';
 }
 
 
@@ -458,6 +513,13 @@ h1.entry-title {
 	}
 }
 
+// Container for the footer widget's
+.footer-sidebar {
+	h5 {
+		margin-top: 0;
+	}
+}
+
 // widget's footer sizes
 .widget-large {
 	@extend .col;
@@ -469,9 +531,9 @@ h1.entry-title {
 	@extend .col;
 }
 
-// Contains some site information
-.site-info {
-	@extend .col;
+// Container for .site-info and .footer-menu
+.site-footer-meta {
+	padding: emCalc(5px) 0;
 }
 // Contains the footer menu
 .footer-menu {
@@ -480,6 +542,13 @@ h1.entry-title {
 		@include inline-list;
 		margin-bottom: 0;
 		float: left;
+	}
+}
+// Contains some site information
+.site-info {
+	@extend .col;
+	p {
+		margin-bottom: 0;
 	}
 }
 
@@ -495,15 +564,16 @@ h1.entry-title {
 		@include grid-column($columns:4, $collapse:null, $float:false);
 	}
 
-	// Contains some site information
-	.site-info {
-		@include grid-column($columns:6, $collapse:null, $float:false);
-	}
 	// Contains the footer menu
 	.footer-menu {
-		@include grid-column($columns:6, $collapse:null, $float:false, $last-column:true);
+		@include grid-column($columns:6, $collapse:null, $push:6, $float:false);
 		ul {
 			float: right;
 		}
 	}
+	// Contains some site information
+	.site-info {
+		@include grid-column($columns:6, $collapse:null, $pull:6, $float:false);
+	}
+
 }

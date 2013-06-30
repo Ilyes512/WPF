@@ -65,6 +65,7 @@ $default-float: left;
 $include-html-classes: false; //true;
 $include-print-styles: true;
 $include-html-global-classes: true; //$include-html-classes;
+$include-html-inline-list-classes: $include-html-classes;
 $include-html-type-classes: true; //$include-html-classes;
 $include-html-grid-classes: true; //$include-html-classes;
 $include-html-visibility-classes: true; //$include-html-classes;
@@ -136,8 +137,8 @@ $include-html-tooltip-classes: $include-html-classes;
 
 // Heading font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $header-font-weight: bold;
+$header-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: 300;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
@@ -524,7 +525,7 @@ $list-style-position: inside; //outside;
 // Slash between breadcrumbs
 
 // $crumb-slash-color: #aaa;
-// $crumb-slash: "/";
+$crumb-slash: "\f054";
 
 //
 // Clearing Variables
