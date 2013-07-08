@@ -1,4 +1,9 @@
 <?php
+/**************************************************************************
+ *    >MAIL
+ **************************************************************************/
+
+
 /**
  * This is the logic for template tpl-contact.php for the WordPress WPF theme
  *
@@ -37,7 +42,7 @@ $wpf_c_settings = array(
 	'setup'      => false,
 );
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------^^^-CONFIG-^^^------------------------------------------------------------------------------------------
 
 $wpf_c = array(
 	// these keynames equal the $_POST input:
@@ -136,10 +141,10 @@ if ( $wpf_c_settings['setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		//
 
 		// Retrieve the template and replace the template variables
-		if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/email_template/contact.tpl' ) ) {
-			$message = file_get_contents( get_stylesheet_directory() . '/inc/email_template/contact.tpl' );
+		if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/wpf/email_template/contact.tpl' ) ) {
+			$message = file_get_contents( get_stylesheet_directory() . '/inc/wpf/email_template/contact.tpl' );
 		} else {
-			$message = file_get_contents( get_template_directory() . '/inc/email_template/contact.tpl' );
+			$message = file_get_contents( get_template_directory() . '/inc/wpf/email_template/contact.tpl' );
 		}
 		$message = str_replace( '%name%',    $wpf_c_values['c_name'],    $message );
 		$message = str_replace( '%email%',   $wpf_c_values['c_email'],   $message );
@@ -154,13 +159,13 @@ if ( $wpf_c_settings['setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		}
 
 		// Start sending the mail
-		if ( ! $phpmailer->Send() ) {
-			$wpf_c['c_feedback']['msg']   = __( 'Something went wrong sending the mail! Try again or come back later.', 'wpf' );
-			$wpf_c['c_feedback']['class'] = 'alert';
-			$wpf_c['show_form']           = 0;
-		} else {
+		if ( $phpmailer->Send() ) {
 			$wpf_c['c_feedback']['msg']   = __( 'Mail sended! We will contact you as soon as possible!', 'wpf' );
 			$wpf_c['c_feedback']['class'] = 'succes';
+			$wpf_c['show_form']           = 0;
+		} else {
+			$wpf_c['c_feedback']['msg']   = __( 'Something went wrong sending the mail! Try again or come back later.', 'wpf' );
+			$wpf_c['c_feedback']['class'] = 'alert';
 			$wpf_c['show_form']           = 0;
 		}
 	}
