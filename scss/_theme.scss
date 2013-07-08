@@ -311,22 +311,24 @@ figcaption {
 }
 
 // Pagination
-.page-links {
-	@include pagination($center:true, $base-style:false);
+.pagination-container {
+	@include pagination-container($center:true);
+	ul.page-numbers {
+		@include pagination($center:true, $base-style:false);
+	}
 }
-.page-numbers {
-	@include pagination;
+ul.page-numbers {
+	@include pagination($center:true, $base-style:true, $use-default-classes:false);
 	font-family: "FontAwesome", $body-font-family;
 	span.current {
-		display: block;
+		@include pagination-current-item($has-anchor: false);
+		display: inline-block;
+		/* @todo: Delete the 2 properties beneath, this will probably be fixed in a future commit to foundation (it's now on a commit request) */
+		height: auto;
 		padding: $pagination-link-pad;
-		background: $pagination-link-current-background;
-		color: $pagination-link-current-font-color;
-		font-weight: $pagination-link-current-font-weight;
 	}
-
 }
-.page-links-title {
+.pagination-title {
 	display: block;
 	margin-bottom: emCalc(10px);
 }

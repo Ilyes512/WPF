@@ -389,7 +389,6 @@ if ( ! function_exists( 'temp_wp_link_pages' ) ) {
 		if ( $echo ) {
 			echo $output;
 		}
-
 		return $output;
 	}
 }
@@ -493,7 +492,7 @@ if ( ! function_exists( 'wpf_paginate_link' ) ) {
 
 		// Display the pagination if more than one page is found
 		if ( $paginate_links )
-			echo '<div class="page-links">' . $paginate_links . '</div><!-- .page-links -->';
+			echo '<div class="pagination-container">' . $paginate_links . '</div>';
 	} // end wpf_paginate_link()
 }
 
@@ -507,7 +506,7 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 		switch ( true ) {
 			case is_single() || is_page();
 				temp_wp_link_pages( array(
-					'before'           => '<div class="page-links"><ul class="page-numbers">',
+					'before'           => '<div class="pagination-container"><ul class="page-numbers">',
 					'after'            => '</ul></div>',
 					'next_or_number'   => 'next_and_number',
 					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
@@ -516,7 +515,7 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 				break;
 			case is_search();
 				temp_wp_link_pages( array(
-					'before'           => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
+					'before'           => '<div class="pagination-container"><span class="pagination-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
 					'after'            => '</ul></div>',
 					'next_or_number'   => 'next_and_number',
 					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
