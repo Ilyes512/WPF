@@ -1,7 +1,7 @@
 <?php
 
 /**************************************************************************
-		Table of contents
+    Table of contents
  **************************************************************************
  *    >SETTINGS
  *    >WPF SETUP
@@ -26,7 +26,7 @@
  *
  * Required: see the function wpf_scripts_and_styles()
  */
-define('WPF_VERSION', '0.2.6');
+define('WPF_VERSION', '0.2.7');
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false
