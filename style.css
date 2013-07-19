@@ -1711,7 +1711,7 @@ blockquote p {
   background: #111111;
 }
 .contain-to-grid .top-bar {
-  margin-bottom: 0;
+  margin-bottom: 1.875em;
 }
 
 .fixed {
@@ -1756,7 +1756,7 @@ blockquote p {
 .top-bar .name {
   height: 45px;
   margin: 0;
-  font-size: 16px;
+  font-size: 16;
 }
 .top-bar .name h1 {
   line-height: 45px;
@@ -1837,7 +1837,7 @@ blockquote p {
   height: auto;
   display: block;
   background: #222222;
-  font-size: 16px;
+  font-size: 16;
   margin: 0;
 }
 .top-bar-section .divider,
@@ -1932,6 +1932,9 @@ blockquote p {
   font-weight: normal;
   padding: 8px 15px;
 }
+.top-bar-section .dropdown li a.parent-link {
+  font-weight: bold;
+}
 .top-bar-section .dropdown li.title h5 {
   margin-bottom: 0;
 }
@@ -1996,6 +1999,7 @@ blockquote p {
   .contain-to-grid .top-bar {
     max-width: 62.5em;
     margin: 0 auto;
+    margin-bottom: 1.875em;
   }
 
   .top-bar-section {
@@ -2043,7 +2047,7 @@ blockquote p {
   .top-bar-section .has-dropdown.moved > .dropdown {
     visibility: hidden;
   }
-  .top-bar-section .has-dropdown.hover > .dropdown {
+  .top-bar-section .has-dropdown.hover > .dropdown, .top-bar-section .has-dropdown.not-click:hover > .dropdown {
     visibility: visible;
   }
   .top-bar-section .has-dropdown .dropdown li.has-dropdown > a:after {
@@ -2663,7 +2667,7 @@ figcaption {
   cursor: default;
 }
 .category-list > *:before {
-  content: "\f054";
+  content: "/";
   color: #aaaaaa;
   margin: 0 0.75em;
   position: relative;
@@ -2717,6 +2721,8 @@ ul.page-numbers li {
   display: inline-block;
 }
 ul.page-numbers span.current {
+  height: auto;
+  padding: 0.0625em 0.4375em 0.0625em;
   background: #2ba6cb;
   color: white;
   font-weight: bold;
@@ -3000,7 +3006,7 @@ form#wpf_contact div.error input:focus, form#wpf_contact div.error textarea:focu
 form#wpf_contact div.error small {
   display: block;
   padding: 0.375em 0.25em;
-  margin-top: -1.3125em;
+  margin-top: 0;
   margin-bottom: 1em;
   font-size: 0.75em;
   font-weight: bold;
