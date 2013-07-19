@@ -623,7 +623,7 @@ form#wpf_contact {
 			small {
 				@extend .col;
 				@include form-error-message;
-				@include side-radius(bottom, $global-radius);
+				@include side-radius(bottom);
 			}
 		}
 	}

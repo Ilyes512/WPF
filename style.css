@@ -1711,7 +1711,7 @@ blockquote p {
   background: #111111;
 }
 .contain-to-grid .top-bar {
-  margin-bottom: 1.875em;
+  margin-bottom: 0;
 }
 
 .fixed {
@@ -1728,7 +1728,7 @@ blockquote p {
   line-height: 45px;
   position: relative;
   background: #111111;
-  margin-bottom: 1.875em;
+  margin-bottom: 0;
 }
 .top-bar ul {
   margin-bottom: 0;
@@ -1999,7 +1999,7 @@ blockquote p {
   .contain-to-grid .top-bar {
     max-width: 62.5em;
     margin: 0 auto;
-    margin-bottom: 1.875em;
+    margin-bottom: 0;
   }
 
   .top-bar-section {
