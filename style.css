@@ -8,7 +8,7 @@ Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
 */
-/* normalize.css v2.1.1 | MIT License | git.io/normalize */
+/* normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -49,9 +49,11 @@ audio:not([controls]) {
 }
 
 /**
- * Address styling not present in IE 8/9.
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-[hidden] {
+[hidden],
+template {
   display: none;
 }
 
@@ -59,25 +61,17 @@ audio:not([controls]) {
    Base
    ========================================================================== */
 /**
- * 1. Prevent system color scheme's background color being used in Firefox, IE,
- *    and Opera.
- * 2. Prevent system color scheme's text color being used in Firefox, IE, and
- *    Opera.
- * 3. Set default font family to sans-serif.
- * 4. Prevent iOS text size adjust after orientation change, without disabling
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
-  background: #fff;
-  /* 1 */
-  color: #000;
-  /* 2 */
   font-family: sans-serif;
-  /* 3 */
+  /* 1 */
   -ms-text-size-adjust: 100%;
-  /* 4 */
+  /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 4 */
+  /* 2 */
 }
 
 /**
@@ -90,6 +84,13 @@ body {
 /* ==========================================================================
    Links
    ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
@@ -512,12 +513,16 @@ select {
 .row:after {
   clear: both;
 }
-.row.collapse .column,
-.row.collapse .columns {
+.row.collapse > .column,
+.row.collapse > .columns {
   position: relative;
   padding-left: 0;
   padding-right: 0;
   float: left;
+}
+.row.collapse .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 .row .row {
   width: auto;
@@ -1756,7 +1761,7 @@ blockquote p {
 .top-bar .name {
   height: 45px;
   margin: 0;
-  font-size: 16;
+  font-size: 16px;
 }
 .top-bar .name h1 {
   line-height: 45px;
@@ -1837,7 +1842,7 @@ blockquote p {
   height: auto;
   display: block;
   background: #222222;
-  font-size: 16;
+  font-size: 16px;
   margin: 0;
 }
 .top-bar-section .divider,
@@ -1862,28 +1867,28 @@ blockquote p {
   background: #2ba6cb;
   font-size: 0.8125em;
 }
-.top-bar-section ul li > a.button.hover {
+.top-bar-section ul li > a.button:hover {
   background: #2284a1;
 }
 .top-bar-section ul li > a.button.secondary {
   background: #e9e9e9;
 }
-.top-bar-section ul li > a.button.secondary.hover {
+.top-bar-section ul li > a.button.secondary:hover {
   background: #d0d0d0;
 }
 .top-bar-section ul li > a.button.success {
   background: #5da423;
 }
-.top-bar-section ul li > a.button.success.hover {
+.top-bar-section ul li > a.button.success:hover {
   background: #457a1a;
 }
 .top-bar-section ul li > a.button.alert {
   background: #c60f13;
 }
-.top-bar-section ul li > a.button.alert.hover {
+.top-bar-section ul li > a.button.alert:hover {
   background: #970b0e;
 }
-.top-bar-section ul li.hover > a {
+.top-bar-section ul li:hover > a {
   background: #090909;
   color: white;
 }
@@ -2024,7 +2029,7 @@ blockquote p {
     line-height: 45px;
     background: #111111;
   }
-  .top-bar-section li a:not(.button).hover {
+  .top-bar-section li a:not(.button).hover, .top-bar-section li a:not(.button):hover {
     background: black;
   }
   .top-bar-section .has-dropdown > a {
@@ -3006,7 +3011,7 @@ form#wpf_contact div.error input:focus, form#wpf_contact div.error textarea:focu
 form#wpf_contact div.error small {
   display: block;
   padding: 0.375em 0.25em;
-  margin-top: 0;
+  margin-top: -1.3125em;
   margin-bottom: 1em;
   font-size: 0.75em;
   font-weight: bold;

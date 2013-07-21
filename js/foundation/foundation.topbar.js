@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.3.0',
+    version: '4.3.1',
 
     settings : {
       index : 0,
@@ -14,7 +14,7 @@
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
-      mobile_show_parent_link: true,
+      mobile_show_parent_link: false,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -140,7 +140,8 @@
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          if (self.breakpoint()) {
+          if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
+
             e.preventDefault();
 
             var $this = $(this),
@@ -161,7 +162,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.outerHeight(titlebar, true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.height(titlebar));
           }
         });
 
@@ -209,7 +210,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.outerHeight(titlebar, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.height(titlebar));
         }
 
         setTimeout(function () {

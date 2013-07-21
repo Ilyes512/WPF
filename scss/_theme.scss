@@ -131,7 +131,7 @@ fieldset {
 // Top-bar-fix
 .top-bar input[type="text"],
 .top-bar input[type="submit"] {
-	height: emCalc(32px);
+	height: em-calc(32);
 	margin-bottom: 0;
 }
 
@@ -246,7 +246,7 @@ a.FontAwesome:hover {
 		@include prefix-postfix-base;
 		@include side-radius($side:right, $radius:$button-radius);
 		@extend .FontAwesome;
-		margin-right: emCalc(10px);
+		margin-right: em-calc(10);
 		font-family: 'FontAwesome', $body-font-family;
 	}
 }
@@ -291,7 +291,7 @@ img[class*="wp-image-"] {
 }
 figcaption {
 	display: block;
-	padding: emCalc(5px) 0 emCalc(20px) 0;
+	padding: em-calc(5 0 20 0);
 	font-style: italic;
 	text-decoration: underline;
 }
@@ -330,7 +330,7 @@ ul.page-numbers {
 }
 .pagination-title {
 	display: block;
-	margin-bottom: emCalc(10px);
+	margin-bottom: em-calc(10);
 }
 
 // Post entry-title
@@ -343,7 +343,7 @@ h1.entry-title {
 	@extend .nowrap;
 	&:after {
 		@extend .FontAwesome;
-		margin-left: emCalc(10px);
+		margin-left: em-calc(10);
 		content: '\f178';
 	}
 }
@@ -354,14 +354,14 @@ h1.entry-title {
 	color: $primary-color;
 	& > span {
 		display: inline-block;
-		margin: 0 emCalc(20px) emCalc(15px) 0;
+		margin: em-calc(0 20 15 0);
 	}
 	// featured-post
 	.featured-post {
 		@extend .nowrap;
 		&:before {
 			@extend .FontAwesome;
-			margin-right: emCalc(10px);
+			margin-right: em-calc(10);
 			content: '\f08D';
 		}
 	}
@@ -370,7 +370,7 @@ h1.entry-title {
 		@extend .nowrap;
 		a:before {
 			@extend .FontAwesome;
-			margin-right: emCalc(10px);
+			margin-right: em-calc(10);
 			content: '\f073';
 		}
 	}
@@ -382,11 +382,11 @@ h1.entry-title {
 		padding: 0;
 		&.vcard .fn {
 			font-weight: normal;
-			font-size: emCalc(16px);
+			font-size: em-calc(16);
 		}
 		a:before {
 			@extend .FontAwesome;
-			margin-right: emCalc(10px);
+			margin-right: em-calc(10);
 			content: '\f007';
 		}
 	}
@@ -395,7 +395,7 @@ h1.entry-title {
 		@extend .nowrap;
 		a:before {
 			@extend .FontAwesome;
-			margin-right: emCalc(10px);
+			margin-right: em-calc(10);
 			content: '\f044';
 		}
 	}
@@ -407,7 +407,7 @@ h1.entry-title {
 	@extend .nowrap;
 	a:before {
 		@extend .FontAwesome;
-		margin-right: emCalc(10px);
+		margin-right: em-calc(10);
 		content: '\f086';
 	}
 }
@@ -415,12 +415,12 @@ h1.entry-title {
 	@extend .nowrap;
 	&:before {
 		@extend .FontAwesome;
-		margin-right: emCalc(10px);
+		margin-right: em-calc(10);
 		content: '\f023';
 	}
 }
 .post-tags {
-	margin-top: emCalc(20px);
+	margin-top: em-calc(20);
 	@extend .text-center;
 }
 .post-tag {
@@ -428,7 +428,7 @@ h1.entry-title {
 	@extend .nowrap;
 	a:before {
 		@extend .FontAwesome;
-		margin-right: emCalc(10px);
+		margin-right: em-calc(10);
 		content: '\f02B';
 	}
 }
@@ -439,18 +439,18 @@ h1.entry-title {
 	@extend .panel;
 }
 .single .author-info {
-	margin-top: emCalc(40px);
+	margin-top: em-calc(40);
 }
 .author-avatar {
 	float: left;
-	margin: 0 emCalc(20px) emCalc(10px) 0;
+	margin: em-calc(0 20 10 0);
 	img {
 		@include radius;
 	}
 }
 .author-description {
 	h2 {
-		font-size: emCalc(25px);
+		font-size: em-calc(25);
 		margin-top: 0;
 	}
 }
@@ -475,12 +475,12 @@ h1.entry-title {
 	.alignright {
 		display: inline-block;
 		float: right;
-		margin: 0 0 emCalc(10px) emCalc(10px);
+		margin: em-calc(0 0 10 10);
 	}
 	.alignleft {
 		display: inline-block;
 		float: left;
-		margin: 0 emCalc(10px) emCalc(10px) 0;
+		margin: em-calc(0 10 10 0);
 	}
 
 	// img / caption
@@ -490,7 +490,7 @@ h1.entry-title {
 		margin-right: auto;
 	}
 	figcaption {
-		padding: emCalc(5px) 0 0 0;
+		padding: em-calc(5 0 0 0);
 	}
 }
 
@@ -556,7 +556,7 @@ h1.entry-title {
 
 // Container for .site-info and .footer-menu
 .site-footer-meta {
-	padding: emCalc(5px) 0;
+	padding: em-calc(5 0);
 }
 // Contains the footer menu
 .footer-menu {
@@ -635,7 +635,7 @@ form#wpf_contact {
 		@include radius;
 	}
 	textarea {
-		min-height: emCalc(200px);
+		min-height: em-calc(200);
 		@include radius;
 	}
 	input[type="submit"] {
@@ -653,11 +653,11 @@ form#wpf_contact {
 			text-align: right;
 			// @todo See if push request get's accepted or not. Either remove this comment or use the mixin
 			// @include form-label($alignment:inline, $base-style:false);
-			// Will not work cause it will set padding: $form-spacing / 2 + emCalc($input-border-width * 2) 0;
+			// Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
 			// I have made a push request to change this.
 			margin: 0 0 $form-spacing 0;
-			padding-top: $form-spacing / 2 + emCalc($input-border-width * 2);
-			padding-bottom: $form-spacing / 2 + emCalc($input-border-width * 2);
+			padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
+			padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
 		}
 		input[type="text"], input[type="email"], textarea, div.error small {
 			@include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
