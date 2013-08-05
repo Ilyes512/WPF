@@ -2192,7 +2192,7 @@ textarea {
   color: #000;
 }
 
-.container, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
+.container, .boxed, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -2201,11 +2201,11 @@ textarea {
   max-width: 62.5em;
   *zoom: 1;
 }
-.container:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.container:before, .boxed:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .container:after, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   content: " ";
   display: table;
 }
-.container:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.container:after, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   clear: both;
 }
 
@@ -2242,6 +2242,12 @@ textarea {
   float: left;
 }
 
+@media only screen and (min-width: 768px) {
+  .boxed {
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+  }
+}
 form {
   margin: 0 0 1em;
 }
@@ -2480,12 +2486,7 @@ a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta
   float: left;
 }
 
-.site-title {
-  margin: 0;
-}
-
-.site-subtitle {
-  margin-bottom: 0;
+.site-description {
   clear: left;
   font-size: 0.52272727em;
   line-height: 1.4;
@@ -2790,7 +2791,7 @@ h1.entry-title {
 }
 
 .leave-reply a:before {
-  margin-right: 0.625em;
+  margin-right: 0.3125em;
   content: '\f086';
 }
 
@@ -2849,12 +2850,12 @@ h1.entry-title {
 }
 
 @media only screen and (min-width: 768px) {
-  .site-content {
+  .sidebar_right .site-content, .site-content {
     position: relative;
     width: 66.66667%;
   }
 
-  .leftsb .site-content {
+  .sidebar_left .site-content {
     position: relative;
     padding-left: 0.9375em;
     padding-right: 0.9375em;
@@ -2893,13 +2894,13 @@ h1.entry-title {
 }
 
 @media only screen and (min-width: 768px) {
-  .sidebar-container {
+  .sidebar_right .sidebar-container, .sidebar-container {
     position: relative;
     width: 33.33333%;
     float: right;
   }
 
-  .leftsb .sidebar-container {
+  .sidebar_left .sidebar-container {
     position: relative;
     padding-left: 0.9375em;
     padding-right: 0.9375em;
@@ -2924,7 +2925,7 @@ h1.entry-title {
 }
 
 .site-footer-meta {
-  padding: 0.3125em 0;
+  padding: 1.25em 0;
 }
 
 .footer-menu ul {

@@ -22,6 +22,15 @@
 
 
 /**
+ * Get the WPF settings and store them in a global variable for reusage.
+ *
+ *
+ */
+global $wpf_settings;
+$wpf_settings = get_option( 'wpf_settings' );
+
+
+/**
  * The current WPF version (used to add version number to WPF css/js files).
  *
  * Required: see the function wpf_scripts_and_styles()
@@ -48,6 +57,7 @@ define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
  *    >WPF SETUP
  **************************************************************************/
 
+
 /**
  * Sets up the content width value based on the theme's design.
  *
@@ -64,6 +74,20 @@ add_action( 'after_setup_theme', 'wpf_setup' );
  */
 if ( ! function_exists( 'wpf_setup' ) ) {
 	function wpf_setup() {
+
+		/*
+		 * Check if the WPF theme options have been created. If not, then use default
+		 * settings.
+		 *
+		 */
+		if ( false === $GLOBALS['wpf_settings'] ) {
+			$GLOBALS['wpf_settings'] = wpf_get_default_options();
+			update_option( 'wpf_settings', $GLOBALS['wpf_settings'] );
+		} elseif ( $GLOBALS['wpf_settings']['wpf_version'] != WPF_VERSION )	 {
+			$GLOBALS['wpf_settings'] = wp_parse_args( $GLOBALS['wpf_settings'], wpf_get_default_options() );
+			update_option( 'wpf_settings', $GLOBALS['wpf_settings'] );
+		}
+
 		/*
 		 * Makes wpf available for translation.
 		 *

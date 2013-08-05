@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-07-01 00:51+0100\n"
-"PO-Revision-Date: 2013-07-01 00:59+0100\n"
+"POT-Creation-Date: 2013-08-12 21:00+0100\n"
+"PO-Revision-Date: 2013-08-12 21:01+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -50,7 +50,7 @@ msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 msgid "About %s"
 msgstr "Over %s"
 
-#: author-bio.php:21 functions.php:994
+#: author-bio.php:21 inc/wpf/misc.inc.php:51
 #, php-format
 msgid "View all posts by %s"
 msgstr "Bekijk alle artikelen van %s"
@@ -159,151 +159,15 @@ msgstr "Reactie"
 msgid "Submit Comment"
 msgstr "Plaats een reactie"
 
-#: footer.php:24
-#, php-format
-msgid ""
-"&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
-"\"nofollow\" title=\"WPD - Wordpress Foundation\">Visit the repository on "
-"github!</a>"
-msgstr ""
-"&copy; %s Gemaakt met WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
-"\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
-"broncode!</a>"
-
-#: functions.php:133
+#: functions.php:138
 msgid "Primary Navigation"
 msgstr "Primaire menu"
 
-#: functions.php:134
+#: functions.php:139
 msgid "Footer Navigation"
 msgstr "Voet menu"
 
-#: functions.php:338 functions.php:519
-msgid "Pages:"
-msgstr "Pagina's:"
-
-#: functions.php:344
-msgid "Next page"
-msgstr "Volgende pagina"
-
-#: functions.php:345
-msgid "Previous page"
-msgstr "Vorige pagina"
-
-#: functions.php:489
-msgid "&#xf053; Previous"
-msgstr "&#xf053; Vorige"
-
-#: functions.php:490
-msgid "Next &#xf054;"
-msgstr "Volgende &#xf054;"
-
-#: functions.php:513 functions.php:522
-msgid "Next page &#xf054;"
-msgstr "Volgende pagina &#xf054;"
-
-#: functions.php:514 functions.php:523
-msgid "&#xf053; Previous page"
-msgstr "&#xf053; Vorige pagina"
-
-#: functions.php:632 functions.php:636
-msgid "Add a menu"
-msgstr "Voeg een menu toe"
-
-#: functions.php:718
-msgid "Home"
-msgstr "Start"
-
-#: functions.php:756
-msgid "Sidebar"
-msgstr "Zijbalk"
-
-#: functions.php:758
-msgid "This is the sidebar next to the maincontent of a page"
-msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
-
-#: functions.php:766
-msgid "Footer 1"
-msgstr "Voet 1"
-
-#: functions.php:768 functions.php:778 functions.php:788
-msgid "An optional widget area for your site footer"
-msgstr "Een optionele widget gebied voor de voet van de pagina"
-
-#: functions.php:776
-msgid "Footer 2"
-msgstr "Voet 2"
-
-#: functions.php:786
-msgid "Footer 3"
-msgstr "Voet 3"
-
-#: functions.php:922
-msgid "Go back to the homepage"
-msgstr "Terug naar de startpagina"
-
-#: functions.php:980
-msgid "Sticky"
-msgstr "Sticky"
-
-#: functions.php:985
-#, php-format
-msgid "Permalink to the month archive for %s"
-msgstr "Permalink naar de maand archief van %s"
-
-#: functions.php:1010
-#, php-format
-msgid "Daily Archives: %s"
-msgstr "Dagelijks archief: %s"
-
-#: functions.php:1013
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr "Maandelijks archief: %s"
-
-#: functions.php:1013
-msgctxt "monthly archives date format"
-msgid "F Y"
-msgstr "F Y"
-
-#: functions.php:1016
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr "Jaarlijkse archief: %s"
-
-#: functions.php:1016
-msgctxt "yearly archives date format"
-msgid "Y"
-msgstr "Y"
-
-#: functions.php:1030
-#, php-format
-msgid "The search results for \"%s\""
-msgstr "De zoekresultaten voor \"%s\""
-
-#: functions.php:1034
-#, php-format
-msgid "Author's archive: %s"
-msgstr "Auteurs archief: %s"
-
-#: functions.php:1037
-msgid "Archives"
-msgstr "Archief"
-
-#: functions.php:1065 content/content.php:25
-#, php-format
-msgid "Permalink to %s"
-msgstr "Permalink naar %s"
-
-#: header.php:31
-msgid "back"
-msgstr "terug"
-
-#: header.php:34
-msgid "Menu"
-msgstr "Menu"
-
-#: header.php:53
+#: header.php:32
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google."
@@ -392,6 +256,11 @@ msgstr ""
 msgid " - page %d"
 msgstr " - pagina %d"
 
+#: content/content.php:25 inc/wpf/misc.inc.php:124
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink naar %s"
+
 #: content/content.php:42
 msgid "Continue reading"
 msgstr "Lees verder"
@@ -416,7 +285,7 @@ msgstr "% reacties"
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
-#: inc/mail.inc.php:66
+#: inc/wpf/mail.inc.php:71
 msgid ""
 "The settings in /inc/mail.inc.php haven't been set. Please adjust the "
 "settings."
@@ -424,28 +293,28 @@ msgstr ""
 "De instelling in /inc/mail.inc.php zijn niet bijgewerkt. Pas deze instelling "
 "alstublieft aan."
 
-#: inc/mail.inc.php:69
+#: inc/wpf/mail.inc.php:74
 msgid "Please try again later! The contact form hasn't been setup yet."
 msgstr ""
 "Probeer het later opnieuw! De contact formulier is nog niet geïnstalleerd."
 
-#: inc/mail.inc.php:87
+#: inc/wpf/mail.inc.php:92
 msgid "Please fill in a name!"
 msgstr "Vul alstublieft een naam in!"
 
-#: inc/mail.inc.php:92
+#: inc/wpf/mail.inc.php:97
 msgid "This email seems to be incorrect!"
 msgstr "De email blijkt incorrect te zijn!"
 
-#: inc/mail.inc.php:97
+#: inc/wpf/mail.inc.php:102
 msgid "Please fill in a subject!"
 msgstr "Vul alstublieft een onderwerp in!"
 
-#: inc/mail.inc.php:102
+#: inc/wpf/mail.inc.php:107
 msgid "Please let us know what you want to say or ask!"
 msgstr "Laat ons alstublieft weten wat u ons wil zeggen of vragen!"
 
-#: inc/mail.inc.php:108
+#: inc/wpf/mail.inc.php:113
 msgid ""
 "There seem to be 1 or multiple errors. Please check the individual messages "
 "below."
@@ -453,21 +322,359 @@ msgstr ""
 "Er zijn 1 of meerdere foutmeldingen. Controleer alstublieft de individuele "
 "meldingen onder."
 
-#: inc/mail.inc.php:150
+#: inc/wpf/mail.inc.php:155
 msgid "To view the message, please use an HTML compatible email viewer!"
 msgstr ""
 "Om dit bericht te kunnen lezen moet u een email programma gebruiken die HTML "
 "kan lezen."
 
-#: inc/mail.inc.php:158
+#: inc/wpf/mail.inc.php:163
+msgid "Mail sended! We will contact you as soon as possible!"
+msgstr "Uw email is verzonden! We nemen zo spoedig mogelijk contact met u op!"
+
+#: inc/wpf/mail.inc.php:167
 msgid "Something went wrong sending the mail! Try again or come back later."
 msgstr ""
 "Er is wat fout gegaan met het verzenden van uw mail! Probeer het later "
 "opnieuw of kom later terug."
 
-#: inc/mail.inc.php:162
-msgid "Mail sended! We will contact you as soon as possible!"
-msgstr "Uw email is verzonden! We nemen zo spoedig mogelijk contact met u op!"
+#: inc/wpf/misc.inc.php:37 inc/wpf/wp-admin.inc.php:160
+msgid "Sticky"
+msgstr "Sticky"
+
+#: inc/wpf/misc.inc.php:42
+#, php-format
+msgid "Permalink to the month archive for %s"
+msgstr "Permalink naar de maand archief van %s"
+
+#: inc/wpf/misc.inc.php:68
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Dagelijks archief: %s"
+
+#: inc/wpf/misc.inc.php:71
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Maandelijks archief: %s"
+
+#: inc/wpf/misc.inc.php:71
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: inc/wpf/misc.inc.php:74
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Jaarlijkse archief: %s"
+
+#: inc/wpf/misc.inc.php:74
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: inc/wpf/misc.inc.php:88
+#, php-format
+msgid "The search results for \"%s\""
+msgstr "De zoekresultaten voor \"%s\""
+
+#: inc/wpf/misc.inc.php:92
+#, php-format
+msgid "Author's archive: %s"
+msgstr "Auteurs archief: %s"
+
+#: inc/wpf/misc.inc.php:95
+msgid "Archives"
+msgstr "Archief"
+
+#: inc/wpf/navigation.inc.php:24 inc/wpf/navigation.inc.php:203
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: inc/wpf/navigation.inc.php:30
+msgid "Next page"
+msgstr "Volgende pagina"
+
+#: inc/wpf/navigation.inc.php:31
+msgid "Previous page"
+msgstr "Vorige pagina"
+
+#: inc/wpf/navigation.inc.php:173
+msgid "&#xf053; Previous"
+msgstr "&#xf053; Vorige"
+
+#: inc/wpf/navigation.inc.php:174
+msgid "Next &#xf054;"
+msgstr "Volgende &#xf054;"
+
+#: inc/wpf/navigation.inc.php:197 inc/wpf/navigation.inc.php:206
+msgid "Next page &#xf054;"
+msgstr "Volgende pagina &#xf054;"
+
+#: inc/wpf/navigation.inc.php:198 inc/wpf/navigation.inc.php:207
+msgid "&#xf053; Previous page"
+msgstr "&#xf053; Vorige pagina"
+
+#: inc/wpf/navigation.inc.php:316 inc/wpf/navigation.inc.php:320
+msgid "Add a menu"
+msgstr "Voeg een menu toe"
+
+#: inc/wpf/navigation.inc.php:344
+msgid "back"
+msgstr "terug"
+
+#: inc/wpf/navigation.inc.php:353
+msgid "Menu"
+msgstr "Menu"
+
+#: inc/wpf/navigation.inc.php:444
+msgid "Home"
+msgstr "Start"
+
+#: inc/wpf/sidebar.inc.php:17
+msgid "Sidebar"
+msgstr "Zijbalk"
+
+#: inc/wpf/sidebar.inc.php:19
+msgid "This is the sidebar next to the maincontent of a page"
+msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
+
+#: inc/wpf/sidebar.inc.php:27
+msgid "Footer 1"
+msgstr "Voet 1"
+
+#: inc/wpf/sidebar.inc.php:29 inc/wpf/sidebar.inc.php:39
+#: inc/wpf/sidebar.inc.php:49
+msgid "An optional widget area for your site footer"
+msgstr "Een optionele widget gebied voor de voet van de pagina"
+
+#: inc/wpf/sidebar.inc.php:37
+msgid "Footer 2"
+msgstr "Voet 2"
+
+#: inc/wpf/sidebar.inc.php:47
+msgid "Footer 3"
+msgstr "Voet 3"
+
+#: inc/wpf/wp-admin.inc.php:37
+msgid "WPF Theme Options"
+msgstr "WPF thema opties"
+
+#: inc/wpf/wp-admin.inc.php:38
+msgid "WPF Options"
+msgstr "WPF opties"
+
+#: inc/wpf/wp-admin.inc.php:71 inc/wpf/wp-admin.inc.php:504
+#: inc/wpf/wp-admin.inc.php:640
+msgid "Layout Options"
+msgstr "Opmaak opties"
+
+#: inc/wpf/wp-admin.inc.php:78
+msgid "Boxed page"
+msgstr "Blok pagina"
+
+#: inc/wpf/wp-admin.inc.php:84
+msgid "Show the pages boxed"
+msgstr "Maak een blok van de pagina"
+
+#: inc/wpf/wp-admin.inc.php:90
+msgid "Sidebar left"
+msgstr "Zijbalk links"
+
+#: inc/wpf/wp-admin.inc.php:96
+msgid "Show the sidebar to the left"
+msgstr "Laat de zijbalk links zien"
+
+#: inc/wpf/wp-admin.inc.php:109 inc/wpf/wp-admin.inc.php:510
+#: inc/wpf/wp-admin.inc.php:646
+msgid "Post Options"
+msgstr "Bericht opties"
+
+#: inc/wpf/wp-admin.inc.php:116
+msgid "Show author info"
+msgstr "Laat auteur info zien"
+
+#: inc/wpf/wp-admin.inc.php:122
+msgid "Show the author info on the post page"
+msgstr "Bekijk de auteur info op de bericht pagina"
+
+#: inc/wpf/wp-admin.inc.php:136
+msgid "Menu Options"
+msgstr "Menu opties"
+
+#: inc/wpf/wp-admin.inc.php:143
+msgid "Menu Fixed"
+msgstr "Menu vast"
+
+#: inc/wpf/wp-admin.inc.php:152
+msgid "None"
+msgstr "Geen"
+
+#: inc/wpf/wp-admin.inc.php:156
+msgid "Fixed"
+msgstr "Vast"
+
+#: inc/wpf/wp-admin.inc.php:168
+msgid "Menu Location"
+msgstr "Menu lokatie"
+
+#: inc/wpf/wp-admin.inc.php:174
+msgid "Show the menu beneath the title area"
+msgstr "Laat de menu beneden de titel gebied zien"
+
+#: inc/wpf/wp-admin.inc.php:174
+msgid " (Doesn't work when menu is fixed)"
+msgstr " (Werkt niet wanneer de menu \"vast\" staat)"
+
+#: inc/wpf/wp-admin.inc.php:180
+msgid "Center Menu"
+msgstr "Centreer menu"
+
+#: inc/wpf/wp-admin.inc.php:186
+msgid "Center the menu"
+msgstr "Centreer de menu"
+
+#: inc/wpf/wp-admin.inc.php:192
+msgid "Menu Title"
+msgstr "Menu titel"
+
+#: inc/wpf/wp-admin.inc.php:209
+msgid "Title Options"
+msgstr "Titel opties"
+
+#: inc/wpf/wp-admin.inc.php:216
+msgid "Hide site title"
+msgstr "Verberg site titel"
+
+#: inc/wpf/wp-admin.inc.php:222
+msgid "Hide the site title"
+msgstr "Verberg de site titel"
+
+#: inc/wpf/wp-admin.inc.php:228
+msgid "Hide site description"
+msgstr "Verberg site beschrijving"
+
+#: inc/wpf/wp-admin.inc.php:234
+msgid "Hide the site description"
+msgstr "Verberg de site beschrijving"
+
+#: inc/wpf/wp-admin.inc.php:246 inc/wpf/wp-admin.inc.php:487
+msgid "Footer Options"
+msgstr "Voet opties"
+
+#: inc/wpf/wp-admin.inc.php:253
+msgid "Site info"
+msgstr "Site info"
+
+#: inc/wpf/wp-admin.inc.php:297
+#, php-format
+msgid ""
+"<p>&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
+"\"nofollow\" title=\"WPD - Wordpress Foundation\">Visit the repository on "
+"github!</a></p>"
+msgstr ""
+"<p>&copy; %s Gemaakt met WPF<br><a href=\"https://github.com/MekZii/WPF\" "
+"rel=\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
+"broncode!</a></p>"
+
+#: inc/wpf/wp-admin.inc.php:459
+msgid "Are you sure you want to reset this options page?"
+msgstr "Weet u zeker dat u deze optie pagina wilt herstellen?"
+
+#: inc/wpf/wp-admin.inc.php:485
+msgid "General Options"
+msgstr "Algemene opties"
+
+#: inc/wpf/wp-admin.inc.php:486
+msgid "Header Options"
+msgstr "Hoofd opties"
+
+#: inc/wpf/wp-admin.inc.php:496
+msgid ""
+"This is the general settings page for the WPF Theme. Go trough the tabmenu's "
+"and adjust any of the specific elements of the theme."
+msgstr ""
+"Dit zijn de algemene opties voor de WPF thema. Blader door de tabmenu's en "
+"pas de specifieke elementen van de thema aan."
+
+#: inc/wpf/wp-admin.inc.php:497
+msgid "Current version: "
+msgstr "Huidige versie: "
+
+#: inc/wpf/wp-admin.inc.php:505
+msgid "Make some subtile changes to the layout"
+msgstr "Maak wat subtiele veranderingen aan de opmaak"
+
+#: inc/wpf/wp-admin.inc.php:511
+msgid "Make some subtile changes to the post pages"
+msgstr "Maak wat subtiele veranderingen aan de opmaak"
+
+#: inc/wpf/wp-admin.inc.php:517 inc/wpf/wp-admin.inc.php:540
+#: inc/wpf/wp-admin.inc.php:555
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
+
+#: inc/wpf/wp-admin.inc.php:518 inc/wpf/wp-admin.inc.php:541
+#: inc/wpf/wp-admin.inc.php:556
+msgid "Reset Values"
+msgstr "Herstel instellingen"
+
+#: inc/wpf/wp-admin.inc.php:527
+msgid "Menu options"
+msgstr "Menu opties"
+
+#: inc/wpf/wp-admin.inc.php:528
+msgid "Make the menu fixed and/or contained-to-grid"
+msgstr "Maak de menu vast en/of vast-aan-grid"
+
+#: inc/wpf/wp-admin.inc.php:533
+msgid "Title &amp; description"
+msgstr "Titel &amp; beschrijving"
+
+#: inc/wpf/wp-admin.inc.php:534
+msgid "Hide the title and/or the description"
+msgstr "Verberg de titel en/of de beschrijving"
+
+#: inc/wpf/wp-admin.inc.php:548
+msgid "Colophon"
+msgstr "Colofon"
+
+#: inc/wpf/wp-admin.inc.php:549
+msgid "The &copy; copyright text in the footer"
+msgstr "De &copy; auteursrecht test in de voet"
+
+#: inc/wpf/wp-admin.inc.php:641
+msgid "<h5>Testing</h5><p>This is some general input<p>"
+msgstr ""
+
+#: inc/wpf/wp-admin.inc.php:647
+msgid "<p>This is some general input</p>"
+msgstr ""
+
+#: inc/wpf/wp-login.inc.php:48
+msgid "Go back to the homepage"
+msgstr "Terug naar de startpagina"
+
+#~ msgid "Make the menu fixed to the top of the page"
+#~ msgstr "Maak de menu vast aan de bovenkant van de pagina"
+
+#~ msgid "Menu Contained-to-grid"
+#~ msgstr "Menu vast-aan-grid"
+
+#~ msgid "Contain the menu to the grid"
+#~ msgstr "Maak de menu vast aan de grid"
+
+#~ msgid "Make the menu fixed"
+#~ msgstr "Maak de menu vast"
+
+#~ msgid "Layout options"
+#~ msgstr "Opmaak opties"
+
+#, fuzzy
+#~ msgid "Post options"
+#~ msgstr "Opmaak opties"
+
+#~ msgid "Hide header"
+#~ msgstr "Verstop titel"
 
 #~ msgid "Next &raquo;"
 #~ msgstr "Volgende &raquo;"

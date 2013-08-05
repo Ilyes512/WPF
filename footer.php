@@ -4,6 +4,10 @@
  *
  * Contains footer content and the closing of the #page div element.
  */
+
+// Get the global $wpf_settings;
+global $wpf_settings;
+
 wpf_dev( 'footer.php' ); ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<hr>
@@ -21,7 +25,7 @@ wpf_dev( 'footer.php' ); ?>
 				<?php echo ( empty( $wpf_footer_menu ) ) ? '&nbsp;' : $wpf_footer_menu; ?>
 			</div><!-- .footer-menu -->
 			<div class="site-info">
-				<p><?php printf( __( '&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a>', 'wpf' ), date( 'Y' ) ); ?></p>
+				<?php printf( __( $GLOBALS['wpf_settings']['footer_site_info'], 'wpf' ), date( 'Y' ) ); ?>
 			</div><!-- .site-info -->
 		</section><!-- .site-footer-meta -->
 	</footer><!-- #colophon -->

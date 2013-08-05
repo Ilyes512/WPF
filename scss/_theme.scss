@@ -79,6 +79,17 @@ textarea {
 	@include grid-column($columns:$total-columns, $collapse:true)
 }
 
+// Boxed page
+.boxed {
+	@extend .container;
+}
+@media #{$small} {
+	.boxed {
+		border-left: 1px solid $hr-border-color;
+		border-right: 1px solid $hr-border-color;
+	}
+}
+
 // Form
 form {
 	margin: 0 0 $form-spacing;
@@ -200,18 +211,18 @@ a.FontAwesome:hover {
 .wp-toolbar #navbar.fixed {
 	top: 28px;
 }
-// if your not using a sticky top-bar then comment the style below
+// If your not using a sticky top-bar then comment the style below
 .no-js body {
 	padding-top: $topbar-height;
 }
 
-// Only needed when you use a input within topbar (i.e. searchform)
+// Only needed when you use a input within top-bar (i.e. searchform)
 .top-bar .searchsubmit input[type="submit"] {
 	line-height: 2em;
 	height: 2em;
 }
 
-// Site-meta contains the headings (.site-title & .site-subtitle)
+// Site-meta contains the headings (.site-title & .site-description)
 .site-meta {
 	@extend .container;
 }
@@ -219,10 +230,10 @@ a.FontAwesome:hover {
 	@include grid-column($columns:12);
 }
 .site-title {
-	margin: 0;
+	//margin: 0;
 }
-.site-subtitle {
-	margin-bottom: 0;
+.site-description {
+	//margin-bottom: 0;
 	clear: left;
 	font-size: 0.52272727em;
 	line-height: 1.4;
@@ -407,7 +418,7 @@ h1.entry-title {
 	@extend .nowrap;
 	a:before {
 		@extend .FontAwesome;
-		margin-right: em-calc(10);
+		margin-right: em-calc(5);
 		content: '\f086';
 	}
 }
@@ -462,13 +473,10 @@ h1.entry-title {
 
 
 @media #{$small} {
-	.content-area {
-		@extend .container-nest;
-	}
-	.site-content {
+	.sidebar_right .site-content, .site-content {
 		@include grid-column($columns:8, $collapse:null, $float:false);
 	}
-	.leftsb .site-content {
+	.sidebar_left .site-content {
 		@include grid-column($push:4);
 	}
 	// wp aligning
@@ -510,10 +518,10 @@ h1.entry-title {
 }
 
 @media #{$small} {
-	.sidebar-container {
+	.sidebar_right .sidebar-container, .sidebar-container  {
 		@include grid-column($columns:4, $collapse:null, $float:false, $last-column:true);
 	}
-	.leftsb .sidebar-container {
+	.sidebar_left .sidebar-container {
 		@include grid-column($pull:8);
 	}
 
@@ -550,7 +558,7 @@ h1.entry-title {
 
 // Container for .site-info and .footer-menu
 .site-footer-meta {
-	padding: em-calc(5 0);
+	padding: em-calc(20 0);
 }
 // Contains the footer menu
 .footer-menu {

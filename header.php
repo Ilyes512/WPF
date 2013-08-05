@@ -24,42 +24,26 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 
 <body <?php body_class( $body_class ); ?>>
 
-<div id="page" class="hfeed site" role="document">
+<div id="page" class="hfeed site<?php echo $GLOBALS['wpf_settings']['boxed_page'] ? ' boxed' : ''; echo $GLOBALS['wpf_settings']['sidebar_left'] ? ' sidebar_left' : ''; ?>" role="document">
 
 	<header id="masthead" class="site-header" role="banner">
-		<div id="navbar" class="contain-to-grid fixed">
-			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar; back_text:<?php _e( 'back', 'wpf' ); ?>">
-				<ul class="title-area">
-					<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
-					<li class="toggle-topbar menu-icon"><a href="#"><span><?php _e( 'Menu', 'wpf' ); ?></span></a></li>
-				</ul>
-				<section class="top-bar-section">
-					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'container'      => false,
-						'items_wrap'     => '<ul class="left">%3$s</ul>',
-						'walker'         => new wpf_walker(),
-						'fallback_cb'    => 'wpf_nav_menu_fallback',
-					) ); ?>
-					<ul class="right hide-for-medium-down">
-						<li class="divider"></li>
-						<li class="has-form"><?php get_search_form(); ?></li>
-					</ul>
-				</section><!-- .top-bar-section -->
-			</nav><!-- #site-navigation -->
-		</div><!-- #nav-bar -->
+		<?php if ( function_exists( 'wpf_primarymenu_display') && ! $GLOBALS['wpf_settings']['primarymenu_location'] ) echo wpf_primarymenu_display(); ?>
 <!--[if lt IE 7]>
 <p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
 <![endif]-->
-		<div class="site-meta">
-			<section>
-				<h1 class="site-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					<p class="site-subtitle"><?php if ( function_exists( 'wpf_site_subtitle' ) ) wpf_site_subtitle(); ?></p>
-				</h1>
-			</section>
-		</div><!-- .site-meta -->
+		<?php if ( ! $GLOBALS['wpf_settings']['hide_site_title'] ) : ?>
+			<div class="site-meta">
+				<section>
+					<h1 class="site-title">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+						<?php if ( ! $GLOBALS['wpf_settings']['hide_site_description'] ) : ?>
+							<p class="site-description"><?php if ( function_exists( 'wpf_site_description' ) ) wpf_site_description(); ?></p>
+						<?php endif; ?>
+					</h1>
+				</section>
+			</div><!-- .site-meta -->
+		<?php endif; ?>
+		<?php if ( function_exists( 'wpf_primarymenu_display' ) && $GLOBALS['wpf_settings']['primarymenu_location'] ) echo wpf_primarymenu_display(); ?>
 		<hr>
 	</header><!-- #masthead -->
 <?php wpf_dev( 'end header.php' ); ?>

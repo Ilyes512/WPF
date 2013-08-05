@@ -67,7 +67,7 @@
 			</div><!--post-tags -->
 		<?php endif; ?>
 
-		<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
+		<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() && $GLOBALS['wpf_settings']['show_author_info'] ) : ?>
 			<?php get_template_part( 'author-bio' ); ?>
 		<?php endif; ?>
 		<hr>

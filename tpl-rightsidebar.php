@@ -1,13 +1,13 @@
-<?php /* Template Name: Left sidebar */
+<?php /* Template Name: Right sidebar */
 /**
- * The template for displaying pages with the sidebar on the left side. This
+ * The template for displaying pages with the sidebar on the right side. This
  * will override the WPF settings in admin.
  *
  */
 
 get_header(); ?>
 <?php wpf_dev( 'tpl-leftsidebar.php' ); ?>
-	<section id='primary' class="content-area sidebar_left">
+	<section id='primary' class="content-area sidebar_right">
 
 		<!-- Row for main content area -->
 		<div id="content" class="site-content" role="main">
