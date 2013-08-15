@@ -16,7 +16,7 @@ get_header(); ?>
 			<?php while ( have_posts() ): the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php edit_post_link( __( 'Edit', 'wpf' ), '<div class="entry-meta"><span class="edit-link">', '</span></div><!-- .entry-meta -->' ); ?>
+					<?php edit_post_link( __( 'Edit', 'wpf' ), '<div class="entry-meta"><span class="edit-link">', '</span></div>' ); ?>
 					<?php $content = get_the_content(); ?>
 					<?php if ( $content != '' ) : ?>
 						<div class="entry-content">

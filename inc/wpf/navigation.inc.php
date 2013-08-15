@@ -338,15 +338,15 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
 if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 	function wpf_primarymenu_display() {
 	?>
-		<?php $navbar_class  = $GLOBALS['wpf_settings']['primarymenu_center'] ? 'contain-to-grid ' : ''; ?>
-		<?php $navbar_class .= $GLOBALS['wpf_settings']['primarymenu_fixed'] ? $GLOBALS['wpf_settings']['primarymenu_fixed'] : ''; ?>
+		<?php $navbar_class  = $GLOBALS['wpf_settings']['menu_primary_center'] ? 'contain-to-grid ' : ''; ?>
+		<?php $navbar_class .= $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : ''; ?>
 		<div id="navbar" class="<?php echo $navbar_class; ?>">
 			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar; back_text:<?php _e( 'back', 'wpf' ); ?>">
 				<ul class="title-area">
 					<li class="name">
 						<h1>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-								<?php echo $GLOBALS['wpf_settings']['primarymenu_title']; ?>
+								<?php echo $GLOBALS['wpf_settings']['menu_primary_title']; ?>
 							</a>
 						</h1>
 					</li>

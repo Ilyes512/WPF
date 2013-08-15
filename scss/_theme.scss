@@ -185,7 +185,7 @@ a.FontAwesome:hover {
 [class*="msgbox-"] {
 	@include alert;
 	@include radius($global-radius);
-	a {
+	.close {
 		@include alert-close;
 	}
 }

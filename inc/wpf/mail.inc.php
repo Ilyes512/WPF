@@ -10,8 +10,9 @@
  *
  */
 
-global $wpf_c, $wpf_c_values;
+global $wpf_c, $wpf_c_values, $wpf_settings;
 
+/*
 // Adjust these settings if you are using tpl-contact.php
 // At the moment I only tested SMTP. Send me a mail if you want to use another method.
 $wpf_c_settings = array(
@@ -41,6 +42,7 @@ $wpf_c_settings = array(
 	// set this to true if you are done with the above settings
 	'setup'      => false,
 );
+*/
 
 //------------------------------------------------------^^^-CONFIG-^^^------------------------------------------------------------------------------------------
 
@@ -61,32 +63,36 @@ $wpf_c = array(
 );
 
 // Check if the settings have been set.
-if( $wpf_c_settings['setup'] ) {
-	$wpf_c['show_form'] = 1;
-	$wpf_c['wpf_c_set']  = 1;
+if( $wpf_settings['contact_setup'] ) {
+	$wpf_c['show_form']    = 1;
+	$wpf_c['wpf_c_set']    = 1;
 } else {
 	// If the current user is an administrator, then warn him about the settings.
 	// If the user is not then show a msg that the contact form is not ready.
-	if ( current_user_can( 'edit_themes' ) ) {
-		$wpf_c['c_feedback']['msg'] = __( 'The settings in /inc/mail.inc.php haven\'t been set. Please adjust the settings.', 'wpf' );
+	if ( current_user_can( 'edit_theme_options' ) ) {
+		$wpf_c['c_feedback']['msg']   = sprintf(
+			__( 'Please go to the %s to configure this page!', 'wpf' ),
+			'<a href="' . admin_url( 'themes.php?page=wpf-options&tab=contact' ) . '" >' . __( 'WPF Contact Options', 'wpf' ) . '</a>'
+		);
+		//__( 'Please go to the WPF Options page to configure this: ', 'wpf' );
 		$wpf_c['c_feedback']['class'] = 'alert';
 	} else {
-		$wpf_c['c_feedback']['msg'] = __( 'Please try again later! The contact form hasn\'t been setup yet.', 'wpf' );
+		$wpf_c['c_feedback']['msg']   = __( 'Please try again later! The contact form hasn\'t been setup yet.', 'wpf' );
 		$wpf_c['c_feedback']['class'] = 'secondary';
 	}
 }
 
 // check if the settings are done and if the form has been filled in
-if ( $wpf_c_settings['setup'] && isset( $_POST['wpf_contact_send'] ) ) {
+if ( $wpf_settings['contact_setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 	// Remove the automatically added slashes
 	$wpf_c_values = array_map('stripslashes_deep', $_POST);
 
 	// Sanitize the inputs
 	// If the sanitized-value is not the same as the $_POST-value then return `null`
-	$wpf_c_values['c_name']    = sanitize_text_field( $wpf_c_values['c_name'] ) == $_POST['c_name'] ? sanitize_text_field( $wpf_c_values['c_name'] ) : null;
-	$wpf_c_values['c_email']   = sanitize_email( $wpf_c_values['c_email'] ) == $_POST['c_email'] ? sanitize_email( $wpf_c_values['c_email'] ) : null;
-	$wpf_c_values['c_subject'] = sanitize_text_field( $wpf_c_values['c_subject'] ) ? sanitize_text_field( $wpf_c_values['c_subject'] ) : null;
-	$wpf_c_values['c_content'] = trim( esc_textarea( $wpf_c_values['c_content'] ) );
+	$wpf_c_values['c_name']        = sanitize_text_field( $wpf_c_values['c_name'] ) == $_POST['c_name'] ? sanitize_text_field( $wpf_c_values['c_name'] ) : null;
+	$wpf_c_values['c_email']       = sanitize_email( $wpf_c_values['c_email'] ) == $_POST['c_email'] ? sanitize_email( $wpf_c_values['c_email'] ) : null;
+	$wpf_c_values['c_subject']     = sanitize_text_field( $wpf_c_values['c_subject'] ) ? sanitize_text_field( $wpf_c_values['c_subject'] ) : null;
+	$wpf_c_values['c_content']     = trim( esc_textarea( $wpf_c_values['c_content'] ) );
 
 	if ( empty( $wpf_c_values['c_name'] ) || strlen( $wpf_c_values['c_name'] > 256 ) ) {
 		$wpf_c['c_name']['msg']       = __( 'Please fill in a name!', 'wpf' );
@@ -121,24 +127,23 @@ if ( $wpf_c_settings['setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		$phpmailer->IsSMTP();
 
 		// The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false. See functions.php
-		$phpmailer->SMTPDebug  = $wpf_c_settings['debug'];
+		$phpmailer->SMTPDebug     = $wpf_settings['contact_debug'];
 
 		// Mail Config
-		$phpmailer->SMTPAuth   = $wpf_c_settings['SMTPAuth'];
-		$phpmailer->SMTPSecure = $wpf_c_settings['SMTPSecure'];
-		$phpmailer->Username   = $wpf_c_settings['Username'];
-		$phpmailer->Password   = $wpf_c_settings['Password'];
-		$phpmailer->Host       = $wpf_c_settings['Host'];
-		$phpmailer->Port       = $wpf_c_settings['Port'];
+		$phpmailer->SMTPAuth      = $wpf_settings['contact_smtpauth'];
+		$phpmailer->SMTPSecure    = $wpf_settings['contact_smtpsecure'];
+		$phpmailer->Username      = $wpf_settings['contact_username'];
+		$phpmailer->Password      = $wpf_settings['contact_password'];
+		$phpmailer->Host          = $wpf_settings['contact_host'];
+		$phpmailer->Port          = $wpf_settings['contact_port'];
 
 		// Mail headers and content
-		$phpmailer->AddAddress(  $wpf_c_settings['From'],  $wpf_c_settings['FromName'] );
-		$phpmailer->SetFrom(     $wpf_c_values['c_email'], $wpf_c_values['c_name'] );
-		$phpmailer->AddReplyTo(  $wpf_c_values['c_email'], $wpf_c_values['c_name'] );
+		$phpmailer->AddAddress(     $wpf_settings['contact_from'],  $wpf_settings['contact_fromname'] );
+		$phpmailer->SetFrom(        $wpf_c_values['c_email'], $wpf_c_values['c_name'] );
+		$phpmailer->AddReplyTo(     $wpf_c_values['c_email'], $wpf_c_values['c_name'] );
 
-		$phpmailer->CharSet    = $wpf_c_settings['CharSet'];
-		$phpmailer->Subject    = $wpf_c_values['c_subject'];
-		//
+		$phpmailer->CharSet       = $wpf_settings['contact_charset'];
+		$phpmailer->Subject       = $wpf_c_values['c_subject'];
 
 		// Retrieve the template and replace the template variables
 		if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/wpf/email_template/contact.tpl' ) ) {
@@ -151,7 +156,7 @@ if ( $wpf_c_settings['setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		$message = str_replace( '%subject%', $wpf_c_values['c_subject'], $message );
 		$message = str_replace( '%content%', $wpf_c_values['c_content'], $message );
 
-		if ( $wpf_c_settings['html'] ) {
+		if ( $wpf_settings['contact_html'] ) {
 			$phpmailer->AltBody    = __( 'To view the message, please use an HTML compatible email viewer!', 'wpf');
 			$phpmailer->MsgHTML($message);
 		} else {

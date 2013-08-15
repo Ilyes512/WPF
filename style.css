@@ -2426,7 +2426,7 @@ a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-[class*="msgbox-"] a {
+[class*="msgbox-"] .close {
   font-size: 1.375em;
   padding: 5px 4px 4px;
   line-height: 0;
@@ -2436,7 +2436,7 @@ a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta
   color: #333333;
   opacity: 0.3;
 }
-[class*="msgbox-"] a:hover, [class*="msgbox-"] a:focus {
+[class*="msgbox-"] .close:hover, [class*="msgbox-"] .close:focus {
   opacity: 0.5;
 }
 
