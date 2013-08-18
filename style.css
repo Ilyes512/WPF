@@ -2226,7 +2226,7 @@ textarea {
   clear: both;
 }
 
-.col, .site-content, .site-content-fw, .sidebar-container, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
+.col, .site-content, .site-content-fw, .sidebar-container, .widget-xlarge, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2886,7 +2886,7 @@ h1.entry-title {
   }
 }
 /* ==========================================================================
-   Sidebar & General-widget
+   Sidebar & Sidebar-widget
    ========================================================================== */
 .widget ul {
   list-style: none;
@@ -2952,17 +2952,27 @@ h1.entry-title {
 }
 
 @media only screen and (min-width: 768px) {
-  .widget-large {
+  .widget-xlarge {
     position: relative;
     width: 100%;
   }
 
-  .widget-medium {
+  .widget-large {
     position: relative;
     width: 66.66667%;
   }
 
+  .widget-medium {
+    position: relative;
+    width: 50%;
+  }
+
   .widget-small {
+    position: relative;
+    width: 33.33333%;
+  }
+
+  .widget-half {
     position: relative;
     width: 33.33333%;
   }

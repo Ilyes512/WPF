@@ -69,44 +69,55 @@ if ( ! function_exists( 'wpf_sidebar_support' ) ) {
  */
 if ( ! function_exists( 'wpf_footer_widget' ) ) {
 	function wpf_footer_widget() {
-		// 1 = active sidebar, 0 = not active
-		$footer_sidebar = array(
+		// 1 = active sidebar, 0 = not active sidebar
+		$widget_activation = array(
 			( is_active_sidebar( 'sidebar-footer-1' ) ? 1 : 0 ),
 			( is_active_sidebar( 'sidebar-footer-2' ) ? 1 : 0 ),
 			( is_active_sidebar( 'sidebar-footer-3' ) ? 1 : 0 ),
 		);
 
-		$total_active = implode( '', $footer_sidebar );
+		/*
+		 * Now make a string of the active status. 3 digits with each digit representing
+		 * the widget from left to right (sidebar-footer-1 to sidebar-footer-3).
+		 */
+		$widget_activation = implode( '', $widget_activation );
 
-		switch ( $total_active ){
+		// Assign the classes based on  wish sidebar-footer widget and
+		switch ( $widget_activation ){
 			case '000':
 				$GLOBALS['wpf_widget_active'] = false;
 				break;
+			case '111':
+				$class = array( 'widget-small', 'widget-small', 'widget-small' );
+				break;
 			case '100':
-				$class = array( 'widget-large', false, false );
+				$class = array( 'widget-xlarge', false, false );
 				break;
 			case '010':
-				$class = array( false, 'widget-large', false );
+				$class = array( false, 'widget-xlarge', false );
 				break;
 			case '001':
-				$class = array( false, false, 'widget-large' );
+				$class = array( false, false, 'widget-xlarge' );
 				break;
 			case '110':
-				$class = array( 'widget-small', 'widget-medium', false );
+				$class = array( 'widget-small', 'widget-large', false );
 				break;
 			case '101':
-				$class = array( 'widget-medium', false, 'widget-small' );
+				$class = array( 'widget-large', false, 'widget-small' );
 				break;
 			case '011':
-				$class = array( false, 'widget-medium', 'widget-small' );
+				$class = array( false, 'widget-medium', 'widget-medium' );
 				break;
 			default:
-				$class = array( 'widget-small', 'widget-small', 'widget-small' );
+				$class = array();
 		}
+
 		// return to a global for later use
-		$GLOBALS['wpf_widget_classes'] = ( isset ( $class ) ) ? $class : array();
+		$GLOBALS['wpf_widget_classes'] = $class;
+
 		if ( ! isset( $GLOBALS['wpf_widget_active'] ) )
 			$GLOBALS['wpf_widget_active'] = true; // Return that there are widget active
+
 	} // end wpf_footer_widget()
 }
 

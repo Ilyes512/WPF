@@ -496,7 +496,7 @@ h1.entry-title {
 
 
 /* ==========================================================================
-   Sidebar & General-widget
+   Sidebar & Sidebar-widget
    ========================================================================== */
 
 
@@ -517,7 +517,7 @@ h1.entry-title {
 		@include grid-column($pull:8);
 	}
 
-	// add some extra margin to ul.widget
+	// Add some extra margin to ul.widget
 	.widget ul {
 		margin-#{$default-float}: $list-side-margin;
 	}
@@ -543,14 +543,8 @@ h1.entry-title {
 	}
 }
 
-// widget's footer sizes
-.widget-large {
-	@extend .col;
-}
-.widget-medium {
-	@extend .col;
-}
-.widget-small {
+// Widget's footer sizes
+.widget-xlarge, .widget-large, .widget-medium, .widget-small {
 	@extend .col;
 }
 
@@ -577,13 +571,20 @@ h1.entry-title {
 
 @media #{$small} {
 	// widget's footer sizes
-	.widget-large {
+	.widget-xlarge {
 		@include grid-column($columns:12, $collapse:null, $float:false);
 	}
-	.widget-medium {
+	.widget-large {
 		@include grid-column($columns:8, $collapse:null, $float:false);
 	}
+	.widget-medium {
+		@include grid-column($columns:6, $collapse:null, $float:false);
+	}
 	.widget-small {
+		@include grid-column($columns:4, $collapse:null, $float:false);
+	}
+
+	.widget-half {
 		@include grid-column($columns:4, $collapse:null, $float:false);
 	}
 
