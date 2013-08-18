@@ -234,9 +234,8 @@ add_filter( 'nav_menu_css_class', 'wpf_active_nav_class', 10, 2 );
  */
 if ( ! function_exists( 'wpf_active_nav_class' ) ) {
 	function wpf_active_nav_class( $classes, $item ) {
-		if ( $item->current == 1 || $item->current_item_ancestor == true ) {
+		if ( $item->current == 1 || $item->current_item_ancestor == true )
 			$classes[] = 'active';
-		}
 		return $classes;
 	} // end wpf_active_nav_class()
 }
@@ -313,11 +312,11 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
 		switch ( $args['theme_location'] ) {
 			case 'primary';
 				$output  = '<li class="divider"></li>';
-				$output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
+				$output .= '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
 				$output .= '<li class="divider"></li>';
 				break;
 			case 'footer';
-				$output = '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
+				$output = '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . __( 'Add a menu', 'wpf' ) . '</a></li>';
 				break;
 		}
 
@@ -337,16 +336,23 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
  */
 if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 	function wpf_primarymenu_display() {
+
+		// The #navbar classes
+		$navbar_class         = $GLOBALS['wpf_settings']['menu_primary_center'] ? 'contain-to-grid ' : '';
+		$navbar_class        .= $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : '';
+
+		// The top-bar data-options
+		$navbar_data_options  = 'back_text:' . __( 'back', 'wpf' );
+
 	?>
-		<?php $navbar_class  = $GLOBALS['wpf_settings']['menu_primary_center'] ? 'contain-to-grid ' : ''; ?>
-		<?php $navbar_class .= $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : ''; ?>
-		<div id="navbar" class="<?php echo $navbar_class; ?>">
-			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar; back_text:<?php _e( 'back', 'wpf' ); ?>">
+		<div id="navbar" class="<?php echo esc_attr( $navbar_class ); ?>">
+
+			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar;<?php echo esc_attr( $navbar_data_options ); ?>">
 				<ul class="title-area">
 					<li class="name">
 						<h1>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-								<?php echo $GLOBALS['wpf_settings']['menu_primary_title']; ?>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<?php echo esc_html( $GLOBALS['wpf_settings']['menu_primary_title'] ); ?>
 							</a>
 						</h1>
 					</li>
@@ -446,10 +452,10 @@ if ( ! function_exists( 'wpf_breadcrumb' ) ) {
 
 			foreach ( $breadcrumb as $cat ) {
 				// if the current page is the category's archive page then add .current (disable link)
-				$class = ( is_category( $cat['cat_ID'] ) ) ? ' class="current"' : '';
+				$class = is_category( $cat['cat_ID'] ) ? ' class="current"' : '';
 
 				$html_result .= '<li' . $class . '><a href="' . esc_url( get_category_link( $cat['cat_ID'] ) ) . '">';
-				$html_result .= $cat['name'];
+				$html_result .= esc_html( $cat['name'] );
 				$html_result .= '</a></li>';
 			}
 			$html_result .= '</ul>';

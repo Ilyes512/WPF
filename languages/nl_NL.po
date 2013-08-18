@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-08-14 02:27+0100\n"
-"PO-Revision-Date: 2013-08-14 02:27+0100\n"
+"POT-Creation-Date: 2013-08-19 18:20+0100\n"
+"PO-Revision-Date: 2013-08-23 16:36+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -10,7 +10,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;__ngettext:1,2;"
+"__ngettext_noop:1,2;_n_noop:1,2;_nx:4c,1,2;_nx_noop:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html_e;esc_html;esc_html_x:1,2c;"
+"translate_nooped_plural\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -415,19 +418,19 @@ msgstr "Volgende pagina &#xf054;"
 msgid "&#xf053; Previous page"
 msgstr "&#xf053; Vorige pagina"
 
-#: inc/wpf/navigation.inc.php:316 inc/wpf/navigation.inc.php:320
+#: inc/wpf/navigation.inc.php:315 inc/wpf/navigation.inc.php:319
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
 
-#: inc/wpf/navigation.inc.php:344
+#: inc/wpf/navigation.inc.php:345
 msgid "back"
 msgstr "terug"
 
-#: inc/wpf/navigation.inc.php:353
+#: inc/wpf/navigation.inc.php:359
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/wpf/navigation.inc.php:444
+#: inc/wpf/navigation.inc.php:450
 msgid "Home"
 msgstr "Start"
 
@@ -699,7 +702,7 @@ msgstr "Menu opties"
 
 #: inc/wpf/wp-admin.inc.php:779
 msgid "Make the menu fixed and/or contained-to-grid"
-msgstr "Maak de menu vast en/of vast-aan-grid"
+msgstr "Maak de menu vast en/of vast-wan-grid"
 
 #: inc/wpf/wp-admin.inc.php:784
 msgid "Title &amp; description"
