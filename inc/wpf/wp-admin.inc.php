@@ -203,6 +203,29 @@ if ( ! function_exists( 'wpf_create_options' ) ) {
 			)
 		);
 
+		add_settings_field(
+			'menu_primary_custom_back_text',   // $id
+			__( 'Custom "back" text', 'wpf' ), // $title
+			'wpf_checkbox_option_display',     // $callback
+			'wpf-options',                     // $page
+			'header_menu_section',             // $section
+			array(                             // $args
+				'id'    => 'menu_primary_custom_back_text',
+				'label' => __( 'Add a custom "back" text', 'wpf' ). '<em>' . __( ' (Turn off if you wan\'t the parent\'s title as the "back" text)', 'wpf' ) . '</em>'
+			)
+		);
+
+		add_settings_field(
+			'menu_primary_back_text',   // $id
+			__( '"back" text', 'wpf' ), // $title
+			'wpf_text_option_display',  // $callback
+			'wpf-options',              // $page
+			'header_menu_section',      // $section
+			array(                      // $args
+				'id'    => 'menu_primary_back_text'
+			)
+		);
+
 		register_setting(
 			'header_menu_section', // $option_group
 			'wpf_settings'         // $option_name
@@ -217,7 +240,7 @@ if ( ! function_exists( 'wpf_create_options' ) ) {
 		);
 
 		add_settings_field(
-			'header_show_title',             // $id
+			'header_show_title',            // $id
 			__( 'Hide site title', 'wpf' ), // $title
 			'wpf_checkbox_option_display',  // $callback
 			'wpf-options',                  // $page
@@ -483,39 +506,41 @@ if ( ! function_exists( 'wpf_create_options' ) ) {
  if ( ! function_exists( 'wpf_get_default_options' ) ) {
 	 function wpf_get_default_options() {
 
-	 $options                  = array(
+	 $options                          = array(
 	 	// GENERAL TAB
-	 	'page_boxed'                 => false,
-	 	'sidebar_left'               => false,
-	 	'show_author_info'           => true,
+	 	'page_boxed'                     => false,
+	 	'sidebar_left'                   => false,
+	 	'show_author_info'               => true,
 
 	 	// HEADER TAB
-	 	'menu_primary_fixed'         => 'fixed',
-	 	'menu_primary_location'      => false,
-	 	'menu_primary_center'        => true,
-	 	'menu_primary_title'         => get_bloginfo( 'name', 'display' ),
-	 	'header_show_title'          => true,
-	 	'header_show_description'    => true,
+	 	'menu_primary_fixed'             => 'fixed',
+	 	'menu_primary_location'          => false,
+	 	'menu_primary_center'            => true,
+	 	'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
+	 	'menu_primary_custom_back_text'  => true,
+	 	'menu_primary_back_text'         => __( 'back', 'wpf' ),
+	 	'header_show_title'              => true,
+	 	'header_show_description'        => true,
 
 	 	// FOOTER TAB
-	 	'footer_site_info'           => sprintf( __( '<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>', 'wpf' ), date( 'Y' ) ),
+	 	'footer_site_info'               => sprintf( __( '<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>', 'wpf' ), date( 'Y' ) ),
 
 	 	// CONTACT TAB
-	 	'contact_setup'              => false,
-	 	'contact_debug'              => true,
-	 	'contact_smtpauth'           => true,
-	 	'contact_smtpsecure'         => 'ssl',
-	 	'contact_username'           => false,
-	 	'contact_password'           => false,
-	 	'contact_host'               => 'localhost',
-	 	'contact_port'               => '25',
-	 	'contact_charset'            => 'utf-8',
-	 	'contact_from'               => false,
-	 	'contact_fromname'           => false,
-	 	'contact_html'               => true,
+	 	'contact_setup'                  => false,
+	 	'contact_debug'                  => false,
+	 	'contact_smtpauth'               => true,
+	 	'contact_smtpsecure'             => 'ssl',
+	 	'contact_username'               => false,
+	 	'contact_password'               => false,
+	 	'contact_host'                   => 'localhost',
+	 	'contact_port'                   => '25',
+	 	'contact_charset'                => 'utf-8',
+	 	'contact_from'                   => false,
+	 	'contact_fromname'               => false,
+	 	'contact_html'                   => true,
 
 	 	// VERSION
-	 	'wpf_version'                => WPF_VERSION,
+	 	'wpf_version'                    => WPF_VERSION,
 	 );
 
 	 return $options;
@@ -541,10 +566,10 @@ if ( ! function_exists( 'wpf_create_options' ) ) {
 
 		if ( ! empty( $inputs['submit-general'] ) ) {
 
-			$new_options['page_boxed']               = isset( $inputs['page_boxed'] ) && $inputs['page_boxed'] ? true : false;
-			$new_options['sidebar_left']             = isset( $inputs['sidebar_left'] ) && $inputs['sidebar_left'] ? true : false;
+			$new_options['page_boxed']                       = isset( $inputs['page_boxed'] ) && $inputs['page_boxed'] ? true : false;
+			$new_options['sidebar_left']                     = isset( $inputs['sidebar_left'] ) && $inputs['sidebar_left'] ? true : false;
 
-			$new_options['show_author_info']         = isset( $inputs['show_author_info'] ) && $inputs['show_author_info'] ? true : false;
+			$new_options['show_author_info']                 = isset( $inputs['show_author_info'] ) && $inputs['show_author_info'] ? true : false;
 
 		} elseif ( ! empty( $inputs['submit-header'] ) ) {
 
@@ -558,32 +583,34 @@ if ( ! function_exists( 'wpf_create_options' ) ) {
 				}
 			}
 
-			$new_options['menu_primary_location']     = isset( $inputs['menu_primary_location'] ) && $inputs['menu_primary_location'] ? true : false;
-			$new_options['menu_primary_center']       = isset( $inputs['menu_primary_center'] ) && $inputs['menu_primary_center'] ? true : false;
-			$new_options['menu_primary_title']        = sanitize_text_field( $inputs['menu_primary_title'] );
+			$new_options['menu_primary_location']            = isset( $inputs['menu_primary_location'] ) && $inputs['menu_primary_location'] ? true : false;
+			$new_options['menu_primary_center']              = isset( $inputs['menu_primary_center'] ) && $inputs['menu_primary_center'] ? true : false;
+			$new_options['menu_primary_title']               = sanitize_text_field( $inputs['menu_primary_title'] );
+			$new_options['menu_primary_custom_back_text']    = isset( $inputs['menu_primary_custom_back_text'] ) && $inputs['menu_primary_custom_back_text'] ? true : false;
+			$new_options['menu_primary_back_text']           = sanitize_text_field( $inputs['menu_primary_back_text'] );
 
-			$new_options['header_show_title']          = isset( $inputs['header_show_title'] ) && $inputs['header_show_title'] ? true : false;
-			$new_options['header_show_description']    = isset( $inputs['header_show_description'] ) && $inputs['header_show_description'] ? true : false;
+			$new_options['header_show_title']                = isset( $inputs['header_show_title'] ) && $inputs['header_show_title'] ? true : false;
+			$new_options['header_show_description']          = isset( $inputs['header_show_description'] ) && $inputs['header_show_description'] ? true : false;
 
 		} elseif ( ! empty( $inputs['submit-footer'] ) ) {
 
-			$new_options['footer_site_info']         = wpf_admin_textarea_validation ( $inputs['footer_site_info'] );
+			$new_options['footer_site_info']                 = wpf_admin_textarea_validation ( $inputs['footer_site_info'] );
 
 		} elseif ( ! empty( $inputs['submit-contact'] ) ) {
 
-			$new_options['contact_debug']            = isset( $inputs['contact_debug'] ) && $inputs['contact_debug'] ? true : false;
-	 		$new_options['contact_setup']            = isset( $inputs['contact_setup'] ) && $inputs['contact_setup'] ? true : false;
+			$new_options['contact_debug']                    = isset( $inputs['contact_debug'] ) && $inputs['contact_debug'] ? true : false;
+			$new_options['contact_setup']                    = isset( $inputs['contact_setup'] ) && $inputs['contact_setup'] ? true : false;
 
-			$new_options['contact_smtpauth']         = isset( $inputs['contact_smtpauth'] ) && $inputs['contact_smtpauth'] ? true : false;
-			$new_options['contact_smtpsecure']       = isset( $inputs['contact_smtpsecure'] ) && 'ssl' == $inputs['contact_smtpsecure'] ? 'ssl' : 'tls';
-			$new_options['contact_username']         = sanitize_text_field( $inputs['contact_username'] );
-			$new_options['contact_password']         = sanitize_text_field( $inputs['contact_password'] );
-			$new_options['contact_host']             = sanitize_text_field( $inputs['contact_host'] );
-			$new_options['contact_port']             = sanitize_text_field( $inputs['contact_port'] );
-			$new_options['contact_charset']          = sanitize_text_field( $inputs['contact_charset'] );
-			$new_options['contact_from']             = sanitize_text_field( $inputs['contact_from'] );
-			$new_options['contact_fromname']         = sanitize_text_field( $inputs['contact_fromname'] );
-			$new_options['contact_html']            = isset( $inputs['contact_html'] ) && $inputs['contact_html'] ? true : false;
+			$new_options['contact_smtpauth']                 = isset( $inputs['contact_smtpauth'] ) && $inputs['contact_smtpauth'] ? true : false;
+			$new_options['contact_smtpsecure']               = isset( $inputs['contact_smtpsecure'] ) && 'ssl' == $inputs['contact_smtpsecure'] ? 'ssl' : 'tls';
+			$new_options['contact_username']                 = sanitize_text_field( $inputs['contact_username'] );
+			$new_options['contact_password']                 = sanitize_text_field( $inputs['contact_password'] );
+			$new_options['contact_host']                     = sanitize_text_field( $inputs['contact_host'] );
+			$new_options['contact_port']                     = sanitize_text_field( $inputs['contact_port'] );
+			$new_options['contact_charset']                  = sanitize_text_field( $inputs['contact_charset'] );
+			$new_options['contact_from']                     = sanitize_text_field( $inputs['contact_from'] );
+			$new_options['contact_fromname']                 = sanitize_text_field( $inputs['contact_fromname'] );
+			$new_options['contact_html']                     = isset( $inputs['contact_html'] ) && $inputs['contact_html'] ? true : false;
 
 		}
 
@@ -603,40 +630,42 @@ if ( ! function_exists( 'wpf_reset_options' ) ) {
 
 		if ( ! empty( $inputs['reset-general'] ) ) {
 
-			$new_options['page_boxed']               = $reset_options['page_boxed'];
-			$new_options['sidebar_left']             = $reset_options['sidebar_left'];
+			$new_options['page_boxed']                       = $reset_options['page_boxed'];
+			$new_options['sidebar_left']                     = $reset_options['sidebar_left'];
 
-			$new_options['show_author_info']         = $reset_options['show_author_info'];
+			$new_options['show_author_info']                 = $reset_options['show_author_info'];
 
 		} elseif ( ! empty( $inputs['reset-header'] ) ) {
 
-			$new_options['menu_primary_fixed']       = $reset_options['menu_primary_fixed'];
-			$new_options['menu_primary_location']    = $reset_options['menu_primary_location'];
-			$new_options['menu_primary_center']      = $reset_options['menu_primary_center'];
-			$new_options['menu_primary_title']       = $reset_options['menu_primary_title'];
+			$new_options['menu_primary_fixed']               = $reset_options['menu_primary_fixed'];
+			$new_options['menu_primary_location']            = $reset_options['menu_primary_location'];
+			$new_options['menu_primary_center']              = $reset_options['menu_primary_center'];
+			$new_options['menu_primary_title']               = $reset_options['menu_primary_title'];
+			$new_options['menu_primary_custom_back_text']    = $reset_options['menu_primary_custom_back_text'];
+			$new_options['menu_primary_back_text']           = $reset_options['menu_primary_back_text'];
 
-			$new_options['header_show_title']        = $reset_options['header_show_title'];
-			$new_options['header_show_description']  = $reset_options['header_show_description'];
+			$new_options['header_show_title']                = $reset_options['header_show_title'];
+			$new_options['header_show_description']          = $reset_options['header_show_description'];
 
 		} elseif ( ! empty( $inputs['reset-footer'] ) ) {
 
-			$new_options['footer_site_info']         = $reset_options['footer_site_info'];
+			$new_options['footer_site_info']                 = $reset_options['footer_site_info'];
 
 		} elseif ( ! empty( $inputs['reset-contact'] ) ) {
 
-			$new_options['contact_setup']            = $reset_options['contact_setup'];
-			$new_options['contact_debug']            = $reset_options['contact_debug'];
+			$new_options['contact_setup']                    = $reset_options['contact_setup'];
+			$new_options['contact_debug']                    = $reset_options['contact_debug'];
 
-			$new_options['contact_smtpauth']         = $reset_options['contact_smtpauth'];
-			$new_options['contact_smtpsecure']       = $reset_options['contact_smtpsecure'];
-			$new_options['contact_username']         = $reset_options['contact_username'];
-			$new_options['contact_password']         = $reset_options['contact_password'];
-			$new_options['contact_host']             = $reset_options['contact_host'];
-			$new_options['contact_port']             = $reset_options['contact_port'];
-			$new_options['contact_charset']          = $reset_options['contact_charset'];
-			$new_options['contact_from']             = $reset_options['contact_from'];
-			$new_options['contact_fromname']         = $reset_options['contact_fromname'];
-			$new_options['contact_html']             = $reset_options['contact_html'];
+			$new_options['contact_smtpauth']                 = $reset_options['contact_smtpauth'];
+			$new_options['contact_smtpsecure']               = $reset_options['contact_smtpsecure'];
+			$new_options['contact_username']                 = $reset_options['contact_username'];
+			$new_options['contact_password']                 = $reset_options['contact_password'];
+			$new_options['contact_host']                     = $reset_options['contact_host'];
+			$new_options['contact_port']                     = $reset_options['contact_port'];
+			$new_options['contact_charset']                  = $reset_options['contact_charset'];
+			$new_options['contact_from']                     = $reset_options['contact_from'];
+			$new_options['contact_fromname']                 = $reset_options['contact_fromname'];
+			$new_options['contact_html']                     = $reset_options['contact_html'];
 
 		}
 

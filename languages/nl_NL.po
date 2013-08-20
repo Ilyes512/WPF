@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2013-08-19 18:20+0100\n"
-"PO-Revision-Date: 2013-08-23 16:36+0100\n"
+"POT-Creation-Date: 2013-08-20 16:16+0100\n"
+"PO-Revision-Date: 2013-08-20 16:16+0100\n"
 "Last-Translator: MekZii <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: Dutch\n"
@@ -259,7 +259,7 @@ msgstr ""
 msgid " - page %d"
 msgstr " - pagina %d"
 
-#: content/content.php:25 inc/wpf/misc.inc.php:124
+#: content/content.php:25 inc/wpf/misc.inc.php:121
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
@@ -288,37 +288,37 @@ msgstr "% reacties"
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
-#: inc/wpf/mail.inc.php:74
+#: inc/wpf/mail.inc.php:40
 #, php-format
 msgid "Please go to the %s to configure this page!"
 msgstr "Ga naar de %s om deze pagina in te stellen!"
 
-#: inc/wpf/mail.inc.php:75
+#: inc/wpf/mail.inc.php:41
 msgid "WPF Contact Options"
 msgstr "WPF Contact opties"
 
-#: inc/wpf/mail.inc.php:80
+#: inc/wpf/mail.inc.php:45
 msgid "Please try again later! The contact form hasn't been setup yet."
 msgstr ""
 "Probeer het later opnieuw! De contact formulier is nog niet geïnstalleerd."
 
-#: inc/wpf/mail.inc.php:98
+#: inc/wpf/mail.inc.php:63
 msgid "Please fill in a name!"
 msgstr "Vul alstublieft een naam in!"
 
-#: inc/wpf/mail.inc.php:103
+#: inc/wpf/mail.inc.php:68
 msgid "This email seems to be incorrect!"
 msgstr "De email blijkt incorrect te zijn!"
 
-#: inc/wpf/mail.inc.php:108
+#: inc/wpf/mail.inc.php:73
 msgid "Please fill in a subject!"
 msgstr "Vul alstublieft een onderwerp in!"
 
-#: inc/wpf/mail.inc.php:113
+#: inc/wpf/mail.inc.php:78
 msgid "Please let us know what you want to say or ask!"
 msgstr "Laat ons alstublieft weten wat u ons wil zeggen of vragen!"
 
-#: inc/wpf/mail.inc.php:119
+#: inc/wpf/mail.inc.php:84
 msgid ""
 "There seem to be 1 or multiple errors. Please check the individual messages "
 "below."
@@ -326,17 +326,17 @@ msgstr ""
 "Er zijn 1 of meerdere foutmeldingen. Controleer alstublieft de individuele "
 "meldingen onder."
 
-#: inc/wpf/mail.inc.php:160
+#: inc/wpf/mail.inc.php:125
 msgid "To view the message, please use an HTML compatible email viewer!"
 msgstr ""
 "Om dit bericht te kunnen lezen moet u een email programma gebruiken die HTML "
 "kan lezen."
 
-#: inc/wpf/mail.inc.php:168
+#: inc/wpf/mail.inc.php:133
 msgid "Mail sended! We will contact you as soon as possible!"
 msgstr "Uw email is verzonden! We nemen zo spoedig mogelijk contact met u op!"
 
-#: inc/wpf/mail.inc.php:172
+#: inc/wpf/mail.inc.php:137
 msgid "Something went wrong sending the mail! Try again or come back later."
 msgstr ""
 "Er is wat fout gegaan met het verzenden van uw mail! Probeer het later "
@@ -376,17 +376,17 @@ msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: inc/wpf/misc.inc.php:88
+#: inc/wpf/misc.inc.php:87
 #, php-format
 msgid "The search results for \"%s\""
 msgstr "De zoekresultaten voor \"%s\""
 
-#: inc/wpf/misc.inc.php:92
+#: inc/wpf/misc.inc.php:91
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: inc/wpf/misc.inc.php:95
+#: inc/wpf/misc.inc.php:94
 msgid "Archives"
 msgstr "Archief"
 
@@ -421,10 +421,6 @@ msgstr "&#xf053; Vorige pagina"
 #: inc/wpf/navigation.inc.php:315 inc/wpf/navigation.inc.php:319
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
-
-#: inc/wpf/navigation.inc.php:345
-msgid "back"
-msgstr "terug"
 
 #: inc/wpf/navigation.inc.php:359
 msgid "Menu"
@@ -467,8 +463,8 @@ msgstr "WPF thema opties"
 msgid "WPF Options"
 msgstr "WPF opties"
 
-#: inc/wpf/wp-admin.inc.php:76 inc/wpf/wp-admin.inc.php:755
-#: inc/wpf/wp-admin.inc.php:914
+#: inc/wpf/wp-admin.inc.php:76 inc/wpf/wp-admin.inc.php:784
+#: inc/wpf/wp-admin.inc.php:943
 msgid "Layout Options"
 msgstr "Opmaak opties"
 
@@ -488,8 +484,8 @@ msgstr "Zijbalk links"
 msgid "Show the sidebar to the left"
 msgstr "Laat de zijbalk links zien"
 
-#: inc/wpf/wp-admin.inc.php:114 inc/wpf/wp-admin.inc.php:761
-#: inc/wpf/wp-admin.inc.php:920
+#: inc/wpf/wp-admin.inc.php:114 inc/wpf/wp-admin.inc.php:790
+#: inc/wpf/wp-admin.inc.php:949
 msgid "Post Options"
 msgstr "Bericht opties"
 
@@ -541,105 +537,125 @@ msgstr "Centreer de menu"
 msgid "Menu Title"
 msgstr "Menu titel"
 
+#: inc/wpf/wp-admin.inc.php:208
+msgid "Custom \"back\" text"
+msgstr "Aangepaste \"terug\" tekst"
+
 #: inc/wpf/wp-admin.inc.php:214
+msgid "Add a custom \"back\" text"
+msgstr "Voeg een aangepaste \"terug\" tekst toe"
+
+#: inc/wpf/wp-admin.inc.php:214
+msgid " (Turn off if you wan't the parent's title as the \"back\" text)"
+msgstr " (Zet uit als je de titel van de ouder als \"terug\" tekst wilt)"
+
+#: inc/wpf/wp-admin.inc.php:220
+msgid "\"back\" text"
+msgstr "\"terug\" tekst"
+
+#: inc/wpf/wp-admin.inc.php:237
 msgid "Title Options"
 msgstr "Titel opties"
 
-#: inc/wpf/wp-admin.inc.php:221
+#: inc/wpf/wp-admin.inc.php:244
 msgid "Hide site title"
 msgstr "Verberg site titel"
 
-#: inc/wpf/wp-admin.inc.php:227
+#: inc/wpf/wp-admin.inc.php:250
 msgid "Hide the site title"
 msgstr "Verberg de site titel"
 
-#: inc/wpf/wp-admin.inc.php:233
+#: inc/wpf/wp-admin.inc.php:256
 msgid "Hide site description"
 msgstr "Verberg site beschrijving"
 
-#: inc/wpf/wp-admin.inc.php:239
+#: inc/wpf/wp-admin.inc.php:262
 msgid "Hide the site description"
 msgstr "Verberg de site beschrijving"
 
-#: inc/wpf/wp-admin.inc.php:251 inc/wpf/wp-admin.inc.php:737
+#: inc/wpf/wp-admin.inc.php:274 inc/wpf/wp-admin.inc.php:766
 msgid "Footer Options"
 msgstr "Voet opties"
 
-#: inc/wpf/wp-admin.inc.php:258
+#: inc/wpf/wp-admin.inc.php:281
 msgid "Site info"
 msgstr "Site info"
 
-#: inc/wpf/wp-admin.inc.php:277 inc/wpf/wp-admin.inc.php:815
+#: inc/wpf/wp-admin.inc.php:300 inc/wpf/wp-admin.inc.php:844
 msgid "Contact Development"
 msgstr "Contact Ontwikkeling"
 
-#: inc/wpf/wp-admin.inc.php:284
+#: inc/wpf/wp-admin.inc.php:307
 msgid "Open/Close Contact Form"
 msgstr "Open/Sluit Contact Formulier"
 
-#: inc/wpf/wp-admin.inc.php:293 inc/wpf/wp-admin.inc.php:314
-#: inc/wpf/wp-admin.inc.php:343
+#: inc/wpf/wp-admin.inc.php:316 inc/wpf/wp-admin.inc.php:337
+#: inc/wpf/wp-admin.inc.php:366
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: inc/wpf/wp-admin.inc.php:297 inc/wpf/wp-admin.inc.php:318
-#: inc/wpf/wp-admin.inc.php:347
+#: inc/wpf/wp-admin.inc.php:320 inc/wpf/wp-admin.inc.php:341
+#: inc/wpf/wp-admin.inc.php:370
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: inc/wpf/wp-admin.inc.php:305
+#: inc/wpf/wp-admin.inc.php:328
 msgid "PHPMailer Debug Mode"
 msgstr "PHPMailer Debug modes"
 
-#: inc/wpf/wp-admin.inc.php:327 inc/wpf/wp-admin.inc.php:821
+#: inc/wpf/wp-admin.inc.php:350 inc/wpf/wp-admin.inc.php:850
 msgid "Contact Configuration"
 msgstr "Contact instellingen"
 
-#: inc/wpf/wp-admin.inc.php:334
+#: inc/wpf/wp-admin.inc.php:357
 msgid "SMTP authentication"
 msgstr "SMTP authenticatie"
 
-#: inc/wpf/wp-admin.inc.php:355
+#: inc/wpf/wp-admin.inc.php:378
 msgid "SMTP security"
 msgstr "SMTP beveiliging"
 
-#: inc/wpf/wp-admin.inc.php:376
+#: inc/wpf/wp-admin.inc.php:399
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: inc/wpf/wp-admin.inc.php:387
+#: inc/wpf/wp-admin.inc.php:410
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: inc/wpf/wp-admin.inc.php:398
+#: inc/wpf/wp-admin.inc.php:421
 msgid "Host"
 msgstr "Host"
 
-#: inc/wpf/wp-admin.inc.php:409
+#: inc/wpf/wp-admin.inc.php:432
 msgid "Port"
 msgstr "Poort"
 
-#: inc/wpf/wp-admin.inc.php:420
+#: inc/wpf/wp-admin.inc.php:443
 msgid "Character Set"
 msgstr "Character Set"
 
-#: inc/wpf/wp-admin.inc.php:431
+#: inc/wpf/wp-admin.inc.php:454
 msgid "From"
 msgstr "Van"
 
-#: inc/wpf/wp-admin.inc.php:442
+#: inc/wpf/wp-admin.inc.php:465
 msgid "From Name"
 msgstr "Naam verstuurder"
 
-#: inc/wpf/wp-admin.inc.php:453
+#: inc/wpf/wp-admin.inc.php:476
 msgid "HTML Mail"
 msgstr "HTML Mail"
 
-#: inc/wpf/wp-admin.inc.php:459
+#: inc/wpf/wp-admin.inc.php:482
 msgid "Enable HTML Mail's"
 msgstr "Schakel HTML email's in"
 
-#: inc/wpf/wp-admin.inc.php:501
+#: inc/wpf/wp-admin.inc.php:521
+msgid "back"
+msgstr "terug"
+
+#: inc/wpf/wp-admin.inc.php:526
 #, php-format
 msgid ""
 "<p>&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
@@ -650,23 +666,23 @@ msgstr ""
 "rel=\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a></p>"
 
-#: inc/wpf/wp-admin.inc.php:710
+#: inc/wpf/wp-admin.inc.php:739
 msgid "Are you sure you want to reset this options page?"
 msgstr "Weet u zeker dat u deze optie pagina wilt herstellen?"
 
-#: inc/wpf/wp-admin.inc.php:735
+#: inc/wpf/wp-admin.inc.php:764
 msgid "General Options"
 msgstr "Algemene opties"
 
-#: inc/wpf/wp-admin.inc.php:736
+#: inc/wpf/wp-admin.inc.php:765
 msgid "Header Options"
 msgstr "Hoofd opties"
 
-#: inc/wpf/wp-admin.inc.php:738
+#: inc/wpf/wp-admin.inc.php:767
 msgid "Contact Options"
 msgstr "Contact opties"
 
-#: inc/wpf/wp-admin.inc.php:747
+#: inc/wpf/wp-admin.inc.php:776
 msgid ""
 "This is the general settings page for the WPF Theme. Go trough the tabmenu's "
 "and adjust any of the specific elements of the theme."
@@ -674,67 +690,67 @@ msgstr ""
 "Dit zijn de algemene opties voor de WPF thema. Blader door de tabmenu's en "
 "pas de specifieke elementen van de thema aan."
 
-#: inc/wpf/wp-admin.inc.php:748
+#: inc/wpf/wp-admin.inc.php:777
 msgid "Current version: "
 msgstr "Huidige versie: "
 
-#: inc/wpf/wp-admin.inc.php:756
+#: inc/wpf/wp-admin.inc.php:785
 msgid "Make some subtile changes to the layout"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/wp-admin.inc.php:762
+#: inc/wpf/wp-admin.inc.php:791
 msgid "Make some subtile changes to the post pages"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/wp-admin.inc.php:768 inc/wpf/wp-admin.inc.php:791
-#: inc/wpf/wp-admin.inc.php:806 inc/wpf/wp-admin.inc.php:828
+#: inc/wpf/wp-admin.inc.php:797 inc/wpf/wp-admin.inc.php:820
+#: inc/wpf/wp-admin.inc.php:835 inc/wpf/wp-admin.inc.php:857
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: inc/wpf/wp-admin.inc.php:769 inc/wpf/wp-admin.inc.php:792
-#: inc/wpf/wp-admin.inc.php:807 inc/wpf/wp-admin.inc.php:829
+#: inc/wpf/wp-admin.inc.php:798 inc/wpf/wp-admin.inc.php:821
+#: inc/wpf/wp-admin.inc.php:836 inc/wpf/wp-admin.inc.php:858
 msgid "Reset Values"
 msgstr "Herstel instellingen"
 
-#: inc/wpf/wp-admin.inc.php:778
+#: inc/wpf/wp-admin.inc.php:807
 msgid "Menu options"
 msgstr "Menu opties"
 
-#: inc/wpf/wp-admin.inc.php:779
+#: inc/wpf/wp-admin.inc.php:808
 msgid "Make the menu fixed and/or contained-to-grid"
 msgstr "Maak de menu vast en/of vast-wan-grid"
 
-#: inc/wpf/wp-admin.inc.php:784
+#: inc/wpf/wp-admin.inc.php:813
 msgid "Title &amp; description"
 msgstr "Titel &amp; beschrijving"
 
-#: inc/wpf/wp-admin.inc.php:785
+#: inc/wpf/wp-admin.inc.php:814
 msgid "Hide the title and/or the description of the site"
 msgstr "Verberg de titel en/of de beschrijving van de site"
 
-#: inc/wpf/wp-admin.inc.php:799
+#: inc/wpf/wp-admin.inc.php:828
 msgid "Colophon"
 msgstr "Colofon"
 
-#: inc/wpf/wp-admin.inc.php:800
+#: inc/wpf/wp-admin.inc.php:829
 msgid "The &copy; copyright text in the footer"
 msgstr "De &copy; auteursrecht test in de voet"
 
-#: inc/wpf/wp-admin.inc.php:816
+#: inc/wpf/wp-admin.inc.php:845
 msgid "You can disable the Contact Form or/and put it in Debug Mode"
 msgstr ""
 "Je kunt de Contact Formulier uitgeschakelen en/of in Debug Modes zetten"
 
-#: inc/wpf/wp-admin.inc.php:822
+#: inc/wpf/wp-admin.inc.php:851
 msgid "Fill in these options to use the WPF Contact Template"
 msgstr ""
 "Vul deze opties in om gebruik te kunnen maken van de WPF Contact Template"
 
-#: inc/wpf/wp-admin.inc.php:915
+#: inc/wpf/wp-admin.inc.php:944
 msgid "<h5>Testing</h5><p>This is some general input<p>"
 msgstr ""
 
-#: inc/wpf/wp-admin.inc.php:921
+#: inc/wpf/wp-admin.inc.php:950
 msgid "<p>This is some general input</p>"
 msgstr ""
 

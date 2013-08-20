@@ -342,7 +342,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 		$navbar_class        .= $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : '';
 
 		// The top-bar data-options
-		$navbar_data_options  = 'back_text:' . __( 'back', 'wpf' );
+		$navbar_data_options  = $GLOBALS['wpf_settings']['menu_primary_custom_back_text'] ? 'back_text:' . $GLOBALS['wpf_settings']['menu_primary_back_text'] : 'custom_back_text:false;';
 
 	?>
 		<div id="navbar" class="<?php echo esc_attr( $navbar_class ); ?>">
