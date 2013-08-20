@@ -12,40 +12,6 @@
 
 global $wpf_c, $wpf_c_values, $wpf_settings;
 
-/*
-// Adjust these settings if you are using tpl-contact.php
-// At the moment I only tested SMTP. Send me a mail if you want to use another method.
-$wpf_c_settings = array(
-	// enable SMTP authentication
-	'SMTPAuth'   => true,
-	// options are "ssl" or "tls"
-	'SMTPSecure' => 'YOUR_SMTP_SECURITY',
-	// your username (can equal your email adress)
-	'Username'   => 'YOUR_USERNAME',
-	// the password for your emailaccount
-	'Password'   => 'YOUR_PASSWORD',
-	// default is "localhost"
-	'Host'       => 'YOUR_EMAIL_HOST',
-	// default is port "25"
-	'Port'       => 'YOUR_EMAIL_HOST_PORT',
-	// the CharSet for your email
-	'CharSet'    => 'utf-8',
-	// the email adres you are using to send the mails
-	'From'       => 'YOUR_EMAIL',
-	// the name you want to attach to your email
-	'FromName'   => 'YOUR_NAME',
-	// set to false if your not sending html mails.
-	'html'       => true,
-	// set this to either false/true to show/hide phpmailer debug information
-	'debug'      => WPF_DEV_MODE, // see functions.php
-
-	// set this to true if you are done with the above settings
-	'setup'      => false,
-);
-*/
-
-//------------------------------------------------------^^^-CONFIG-^^^------------------------------------------------------------------------------------------
-
 $wpf_c = array(
 	// these keynames equal the $_POST input:
 	'c_name'      => array( 'msg' => null, 'class' => null ),
@@ -72,9 +38,8 @@ if( $wpf_settings['contact_setup'] ) {
 	if ( current_user_can( 'edit_theme_options' ) ) {
 		$wpf_c['c_feedback']['msg']   = sprintf(
 			__( 'Please go to the %s to configure this page!', 'wpf' ),
-			'<a href="' . admin_url( 'themes.php?page=wpf-options&tab=contact' ) . '" >' . __( 'WPF Contact Options', 'wpf' ) . '</a>'
+			'<a href="' . esc_url( admin_url( 'themes.php?page=wpf-options&tab=contact' ) ) . '" >' . __( 'WPF Contact Options', 'wpf' ) . '</a>'
 		);
-		//__( 'Please go to the WPF Options page to configure this: ', 'wpf' );
 		$wpf_c['c_feedback']['class'] = 'alert';
 	} else {
 		$wpf_c['c_feedback']['msg']   = __( 'Please try again later! The contact form hasn\'t been setup yet.', 'wpf' );

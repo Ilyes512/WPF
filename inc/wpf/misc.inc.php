@@ -74,7 +74,7 @@ if ( ! function_exists( 'wpf_site_description' ) ) {
 					printf( __( 'Yearly Archives: %s', 'wpf' ), get_the_date( _x( 'Y', 'yearly archives date format', 'wpf' ) ) );
 					break;
 				case is_category():
-					single_cat_title();
+					echo esc_html( single_cat_title( '', false ) );
 					break;
 				case is_search():
 					// Get the search query
@@ -82,20 +82,19 @@ if ( ! function_exists( 'wpf_site_description' ) ) {
 
 					// If the search query is longer then 100 char's then get the first 100
 					// char's and add '...' to the end.
-					if ( strlen( $search_query ) > 100 ) {
+					if ( strlen( $search_query ) > 100 )
 						$search_query = substr( $search_query, 0, 100 ) . '...';
-					}
-					printf( __( 'The search results for "%s"', 'wpf' ), $search_query );
+					printf( __( 'The search results for "%s"', 'wpf' ), esc_html( $search_query ) );
 					break;
 				case is_author():
 					$author = get_userdata( get_query_var( 'author' ) );
-					printf( __( 'Author\'s archive: %s', 'wpf' ), $author->display_name );
+					printf( __( 'Author\'s archive: %s', 'wpf' ), esc_html( $author->display_name ) );
 					break;
 				case is_archive():
 					_e( 'Archives', 'wpf' );
 					break;
 				default:
-					echo bloginfo( 'description' );
+					echo esc_html( bloginfo( 'description' ) );
 			}
 		}
 	} // end wpf_site_description()
@@ -112,18 +111,17 @@ if ( ! function_exists( 'wpf_post_thumbnail' ) ) {
 	function wpf_post_thumbnail() {
 		if ( has_post_thumbnail() && ! post_password_required() ) {
 
-			$prefix = '<div class="entry-thumbnail">';
-			$postfix = '</div>';
+			echo '<div class="entry-thumbnail">';
 
 			if ( is_single() ) {
 				global $page;
 				if ( $page == 1 )
-					echo $prefix . get_the_post_thumbnail() . $postfix;
+					echo get_the_post_thumbnail();
 			} else {
-				echo $prefix;
-				echo '<a href="' . get_permalink() . '" title="' . esc_attr( sprintf( __( 'Permalink to %s', 'wpf' ), the_title_attribute( 'echo=0' ) ) ). '" rel="bookmark">' . get_the_post_thumbnail() . '</a>';
-				echo $postfix;
+				echo '<a href="' . esc_url( get_permalink() ) . '" title="' . esc_attr( sprintf( __( 'Permalink to %s', 'wpf' ), the_title_attribute( 'echo=0' ) ) ) . '" rel="bookmark">' . get_the_post_thumbnail() . '</a>';
 			}
+
+			echo '</div>';
 		}
 	} // end wpf_post_thumbnail()
 }

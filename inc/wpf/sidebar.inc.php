@@ -133,7 +133,7 @@ if ( ! function_exists( 'wpf_print_footer_sidebar' ) ) {
 			$i = 1;
 			foreach ( $GLOBALS['wpf_widget_classes'] as $class ) {
 				if ( $class ) {
-					echo '<div class="' . $class . '">';
+					echo '<div class="' . esc_attr( $class ) . '">';
 					dynamic_sidebar( 'sidebar-footer-' . $i );
 					echo '</div>';
 				}
