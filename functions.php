@@ -10,8 +10,8 @@
  *    >FOUNDATION NAVIGATION + BREADCRUMB
  *    >SIDEBAR
  *    >MISC
- *    >WP-LOGIN
- *    >WP-ADMIN
+ *    >LOGIN
+ *    >ADMIN
  *    >TPL-CONTACT
  */
 
@@ -160,85 +160,47 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 
 		// Remove the wp logo from the wordpress admin bar
 		add_action( 'admin_bar_menu', function ( $wp_admin_bar ) { $wp_admin_bar->remove_node( 'wp-logo' ); }, 999 );
+
+		// Include theme files
+		wpf_include_theme_files();
+
 	} // end wpf_setup()
 }
 
-
-/**************************************************************************
- *    >CLEANING
- **************************************************************************/
-
-
-require_once( 'inc/wpf/cleaning.inc.php' );
-
-
-/**************************************************************************
- *    >JAVASCRIPT
- **************************************************************************/
-
-
-require_once( 'inc/wpf/javascript.inc.php' );
-
-
-/**************************************************************************
- *		>FOUNDATION NAVIGATION + BREADCRUMB
- **************************************************************************/
-
-
-require_once( 'inc/wpf/navigation.inc.php' );
-
-
-/**************************************************************************
- *		>SIDEBAR
- **************************************************************************/
-
-
-require_once( 'inc/wpf/sidebar.inc.php' );
-
-
-/**************************************************************************
- *		>MISC
- **************************************************************************/
-
-
-require_once( 'inc/wpf/misc.inc.php' );
-
-
-/**************************************************************************
- *		>WP-LOGIN
- **************************************************************************/
-
-
-require_once( 'inc/wpf/wp-login.inc.php' );
-
-
-/**************************************************************************
- *		>WP-ADMIN
- **************************************************************************/
-
-
-require_once( 'inc/wpf/wp-admin.inc.php' );
-
-
-/**************************************************************************
- *    >TPL-CONTACT
- **************************************************************************/
-
-add_action( 'template_redirect', 'wpf_contact' );
 /**
- * Include the logic/settings for tpl-contact.php.
+ * Include all the different theme files
  *
- * Includes the logic/settings for tpl-contact.php. It will load the child's
- * mail.inc.php first if that is available.
+ *
  */
-if ( ! function_exists( 'wpf_contact' ) ) {
-	function wpf_contact() {
-		if ( is_page_template( 'tpl-contact.php' ) ) {
-			if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/wpf/mail.inc.php' ) ) {
-				require_once( get_stylesheet_directory() . '/inc/wpf/mail.inc.php' );
-			} else {
-				require_once( get_template_directory() . '/inc/wpf/mail.inc.php');
-			}
-		}
-	} // end wpf_contact()
+if ( ! function_exists( 'wpf_include_theme_files' ) ) {
+	function wpf_include_theme_files() {
+
+		// CLEANING
+		require( get_stylesheet_directory() . '/inc/wpf/cleaning.inc.php' );
+
+		// JAVASCRIPT
+		require( get_stylesheet_directory() . '/inc/wpf/javascript.inc.php' );
+
+		// FOUNDATION NAVIGATION + BREADCRUMB
+		require( get_stylesheet_directory() . '/inc/wpf/navigation.inc.php' );
+
+		// SIDEBAR
+		require( get_stylesheet_directory() . '/inc/wpf/sidebar.inc.php' );
+
+		// MISC
+		require( get_stylesheet_directory() . '/inc/wpf/misc.inc.php' );
+
+		// LOGIN
+		require( get_stylesheet_directory() . '/inc/wpf/login.inc.php' );
+
+		// WP-ADMIN
+		require( get_stylesheet_directory() . '/inc/wpf/admin.inc.php' );
+
+		// MAIL
+		add_action( 'template_redirect', function() {
+			if ( is_page_template( 'tpl-contact.php' ) )
+				require( get_stylesheet_directory() . '/inc/wpf/mail.inc.php' );
+		} );
+
+	} // end wpf_include_theme_files()
 }

@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
- *    >WP-ADMIN
+ *    >WPF ADMIN
  **************************************************************************/
 
 
@@ -18,7 +18,7 @@ if ( ! function_exists( 'wpf_admin_head' ) ) {
 
 
 /**************************************************************************
- *    >Menu's
+ *    >MENU'S
  **************************************************************************/
 
 
@@ -31,9 +31,8 @@ add_action( 'admin_menu', 'wpf_add_options_page' );
 if ( ! function_exists( 'wpf_add_options_page' ) ) {
 	function wpf_add_options_page() {
 
-		global $wpf_options_page;
 		// Add a menu page under appearance
-		$wpf_options_page = add_theme_page(
+		$GLOBALS['wpf_options_page'] = add_theme_page(
 			__( 'WPF Theme Options' , 'wpf' ), // $page_title
 			__( 'WPF Options', 'wpf' ),        // $menu_title
 			'edit_theme_options',              // $capability
@@ -41,460 +40,59 @@ if ( ! function_exists( 'wpf_add_options_page' ) ) {
 			'wpf_options_display'              // $callback
 		);
 
-		// Adds the contextual help
-		add_action( "load-$wpf_options_page", 'wpf_options_help' );
-
-		// Adds the javascript inline for the reset confirm dialog
-		add_action( "admin_footer-$wpf_options_page", 'wpf_options_js' );
-
-		// Find out what tab is active
-		$GLOBALS['active_tab'] = ( isset( $_GET['tab'] ) && ( 'header' == $_GET['tab'] || 'footer' == $_GET['tab'] || 'contact' == $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
-
 	} // end wpf_add_options_page()
 }
 
 
 /**************************************************************************
- *    >Sections, Settings, and Fields
+ *    >OPTIONS INIT
  **************************************************************************/
 
 
-add_action( 'admin_init', 'wpf_create_options' );
+add_action( 'admin_init', 'wpf_options_init' );
 /*
- * Create the option sections
+ * Create the option sections/fields and register it.
  *
  *
  */
-if ( ! function_exists( 'wpf_create_options' ) ) {
-	function wpf_create_options() {
+if ( ! function_exists( 'wpf_options_init' ) ) {
+	function wpf_options_init() {
 
-		// GENERAL OPTIONS TAB
+		global $wpf_options_page, $active_tab;
 
-		// general_layout_section
-		add_settings_section(
-			'general_layout_section',      // $id
-			__( 'Layout Options', 'wpf' ), // $title
-			null,                          // $callback
-			'wpf-options'                  // $page
-		);
+		// Include the contextual help function
+		require( get_stylesheet_directory() . '/inc/wpf/admin/contextual-help.inc.php' );
 
-		add_settings_field(
-			'page_boxed',                   // $id
-			__( 'Boxed page', 'wpf' ),      // $title
-			'wpf_checkbox_option_display',  // $callback
-			'wpf-options',                  // $page
-			'general_layout_section',       // $section
-			array(                          // $args
-				'id'    => 'page_boxed',
-				'label' => __( 'Show the pages boxed', 'wpf' )
-			)
-		);
+		// Adds the contextual help function
+		add_action( "load-$wpf_options_page", 'wpf_options_help_tab' );
 
-		add_settings_field(
-			'sidebar_left',                // $id
-			__( 'Sidebar left', 'wpf' ),   // $title
-			'wpf_checkbox_option_display', // $callback
-			'wpf-options',                 // $page
-			'general_layout_section',      // $section
-			array(                         // $args
-				'id'    => 'sidebar_left',
-				'label' => __( 'Show the sidebar to the left', 'wpf' )
-			)
-		);
+		// Adds the javascript inline for the reset confirm dialog
+		add_action( "admin_footer-$wpf_options_page", 'wpf_options_js' );
 
-		register_setting(
-			'general_layout_section', // $option_group
-			'wpf_settings',           // $option_name
-			'wpf_options_validation'  // $sanitize_callback
-		);
+		// Find out what tab is active
+		$active_tab = ( isset( $_GET['tab'] ) && ( 'header' == $_GET['tab'] || 'footer' == $_GET['tab'] || 'contact' == $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
 
-		// general_post_section
-		add_settings_section(
-			'general_post_section',      // $id
-			__( 'Post Options', 'wpf' ), // $title
-			null,                        // $callback
-			'wpf-options'                // $page
-		);
+		switch ( $active_tab ) {
+			case 'general':
+				include( get_stylesheet_directory() . '/inc/wpf/admin/general-tab.inc.php' );
+				break;
+			case 'header':
+				include( get_stylesheet_directory() . '/inc/wpf/admin/header-tab.inc.php' );
+				break;
+			case 'footer':
+				include( get_stylesheet_directory() . '/inc/wpf/admin/footer-tab.inc.php' );
+				break;
+			case 'contact':
+				include( get_stylesheet_directory() . '/inc/wpf/admin/contact-tab.inc.php' );
+				break;
+		}
 
-		add_settings_field(
-			'show_author_info',              // $id
-			__( 'Show author info', 'wpf' ), // $title
-			'wpf_checkbox_option_display',   // $callback
-			'wpf-options',                   // $page
-			'general_post_section',          // $section
-			array(                           // $args
-				'id'    => 'show_author_info',
-				'label' => __( 'Show the author info on the post page', 'wpf' )
-			)
-		);
-
-		register_setting(
-			'general_post_section', // $option_group
-			'wpf_settings'          // $option_name
-		);
-
-		// HEADER OPTIONS TAB
-
-		// header_menu_section
-		add_settings_section(
-			'header_menu_section',       // $id
-			__( 'Menu Options', 'wpf' ), // $title
-			null,                        // $callback
-			'wpf-options'                // $page
-		);
-
-		add_settings_field(
-			'menu_primary_fixed',          // $id
-			__( 'Menu Fixed', 'wpf' ),     // $title
-			'wpf_select_option_display',   // $callback
-			'wpf-options',                 // $page
-			'header_menu_section',         // $section
-			array(                         // $args
-				'id'        => 'menu_primary_fixed',
-				'options'   => array(
-					array(
-						'value'   => false,
-						'label'   => __( 'None', 'wpf' )
-					),
-					array(
-						'value'   => 'fixed',
-						'label'   => __( 'Fixed', 'wpf' )
-					),
-					array(
-						'value'   => 'sticky-top-bar',
-						'label'   => __( 'Sticky', 'wpf' )
-					)
-				)
-			)
-		);
-
-		add_settings_field(
-			'menu_primary_location',       // $id
-			__( 'Menu Location', 'wpf' ),  // $title
-			'wpf_checkbox_option_display', // $callback
-			'wpf-options',                 // $page
-			'header_menu_section',         // $section
-			array(                         // $args
-				'id'    => 'menu_primary_location',
-				'label' => __( 'Show the menu beneath the title area', 'wpf' ) . '<em>' . __( ' (Doesn\'t work when menu is fixed)', 'wpf' ) . '</em>'
-			)
-		);
-
-		add_settings_field(
-			'menu_primary_center',         // $id
-			__( 'Center Menu', 'wpf' ),    // $title
-			'wpf_checkbox_option_display', // $callback
-			'wpf-options',                 // $page
-			'header_menu_section',         // $section
-			array(                         // $args
-				'id'    => 'menu_primary_center',
-				'label' => __( 'Center the menu', 'wpf' )
-			)
-		);
-
-		add_settings_field(
-			'menu_primary_title',      // $id
-			__( 'Menu Title', 'wpf' ), // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'header_menu_section',     // $section
-			array(                     // $args
-				'id'    => 'menu_primary_title'
-			)
-		);
-
-		add_settings_field(
-			'menu_primary_custom_back_text',   // $id
-			__( 'Custom "back" text', 'wpf' ), // $title
-			'wpf_checkbox_option_display',     // $callback
-			'wpf-options',                     // $page
-			'header_menu_section',             // $section
-			array(                             // $args
-				'id'    => 'menu_primary_custom_back_text',
-				'label' => __( 'Add a custom "back" text', 'wpf' ). '<em>' . __( ' (Turn off if you wan\'t the parent\'s title as the "back" text)', 'wpf' ) . '</em>'
-			)
-		);
-
-		add_settings_field(
-			'menu_primary_back_text',   // $id
-			__( '"back" text', 'wpf' ), // $title
-			'wpf_text_option_display',  // $callback
-			'wpf-options',              // $page
-			'header_menu_section',      // $section
-			array(                      // $args
-				'id'    => 'menu_primary_back_text'
-			)
-		);
-
-		register_setting(
-			'header_menu_section', // $option_group
-			'wpf_settings'         // $option_name
-		);
-
-		// header_title_section
-		add_settings_section(
-			'header_title_section',       // $id
-			__( 'Title Options', 'wpf' ), // $title
-			null,                         // $callback
-			'wpf-options'                 // $page
-		);
-
-		add_settings_field(
-			'header_show_title',            // $id
-			__( 'Hide site title', 'wpf' ), // $title
-			'wpf_checkbox_option_display',  // $callback
-			'wpf-options',                  // $page
-			'header_title_section',         // $section
-			array(                          // $args
-				'id'    => 'header_show_title',
-				'label' => __( 'Hide the site title', 'wpf' )
-			)
-		);
-
-		add_settings_field(
-			'header_show_description',            // $id
-			__( 'Hide site description', 'wpf' ), // $title
-			'wpf_checkbox_option_display',        // $callback
-			'wpf-options',                        // $page
-			'header_title_section',               // $section
-			array(                                // $args
-				'id'    => 'header_show_description',
-				'label' => __( 'Hide the site description', 'wpf' )
-			)
-		);
-
-		register_setting(
-			'header_title_section', // $option_group
-			'wpf_settings'          // $option_name
-		);
-
-		// FOOTER OPTIONS TAB
-		add_settings_section(
-			'footer_section',              // $id
-			__( 'Footer Options', 'wpf' ), // $title
-			null,                          // $callback
-			'wpf-options'                  // $page
-		);
-
-		add_settings_field(
-			'footer_site_info',            // $id
-			__( 'Site info', 'wpf' ),      // $title
-			'wpf_textarea_option_display', // $callback
-			'wpf-options',                 // $page
-			'footer_section',              // $section
-			array(                         // $args
-				'id' => 'footer_site_info'
-			)
-		);
-
-		register_setting(
-			'footer_section', // $option_group
-			'wpf_settings'    // $option_name
-		);
-
-		// CONTACT OPTIONS TAB
-
-		// contact_dev_section
-		add_settings_section(
-			'contact_dev_section',              // $id
-			__( 'Contact Development', 'wpf' ), // $title
-			null,                               // $callback
-			'wpf-options'                       // $page
-		);
-
-		add_settings_field(
-			'contact_setup',                        // $id
-			__( 'Open/Close Contact Form', 'wpf' ), // $title
-			'wpf_select_option_display',            // $callback
-			'wpf-options',                          // $page
-			'contact_dev_section',                  // $section
-			array(                                  // $args
-				'id'        => 'contact_setup',
-				'options'   => array(
-					array(
-						'value'   => false,
-						'label'   => __( 'Disabled', 'wpf' )
-					),
-					array(
-						'value'   => true,
-						'label'   => __( 'Enabled', 'wpf' )
-					)
-				)
-			)
-		);
-
-		add_settings_field(
-			'contact_debug',                     // $id
-			__( 'PHPMailer Debug Mode', 'wpf' ), // $title
-			'wpf_select_option_display',         // $callback
-			'wpf-options',                       // $page
-			'contact_dev_section',               // $section
-			array(                               // $args
-				'id'        => 'contact_debug',
-				'options'   => array(
-					array(
-						'value'   => false,
-						'label'   => __( 'Disabled', 'wpf' )
-					),
-					array(
-						'value'   => true,
-						'label'   => __( 'Enabled', 'wpf' )
-					)
-				)
-			)
-		);
-
-		// contact_config_section
-		add_settings_section(
-			'contact_config_section',             // $id
-			__( 'Contact Configuration', 'wpf' ), // $title
-			null,                                 // $callback
-			'wpf-options'                         // $page
-		);
-
-		add_settings_field(
-			'contact_smtpauth',                 // $id
-			__( 'SMTP authentication', 'wpf' ), // $title
-			'wpf_select_option_display',        // $callback
-			'wpf-options',                      // $page
-			'contact_config_section',           // $section
-			array(                              // $args
-				'id'        => 'contact_smtpauth',
-				'options'   => array(
-					array(
-						'value'   => false,
-						'label'   => __( 'Disabled', 'wpf' )
-					),
-					array(
-						'value'   => true,
-						'label'   => __( 'Enabled', 'wpf' )
-					)
-				)
-			)
-		);
-
-		add_settings_field(
-			'contact_smtpsecure',         // $id
-			__( 'SMTP security', 'wpf' ), // $title
-			'wpf_select_option_display',  // $callback
-			'wpf-options',                // $page
-			'contact_config_section',     // $section
-			array(                        // $args
-				'id'        => 'contact_smtpsecure',
-				'options'   => array(
-					array(
-						'value'   => 'ssl',
-						'label'   => 'SSL'
-					),
-					array(
-						'value'   => 'tls',
-						'label'   => 'TLS'
-					)
-				)
-			)
-		);
-
-		add_settings_field(
-			'contact_username',        // $id
-			__( 'Username', 'wpf' ),   // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_username'
-			)
-		);
-
-		add_settings_field(
-			'contact_password',        // $id
-			__( 'Password', 'wpf' ),   // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_password'
-			)
-		);
-
-		add_settings_field(
-			'contact_host',            // $id
-			__( 'Host', 'wpf' ),       // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_host'
-			)
-		);
-
-		add_settings_field(
-			'contact_port',            // $id
-			__( 'Port', 'wpf' ),       // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_port'
-			)
-		);
-
-		add_settings_field(
-			'contact_charset',            // $id
-			__( 'Character Set', 'wpf' ), // $title
-			'wpf_text_option_display',    // $callback
-			'wpf-options',                // $page
-			'contact_config_section',     // $section
-			array(                        // $args
-				'id'    => 'contact_charset'
-			)
-		);
-
-		add_settings_field(
-			'contact_from',            // $id
-			__( 'From', 'wpf' ),       // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_from'
-			)
-		);
-
-		add_settings_field(
-			'contact_fromname',        // $id
-			__( 'From Name', 'wpf' ),  // $title
-			'wpf_text_option_display', // $callback
-			'wpf-options',             // $page
-			'contact_config_section',  // $section
-			array(                     // $args
-				'id'    => 'contact_fromname'
-			)
-		);
-
-		add_settings_field(
-			'contact_html',                // $id
-			__( 'HTML Mail', 'wpf' ),      // $title
-			'wpf_checkbox_option_display', // $callback
-			'wpf-options',                 // $page
-			'contact_config_section',      // $section
-			array(                         // $args
-				'id'    => 'contact_html',
-				'label' => __( 'Enable HTML Mail\'s', 'wpf' )
-			)
-		);
-
-		register_setting(
-			'contact_config_section', // $option_group
-			'wpf_settings'            // $option_name
-		);
-
-
-	} // end wpf_create_options()
+	} // end wpf_options_init()
 }
 
 
 /**************************************************************************
- *    >Helper functions
+ *    >HELPER FUNCTIONS
  **************************************************************************/
 
 
@@ -748,7 +346,7 @@ if ( ! function_exists( 'wpf_options_js' ) ) {
 
 
 /**************************************************************************
- *    >Display Callback's
+ *    >DISPLAY CALLBACK'S
  **************************************************************************/
 
 
@@ -866,6 +464,11 @@ if ( ! function_exists( 'wpf_options_display' ) ) {
 	} // end wpf_options_display()
 }
 
+/**
+ * This is a callback that create's a html checkbox field
+ *
+ *
+ */
 if ( ! function_exists( 'wpf_checkbox_option_display' ) ) {
 	function wpf_checkbox_option_display( $args ) {
 
@@ -882,17 +485,28 @@ if ( ! function_exists( 'wpf_checkbox_option_display' ) ) {
 	} // end wpf_checkbox_option_display()
 }
 
+/**
+ * This is a callback that create's a html textarea field
+ *
+ *
+ */
 if ( ! function_exists( 'wpf_textarea_option_display' ) ) {
 	function wpf_textarea_option_display( $args ) {
 
 		extract( $args );
+
 		if ( ! isset( $cols ) ) $cols = 100;
-		if ( ! isset( $rows ) ) $rows = 10;
+		if ( ! isset( $rows ) ) $rows = 5;
 
 		echo '<textarea name="wpf_settings[' . $id . ']" id="wpf_settings[' . $id . ']" cols="' . $cols . '" rows="' . $rows . '">' . esc_textarea( $GLOBALS['wpf_settings'][$id] ) .'</textarea>';
 	} // end wpf_textarea_option_display()
 }
 
+/**
+ * This is a callback that create's a html select input field
+ *
+ *
+ */
 if ( ! function_exists( 'wpf_select_option_display' ) ) {
 	function wpf_select_option_display( $args ) {
 
@@ -909,10 +523,16 @@ if ( ! function_exists( 'wpf_select_option_display' ) ) {
 	} // end wpf_select_option_display()
 }
 
+/**
+ * This is a callback that create's a html text input field
+ *
+ *
+ */
 if ( ! function_exists( 'wpf_text_option_display' ) ) {
 	function wpf_text_option_display( $args ) {
 
 		extract( $args );
+
 		if ( ! isset( $size ) ) $size = 50;
 		$placeholder = isset( $placeholder ) ? ' placeholder="' . $placeholder . '"' : '';
 
@@ -923,39 +543,8 @@ if ( ! function_exists( 'wpf_text_option_display' ) ) {
 
 
 /**************************************************************************
- *    >Options Help
+ *    >OPTIONS HELP
  **************************************************************************/
 
 
-if ( ! function_exists( 'wpf_options_help' ) ) {
-	function wpf_options_help() {
-
-		global $active_tab;
-
-		$screen = get_current_screen();
-		if ( $screen->id != $GLOBALS['wpf_options_page'] )
-			return;
-
-		if ( 'general' == $active_tab ) {
-
-			$screen->add_help_tab( array(
-				'id'         => 'wpf-help-general-layout',
-				'title'      => __( 'Layout Options', 'wpf' ),
-				'content'    => __( '<h5>Testing</h5><p>This is some general input<p>' , 'wpf' )
-			) );
-
-			$screen->add_help_tab( array(
-				'id'         => 'wpf-help-general-post',
-				'title'      => __( 'Post Options', 'wpf' ),
-				'content'    => __( '<p>This is some general input</p>' , 'wpf' )
-			) );
-
-		} elseif ( 'header' == $active_tab ) {
-
-		} elseif ( 'footer' == $active_tab ) {
-
-		}
-
-
-	} // end wpf_options_help()
-}
+ // @todo PLACE THIS SOMEWHERE IN A FUNCTION!!!!!!!!!!

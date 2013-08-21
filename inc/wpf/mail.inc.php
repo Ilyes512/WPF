@@ -2,8 +2,6 @@
 /**************************************************************************
  *    >MAIL
  **************************************************************************/
-
-
 /**
  * This is the logic for template tpl-contact.php for the WordPress WPF theme
  *
@@ -85,8 +83,8 @@ if ( $wpf_settings['contact_setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		$wpf_c['c_feedback']['class'] = 'alert';
 	} else {
 		// Include the phpmailer classes
-		require_once ABSPATH . WPINC . '/class-phpmailer.php';
-		require_once ABSPATH . WPINC . '/class-smtp.php';
+		require_once( ABSPATH . WPINC . '/class-phpmailer.php');
+		require_once( ABSPATH . WPINC . '/class-smtp.php' );
 
 		$phpmailer = new PHPMailer();
 		$phpmailer->IsSMTP();
@@ -111,10 +109,10 @@ if ( $wpf_settings['contact_setup'] && isset( $_POST['wpf_contact_send'] ) ) {
 		$phpmailer->Subject       = $wpf_c_values['c_subject'];
 
 		// Retrieve the template and replace the template variables
-		if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/wpf/email_template/contact.tpl' ) ) {
-			$message = file_get_contents( get_stylesheet_directory() . '/inc/wpf/email_template/contact.tpl' );
+		if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/inc/wpf/email/contact.tpl' ) ) {
+			$message = file_get_contents( get_stylesheet_directory() . '/inc/wpf/email/contact.tpl' );
 		} else {
-			$message = file_get_contents( get_template_directory() . '/inc/wpf/email_template/contact.tpl' );
+			$message = file_get_contents( get_template_directory() . '/inc/wpf/email/contact.tpl' );
 		}
 		$message = str_replace( '%name%',    $wpf_c_values['c_name'],    $message );
 		$message = str_replace( '%email%',   $wpf_c_values['c_email'],   $message );
