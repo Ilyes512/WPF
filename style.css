@@ -2196,7 +2196,7 @@ textarea {
   color: #000;
 }
 
-.container, .boxed, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
+.boxed, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -2205,32 +2205,15 @@ textarea {
   max-width: 62.5em;
   *zoom: 1;
 }
-.container:before, .boxed:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .container:after, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.boxed:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   content: " ";
   display: table;
 }
-.container:after, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
   clear: both;
 }
 
-.container-nest {
-  width: auto;
-  margin-left: -0.9375em;
-  margin-right: -0.9375em;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: none;
-  *zoom: 1;
-}
-.container-nest:before, .container-nest:after {
-  content: " ";
-  display: table;
-}
-.container-nest:after {
-  clear: both;
-}
-
-.col, .site-content, .site-content-fw, .sidebar-container, .widget-xlarge, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
+.site-content, .site-content-fw, .sidebar-container, .widget-xlarge, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2238,7 +2221,7 @@ textarea {
   float: left;
 }
 
-.col-colapsed, form#wpf_contact label {
+form#wpf_contact label {
   position: relative;
   padding-left: 0;
   padding-right: 0;

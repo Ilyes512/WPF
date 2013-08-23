@@ -66,22 +66,22 @@ textarea {
 
 // These classes get @exted so there will be no multiple classes with the same
 // contents (properties)
-.container {
+%container {
 	@include grid-row;
 }
-.container-nest {
+%container-nest {
 	@include grid-row($behavior:nest);
 }
-.col {
+%col {
 	@include grid-column($columns:$total-columns);
 }
-.col-colapsed {
+%col-colapsed {
 	@include grid-column($columns:$total-columns, $collapse:true)
 }
 
 // Boxed page
 .boxed {
-	@extend .container;
+	@extend %container;
 }
 @media #{$small} {
 	.boxed {
@@ -224,7 +224,7 @@ a.FontAwesome:hover {
 
 // Site-meta contains the headings (.site-title & .site-description)
 .site-meta {
-	@extend .container;
+	@extend %container;
 }
 .site-meta section {
 	@include grid-column($columns:12);
@@ -242,7 +242,7 @@ a.FontAwesome:hover {
 
 // The styles for the search form
 .searchform {
-	@extend .container;
+	@extend %container;
 }
 .searchinput {
 	@include grid-column($columns:9, $collapse:true);
@@ -269,10 +269,10 @@ a.FontAwesome:hover {
 
 
 .content-area {
-	@extend .container;
+	@extend %container;
 }
 .site-content, .site-content-fw {
-	@extend .col;
+	@extend %col;
 }
 
 // 404 / "No posts found"
@@ -509,7 +509,7 @@ h1.entry-title {
 
 
 .sidebar-container {
-	@extend .col;
+	@extend %col;
 }
 
 // Dont show the "dots" for widget list's
@@ -538,7 +538,7 @@ h1.entry-title {
 
 
 #colophon section {
-	@extend .container;
+	@extend %container;
 	[class*="widget-"] + [class*="widget-"]:last-child {
 		float: $opposite-direction;
 	}
@@ -553,7 +553,7 @@ h1.entry-title {
 
 // Widget's footer sizes
 .widget-xlarge, .widget-large, .widget-medium, .widget-small {
-	@extend .col;
+	@extend %col;
 }
 
 // Container for .site-info and .footer-menu
@@ -562,7 +562,7 @@ h1.entry-title {
 }
 // Contains the footer menu
 .footer-menu {
-	@extend .col;
+	@extend %col;
 	ul {
 		@include inline-list;
 		margin-bottom: 0;
@@ -571,7 +571,7 @@ h1.entry-title {
 }
 // Contains some site information
 .site-info {
-	@extend .col;
+	@extend %col;
 	p {
 		margin-bottom: 0;
 	}
@@ -620,7 +620,7 @@ form#wpf_contact {
 		@include radius;
 	}
 	div {
-		@extend .container;
+		@extend %container;
 		&.error {
 			label {
 				@include form-label-error-color;
@@ -630,17 +630,17 @@ form#wpf_contact {
 				@include side-radius(bottom, 0);
 			}
 			small {
-				@extend .col;
+				@extend %col;
 				@include form-error-message;
 				@include side-radius(bottom);
 			}
 		}
 	}
 	label {
-		@extend .col-colapsed;
+		@extend %col-colapsed;
 	}
 	input[type="text"], input[type="email"], textarea {
-		@extend .col;
+		@extend %col;
 		@include radius;
 	}
 	textarea {
