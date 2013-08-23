@@ -62,7 +62,7 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
  */
 if ( ! function_exists( 'wpf_site_description' ) ) {
 	function wpf_site_description() {
-		if ( ! $GLOBALS['wpf_settings']['hide_site_title'] && ! $GLOBALS['wpf_settings']['hide_site_description'] ) {
+		if ( $GLOBALS['wpf_settings']['header_show_title'] && $GLOBALS['wpf_settings']['header_show_description'] ) {
 			switch ( true ) {
 				case is_day():
 					printf( __( 'Daily Archives: %s', 'wpf' ), get_the_date() );

@@ -70,22 +70,19 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
 		add_action( "admin_footer-$wpf_options_page", 'wpf_options_js' );
 
 		// Find out what tab is active
-		$active_tab = ( isset( $_GET['tab'] ) && ( 'header' == $_GET['tab'] || 'footer' == $_GET['tab'] || 'contact' == $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
+		$active_tab = isset( $_GET['tab'] ) && ( 'header' == $_GET['tab'] || 'footer' == $_GET['tab'] || 'contact' == $_GET['tab'] ) ? $_GET['tab'] : 'general';
 
-		switch ( $active_tab ) {
-			case 'general':
-				include( get_stylesheet_directory() . '/inc/wpf/admin/general-tab.inc.php' );
-				break;
-			case 'header':
-				include( get_stylesheet_directory() . '/inc/wpf/admin/header-tab.inc.php' );
-				break;
-			case 'footer':
-				include( get_stylesheet_directory() . '/inc/wpf/admin/footer-tab.inc.php' );
-				break;
-			case 'contact':
-				include( get_stylesheet_directory() . '/inc/wpf/admin/contact-tab.inc.php' );
-				break;
-		}
+		// General tab
+		require( get_stylesheet_directory() . '/inc/wpf/admin/general-tab.inc.php' );
+
+		// Header tab
+		require( get_stylesheet_directory() . '/inc/wpf/admin/header-tab.inc.php' );
+
+		// Footer tab
+		require( get_stylesheet_directory() . '/inc/wpf/admin/footer-tab.inc.php' );
+
+		// Contact tab
+		require( get_stylesheet_directory() . '/inc/wpf/admin/contact-tab.inc.php' );
 
 	} // end wpf_options_init()
 }

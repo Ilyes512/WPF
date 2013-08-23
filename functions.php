@@ -29,13 +29,12 @@
 global $wpf_settings;
 $wpf_settings = get_option( 'wpf_settings' );
 
-
 /**
  * The current WPF version (used to add version number to WPF css/js files).
  *
  * Required: see the function wpf_scripts_and_styles()
  */
-define('WPF_VERSION', '0.2.7');
+define( 'WPF_VERSION', '0.2.7' );
 
 /**
  * The value WPF_DEV_MODE is defined by wether WP_DEBUG is set to true or false
@@ -43,14 +42,14 @@ define('WPF_VERSION', '0.2.7');
  *
  * Optional: see the function wpf_dev().
  */
-define('WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false);
+define( 'WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false );
 
 /**
  * You can change the "Home" url that is used for the wpf_breadcrumb(). Default "home url" is set to home_url( '/' ).
  *
  * Optional: you can use "define( 'WPF_BREADCRUMB_HOME_URL' , '#url');" in your child theme.
  */
-//if( ! defined( 'WPF_BREADCRUMB_HOME_URL' ) ) define( 'WPF_BREADCRUMB_HOME_URL' , '#url');
+//if( ! defined( 'WPF_BREADCRUMB_HOME_URL' ) ) define( 'WPF_BREADCRUMB_HOME_URL' , '#url' );
 
 
 /**************************************************************************
@@ -75,18 +74,7 @@ add_action( 'after_setup_theme', 'wpf_setup' );
 if ( ! function_exists( 'wpf_setup' ) ) {
 	function wpf_setup() {
 
-		/*
-		 * Check if the WPF theme options have been created. If not, then use default
-		 * settings.
-		 *
-		 */
-		if ( false === $GLOBALS['wpf_settings'] ) {
-			$GLOBALS['wpf_settings'] = wpf_get_default_options();
-			update_option( 'wpf_settings', $GLOBALS['wpf_settings'] );
-		} elseif ( $GLOBALS['wpf_settings']['wpf_version'] != WPF_VERSION )	 {
-			$GLOBALS['wpf_settings'] = wp_parse_args( $GLOBALS['wpf_settings'], wpf_get_default_options() );
-			update_option( 'wpf_settings', $GLOBALS['wpf_settings'] );
-		}
+		global $wpf_settings;
 
 		/*
 		 * Makes wpf available for translation.
@@ -163,6 +151,25 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 
 		// Include theme files
 		wpf_include_theme_files();
+
+		/*
+		 * Check if the WPF theme options have been created. If not, then use default
+		 * settings.
+		 *
+		 */
+		if ( false === $wpf_settings ) {
+			// Get the default value's
+			$wpf_settings = wpf_get_default_options();
+			// Update the wpf_settings in the database
+			update_option( 'wpf_settings', $wpf_settings );
+		} elseif ( $wpf_settings['wpf_version'] != WPF_VERSION ) {
+			// Add possible new field's to the current $wpf_settings using the default value
+			$wpf_settings = wp_parse_args( $wpf_settings, wpf_get_default_options() );
+			// Overwrite the wpf_version
+			$wpf_settings['wpf_version'] = WPF_VERSION;
+			// Update the wpf_settings in the database
+			update_option( 'wpf_settings', $wpf_settings );
+		}
 
 	} // end wpf_setup()
 }
