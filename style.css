@@ -57,6 +57,10 @@ template {
   display: none;
 }
 
+script {
+  display: none !important;
+}
+
 /* ==========================================================================
    Base
    ========================================================================== */
@@ -386,11 +390,6 @@ table {
   border-spacing: 0;
 }
 
-/* Comment the different Zurb Foundation modules to make the compiled stye.css
-   lighter. Also keep in mind that there might be dependencies (check the
-   documentation at http://foundation.zurb.com/docs/.
-
-   ! Make sure the last non-commented line has the semi-collon (";") */
 *,
 *:before,
 *:after {
@@ -1492,6 +1491,9 @@ dl {
 ul, ol {
   margin-left: 0;
 }
+ul.no-bullet, ol.no-bullet {
+  margin-left: 0;
+}
 
 /* Unordered Lists */
 ul li ul,
@@ -1866,6 +1868,8 @@ blockquote p {
 .top-bar-section ul li > a.button {
   background: #2ba6cb;
   font-size: 0.8125em;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .top-bar-section ul li > a.button:hover {
   background: #2284a1;

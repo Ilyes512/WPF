@@ -4,14 +4,10 @@
 // Normalizing css for the different webbrowsers
 @import "normalize";
 
-// Global settings and mixins for Foundation
+// This includes all of the foundation global elements that are needed to work with any of the other files.
 @import "foundation/variables";
 
-/* Comment the different Zurb Foundation modules to make the compiled stye.css
-   lighter. Also keep in mind that there might be dependencies (check the
-   documentation at http://foundation.zurb.com/docs/.
-
-   ! Make sure the last non-commented line has the semi-collon (";") */
+// Foundation Components
 @import
   "foundation/components/global",
   "foundation/components/grid",

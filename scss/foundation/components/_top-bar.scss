@@ -8,7 +8,7 @@ $topbar-bg: #111 !default;
 
 // Height and margin
 $topbar-height: 45px !default;
-$topbar-margin-bottom: em-calc(30) !default;
+$topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
 $topbar-input-height: 2.45em !default;
@@ -246,6 +246,8 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
+           padding-right: $topbar-height / 3;
+           padding-left: $topbar-height / 3;
           &:hover {
             background: darken($primary-color, 10%);
           }
