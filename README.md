@@ -22,3 +22,6 @@ This theme uses the latest Foundation `v4.2.3` and works on the latest Wordpress
 * [Required+](http://themes.required.ch/)
 * [Wordpress Twenty Thirteen theme](http://twentythirteendemo.wordpress.com/)
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Ilyes512/wpf/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
