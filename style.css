@@ -1,5 +1,4 @@
-@charset "UTF-8";
-/*
+/*!
 Theme Name:  WPF
 Theme URI:   https://github.com/MekZii/WPF/
 Description: WPF is a Wordpress theme based on Zurb's Foundation HTML Framework.
@@ -8,7 +7,7 @@ Author:      MekZii
 License:     MIT License
 License URI: http://www.opensource.org/licenses/mit-license.php
 */
-/* normalize.css v2.1.2 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -1362,7 +1361,6 @@ h1,
 h2,
 h3,
 h4,
-ol.commentlist cite.fn,
 h5,
 h6,
 pre,
@@ -1405,7 +1403,7 @@ p aside {
 }
 
 /* Default header styles */
-h1, h2, h3, h4, ol.commentlist cite.fn, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -1415,7 +1413,7 @@ h1, h2, h3, h4, ol.commentlist cite.fn, h5, h6 {
   margin-bottom: 0.5em;
   line-height: 1.2125em;
 }
-h1 small, h2 small, h3 small, h4 small, ol.commentlist cite.fn small, h5 small, h6 small {
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
@@ -1433,7 +1431,7 @@ h3 {
   font-size: 1.375em;
 }
 
-h4, ol.commentlist cite.fn {
+h4 {
   font-size: 1.125em;
 }
 
@@ -1602,7 +1600,7 @@ blockquote p {
 }
 
 @media only screen and (min-width: 768px) {
-  h1, h2, h3, h4, ol.commentlist cite.fn, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 
@@ -1618,7 +1616,7 @@ blockquote p {
     font-size: 1.6875em;
   }
 
-  h4, ol.commentlist cite.fn {
+  h4 {
     font-size: 1.4375em;
   }
 }
@@ -2123,67 +2121,16 @@ blockquote p {
 /* ==========================================================================
    Table of Contents
    ==========================================================================
-   :: Temp
    :: Miscellaneous
    :: Header
    :: Content
-   :: Sidebar & General-widget
+   :: Sidebar & Sidebar-widget
    :: Footer & Footer-widget
+   :: Comments
+   :: Contact (template)
 */
 /* ==========================================================================
-   Temp
-   ========================================================================== */
-ol.commentlist {
-  margin-left: 0;
-  margin-top: 2em;
-}
-ol.commentlist li {
-  list-style: none;
-  margin-bottom: 2em;
-}
-ol.commentlist .comment-author img {
-  border-radius: 50%;
-  float: left;
-  margin: 0 1em 0 0;
-}
-ol.commentlist .author-meta {
-  display: inline-block;
-}
-ol.commentlist cite.fn {
-  margin-right: 0.5em;
-}
-ol.commentlist section.comment {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #e6e6e6;
-  margin-bottom: 1.25em;
-  padding: 20px;
-  background: white;
-}
-ol.commentlist section.comment > :first-child {
-  margin-top: 0;
-}
-ol.commentlist section.comment > :last-child {
-  margin-bottom: 0;
-}
-ol.commentlist section.comment h1, ol.commentlist section.comment h2, ol.commentlist section.comment h3, ol.commentlist section.comment h4, ol.commentlist section.comment cite.fn, ol.commentlist section.comment h5, ol.commentlist section.comment h6, ol.commentlist section.comment p {
-  color: #333333;
-}
-ol.commentlist section.comment h1, ol.commentlist section.comment h2, ol.commentlist section.comment h3, ol.commentlist section.comment h4, ol.commentlist section.comment cite.fn, ol.commentlist section.comment h5, ol.commentlist section.comment h6 {
-  line-height: 1;
-  margin-bottom: 0.625em;
-}
-ol.commentlist section.comment h1.subheader, ol.commentlist section.comment h2.subheader, ol.commentlist section.comment h3.subheader, ol.commentlist section.comment h4.subheader, ol.commentlist section.comment cite.subheader.fn, ol.commentlist section.comment h5.subheader, ol.commentlist section.comment h6.subheader {
-  line-height: 1.4;
-}
-ol.commentlist a.comment-reply-link {
-  float: right;
-  position: relative;
-  bottom: 1em;
-}
-
-/* ==========================================================================
-   Misc
+   Miscellaneous
    ========================================================================== */
 textarea {
   resize: vertical;
@@ -2196,7 +2143,7 @@ textarea {
   color: #000;
 }
 
-.boxed, .site-meta, .searchform, .content-area, #colophon section, form#wpf_contact div {
+.boxed, .site-meta, .searchform, .content-area, #colophon section, .comment-respond, form#wpf_contact div {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -2205,15 +2152,15 @@ textarea {
   max-width: 62.5em;
   *zoom: 1;
 }
-.boxed:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, form#wpf_contact div:before, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.boxed:before, .site-meta:before, .searchform:before, .content-area:before, #colophon section:before, .comment-respond:before, form#wpf_contact div:before, .boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, .comment-respond:after, form#wpf_contact div:after {
   content: " ";
   display: table;
 }
-.boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, form#wpf_contact div:after {
+.boxed:after, .site-meta:after, .searchform:after, .content-area:after, #colophon section:after, .comment-respond:after, form#wpf_contact div:after {
   clear: both;
 }
 
-.site-content, .site-content-fw, .sidebar-container, .widget-xlarge, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
+.site-content, .site-content-fw, .sidebar-container, .widget-xlarge, .widget-large, .widget-medium, .widget-small, .footer-menu, .site-info, .comment-respond input[type="text"], .comment-respond input[type="email"], .comment-respond input[type="url"], .comment-respond textarea, form#wpf_contact div.error small, form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#wpf_contact textarea {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -2221,7 +2168,7 @@ textarea {
   float: left;
 }
 
-form#wpf_contact label {
+.comment-respond label, .comment-respond .form-allowed-tags, form#wpf_contact label {
   position: relative;
   padding-left: 0;
   padding-right: 0;
@@ -2365,7 +2312,7 @@ fieldset legend {
   margin-bottom: 0;
 }
 
-.nowrap, .more-link, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link, .leave-reply, .reply-closed, .post-tag {
+.nowrap, .more-link, .entry-meta .featured-post, .entry-meta .date, .entry-meta .author, .entry-meta .edit-link, .leave-reply, .reply-closed, .post-tag, .comment-list .comment-metadata .edit-link, .comment-list .reply {
   white-space: nowrap;
 }
 
@@ -2379,7 +2326,7 @@ fieldset legend {
   font-style: normal;
 }
 
-.FontAwesome, .searchsubmit input, .category-list, .more-link:after, .entry-meta .featured-post:before, .entry-meta .date a:before, .entry-meta .author a:before, .entry-meta .edit-link a:before, .leave-reply a:before, .reply-closed:before, .post-tag a:before, .author-link:after {
+.FontAwesome, .searchsubmit input, .category-list, .more-link:after, .entry-meta .featured-post:before, .entry-meta .date a:before, .entry-meta .author a:before, .entry-meta .edit-link a:before, .leave-reply a:before, .reply-closed:before, .post-tag a:before, .author-link:after, .comment-list .comment-metadata time:before, .comment-list .comment-metadata .edit-link a:before, .comment-list .reply .comment-reply-link:before {
   display: inline-block;
   width: auto;
   height: auto;
@@ -2394,7 +2341,7 @@ fieldset legend {
   speak: none;
 }
 
-a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before, .leave-reply a:hover:before, a.reply-closed:hover:before, .post-tag a:hover:before, a.author-link:hover:after {
+a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta a.featured-post:hover:before, .entry-meta .date a:hover:before, .entry-meta .author a:hover:before, .entry-meta .edit-link a:hover:before, .leave-reply a:hover:before, a.reply-closed:hover:before, .post-tag a:hover:before, a.author-link:hover:after, .comment-list .comment-metadata .edit-link a:hover:before, .comment-list .reply a.comment-reply-link:hover:before {
   color: #2795b6;
 }
 
@@ -2566,14 +2513,14 @@ a.FontAwesome:hover, a.category-list:hover, a.more-link:hover:after, .entry-meta
 .panel > :last-child, .author-info > :last-child {
   margin-bottom: 0;
 }
-.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6, .panel p, .author-info p {
+.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel h5, .author-info h5, .panel h6, .author-info h6, .panel p, .author-info p {
   color: #333333;
 }
-.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel ol.commentlist cite.fn, ol.commentlist .panel cite.fn, .author-info ol.commentlist cite.fn, ol.commentlist .author-info cite.fn, .panel h5, .author-info h5, .panel h6, .author-info h6 {
+.panel h1, .author-info h1, .panel h2, .author-info h2, .panel h3, .author-info h3, .panel h4, .author-info h4, .panel h5, .author-info h5, .panel h6, .author-info h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
-.panel h1.subheader, .author-info h1.subheader, .panel h2.subheader, .author-info h2.subheader, .panel h3.subheader, .author-info h3.subheader, .panel h4.subheader, .author-info h4.subheader, .panel ol.commentlist cite.subheader.fn, ol.commentlist .panel cite.subheader.fn, .author-info ol.commentlist cite.subheader.fn, ol.commentlist .author-info cite.subheader.fn, .panel h5.subheader, .author-info h5.subheader, .panel h6.subheader, .author-info h6.subheader {
+.panel h1.subheader, .author-info h1.subheader, .panel h2.subheader, .author-info h2.subheader, .panel h3.subheader, .author-info h3.subheader, .panel h4.subheader, .author-info h4.subheader, .panel h5.subheader, .author-info h5.subheader, .panel h6.subheader, .author-info h6.subheader {
   line-height: 1.4;
 }
 
@@ -2680,10 +2627,10 @@ figcaption {
   border-top-left-radius: 0;
 }
 
-.pagination-container {
+.navigation {
   text-align: center;
 }
-.pagination-container ul.page-numbers li {
+.navigation ul.page-numbers li {
   float: none;
   display: inline-block;
 }
@@ -2721,7 +2668,9 @@ ul.page-numbers span.current {
   font-weight: bold;
   cursor: default;
   display: inline-block;
-  /* @todo: Delete the 2 properties beneath, this will probably be fixed in a future commit to foundation (it's now on a commit request) */
+  /*
+  @todo: Delete the 2 properties beneath, this will probably be fixed in a
+  future commit to foundation (it's now on a commit request) */
   height: auto;
   padding: 0.0625em 0.4375em 0.0625em;
 }
@@ -2749,7 +2698,7 @@ h1.entry-title {
 }
 .entry-meta > span {
   display: inline-block;
-  margin: 0 1.25em 0.9375em 0;
+  margin: 0 1.25em 1.25em 0;
 }
 .entry-meta .featured-post:before {
   margin-right: 0.625em;
@@ -2813,6 +2762,17 @@ h1.entry-title {
 
 /* author-bio
    ========================================================================== */
+.author-info {
+  *zoom: 1;
+}
+.author-info:before, .author-info:after {
+  content: " ";
+  display: table;
+}
+.author-info:after {
+  clear: both;
+}
+
 .single .author-info {
   margin-top: 2.5em;
 }
@@ -2983,6 +2943,143 @@ h1.entry-title {
   }
 }
 /* ==========================================================================
+   Comments
+   ========================================================================== */
+.comment-list {
+  list-style-type: none;
+}
+.comment-list .comment-body {
+  *zoom: 1;
+  margin-top: 0.625em;
+  padding: 0.3125em;
+  border: 1px solid #e9e9e9;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.comment-list .comment-body:before, .comment-list .comment-body:after {
+  content: " ";
+  display: table;
+}
+.comment-list .comment-body:after {
+  clear: both;
+}
+.comment-list .comment.bypostauthor .comment-body {
+  border-color: #79cae3;
+}
+.comment-list .comment.thread-even .comment-body {
+  background-color: #f6f6f6;
+}
+.comment-list ul.children {
+  background-color: #ffffff;
+  list-style-type: none;
+  margin-left: 0.625em;
+}
+.comment-list .vcard {
+  display: block;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.comment-list .fn {
+  font-size: 1em;
+  margin-left: 0.625em;
+}
+.comment-list .avatar {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.comment-list .comment-metadata {
+  text-align: right;
+  margin-bottom: 1.25em;
+}
+.comment-list .comment-metadata time:before {
+  margin-right: 0.625em;
+  content: '\f073';
+}
+.comment-list .comment-metadata .edit-link {
+  margin-left: 0.625em;
+}
+.comment-list .comment-metadata .edit-link a:before {
+  margin-right: 0.625em;
+  content: '\f044';
+}
+.comment-list .reply .comment-reply-link {
+  position: relative;
+  float: right;
+}
+.comment-list .reply .comment-reply-link:before {
+  margin-right: 0.625em;
+  content: '\f0e5';
+}
+
+.comment-respond p {
+  margin: 0;
+  line-height: 1;
+}
+.comment-respond .comment-notes, .comment-respond .form-allowed-tags, .comment-respond .logged-in-as {
+  margin-bottom: 1.25em;
+  line-height: 1.6;
+}
+.comment-respond input[type="text"], .comment-respond input[type="email"], .comment-respond input[type="url"], .comment-respond textarea {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.comment-respond textarea {
+  min-height: 12.5em;
+}
+.comment-respond p.form-submit input[type="submit"] {
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0 0 1.25em;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 0.75em;
+  padding-right: 1.5em;
+  padding-bottom: 0.8125em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  float: right;
+}
+.comment-respond p.form-submit input[type="submit"]:hover, .comment-respond p.form-submit input[type="submit"]:focus {
+  background-color: #2284a1;
+}
+.comment-respond p.form-submit input[type="submit"]:hover, .comment-respond p.form-submit input[type="submit"]:focus {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .comment-list ul.children {
+    margin-left: 1.5625em;
+  }
+  .comment-list .comment-body {
+    position: relative;
+    margin-top: 2.5em;
+    padding: 0.625em 1.25em 0.625em 2.1875em;
+  }
+  .comment-list .comment-author {
+    position: absolute;
+    top: -1.5625em;
+  }
+  .comment-list .fn {
+    margin-left: 0;
+  }
+  .comment-list .avatar {
+    position: absolute;
+    left: -3.75em;
+  }
+}
+/* ==========================================================================
    Contact (template)
    ========================================================================== */
 form#wpf_contact fieldset {
@@ -3028,8 +3125,6 @@ form#wpf_contact input[type="text"], form#wpf_contact input[type="email"], form#
 }
 form#wpf_contact textarea {
   min-height: 12.5em;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
 }
 form#wpf_contact input[type="submit"] {
   border-style: solid;

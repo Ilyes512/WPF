@@ -4,96 +4,21 @@
  **************************************************************************/
 
 
-/**
- * This is an untouched wp_link_pages() as found in wp v3.6-beta3.
- *
- * This function can be deleted as soon as Wordpress 3.6 has been launched. All
- * temp_wp_link_pages() calls will then need to be replaced by wp_link_pages()
- * before deleting this function.
- *
- * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/post-template.php
- * @todo Delete temp_wp_link_pages() as soon as Wordpress 3.6 has been launched
- * and replace the calls with wp_link_pages().
- *
- * @param    string|array    $args Optional. Overwrite the defaults.
- * @return    string         Formatted output in HTML
- */
-if ( ! function_exists( 'temp_wp_link_pages' ) ) {
-	function temp_wp_link_pages( $args = '' ) {
-		$defaults = array(
-			'before'           => '<p>' . __( 'Pages:' ),
-			'after'            => '</p>',
-			'link_before'      => '',
-			'link_after'       => '',
-			'next_or_number'   => 'number',
-			'separator'        => ' ',
-			'nextpagelink'     => __( 'Next page' ),
-			'previouspagelink' => __( 'Previous page' ),
-			'pagelink'         => '%',
-			'echo'             => 1,
-		);
-
-		$r = wp_parse_args( $args, $defaults );
-		$r = apply_filters( 'wp_link_pages_args', $r );
-		extract( $r, EXTR_SKIP );
-
-		global $page, $numpages, $multipage, $more, $pagenow;
-
-		$output = '';
-		if ( $multipage ) {
-			if ( 'number' == $next_or_number ) {
-				$output .= $before;
-				for ( $i = 1; $i <= $numpages; $i++ ) {
-					$link = $link_before . str_replace( '%', $i, $pagelink ) . $link_after;
-					if ( $i != $page || ! $more && 1 == $page ) {
-						$link = _wp_link_page( $i ) . $link . '</a>';
-					}
-					$link = apply_filters( 'wp_link_pages_link', $link, $i );
-					$output .= $separator . $link;
-				}
-				$output .= $after;
-			} elseif ( $more ) {
-				$output .= $before;
-				$i = $page - 1;
-				if ( $i ) {
-					$link = _wp_link_page( $i ) . $link_before . $previouspagelink . $link_after . '</a>';
-					$link = apply_filters( 'wp_link_pages_link', $link, $i );
-					$output .= $separator . $link;
-				}
-				$i = $page + 1;
-				if ( $i <= $numpages ) {
-					$link = _wp_link_page( $i ) . $link_before . $nextpagelink . $link_after . '</a>';
-					$link = apply_filters( 'wp_link_pages_link', $link, $i );
-					$output .= $separator . $link;
-				}
-				$output .= $after;
-			}
-		}
-
-		$output = apply_filters( 'wp_link_pages', $output, $args );
-
-		if ( $echo ) {
-			echo $output;
-		}
-		return $output;
-	}
-}
-
 add_filter( 'wp_link_pages_args', 'wpf_link_pages_args' );
 /**
  * Add a new way of displaying wp_link_pages().
  *
- * This filter is called in wp_link_pages() to add the ability to display both
+ * This filter is called within wp_link_pages(). It will add the ability to display both
  * the page numbers and next/previous links.
  *
  * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/post-template.php
  *
  * @param    array    $args    These are the arguments passed to wp_link_pages().
- * @return   array             The arguments including the (possible) changes to have next/previous links.
+ * @return   array             Return the arguments including the possible changes of having next/previous links.
  */
 if ( ! function_exists( 'wpf_link_pages_args' ) ) {
 	function wpf_link_pages_args( $args ) {
-		if ( 'next_and_number' == $args['next_or_number'] ) {
+		if ( 'both' == $args['next_or_number'] ) {
 			global $page, $numpages, $multipage, $more;
 			$args['next_or_number'] = 'number';
 
@@ -123,7 +48,7 @@ if ( ! function_exists( 'wpf_link_pages_args' ) ) {
 	} // end wpf_link_pages_args()
 }
 
-add_filter( 'wp_link_pages_link', 'wpf_link_pages_link', 10, 2);
+add_filter( 'wp_link_pages_link', 'wpf_link_pages_link', 10, 2 );
 /**
  * Adjust the links that wpf_link_pages() outputs.
  *
@@ -163,22 +88,51 @@ if ( ! function_exists( 'wpf_paginate_link' ) ) {
 
 		// For more options and info view the docs for paginate_links()
 		// http://codex.wordpress.org/Function_Reference/paginate_links
-		$paginate_links = paginate_links( array(
-			'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-			'current'   => max( 1, get_query_var( 'paged' ) ),
-			'total'     => $wp_query->max_num_pages,
-			'end_size'  => 2,
-			'mid_size'  => 5,
-			'prev_next' => True,
-			'prev_text' => __( '&#xf053; Previous', 'wpf' ),
-			'next_text' => __( 'Next &#xf054;', 'wpf' ),
-			'type'      => 'list'
-		) );
+		$paginate_links = paginate_links(
+			array(
+				'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $wp_query->max_num_pages,
+				'end_size'  => 2,
+				'mid_size'  => 5,
+				'prev_next' => True,
+				'prev_text' => __( '&#xf053; Previous', 'wpf' ),
+				'next_text' => __( 'Next &#xf054;', 'wpf' ),
+				'type'      => 'list',
+			)
+		);
 
 		// Display the pagination if more than one page is found
 		if ( $paginate_links )
-			echo '<div class="pagination-container">' . $paginate_links . '</div>';
+			echo '<div class="navigation">' . $paginate_links . '</div>';
 	} // end wpf_paginate_link()
+}
+
+/**
+ * Use Foundation's pagination style for paginate_comments_links().
+ *
+ *
+ */
+if ( ! function_exists( 'wpf_paginate_comments_link' ) ) {
+	function wpf_paginate_comments_link() {
+
+		// For more options and info view the docs for paginate_comments_links()
+		// http://codex.wordpress.org/Template_Tags/paginate_comments_links
+		$paginate_links = paginate_comments_links(
+			array(
+				'end_size'  => 2,
+				'mid_size'  => 5,
+				'prev_text' => __( '&#xf053; Previous', 'wpf' ),
+				'next_text' => __( 'Next &#xf054;', 'wpf' ),
+				'type'      => 'list',
+				'echo'      => false,
+			)
+		);
+
+		// Display the pagination if more than one page is found
+		if ( $paginate_links )
+			echo '<div class="navigation">' . $paginate_links . '</div>';
+	} // end wpf_paginate_comments_link()
 }
 
 /**
@@ -190,22 +144,26 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 	function wpf_link_pages() {
 		switch ( true ) {
 			case is_single() || is_page();
-				temp_wp_link_pages( array(
-					'before'           => '<div class="pagination-container"><ul class="page-numbers">',
-					'after'            => '</ul></div>',
-					'next_or_number'   => 'next_and_number',
-					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
-					'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
-				) );
+				wp_link_pages(
+					array(
+						'before'           => '<div class="pagination-container"><ul class="page-numbers">',
+						'after'            => '</ul></div>',
+						'next_or_number'   => 'both',
+						'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
+						'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
+					)
+				);
 				break;
 			case is_search();
-				temp_wp_link_pages( array(
-					'before'           => '<div class="pagination-container"><span class="pagination-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
-					'after'            => '</ul></div>',
-					'next_or_number'   => 'next_and_number',
-					'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
-					'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
-				) );
+				wp_link_pages(
+					array(
+						'before'           => '<div class="pagination-container"><span class="pagination-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
+						'after'            => '</ul></div>',
+						'next_or_number'   => 'both',
+						'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
+						'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
+					)
+				);
 				break;
 		}
 	} // end wpf_link_pages()
@@ -246,8 +204,8 @@ if ( ! function_exists( 'wpf_active_nav_class' ) ) {
  * @link http://core.trac.wordpress.org/browser/trunk/wp-includes/nav-menu-template.php
  * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-if ( ! class_exists( 'wpf_walker' ) ) {
-	class wpf_walker extends Walker_Nav_menu {
+if ( ! class_exists( 'Wpf_Walker' ) ) {
+	class Wpf_Walker extends Walker_Nav_menu {
 		function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
 			$id_field = $this->db_fields['id'];
@@ -293,7 +251,7 @@ if ( ! class_exists( 'wpf_walker' ) ) {
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
-	} // end class wpf_walker
+	} // end class Wpf_Walker
 }
 
 /**
@@ -344,7 +302,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 		// The top-bar data-options
 		$navbar_data_options  = $GLOBALS['wpf_settings']['menu_primary_custom_back_text'] ? 'back_text:' . $GLOBALS['wpf_settings']['menu_primary_back_text'] : 'custom_back_text:false;';
 
-	?>
+		?>
 		<div id="navbar" class="<?php echo esc_attr( $navbar_class ); ?>">
 
 			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar;<?php echo esc_attr( $navbar_data_options ); ?>">
@@ -360,13 +318,15 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 				</ul>
 				<section class="top-bar-section">
 					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'container'      => false,
-						'items_wrap'     => '<ul class="left">%3$s</ul>',
-						'walker'         => new wpf_walker(),
-						'fallback_cb'    => 'wpf_nav_menu_fallback',
-					) ); ?>
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'container'      => false,
+							'items_wrap'     => '<ul class="left">%3$s</ul>',
+							'walker'         => new Wpf_Walker(),
+							'fallback_cb'    => 'wpf_nav_menu_fallback',
+						)
+					); ?>
 					<ul class="right hide-for-medium-down">
 						<li class="divider"></li>
 						<li class="has-form"><?php get_search_form(); ?></li>

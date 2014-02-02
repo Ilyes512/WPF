@@ -1,53 +1,18 @@
 /* ==========================================================================
    Table of Contents
    ==========================================================================
-   :: Temp
    :: Miscellaneous
    :: Header
    :: Content
-   :: Sidebar & General-widget
+   :: Sidebar & Sidebar-widget
    :: Footer & Footer-widget
+   :: Comments
+   :: Contact (template)
 */
 
 
 /* ==========================================================================
-   Temp
-   ========================================================================== */
-
-
-// add some basic comment styles
-ol.commentlist {
-	margin-left: 0;
-	margin-top: 2em;
-	li {
-		list-style: none;
-		margin-bottom: 2em;
-	}
-	.comment-author img {
-		border-radius: 50%;
-		float: left;
-		margin: 0 1em 0 0;
-	}
-	.author-meta {
-		display: inline-block;
-	}
-	cite.fn {
-		@extend h4;
-		margin-right: 0.5em;
-	}
-	section.comment {
-		@include panel(white, 20px);
-	}
-	a.comment-reply-link {
-		float: right;
-		position: relative;
-		bottom: 1em;
-	}
-}
-
-
-/* ==========================================================================
-   Misc
+   Miscellaneous
    ========================================================================== */
 
 
@@ -58,46 +23,46 @@ textarea {
 
 // Chrome Frame prompt
 .chromeframe {
-	margin: 1em;
-	padding: 0.2em;
-	background: #ccc;
-	color: #000;
+  margin: 1em;
+  padding: 0.2em;
+  background: #ccc;
+  color: #000;
 }
 
 // These classes get @exted so there will be no multiple classes with the same
 // contents (properties)
 %container {
-	@include grid-row;
+  @include grid-row;
 }
 %container-nest {
-	@include grid-row($behavior:nest);
+  @include grid-row($behavior:nest);
 }
 %col {
-	@include grid-column($columns:$total-columns);
+  @include grid-column($columns:$total-columns);
 }
 %col-colapsed {
-	@include grid-column($columns:$total-columns, $collapse:true)
+  @include grid-column($columns:$total-columns, $collapse:true)
 }
 
 // Boxed page
 .boxed {
-	@extend %container;
+  @extend %container;
 }
 @media #{$small} {
-	.boxed {
-		border-left: 1px solid $hr-border-color;
-		border-right: 1px solid $hr-border-color;
-	}
+  .boxed {
+    border-left: 1px solid $hr-border-color;
+    border-right: 1px solid $hr-border-color;
+  }
 }
 
 // Form
 form {
-	margin: 0 0 $form-spacing;
+  margin: 0 0 $form-spacing;
 }
 
 // Label Styles
 label {
-	@include form-label;
+  @include form-label;
 }
 
 // We use this to get basic styling on all basic form elements
@@ -115,10 +80,10 @@ input[type="tel"],
 input[type="time"],
 input[type="url"],
 textarea {
-	@include form-element;
-	@if not $input-include-glowing-effect {
-	    @include single-transition(all, 0.15s, linear);
-	}
+  @include form-element;
+  @if not $input-include-glowing-effect {
+      @include single-transition(all, 0.15s, linear);
+  }
 }
 
 // Adjust margin for form elements below
@@ -126,29 +91,29 @@ input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-	margin: 0 0 $form-spacing 0;
+  margin: 0 0 $form-spacing 0;
 }
 
 // Normalize file input width
 input[type="file"] {
-	width:100%;
+  width:100%;
 }
 
 // We add basic fieldset styling
 fieldset {
-	@include fieldset;
+  @include fieldset;
 }
 
 // Top-bar-fix
 .top-bar input[type="text"],
 .top-bar input[type="submit"] {
-	height: em-calc(32);
-	margin-bottom: 0;
+  height: em-calc(32);
+  margin-bottom: 0;
 }
 
 // No wrap @link http://www.impressivewebs.com/css-white-space/
 .nowrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* Font icons (FontAwesome v3.2.0 @http://fortawesome.github.io/Font-Awesome/)
@@ -164,39 +129,39 @@ fieldset {
   font-style: normal;
 }
 .FontAwesome {
-	display: inline-block;
-	width: auto;
-	height: auto;
-	-webkit-font-smoothing: antialiased;
-	color: $primary-color;
-	line-height: inherit;
-	font-family: 'FontAwesome';
-	text-decoration: inherit;
-	font-weight: normal;
-	font-style: normal;
-	vertical-align: baseline;
-	speak: none;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  -webkit-font-smoothing: antialiased;
+  color: $primary-color;
+  line-height: inherit;
+  font-family: 'FontAwesome';
+  text-decoration: inherit;
+  font-weight: normal;
+  font-style: normal;
+  vertical-align: baseline;
+  speak: none;
 }
 a.FontAwesome:hover {
-	color: $anchor-font-color-hover;
+  color: $anchor-font-color-hover;
 }
 
 // Alert message
 [class*="msgbox-"] {
-	@include alert;
-	@include radius($global-radius);
-	.close {
-		@include alert-close;
-	}
+  @include alert;
+  @include radius($global-radius);
+  .close {
+    @include alert-close;
+  }
 }
 .msgbox-alert {
-	@include alert-style($alert-color);
+  @include alert-style($alert-color);
 }
 .msgbox-succes {
-	@include alert-style($success-color);
+  @include alert-style($success-color);
 }
 .msgbox-secondary {
-	@include alert-style($secondary-color);
+  @include alert-style($secondary-color);
 }
 
 
@@ -204,62 +169,63 @@ a.FontAwesome:hover {
    Header
    ========================================================================== */
 
+
 // wp-adminbar
 .wp-toolbar {
-	margin-top: 28px;
+  margin-top: 28px;
 }
 .wp-toolbar #navbar.fixed {
-	top: 28px;
+  top: 28px;
 }
 // If your not using a sticky top-bar then comment the style below
 .no-js body {
-	padding-top: $topbar-height;
+  padding-top: $topbar-height;
 }
 
 // Only needed when you use a input within top-bar (i.e. searchform)
 .top-bar .searchsubmit input[type="submit"] {
-	line-height: 2em;
-	height: 2em;
+  line-height: 2em;
+  height: 2em;
 }
 
 // Site-meta contains the headings (.site-title & .site-description)
 .site-meta {
-	@extend %container;
+  @extend %container;
 }
 .site-meta section {
-	@include grid-column($columns:12);
+  @include grid-column($columns:12);
 }
 .site-title {
-	//margin: 0;
+  //margin: 0;
 }
 .site-description {
-	//margin-bottom: 0;
-	clear: left;
-	font-size: 0.52272727em;
-	line-height: 1.4;
+  //margin-bottom: 0;
+  clear: left;
+  font-size: 0.52272727em;
+  line-height: 1.4;
 
 }
 
 // The styles for the search form
 .searchform {
-	@extend %container;
+  @extend %container;
 }
 .searchinput {
-	@include grid-column($columns:9, $collapse:true);
-	input {
-		@include side-radius($side:left, $radius:$button-radius);
-	}
+  @include grid-column($columns:9, $collapse:true);
+  input {
+    @include side-radius($side:left, $radius:$button-radius);
+  }
 }
 .searchsubmit {
-	@include grid-column($columns:3, $last-column:true, $collapse:true);
-	input {
-		@include button($padding:false, $full-width:false, $is-input:false);
-		@include prefix-postfix-base;
-		@include side-radius($side:right, $radius:$button-radius);
-		@extend .FontAwesome;
-		margin-right: em-calc(10);
-		font-family: 'FontAwesome', $body-font-family;
-	}
+  @include grid-column($columns:3, $last-column:true, $collapse:true);
+  input {
+    @include button($padding:false, $full-width:false, $is-input:false);
+    @include prefix-postfix-base;
+    @include side-radius($side:right, $radius:$button-radius);
+    @extend .FontAwesome;
+    margin-right: em-calc(10);
+    font-family: 'FontAwesome', $body-font-family;
+  }
 }
 
 
@@ -269,237 +235,240 @@ a.FontAwesome:hover {
 
 
 .content-area {
-	@extend %container;
+  @extend %container;
 }
 .site-content, .site-content-fw {
-	@extend %col;
+  @extend %col;
 }
 
 // 404 / "No posts found"
 .panel {
-	@include panel;
-	@include radius;
+  @include panel;
+  @include radius;
 }
 .panel hr {
-	border: 5px solid $primary-color;
+  border: 5px solid $primary-color;
 }
 
 // wp aligning
 .alignright, .alignleft, .aligncenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // post thumbnail
 .wp-post-image {
-	@include side-radius(top, $crumb-radius);
+  @include side-radius(top, $crumb-radius);
 }
 
 // img / caption
 img[class*="wp-image-"] {
-	@include radius;
+  @include radius;
 }
 figcaption {
-	display: block;
-	padding: em-calc(5 0 20 0);
-	font-style: italic;
-	text-decoration: underline;
+  display: block;
+  padding: em-calc(5 0 20 0);
+  font-style: italic;
+  text-decoration: underline;
 }
 
 // Breadcrumbs
 .category-list {
-	@include crumb-container;
-	@include radius($crumb-radius);
-	@extend .FontAwesome;
-	font-size: "FontAwesome", $body-font-family;
-	&>* {
-	 	@include crumbs;
-	}
+  @include crumb-container;
+  @include radius($crumb-radius);
+  @extend .FontAwesome;
+  font-size: "FontAwesome", $body-font-family;
+  &>* {
+    @include crumbs;
+  }
 }
 .entry-thumbnail + .category-list {
-	@include side-radius(top, 0); // reset the top corners
+  @include side-radius(top, 0); // reset the top corners
 }
 
 // Pagination
-.pagination-container {
-	@include pagination-container($center:true);
-	ul.page-numbers {
-		@include pagination($center:true, $base-style:false);
-	}
+.navigation {
+  @include pagination-container($center:true);
+  ul.page-numbers {
+    @include pagination($center:true, $base-style:false);
+  }
 }
 ul.page-numbers {
-	@include pagination($center:true, $base-style:true, $use-default-classes:false);
-	font-family: "FontAwesome", $body-font-family;
-	span.current {
-		@include pagination-current-item($has-anchor: false);
-		display: inline-block;
-		/* @todo: Delete the 2 properties beneath, this will probably be fixed in a future commit to foundation (it's now on a commit request) */
-		height: auto;
-		padding: $pagination-link-pad;
-	}
+  @include pagination($center:true, $base-style:true, $use-default-classes:false);
+  font-family: "FontAwesome", $body-font-family;
+  span.current {
+    @include pagination-current-item($has-anchor: false);
+    display: inline-block;
+    /*
+    @todo: Delete the 2 properties beneath, this will probably be fixed in a
+    future commit to foundation (it's now on a commit request) */
+    height: auto;
+    padding: $pagination-link-pad;
+  }
 }
 .pagination-title {
-	display: block;
-	margin-bottom: em-calc(10);
+  display: block;
+  margin-bottom: em-calc(10);
 }
 
 // Post entry-title
 h1.entry-title {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 // more-link
 .more-link {
-	@extend .nowrap;
-	&:after {
-		@extend .FontAwesome;
-		margin-left: em-calc(10);
-		content: '\f178';
-	}
+  @extend .nowrap;
+  &:after {
+    @extend .FontAwesome;
+    margin-left: em-calc(10);
+    content: '\f178';
+  }
 }
 
 // (Post) entry-meta
 .entry-meta {
-	font-style: italic;
-	color: $primary-color;
-	& > span {
-		display: inline-block;
-		margin: em-calc(0 20 15 0);
-	}
-	// featured-post
-	.featured-post {
-		@extend .nowrap;
-		&:before {
-			@extend .FontAwesome;
-			margin-right: em-calc(10);
-			content: '\f08D';
-		}
-	}
-	// date
-	.date {
-		@extend .nowrap;
-		a:before {
-			@extend .FontAwesome;
-			margin-right: em-calc(10);
-			content: '\f073';
-		}
-	}
-	// author
-	.author {
-		@extend .nowrap;
-		border: 0;
-		margin-bottom: 0;
-		padding: 0;
-		&.vcard .fn {
-			font-weight: normal;
-			font-size: em-calc(16);
-		}
-		a:before {
-			@extend .FontAwesome;
-			margin-right: em-calc(10);
-			content: '\f007';
-		}
-	}
-	// edit-link
-	.edit-link {
-		@extend .nowrap;
-		a:before {
-			@extend .FontAwesome;
-			margin-right: em-calc(10);
-			content: '\f044';
-		}
-	}
+  font-style: italic;
+  color: $primary-color;
+  & > span {
+    display: inline-block;
+    margin: em-calc(0 20 20 0);
+  }
+  // featured-post
+  .featured-post {
+    @extend .nowrap;
+    &:before {
+      @extend .FontAwesome;
+      margin-right: em-calc(10);
+      content: '\f08D';
+    }
+  }
+  // date
+  .date {
+    @extend .nowrap;
+    a:before {
+      @extend .FontAwesome;
+      margin-right: em-calc(10);
+      content: '\f073';
+    }
+  }
+  // author
+  .author {
+    @extend .nowrap;
+    border: 0;
+    margin-bottom: 0;
+    padding: 0;
+    &.vcard .fn {
+      font-weight: normal;
+      font-size: em-calc(16);
+    }
+    a:before {
+      @extend .FontAwesome;
+      margin-right: em-calc(10);
+      content: '\f007';
+    }
+  }
+  // edit-link
+  .edit-link {
+    @extend .nowrap;
+    a:before {
+      @extend .FontAwesome;
+      margin-right: em-calc(10);
+      content: '\f044';
+    }
+  }
 }
 .comments-link {
-	@extend .text-center;
+  @extend .text-center;
 }
 .leave-reply {
-	@extend .nowrap;
-	a:before {
-		@extend .FontAwesome;
-		margin-right: em-calc(5);
-		content: '\f086';
-	}
+  @extend .nowrap;
+  a:before {
+    @extend .FontAwesome;
+    margin-right: em-calc(5);
+    content: '\f086';
+  }
 }
 .reply-closed {
-	@extend .nowrap;
-	&:before {
-		@extend .FontAwesome;
-		margin-right: em-calc(10);
-		content: '\f023';
-	}
+  @extend .nowrap;
+  &:before {
+    @extend .FontAwesome;
+    margin-right: em-calc(10);
+    content: '\f023';
+  }
 }
 .post-tags {
-	margin-top: em-calc(20);
-	@extend .text-center;
+  margin-top: em-calc(20);
+  @extend .text-center;
 }
 .post-tag {
-	@include label($bg:$secondary-color, $radius:true);
-	@extend .nowrap;
-	a:before {
-		@extend .FontAwesome;
-		margin-right: em-calc(10);
-		content: '\f02B';
-	}
+  @include label($bg:$secondary-color, $radius:true);
+  @extend .nowrap;
+  a:before {
+    @extend .FontAwesome;
+    margin-right: em-calc(10);
+    content: '\f02B';
+  }
 }
 
 /* author-bio
    ========================================================================== */
 .author-info {
-	@extend .panel;
+  @extend .panel;
+    @include clearfix;
 }
 .single .author-info {
-	margin-top: em-calc(40);
+  margin-top: em-calc(40);
 }
 .author-avatar {
-	float: left;
-	margin: em-calc(0 20 10 0);
-	img {
-		@include radius;
-	}
+  float: left;
+  margin: em-calc(0 20 10 0);
+  img {
+    @include radius;
+  }
 }
 .author-description {
-	h2 {
-		font-size: em-calc(25);
-		margin-top: 0;
-	}
+  h2 {
+    font-size: em-calc(25);
+    margin-top: 0;
+  }
 }
 .author-link:after {
-	@extend .FontAwesome;
-	margin-right: 0;
-	content: '\f178';
+  @extend .FontAwesome;
+  margin-right: 0;
+  content: '\f178';
 }
 
 
 @media #{$small} {
-	.sidebar_right .site-content, .site-content {
-		@include grid-column($columns:8, $collapse:null, $float:false);
-	}
-	.sidebar_left .site-content {
-		@include grid-column($push:4);
-	}
-	// wp aligning
-	.alignright {
-		display: inline-block;
-		float: right;
-		margin: em-calc(0 0 10 10);
-	}
-	.alignleft {
-		display: inline-block;
-		float: left;
-		margin: em-calc(0 10 10 0);
-	}
+  .sidebar_right .site-content, .site-content {
+    @include grid-column($columns:8, $collapse:null, $float:false);
+  }
+  .sidebar_left .site-content {
+    @include grid-column($push:4);
+  }
+  // wp aligning
+  .alignright {
+    display: inline-block;
+    float: right;
+    margin: em-calc(0 0 10 10);
+  }
+  .alignleft {
+    display: inline-block;
+    float: left;
+    margin: em-calc(0 10 10 0);
+  }
 
-	// img / caption
-	.wp-caption.alignright img, .wp-caption.alignleft img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	figcaption {
-		padding: em-calc(5 0 0 0);
-	}
+  // img / caption
+  .wp-caption.alignright img, .wp-caption.alignleft img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  figcaption {
+    padding: em-calc(5 0 0 0);
+  }
 }
 
 
@@ -509,26 +478,26 @@ h1.entry-title {
 
 
 .sidebar-container {
-	@extend %col;
+  @extend %col;
 }
 
 // Dont show the "dots" for widget list's
 .widget ul {
-	list-style: none;
+  list-style: none;
 }
 
 @media #{$small} {
-	.sidebar_right .sidebar-container, .sidebar-container  {
-		@include grid-column($columns:4, $collapse:null, $float:false, $last-column:true);
-	}
-	.sidebar_left .sidebar-container {
-		@include grid-column($pull:8);
-	}
+  .sidebar_right .sidebar-container, .sidebar-container  {
+    @include grid-column($columns:4, $collapse:null, $float:false, $last-column:true);
+  }
+  .sidebar_left .sidebar-container {
+    @include grid-column($pull:8);
+  }
 
-	// Add some extra margin to ul.widget
-	.widget ul {
-		margin-#{$default-float}: $list-side-margin;
-	}
+  // Add some extra margin to ul.widget
+  .widget ul {
+    margin-#{$default-float}: $list-side-margin;
+  }
 }
 
 
@@ -538,77 +507,221 @@ h1.entry-title {
 
 
 #colophon section {
-	@extend %container;
-	[class*="widget-"] + [class*="widget-"]:last-child {
-		float: $opposite-direction;
-	}
+  @extend %container;
+  [class*="widget-"] + [class*="widget-"]:last-child {
+    float: $opposite-direction;
+  }
 }
 
 // Container for the footer widget's
 .footer-sidebar {
-	h5 {
-		margin-top: 0;
-	}
+  h5 {
+    margin-top: 0;
+  }
 }
 
 // Widget's footer sizes
 .widget-xlarge, .widget-large, .widget-medium, .widget-small {
-	@extend %col;
+  @extend %col;
 }
 
 // Container for .site-info and .footer-menu
 .site-footer-meta {
-	padding: em-calc(20 0);
+  padding: em-calc(20 0);
 }
 // Contains the footer menu
 .footer-menu {
-	@extend %col;
-	ul {
-		@include inline-list;
-		margin-bottom: 0;
-		float: left;
-	}
+  @extend %col;
+  ul {
+    @include inline-list;
+    margin-bottom: 0;
+    float: left;
+  }
 }
 // Contains some site information
 .site-info {
-	@extend %col;
-	p {
-		margin-bottom: 0;
-	}
+  @extend %col;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 @media #{$small} {
-	// widget's footer sizes
-	.widget-xlarge {
-		@include grid-column($columns:12, $collapse:null, $float:false);
-	}
-	.widget-large {
-		@include grid-column($columns:8, $collapse:null, $float:false);
-	}
-	.widget-medium {
-		@include grid-column($columns:6, $collapse:null, $float:false);
-	}
-	.widget-small {
-		@include grid-column($columns:4, $collapse:null, $float:false);
-	}
+  // widget's footer sizes
+  .widget-xlarge {
+    @include grid-column($columns:12, $collapse:null, $float:false);
+  }
+  .widget-large {
+    @include grid-column($columns:8, $collapse:null, $float:false);
+  }
+  .widget-medium {
+    @include grid-column($columns:6, $collapse:null, $float:false);
+  }
+  .widget-small {
+    @include grid-column($columns:4, $collapse:null, $float:false);
+  }
 
-	.widget-half {
-		@include grid-column($columns:4, $collapse:null, $float:false);
-	}
+  .widget-half {
+    @include grid-column($columns:4, $collapse:null, $float:false);
+  }
 
-	// Contains the footer menu
-	.footer-menu {
-		@include grid-column($columns:6, $collapse:null, $push:6, $float:false);
-		ul {
-			float: right;
-		}
-	}
-	// Contains some site information
-	.site-info {
-		@include grid-column($columns:6, $collapse:null, $pull:6, $float:false);
-	}
+  // Contains the footer menu
+  .footer-menu {
+    @include grid-column($columns:6, $collapse:null, $push:6, $float:false);
+    ul {
+      float: right;
+    }
+  }
+  // Contains some site information
+  .site-info {
+    @include grid-column($columns:6, $collapse:null, $pull:6, $float:false);
+  }
 }
 
+
+/* ==========================================================================
+   Comments
+   ========================================================================== */
+
+.comment-list {
+  list-style-type: none;
+  .comment-body {
+    @include clearfix;
+    margin-top: em-calc(10);
+    padding: em-calc(5);
+    border: 1px solid $secondary-color;
+    @include radius($global-radius);
+  }
+  .comment.bypostauthor .comment-body {
+    border-color: lighten($primary-color, 20%);
+  }
+  .comment.thread-even .comment-body {
+    background-color: lighten($secondary-color, 5%);
+  }
+  ul.children {
+    background-color: #ffffff;
+    list-style-type: none;
+    margin-left: em-calc(10)
+  }
+  .vcard {
+    display: block;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+  .fn {
+    font-size: em-calc(16);
+    margin-left: em-calc(10);
+  }
+  .avatar {
+    @include radius(50%);
+  }
+  .comment-metadata {
+    text-align: right;
+    margin-bottom: em-calc(20);
+    time:before {
+      @extend .FontAwesome;
+      margin-right: em-calc(10);
+      content: '\f073';
+    }
+    .edit-link {
+      margin-left: em-calc(10);
+      @extend .nowrap;
+      a:before {
+        @extend .FontAwesome;
+        margin-right: em-calc(10);
+        content: '\f044';
+      }
+    }
+  }
+  .reply {
+    @extend .nowrap;
+    .comment-reply-link {
+      position: relative;
+      float: right;
+      &:before {
+        @extend .FontAwesome;
+        margin-right: em-calc(10);
+        content: '\f0e5';
+      }
+    }
+  }
+}
+
+.comment-respond {
+  @extend %container;
+  p {
+    margin: 0;
+    line-height: 1;
+  }
+  label {
+    @extend %col-colapsed;
+  }
+  .comment-notes, .form-allowed-tags, .logged-in-as {
+    margin-bottom: em-calc(20);
+    line-height: 1.6;
+  }
+  input[type="text"], input[type="email"], input[type="url"], textarea {
+    @extend %col;
+    @include radius;
+  }
+  .form-allowed-tags {
+    @extend %col-colapsed;
+  }
+  textarea {
+    min-height: em-calc(200);
+  }
+  p.form-submit {
+    input[type="submit"] {
+      @include button-base;
+      @include button-size;
+      @include button-style($radius:true);
+      float: right;
+    }
+  }
+}
+
+@media #{$small} {
+  .comment-list {
+    ul.children {
+      margin-left: em-calc(25)
+    }
+    .comment-body {
+      position: relative;
+      margin-top: em-calc(40);
+      padding: em-calc(10 20 10 35);
+    }
+    .comment-author {
+      position: absolute;
+      top: em-calc(-25);
+    }
+    .fn {
+      margin-left: 0;
+    }
+    .avatar {
+      position: absolute;
+      left: em-calc(-60);
+    }
+  }
+
+  // .comment-respond {
+  //   // @todo: Optimize - extend from a global
+  //   label {
+  //     @include grid-column($columns:3, $collapse:false, $float:false);
+  //     text-align: right;
+  //     // @todo See if push request get's accepted or not. Either remove this comment or use the mixin
+  //     // @include form-label($alignment:inline, $base-style:false);
+  //     // Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
+  //     // I have made a push request to change this.
+  //     margin: 0 0 $form-spacing 0;
+  //     padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
+  //     padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
+  //   }
+  //   input[type="text"], input[type="email"], input[type="url"], textarea {
+  //     @include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
+  //   }
+  // }
+}
 
 /* ==========================================================================
    Contact (template)
@@ -616,60 +729,60 @@ h1.entry-title {
 
 
 form#wpf_contact {
-	fieldset {
-		@include radius;
-	}
-	div {
-		@extend %container;
-		&.error {
-			label {
-				@include form-label-error-color;
-			}
-			input, textarea {
-				@include form-error-color;
-				@include side-radius(bottom, 0);
-			}
-			small {
-				@extend %col;
-				@include form-error-message;
-				@include side-radius(bottom);
-			}
-		}
-	}
-	label {
-		@extend %col-colapsed;
-	}
-	input[type="text"], input[type="email"], textarea {
-		@extend %col;
-		@include radius;
-	}
-	textarea {
-		min-height: em-calc(200);
-		@include radius;
-	}
-	input[type="submit"] {
-		@include button-base;
-		@include button-size;
-		@include button-style($radius:true);
-		float: right;
-	}
+  fieldset {
+    @include radius;
+  }
+  div {
+    @extend %container;
+    &.error {
+      label {
+        @include form-label-error-color;
+      }
+      input, textarea {
+        @include form-error-color;
+        @include side-radius(bottom, 0);
+      }
+      small {
+        @extend %col;
+        @include form-error-message;
+        @include side-radius(bottom);
+      }
+    }
+  }
+  label {
+    @extend %col-colapsed;
+  }
+  input[type="text"], input[type="email"], textarea {
+    @extend %col;
+    @include radius;
+  }
+  textarea {
+    min-height: em-calc(200);
+  }
+  input[type="submit"] {
+    @include button-base;
+    @include button-size;
+    @include button-style($radius:true);
+    float: right;
+  }
 }
 
 @media #{$small} {
-	form#wpf_contact {
-		label {
-			@include grid-column($columns:3, $collapse:false, $float:false);
-			text-align: right;
-			// @todo See if push request get's accepted or not. Either remove this comment or use the mixin
-			// @include form-label($alignment:inline, $base-style:false);
-			// Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
-			// I have made a push request to change this.
-			margin: 0 0 $form-spacing 0;
-			padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
-			padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
-		}
-		input[type="text"], input[type="email"], textarea, div.error small {
-			@include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
-		}
-	}
+  form#wpf_contact {
+        // @todo: Optimize - extend from a global
+    label {
+      @include grid-column($columns:3, $collapse:false, $float:false);
+      text-align: right;
+      // @todo See if push request get's accepted or not. Either remove this comment or use the mixin
+      // @include form-label($alignment:inline, $base-style:false);
+      // Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
+      // I have made a push request to change this.
+      margin: 0 0 $form-spacing 0;
+      padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
+      padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
+    }
+    input[type="text"], input[type="email"], textarea, div.error small {
+      @include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
+    }
+  }
 }
