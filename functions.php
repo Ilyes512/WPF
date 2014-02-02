@@ -1,7 +1,7 @@
 <?php
 
 /**************************************************************************
-    Table of contents
+	Table of contents
  **************************************************************************
  *    >SETTINGS
  *    >WPF SETUP
@@ -15,17 +15,16 @@
  *    >TPL-CONTACT
  */
 
-
 /**************************************************************************
  *    >SETTINGS
  **************************************************************************/
-
 
 /**
  * Get the WPF settings and store them in a global variable for reusage.
  *
  *
  */
+
 global $wpf_settings;
 $wpf_settings = get_option( 'wpf_settings' );
 
@@ -48,14 +47,14 @@ define( 'WPF_DEV_MODE', ( defined( 'WP_DEBUG' ) ) ? WP_DEBUG : false );
  * You can change the "Home" url that is used for the wpf_breadcrumb(). Default "home url" is set to home_url( '/' ).
  *
  * Optional: you can use "define( 'WPF_BREADCRUMB_HOME_URL' , '#url');" in your child theme.
+ *
+ * @todo: Clean this up
  */
 //if( ! defined( 'WPF_BREADCRUMB_HOME_URL' ) ) define( 'WPF_BREADCRUMB_HOME_URL' , '#url' );
-
 
 /**************************************************************************
  *    >WPF SETUP
  **************************************************************************/
-
 
 /**
  * Sets up the content width value based on the theme's design.
@@ -72,8 +71,8 @@ add_action( 'after_setup_theme', 'wpf_setup' );
  * @todo add editor_styles and post_formats
  */
 if ( ! function_exists( 'wpf_setup' ) ) {
-	function wpf_setup() {
-
+ function wpf_setup()
+	{
 		global $wpf_settings;
 
 		/*
@@ -89,9 +88,9 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		 *
 		 * @todo add editor_styles
 		 */
-/*
+		/*
 		add_editor_style( 'css/editor-style.css' );
-*/
+		*/
 		// Adds RSS feed links to <head> for posts and comments.
 		add_theme_support( 'automatic-feed-links' );
 
@@ -102,14 +101,14 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		 * Structured post formats:
 		 * @link http://core.trac.wordpress.org/ticket/23347
 		 */
-/*
+		/*
 		add_theme_support( 'structured-post-formats', array(
 			'link', 'video'
 		) );
 		add_theme_support( 'post-formats', array(
 			'aside', 'audio', 'chat', 'gallery', 'image', 'quote', 'status'
 		) );
-*/
+		*/
 
 		/*
 		 * Custom callback to make it easier for our fixed navbar to coexist with
@@ -117,15 +116,10 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		 *
 		 * @see WP_Admin_Bar::initialize()
 		 */
-		add_theme_support( 'admin-bar', array(
-			'callback' => '__return_false'
-		) );
-
-		// This theme uses wp_nav_menu() on two locations.
-		register_nav_menus( array(
-			'primary' => __( 'Primary Navigation', 'wpf' ),
-			'footer'  => __( 'Footer Navigation', 'wpf' ),
-		) );
+		add_theme_support(
+			'admin-bar',
+			array('callback' => '__return_false')
+		);
 
 		/*
 		 * This theme uses a custom image size for featured images, displayed on
@@ -134,6 +128,26 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 		set_post_thumbnail_size( 637, 300, true );
 
+		/*
+		 * Enable html5 theme support
+		 *
+		 * @todo Remove $html5_args when both 'search-form' and 'comment-list' are not commented
+		 */
+		$html5_args = array(
+			//'search-form', // @todo Check what enabling html5 does to search-form
+			'comment-form'
+			//'comment-list', // @todo Check what enabling html5 does to search-form
+		);
+		add_theme_support( 'html5', $html5_args );
+
+		// This theme uses wp_nav_menu() on two locations.
+		register_nav_menus(
+			array(
+				'primary' => __( 'Primary Navigation', 'wpf' ),
+				'footer'  => __( 'Footer Navigation', 'wpf' ),
+			)
+		);
+
 		// Clean up gallery output in wp
 		add_filter( 'use_default_gallery_style', '__return_false' );
 
@@ -141,7 +155,7 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		add_action( 'init', 'wpf_head_cleanup' );
 
 		// Clean up comment styles in the head
-		add_action( 'widgets_init', 'wpf_remove_recent_comments_style');
+		add_action( 'widgets_init', 'wpf_remove_recent_comments_style' );
 
 		// Fix caption output to be (more) semantic.
 		add_filter( 'img_caption_shortcode', 'wpf_caption_shortcode', 10, 3 );
@@ -180,8 +194,8 @@ if ( ! function_exists( 'wpf_setup' ) ) {
  *
  */
 if ( ! function_exists( 'wpf_include_theme_files' ) ) {
-	function wpf_include_theme_files() {
-
+	function wpf_include_theme_files()
+	{
 		// CLEANING
 		require( get_stylesheet_directory() . '/inc/wpf/cleaning.inc.php' );
 
@@ -204,10 +218,13 @@ if ( ! function_exists( 'wpf_include_theme_files' ) ) {
 		require( get_stylesheet_directory() . '/inc/wpf/admin.inc.php' );
 
 		// MAIL
-		add_action( 'template_redirect', function() {
-			if ( is_page_template( 'tpl-contact.php' ) )
-				require( get_stylesheet_directory() . '/inc/wpf/mail.inc.php' );
-		} );
+		add_action(
+			'template_redirect',
+			function() {
+				if ( is_page_template( 'tpl-contact.php' ) )
+					require( get_stylesheet_directory() . '/inc/wpf/mail.inc.php' );
+			}
+		);
 
 	} // end wpf_include_theme_files()
 }
