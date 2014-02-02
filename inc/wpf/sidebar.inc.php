@@ -13,45 +13,53 @@ add_action( 'widgets_init', 'wpf_sidebar_support' );
 if ( ! function_exists( 'wpf_sidebar_support' ) ) {
 	function wpf_sidebar_support() {
 		// create widget areas: sidebar-main, sidebar-footer-1, sidebar-footer-2 or sidebar-footer-3
-		register_sidebar( array(
-			'name'          => __( 'Sidebar', 'wpf' ),
-			'id'            => 'sidebar-main',
-			'description'   => __( 'This is the sidebar next to the maincontent of a page', 'wpf' ),
-			'before_widget' => '<aside id="%1$s" class=" widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title"><strong>',
-			'after_title'   => '</strong></h5>',
-		) );
+		register_sidebar(
+			array(
+				'name'          => __( 'Sidebar', 'wpf' ),
+				'id'            => 'sidebar-main',
+				'description'   => __( 'This is the sidebar next to the maincontent of a page', 'wpf' ),
+				'before_widget' => '<aside id="%1$s" class=" widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h5 class="widget-title"><strong>',
+				'after_title'   => '</strong></h5>',
+			)
+		);
 
-		register_sidebar( array(
-			'name'          => __( 'Footer 1', 'wpf' ),
-			'id'            => 'sidebar-footer-1',
-			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title"><strong>',
-			'after_title'   => '</strong></h5>',
-		) );
+		register_sidebar(
+			array(
+				'name'          => __( 'Footer 1', 'wpf' ),
+				'id'            => 'sidebar-footer-1',
+				'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h5 class="widget-title"><strong>',
+				'after_title'   => '</strong></h5>',
+			)
+		);
 
-		register_sidebar( array(
-			'name'          => __( 'Footer 2', 'wpf' ),
-			'id'            => 'sidebar-footer-2',
-			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title"><strong>',
-			'after_title'   => '</strong></h5>',
-		) );
+		register_sidebar(
+			array(
+				'name'          => __( 'Footer 2', 'wpf' ),
+				'id'            => 'sidebar-footer-2',
+				'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h5 class="widget-title"><strong>',
+				'after_title'   => '</strong></h5>',
+			)
+		);
 
-		register_sidebar( array(
-			'name'          => __( 'Footer 3', 'wpf' ),
-			'id'            => 'sidebar-footer-3',
-			'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title"><strong>',
-			'after_title'   => '</strong></h5>',
-		) );
+		register_sidebar(
+			array(
+				'name'          => __( 'Footer 3', 'wpf' ),
+				'id'            => 'sidebar-footer-3',
+				'description'   => __( 'An optional widget area for your site footer', 'wpf' ),
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h5 class="widget-title"><strong>',
+				'after_title'   => '</strong></h5>',
+			)
+		);
 
 		/*
 		 * wpf_footer_widget() will return a $GLOBAL['wpf_widget_classes'] containing
@@ -85,6 +93,7 @@ if ( ! function_exists( 'wpf_footer_widget' ) ) {
 		// Assign the classes based on  wish sidebar-footer widget and
 		switch ( $widget_activation ){
 			case '000':
+				$class = null;
 				$GLOBALS['wpf_widget_active'] = false;
 				break;
 			case '111':
