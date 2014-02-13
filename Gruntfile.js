@@ -4,8 +4,8 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				mangle: true,
-				compress: true,
-				sourceMap: true
+				compress: true
+				//sourceMap: true
 			},
 			target: {
 				files: {
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 		sass: {
 			foundation: {
 				options: {
-					sourcemap: true,
+					//sourcemap: true,
 					style: 'compressed', // Can be nested, compact, compressed, expanded
 					quiet: true
 				},
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 			},
 			sass: 	{
 				files: ['src/scss/**/*.scss'],
-				tasks: ['sass']
+				tasks: ['sass', 'cmq', 'cssmin']
 			}
 		},
 		copy: {
@@ -46,6 +46,26 @@ module.exports = function(grunt) {
 					{src: 'bower_components/font-awesome/scss/*', dest: 'src/scss/font-awesome', flatten: true, expand: true}
 				]
 			}
+		},
+		cmq: {
+			options: {
+			 	log: true
+			},
+			mediaquery: {
+				files: {
+					'': 'style.css'
+				}
+			}
+		},
+		cssmin: {
+			options: {
+				//report: 'gzip'
+			},
+			style: {
+				files: {
+					'style.css': 'style.css'
+				}
+			}
 		}
 	});
 
@@ -53,7 +73,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-combine-media-queries');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 	grunt.registerTask('default', ['watch']);
-	grunt.registerTask('build', ['uglify', 'sass', 'copy']);
+	// Basicly the same as what "watch" will do automatically for you
+	grunt.registerTask('css', ['sass', 'cmq', 'cssmin']);
+	grunt.registerTask('build', ['uglify', 'copy', 'sass', 'cmq', 'cssmin']);
 };
+
