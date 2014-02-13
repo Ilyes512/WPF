@@ -170,16 +170,30 @@ a.FontAwesome:hover {
    ========================================================================== */
 
 
-// wp-adminbar
-.wp-toolbar {
-  margin-top: 28px;
+// Makes the Foundation topbar main menu useable with different settings ie fixed, sticky or just normal mode
+#navbar {
+  float: left;
+  width: 100%;
 }
-.wp-toolbar #navbar.fixed {
-  top: 28px;
+.wp-toolbar { /* body class */
+  padding-top: 46px;
+  // Makes sure that a fixed mobile foundation menu works with wp-toolbar
+  &.fixed_topbar { /* Have to use .fixed_topbar instead of .f-topbar-fix cause .f-topbar-fix will be removed when menu is expanded */
+    #navbar, #site-navigation { z-index: 600; }
+    #masthead { margin-top: 46px; }
+    #wpadminbar { margin-top: 45px; }
+    .top-bar.expanded { margin-top: -92px; }
+  }
 }
-// If your not using a sticky top-bar then comment the style below
-.no-js body {
-  padding-top: $topbar-height;
+
+@media only screen and (min-width:782px) {
+  .wp-toolbar {
+    padding-top: 32px;
+    &.f-topbar-fixed { /* Have to use .f-topbar-fixed so sticky menu will work */
+      #navbar, #masthead { margin-top: 32px; }
+      #wpadminbar { margin-top: 0; }
+    }
+  }
 }
 
 // Site-meta contains the headings (.site-title & .site-description)
@@ -189,15 +203,10 @@ a.FontAwesome:hover {
 .site-meta section {
   @include grid-column($columns:12, $position:true);
 }
-.site-title {
-  //margin: 0;
-}
 .site-description {
-  //margin-bottom: 0;
   clear: left;
-  font-size: 0.52272727em;
+  font-size: em-calc(23);
   line-height: 1.4;
-
 }
 
 // The styles for the search form

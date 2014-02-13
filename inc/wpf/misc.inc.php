@@ -37,7 +37,8 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 			echo '<span class="featured-post">' . __( 'Sticky', 'wpf' ) . '</span>';
 
 		// Post date
-		printf( '<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+		printf(
+			'<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 			esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ),
 			esc_attr( sprintf( __( 'Permalink to the month archive for %s', 'wpf' ), get_the_date( 'F' ) ) ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -46,7 +47,8 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 
 		// Post author
 		if ( 'post' == get_post_type() ) {
-			printf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+			printf(
+				'<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				esc_attr( sprintf( __( 'View all posts by %s', 'wpf' ), get_the_author() ) ),
 				get_the_author()
@@ -56,7 +58,7 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 }
 
 /**
- * This will alternate the .site-description of the page
+ * This will change the .site-description of the page
  *
  *
  */
@@ -124,4 +126,24 @@ if ( ! function_exists( 'wpf_post_thumbnail' ) ) {
 			echo '</div>';
 		}
 	} // end wpf_post_thumbnail()
+}
+
+add_filter( 'body_class', 'wpf_add_body_class' );
+/**
+ * This will add classes to the body's class attribute
+ *
+ * @param  array  $classes All of body's classes
+ * @return array           All of body's classes including the possible new added classes
+ */
+if ( ! function_exists( 'wpf_add_body_class' ) ) {
+	function wpf_add_body_class( $classes = array() ) {
+
+		$topbar = $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : '';
+
+		if ( 'fixed' == $topbar ) {
+			$classes[] = 'fixed_topbar';
+		}
+
+		return $classes;
+	} // end wpf_add_body_class()
 }
