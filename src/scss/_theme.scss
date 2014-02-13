@@ -38,10 +38,10 @@ textarea {
   @include grid-row($behavior:nest);
 }
 %col {
-  @include grid-column($columns:$total-columns);
+  @include grid-column($columns:$total-columns, $position:true);
 }
 %col-colapsed {
-  @include grid-column($columns:$total-columns, $collapse:true)
+  @include grid-column($columns:$total-columns, $collapse:true, $position:true)
 }
 
 // Boxed page
@@ -182,18 +182,12 @@ a.FontAwesome:hover {
   padding-top: $topbar-height;
 }
 
-// Only needed when you use a input within top-bar (i.e. searchform)
-.top-bar .searchsubmit input[type="submit"] {
-  line-height: 2em;
-  height: 2em;
-}
-
 // Site-meta contains the headings (.site-title & .site-description)
 .site-meta {
   @extend %container;
 }
 .site-meta section {
-  @include grid-column($columns:12);
+  @include grid-column($columns:12, $position:true);
 }
 .site-title {
   //margin: 0;
@@ -211,13 +205,13 @@ a.FontAwesome:hover {
   @extend %container;
 }
 .searchinput {
-  @include grid-column($columns:9, $collapse:true);
+  @include grid-column($columns:9, $collapse:true, $position:true);
   input {
     @include side-radius($side:left, $radius:$button-radius);
   }
 }
 .searchsubmit {
-  @include grid-column($columns:3, $last-column:true, $collapse:true);
+  @include grid-column($columns:3, $last-column:true, $collapse:true, $position:true);
   input {
     @include button($padding:false, $full-width:false, $is-input:false);
     @include prefix-postfix-base;
