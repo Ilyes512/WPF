@@ -26,10 +26,10 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		 * @todo Find a better/safer way of doing this.
 		 */
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', $protocol . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null, true );
+		wp_register_script( 'jquery', $protocol . '://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js', false, null, true );
 
 		// register modernizr jsscript in the header
-		wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js', array(), '2.6.2', false );
+		wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.min.js', array(), '2.7.1', false );
 
 		// register Foundation jsscript in the footer
 		wp_register_script( 'wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array( 'jquery', 'wpf-modernizr' ), WPF_VERSION, true );
@@ -56,6 +56,7 @@ add_action( 'wp_footer', 'wpf_foundation_jquery', 999 );
  */
 if ( ! function_exists( 'wpf_foundation_jquery' ) ) {
 	function wpf_foundation_jquery() {
-		echo '<script>jQuery(document).foundation();</script>';
+		echo "<script>\njQuery(document).foundation();\n";
+		echo "jQuery(function() { FastClick.attach(document.body); });\n</script>";
 	} // end wpf_foundation_jquery()
 }

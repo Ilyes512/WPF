@@ -305,7 +305,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 		?>
 		<div id="navbar" class="<?php echo esc_attr( $navbar_class ); ?>">
 
-			<nav id="site-navigation" class="top-bar" role="navigation" data-options="stickyClass:sticky-top-bar;<?php echo esc_attr( $navbar_data_options ); ?>">
+			<nav id="site-navigation" class="top-bar" role="navigation" data-options="sticky_class:sticky-top-bar;<?php echo esc_attr( $navbar_data_options ); ?>" data-topbar>
 				<ul class="title-area">
 					<li class="name">
 						<h1>

@@ -1,7 +1,7 @@
 .sass-cache
 hide/*
 .DS_Store
-codekit-config.json
 WPF.sublime-project
 WPF.sublime-workspace
 node_modules
+bower_components

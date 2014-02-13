@@ -17,7 +17,7 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title><?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?></title>
 
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png">
 <?php wp_head(); ?>
 </head>
@@ -28,7 +28,7 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 
 	<header id="masthead" class="site-header" role="banner">
 		<?php if ( function_exists( 'wpf_primarymenu_display') && ! $GLOBALS['wpf_settings']['menu_primary_location'] ) echo wpf_primarymenu_display(); ?>
-<!--[if lt IE 7]>
+<!--[if lt IE 8]>
 <p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
 <![endif]-->
 		<?php if ( $GLOBALS['wpf_settings']['header_show_title'] ) : ?>
