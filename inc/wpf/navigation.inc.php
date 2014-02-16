@@ -314,7 +314,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 							</a>
 						</h1>
 					</li>
-					<li class="toggle-topbar menu-icon"><a href="#"><span><?php _e( 'Menu', 'wpf' ); ?></span></a></li>
+					<li class="toggle-topbar menu-icon"><a href="#"><?php _e( 'Menu', 'wpf' ); ?></a></li>
 				</ul>
 				<section class="top-bar-section">
 					<?php
