@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2014-02-02 22:03+0100\n"
-"PO-Revision-Date: 2014-02-02 22:03+0100\n"
+"POT-Creation-Date: 2014-02-17 23:14+0100\n"
+"PO-Revision-Date: 2014-02-17 23:15+0100\n"
 "Last-Translator: Ilyes <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;__ngettext:1,2;"
 "__ngettext_noop:1,2;_n_noop:1,2;_nx:4c,1,2;_nx_noop:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html_e;esc_html;esc_html_x:1,2c;"
@@ -53,7 +53,7 @@ msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 msgid "About %s"
 msgstr "Over %s"
 
-#: author-bio.php:21 inc/wpf/misc.inc.php:51
+#: author-bio.php:21 inc/wpf/misc.inc.php:53
 #, php-format
 msgid "View all posts by %s"
 msgstr "Bekijk alle artikelen van %s"
@@ -66,7 +66,7 @@ msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
 msgstr[0] "Een reactie op &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s reacties op &ldquo;%2$s&rdquo;"
 
-#: comments.php:53 comments3.php:63
+#: comments.php:53
 msgid "Comments are closed."
 msgstr "Reacties zijn op slot."
 
@@ -79,169 +79,9 @@ msgstr ""
 "De volgende <abbr title=\"HyperText Markup Language\">HTML</abbr> tags en "
 "attributen zijn toegestaan:<br> %s"
 
-#: comments.php:61 comments3.php:70
+#: comments.php:61
 msgid "Leave a Reply"
 msgstr "Laat een reactie achter"
-
-#: comments3.php:8
-#, php-format
-msgid "<cite class=\"fn\">%s</cite>"
-msgstr "<cite class=\"fn\">%s</cite>"
-
-#: comments3.php:9
-#, php-format
-msgid "%1$s"
-msgstr "%1$s"
-
-#: comments3.php:10
-msgid "(Edit)"
-msgstr "(Aanpassen)"
-
-#: comments3.php:16
-msgid "Your comment is awaiting moderation."
-msgstr "Uw reactie wacht op goedkeuring."
-
-#: comments3.php:31
-msgid "Please do not load this page directly. Thanks!"
-msgstr "Deze pagina is niet bedoelt op direct te openen. Bedankt!"
-
-#: comments3.php:36
-msgid "This post is password protected. Enter the password to view comments."
-msgstr ""
-"Dit artikelen is met een wachtwoord beveiligd. Voer het wachtwoord in om de "
-"reacties te lezen."
-
-#: comments3.php:46
-msgid "No Responses to"
-msgstr "Geen reacties op"
-
-#: comments3.php:46
-msgid "One Response to"
-msgstr "1 reactie op"
-
-#: comments3.php:46
-msgid "% Responses to"
-msgstr "% Reacties op"
-
-#: comments3.php:53
-msgid "&larr; Older comments"
-msgstr "&larr; Oudere reacties"
-
-#: comments3.php:54
-msgid "Newer comments &rarr;"
-msgstr "Nieuwere reacties &rarr;"
-
-#: comments3.php:70
-#, php-format
-msgid "Leave a Reply to %s"
-msgstr "Laat een reactie achter aan %s"
-
-#: comments3.php:73
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr ""
-"U moet <a href=\"%s\">ingelogd</a> zijn om een reactie te kunnen plaatsen."
-
-#: comments3.php:77
-#, php-format
-msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
-msgstr "Ingelogd als <a href=\"%s/wp-admin/profile.php\">%s</a>."
-
-#: comments3.php:77
-msgid "Log out of this account"
-msgstr "Dit account uitloggen"
-
-#: comments3.php:77
-msgid "Log out &raquo;"
-msgstr "Uitloggen &raquo;"
-
-#: comments3.php:80
-msgid "Name"
-msgstr "Naam"
-
-#: comments3.php:80 comments3.php:84
-msgid " (required)"
-msgstr " (verplicht)"
-
-#: comments3.php:84
-msgid "Email (will not be published)"
-msgstr "Email (wordt niet gepubliceerd)"
-
-#: comments3.php:88
-msgid "Website"
-msgstr "Website"
-
-#: comments3.php:93
-msgid "Comment"
-msgstr "Reactie"
-
-#: comments3.php:97
-msgid "Submit Comment"
-msgstr "Plaats een reactie"
-
-#: functions.php:144
-msgid "Primary Navigation"
-msgstr "Primaire menu"
-
-#: functions.php:145
-msgid "Footer Navigation"
-msgstr "Voet menu"
-
-#: header.php:32
-msgid ""
-"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
-"browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google."
-"com/chromeframe/?redirect=true\">activate Google Chrome Frame</a> to improve "
-"your experience."
-msgstr ""
-"Je gebruikt een <strong>verouderde</strong> browser. <a href=\"http://"
-"browsehappy.com/\">Upgrade</a> uw browser of <a href=\"http://www.google.com/"
-"chromeframe/?redirect=true\">activeer Google Chrome Frame</a> om uw browser "
-"ervaring te verbeteren."
-
-#: searchform.php:13
-msgid "Search"
-msgstr "Zoeken"
-
-#: tpl-contact.php:19 content/content.php:31
-msgid "Edit"
-msgstr "Aanpassen"
-
-#: tpl-contact.php:40
-msgid "Name (required)"
-msgstr "Naam (verplicht)"
-
-#: tpl-contact.php:41
-msgid "Your name please"
-msgstr "Uw naam alstublieft"
-
-#: tpl-contact.php:47
-msgid "Email (required)"
-msgstr "Email (verplicht)"
-
-#: tpl-contact.php:48
-msgid "Your email please"
-msgstr "Uw email alstublieft"
-
-#: tpl-contact.php:54
-msgid "Subject (required)"
-msgstr "Onderwerp (verplicht)"
-
-#: tpl-contact.php:55
-msgid "Your subject please"
-msgstr "Uw onderwerp alstublieft"
-
-#: tpl-contact.php:61
-msgid "Content (required)"
-msgstr "Inhoud (verplicht)"
-
-#: tpl-contact.php:62
-msgid "Your content please"
-msgstr "Uw inhoud alstublieft"
-
-#: tpl-contact.php:67
-msgid "Send mail"
-msgstr "Verzend mail"
 
 #: content/content-none.php:14
 #, php-format
@@ -276,10 +116,14 @@ msgstr ""
 msgid " - page %d"
 msgstr " - pagina %d"
 
-#: content/content.php:25 inc/wpf/misc.inc.php:121
+#: content/content.php:25 inc/wpf/misc.inc.php:123
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
+
+#: content/content.php:31 tpl-contact.php:19
+msgid "Edit"
+msgstr "Aanpassen"
 
 #: content/content.php:42
 msgid "Continue reading"
@@ -305,6 +149,26 @@ msgstr "% reacties"
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
+#: functions.php:146
+msgid "Primary Navigation"
+msgstr "Primaire menu"
+
+#: functions.php:147
+msgid "Footer Navigation"
+msgstr "Voet menu"
+
+#: header.php:32
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google."
+"com/chromeframe/?redirect=true\">activate Google Chrome Frame</a> to improve "
+"your experience."
+msgstr ""
+"Je gebruikt een <strong>verouderde</strong> browser. <a href=\"http://"
+"browsehappy.com/\">Upgrade</a> uw browser of <a href=\"http://www.google.com/"
+"chromeframe/?redirect=true\">activeer Google Chrome Frame</a> om uw browser "
+"ervaring te verbeteren."
+
 #: inc/wpf/admin.inc.php:36
 msgid "WPF Theme Options"
 msgstr "WPF thema opties"
@@ -314,8 +178,8 @@ msgid "WPF Options"
 msgstr "WPF opties"
 
 #: inc/wpf/admin.inc.php:116
-msgid "back"
-msgstr "terug"
+msgid "Back"
+msgstr "Terug"
 
 #: inc/wpf/admin.inc.php:121
 #, php-format
@@ -338,7 +202,7 @@ msgstr "Algemene opties"
 
 #: inc/wpf/admin.inc.php:360
 msgid "Header Options"
-msgstr "Hoofd opties"
+msgstr "Kop opties"
 
 #: inc/wpf/admin.inc.php:361 inc/wpf/admin/footer-tab.inc.php:9
 msgid "Footer Options"
@@ -394,7 +258,7 @@ msgstr "Menu opties"
 
 #: inc/wpf/admin.inc.php:403
 msgid "Make the menu fixed and/or contained-to-grid"
-msgstr "Maak de menu vast en/of vast-wan-grid"
+msgstr "Maak de menu vast en/of vast-aan-grid"
 
 #: inc/wpf/admin.inc.php:408
 msgid "Title &amp; description"
@@ -409,8 +273,8 @@ msgid "Colophon"
 msgstr "Colofon"
 
 #: inc/wpf/admin.inc.php:424
-msgid "The &copy; copyright text in the footer"
-msgstr "De &copy; auteursrecht test in de voet"
+msgid "The copyright text in the footer"
+msgstr "De auteursrechten test in de voet"
 
 #: inc/wpf/admin.inc.php:439 inc/wpf/admin/contact-tab.inc.php:9
 msgid "Contact Development"
@@ -418,8 +282,7 @@ msgstr "Contact Ontwikkeling"
 
 #: inc/wpf/admin.inc.php:440
 msgid "You can disable the Contact Form or/and put it in Debug Mode"
-msgstr ""
-"Je kunt de Contact Formulier uitgeschakelen en/of in Debug Modes zetten"
+msgstr "Je kunt de contact formulier uitschakelen en/of in debug modes zetten"
 
 #: inc/wpf/admin.inc.php:445 inc/wpf/admin/contact-tab.inc.php:64
 msgid "Contact Configuration"
@@ -428,7 +291,185 @@ msgstr "Contact instellingen"
 #: inc/wpf/admin.inc.php:446
 msgid "Fill in these options to use the WPF Contact Template"
 msgstr ""
-"Vul deze opties in om gebruik te kunnen maken van de WPF Contact Template"
+"Vul deze opties in om gebruik te kunnen maken van de WPF contact template"
+
+#: inc/wpf/admin/contact-tab.inc.php:16
+msgid "Open/Close Contact Form"
+msgstr "Open/Sluit contact formulier"
+
+#: inc/wpf/admin/contact-tab.inc.php:25 inc/wpf/admin/contact-tab.inc.php:46
+#: inc/wpf/admin/contact-tab.inc.php:80
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: inc/wpf/admin/contact-tab.inc.php:29 inc/wpf/admin/contact-tab.inc.php:50
+#: inc/wpf/admin/contact-tab.inc.php:84
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: inc/wpf/admin/contact-tab.inc.php:37
+msgid "PHPMailer Debug Mode"
+msgstr "PHPMailer debug modes"
+
+#: inc/wpf/admin/contact-tab.inc.php:71
+msgid "SMTP authentication"
+msgstr "SMTP authenticatie"
+
+#: inc/wpf/admin/contact-tab.inc.php:92
+msgid "SMTP security"
+msgstr "SMTP beveiliging"
+
+#: inc/wpf/admin/contact-tab.inc.php:113
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: inc/wpf/admin/contact-tab.inc.php:124
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: inc/wpf/admin/contact-tab.inc.php:135
+msgid "Host"
+msgstr "Host"
+
+#: inc/wpf/admin/contact-tab.inc.php:146
+msgid "Port"
+msgstr "Poort"
+
+#: inc/wpf/admin/contact-tab.inc.php:157
+msgid "Character Set"
+msgstr "Karakterset"
+
+#: inc/wpf/admin/contact-tab.inc.php:168
+msgid "From"
+msgstr "Van"
+
+#: inc/wpf/admin/contact-tab.inc.php:179
+msgid "From Name"
+msgstr "Naam verzender"
+
+#: inc/wpf/admin/contact-tab.inc.php:190
+msgid "HTML Mail"
+msgstr "HTML email"
+
+#: inc/wpf/admin/contact-tab.inc.php:196
+msgid "Enable HTML Mail's"
+msgstr "Schakel HTML email's in"
+
+#: inc/wpf/admin/contextual-help.inc.php:23
+msgid "<h5>Testing</h5><p>This is some dummy input<p>"
+msgstr "<h5>Testing</h5><p>Dit is wat opvul materiaal</p>"
+
+#: inc/wpf/admin/contextual-help.inc.php:31
+msgid "<p>This is some dummy input</p>"
+msgstr "<p>Dit is wat opvul materiaal</p>"
+
+#: inc/wpf/admin/footer-tab.inc.php:16
+msgid "Site info"
+msgstr "Site info"
+
+#: inc/wpf/admin/general-tab.inc.php:16
+msgid "Boxed page"
+msgstr "Blok pagina"
+
+#: inc/wpf/admin/general-tab.inc.php:22
+msgid "Show the pages boxed"
+msgstr "Maak een blok van de pagina"
+
+#: inc/wpf/admin/general-tab.inc.php:28
+msgid "Sidebar left"
+msgstr "Zijbalk links"
+
+#: inc/wpf/admin/general-tab.inc.php:34
+msgid "Show the sidebar to the left"
+msgstr "Laat de zijbalk links zien"
+
+#: inc/wpf/admin/general-tab.inc.php:59
+msgid "Show author info"
+msgstr "Laat auteur info zien"
+
+#: inc/wpf/admin/general-tab.inc.php:65
+msgid "Show the author info on the post page"
+msgstr "Bekijk de auteur info op de bericht pagina"
+
+#: inc/wpf/admin/header-tab.inc.php:9
+msgid "Menu Options"
+msgstr "Menu opties"
+
+#: inc/wpf/admin/header-tab.inc.php:16
+msgid "Menu Fixed"
+msgstr "Menu vast"
+
+#: inc/wpf/admin/header-tab.inc.php:25
+msgid "None"
+msgstr "Geen"
+
+#: inc/wpf/admin/header-tab.inc.php:29
+msgid "Fixed"
+msgstr "Vast"
+
+#: inc/wpf/admin/header-tab.inc.php:33 inc/wpf/misc.inc.php:37
+msgid "Sticky"
+msgstr "Sticky"
+
+#: inc/wpf/admin/header-tab.inc.php:41
+msgid "Menu Location"
+msgstr "Menu lokatie"
+
+#: inc/wpf/admin/header-tab.inc.php:47
+msgid "Show the menu beneath the title area"
+msgstr "Laat de menu beneden het titel gebied zien"
+
+#: inc/wpf/admin/header-tab.inc.php:47
+msgid " (Doesn't work when menu is fixed)"
+msgstr " (Werkt niet wanneer de menu \"vast\" staat)"
+
+#: inc/wpf/admin/header-tab.inc.php:53
+msgid "Center Menu"
+msgstr "Centreer menu"
+
+#: inc/wpf/admin/header-tab.inc.php:59
+msgid "Center the menu"
+msgstr "Centreer de menu"
+
+#: inc/wpf/admin/header-tab.inc.php:65
+msgid "Menu Title"
+msgstr "Menu titel"
+
+#: inc/wpf/admin/header-tab.inc.php:76
+msgid "Custom \"back\" text"
+msgstr "Aangepaste \"terug\" tekst"
+
+#: inc/wpf/admin/header-tab.inc.php:82
+msgid "Add a custom \"Back\" text"
+msgstr "Voeg een aangepaste \"Terug\" tekst toe"
+
+#: inc/wpf/admin/header-tab.inc.php:82
+msgid " (Turn off if you wan't the parent's title as the \"Back\" text)"
+msgstr " (Zet dit uit als je de titel van de ouder als \"Terug\" tekst wilt)"
+
+#: inc/wpf/admin/header-tab.inc.php:88
+msgid "\"back\" text"
+msgstr "\"terug\" tekst"
+
+#: inc/wpf/admin/header-tab.inc.php:110
+msgid "Title Options"
+msgstr "Titel opties"
+
+#: inc/wpf/admin/header-tab.inc.php:117
+msgid "Hide site title"
+msgstr "Verberg site titel"
+
+#: inc/wpf/admin/header-tab.inc.php:123
+msgid "Hide the site title"
+msgstr "Verberg de site titel"
+
+#: inc/wpf/admin/header-tab.inc.php:129
+msgid "Hide site description"
+msgstr "Verberg site beschrijving"
+
+#: inc/wpf/admin/header-tab.inc.php:135
+msgid "Hide the site description"
+msgstr "Verberg de site beschrijving"
 
 #: inc/wpf/login.inc.php:48
 msgid "Go back to the homepage"
@@ -488,51 +529,47 @@ msgstr ""
 "Er is wat fout gegaan met het verzenden van uw mail! Probeer het later "
 "opnieuw of kom later terug."
 
-#: inc/wpf/misc.inc.php:37 inc/wpf/admin/header-tab.inc.php:33
-msgid "Sticky"
-msgstr "Sticky"
-
-#: inc/wpf/misc.inc.php:42
+#: inc/wpf/misc.inc.php:43
 #, php-format
 msgid "Permalink to the month archive for %s"
 msgstr "Permalink naar de maand archief van %s"
 
-#: inc/wpf/misc.inc.php:68
+#: inc/wpf/misc.inc.php:70
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Dagelijks archief: %s"
 
-#: inc/wpf/misc.inc.php:71
+#: inc/wpf/misc.inc.php:73
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Maandelijks archief: %s"
 
-#: inc/wpf/misc.inc.php:71
+#: inc/wpf/misc.inc.php:73
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: inc/wpf/misc.inc.php:74
+#: inc/wpf/misc.inc.php:76
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Jaarlijkse archief: %s"
 
-#: inc/wpf/misc.inc.php:74
+#: inc/wpf/misc.inc.php:76
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: inc/wpf/misc.inc.php:87
+#: inc/wpf/misc.inc.php:89
 #, php-format
 msgid "The search results for \"%s\""
 msgstr "De zoekresultaten voor \"%s\""
 
-#: inc/wpf/misc.inc.php:91
+#: inc/wpf/misc.inc.php:93
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: inc/wpf/misc.inc.php:94
+#: inc/wpf/misc.inc.php:96
 msgid "Archives"
 msgstr "Archief"
 
@@ -568,204 +605,143 @@ msgstr "Menu"
 msgid "Home"
 msgstr "Start"
 
-#: inc/wpf/sidebar.inc.php:17
+#: inc/wpf/sidebar.inc.php:18
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: inc/wpf/sidebar.inc.php:19
+#: inc/wpf/sidebar.inc.php:20
 msgid "This is the sidebar next to the maincontent of a page"
 msgstr "Dit is de zijbalk die zich naast de hoofdinhoud van de pagina bevindt"
 
-#: inc/wpf/sidebar.inc.php:27
+#: inc/wpf/sidebar.inc.php:30
 msgid "Footer 1"
 msgstr "Voet 1"
 
-#: inc/wpf/sidebar.inc.php:29 inc/wpf/sidebar.inc.php:39
-#: inc/wpf/sidebar.inc.php:49
+#: inc/wpf/sidebar.inc.php:32 inc/wpf/sidebar.inc.php:44
+#: inc/wpf/sidebar.inc.php:56
 msgid "An optional widget area for your site footer"
 msgstr "Een optionele widget gebied voor de voet van de pagina"
 
-#: inc/wpf/sidebar.inc.php:37
+#: inc/wpf/sidebar.inc.php:42
 msgid "Footer 2"
 msgstr "Voet 2"
 
-#: inc/wpf/sidebar.inc.php:47
+#: inc/wpf/sidebar.inc.php:54
 msgid "Footer 3"
 msgstr "Voet 3"
 
-#: inc/wpf/admin/contact-tab.inc.php:16
-msgid "Open/Close Contact Form"
-msgstr "Open/Sluit Contact Formulier"
+#: searchform.php:13
+msgid "Search"
+msgstr "Zoeken"
 
-#: inc/wpf/admin/contact-tab.inc.php:25 inc/wpf/admin/contact-tab.inc.php:46
-#: inc/wpf/admin/contact-tab.inc.php:80
-msgid "Disabled"
-msgstr "Uitgeschakeld"
+#: tpl-contact.php:40
+msgid "Name (required)"
+msgstr "Naam (verplicht)"
 
-#: inc/wpf/admin/contact-tab.inc.php:29 inc/wpf/admin/contact-tab.inc.php:50
-#: inc/wpf/admin/contact-tab.inc.php:84
-msgid "Enabled"
-msgstr "Ingeschakeld"
+#: tpl-contact.php:41
+msgid "Your name please"
+msgstr "Uw naam alstublieft"
 
-#: inc/wpf/admin/contact-tab.inc.php:37
-msgid "PHPMailer Debug Mode"
-msgstr "PHPMailer Debug modes"
+#: tpl-contact.php:47
+msgid "Email (required)"
+msgstr "Email (verplicht)"
 
-#: inc/wpf/admin/contact-tab.inc.php:71
-msgid "SMTP authentication"
-msgstr "SMTP authenticatie"
+#: tpl-contact.php:48
+msgid "Your email please"
+msgstr "Uw email alstublieft"
 
-#: inc/wpf/admin/contact-tab.inc.php:92
-msgid "SMTP security"
-msgstr "SMTP beveiliging"
+#: tpl-contact.php:54
+msgid "Subject (required)"
+msgstr "Onderwerp (verplicht)"
 
-#: inc/wpf/admin/contact-tab.inc.php:113
-msgid "Username"
-msgstr "Gebruikersnaam"
+#: tpl-contact.php:55
+msgid "Your subject please"
+msgstr "Uw onderwerp alstublieft"
 
-#: inc/wpf/admin/contact-tab.inc.php:124
-msgid "Password"
-msgstr "Wachtwoord"
+#: tpl-contact.php:61
+msgid "Content (required)"
+msgstr "Inhoud (verplicht)"
 
-#: inc/wpf/admin/contact-tab.inc.php:135
-msgid "Host"
-msgstr "Host"
+#: tpl-contact.php:62
+msgid "Your content please"
+msgstr "Uw inhoud alstublieft"
 
-#: inc/wpf/admin/contact-tab.inc.php:146
-msgid "Port"
-msgstr "Poort"
+#: tpl-contact.php:67
+msgid "Send mail"
+msgstr "Verzend mail"
 
-#: inc/wpf/admin/contact-tab.inc.php:157
-msgid "Character Set"
-msgstr "Character Set"
+#~ msgid "<cite class=\"fn\">%s</cite>"
+#~ msgstr "<cite class=\"fn\">%s</cite>"
 
-#: inc/wpf/admin/contact-tab.inc.php:168
-msgid "From"
-msgstr "Van"
+#~ msgid "%1$s"
+#~ msgstr "%1$s"
 
-#: inc/wpf/admin/contact-tab.inc.php:179
-msgid "From Name"
-msgstr "Naam verstuurder"
+#~ msgid "(Edit)"
+#~ msgstr "(Aanpassen)"
 
-#: inc/wpf/admin/contact-tab.inc.php:190
-msgid "HTML Mail"
-msgstr "HTML Mail"
+#~ msgid "Your comment is awaiting moderation."
+#~ msgstr "Uw reactie wacht op goedkeuring."
 
-#: inc/wpf/admin/contact-tab.inc.php:196
-msgid "Enable HTML Mail's"
-msgstr "Schakel HTML email's in"
+#~ msgid "Please do not load this page directly. Thanks!"
+#~ msgstr "Deze pagina is niet bedoelt op direct te openen. Bedankt!"
 
-#: inc/wpf/admin/contextual-help.inc.php:23
-msgid "<h5>Testing</h5><p>This is some dummy input<p>"
-msgstr "<h5>Testing</h5><p>Dit is wat opvul materiaal</p>"
+#~ msgid ""
+#~ "This post is password protected. Enter the password to view comments."
+#~ msgstr ""
+#~ "Dit artikelen is met een wachtwoord beveiligd. Voer het wachtwoord in om "
+#~ "de reacties te lezen."
 
-#: inc/wpf/admin/contextual-help.inc.php:31
-msgid "<p>This is some dummy input</p>"
-msgstr "<p>Dit is wat opvul materiaal</p>"
+#~ msgid "No Responses to"
+#~ msgstr "Geen reacties op"
 
-#: inc/wpf/admin/footer-tab.inc.php:16
-msgid "Site info"
-msgstr "Site info"
+#~ msgid "One Response to"
+#~ msgstr "1 reactie op"
 
-#: inc/wpf/admin/general-tab.inc.php:16
-msgid "Boxed page"
-msgstr "Blok pagina"
+#~ msgid "% Responses to"
+#~ msgstr "% Reacties op"
 
-#: inc/wpf/admin/general-tab.inc.php:22
-msgid "Show the pages boxed"
-msgstr "Maak een blok van de pagina"
+#~ msgid "&larr; Older comments"
+#~ msgstr "&larr; Oudere reacties"
 
-#: inc/wpf/admin/general-tab.inc.php:28
-msgid "Sidebar left"
-msgstr "Zijbalk links"
+#~ msgid "Newer comments &rarr;"
+#~ msgstr "Nieuwere reacties &rarr;"
 
-#: inc/wpf/admin/general-tab.inc.php:34
-msgid "Show the sidebar to the left"
-msgstr "Laat de zijbalk links zien"
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Laat een reactie achter aan %s"
 
-#: inc/wpf/admin/general-tab.inc.php:59
-msgid "Show author info"
-msgstr "Laat auteur info zien"
+#~ msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+#~ msgstr ""
+#~ "U moet <a href=\"%s\">ingelogd</a> zijn om een reactie te kunnen plaatsen."
 
-#: inc/wpf/admin/general-tab.inc.php:65
-msgid "Show the author info on the post page"
-msgstr "Bekijk de auteur info op de bericht pagina"
+#~ msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+#~ msgstr "Ingelogd als <a href=\"%s/wp-admin/profile.php\">%s</a>."
 
-#: inc/wpf/admin/header-tab.inc.php:9
-msgid "Menu Options"
-msgstr "Menu opties"
+#~ msgid "Log out of this account"
+#~ msgstr "Dit account uitloggen"
 
-#: inc/wpf/admin/header-tab.inc.php:16
-msgid "Menu Fixed"
-msgstr "Menu vast"
+#~ msgid "Log out &raquo;"
+#~ msgstr "Uitloggen &raquo;"
 
-#: inc/wpf/admin/header-tab.inc.php:25
-msgid "None"
-msgstr "Geen"
+#~ msgid "Name"
+#~ msgstr "Naam"
 
-#: inc/wpf/admin/header-tab.inc.php:29
-msgid "Fixed"
-msgstr "Vast"
+#~ msgid " (required)"
+#~ msgstr " (verplicht)"
 
-#: inc/wpf/admin/header-tab.inc.php:41
-msgid "Menu Location"
-msgstr "Menu lokatie"
+#~ msgid "Email (will not be published)"
+#~ msgstr "Email (wordt niet gepubliceerd)"
 
-#: inc/wpf/admin/header-tab.inc.php:47
-msgid "Show the menu beneath the title area"
-msgstr "Laat de menu beneden de titel gebied zien"
+#~ msgid "Website"
+#~ msgstr "Website"
 
-#: inc/wpf/admin/header-tab.inc.php:47
-msgid " (Doesn't work when menu is fixed)"
-msgstr " (Werkt niet wanneer de menu \"vast\" staat)"
+#~ msgid "Comment"
+#~ msgstr "Reactie"
 
-#: inc/wpf/admin/header-tab.inc.php:53
-msgid "Center Menu"
-msgstr "Centreer menu"
+#~ msgid "Submit Comment"
+#~ msgstr "Plaats een reactie"
 
-#: inc/wpf/admin/header-tab.inc.php:59
-msgid "Center the menu"
-msgstr "Centreer de menu"
-
-#: inc/wpf/admin/header-tab.inc.php:65
-msgid "Menu Title"
-msgstr "Menu titel"
-
-#: inc/wpf/admin/header-tab.inc.php:76
-msgid "Custom \"back\" text"
-msgstr "Aangepaste \"terug\" tekst"
-
-#: inc/wpf/admin/header-tab.inc.php:82
-msgid "Add a custom \"back\" text"
-msgstr "Voeg een aangepaste \"terug\" tekst toe"
-
-#: inc/wpf/admin/header-tab.inc.php:82
-msgid " (Turn off if you wan't the parent's title as the \"back\" text)"
-msgstr " (Zet uit als je de titel van de ouder als \"terug\" tekst wilt)"
-
-#: inc/wpf/admin/header-tab.inc.php:88
-msgid "\"back\" text"
-msgstr "\"terug\" tekst"
-
-#: inc/wpf/admin/header-tab.inc.php:110
-msgid "Title Options"
-msgstr "Titel opties"
-
-#: inc/wpf/admin/header-tab.inc.php:117
-msgid "Hide site title"
-msgstr "Verberg site titel"
-
-#: inc/wpf/admin/header-tab.inc.php:123
-msgid "Hide the site title"
-msgstr "Verberg de site titel"
-
-#: inc/wpf/admin/header-tab.inc.php:129
-msgid "Hide site description"
-msgstr "Verberg site beschrijving"
-
-#: inc/wpf/admin/header-tab.inc.php:135
-msgid "Hide the site description"
-msgstr "Verberg de site beschrijving"
+#~ msgid "back"
+#~ msgstr "terug"
 
 #~ msgid "Next page"
 #~ msgstr "Volgende pagina"

@@ -31,7 +31,7 @@ add_settings_field(
 			array(
 				'value'   => 'sticky-top-bar',
 				'label'   => __( 'Sticky', 'wpf' )
-			)
+			),
 		)
 	)
 );
@@ -67,7 +67,7 @@ add_settings_field(
 	'wpf-options',             // $page
 	'header_menu_section',     // $section
 	array(                     // $args
-		'id'    => 'menu_primary_title'
+		'id'    => 'menu_primary_title',
 	)
 );
 
@@ -79,7 +79,7 @@ add_settings_field(
 	'header_menu_section',             // $section
 	array(                             // $args
 		'id'    => 'menu_primary_custom_back_text',
-		'label' => __( 'Add a custom "back" text', 'wpf' ). '<em>' . __( ' (Turn off if you wan\'t the parent\'s title as the "back" text)', 'wpf' ) . '</em>'
+		'label' => __( 'Add a custom "Back" text', 'wpf' ). '<em>' . __( ' (Turn off if you wan\'t the parent\'s title as the "Back" text)', 'wpf' ) . '</em>'
 	)
 );
 
@@ -90,7 +90,7 @@ add_settings_field(
 	'wpf-options',              // $page
 	'header_menu_section',      // $section
 	array(                      // $args
-		'id'    => 'menu_primary_back_text'
+		'id'    => 'menu_primary_back_text',
 	)
 );
 

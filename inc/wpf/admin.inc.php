@@ -98,47 +98,47 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
  *
  *
  */
- if ( ! function_exists( 'wpf_get_default_options' ) ) {
-	 function wpf_get_default_options() {
+if ( ! function_exists( 'wpf_get_default_options' ) ) {
+	function wpf_get_default_options() {
 
-	 $options                          = array(
-	 	// GENERAL TAB
-	 	'page_boxed'                     => false,
-	 	'sidebar_left'                   => false,
-	 	'show_author_info'               => true,
+		 $options                          = array(
+		 	// GENERAL TAB
+		 	'page_boxed'                     => false,
+		 	'sidebar_left'                   => false,
+		 	'show_author_info'               => true,
 
-	 	// HEADER TAB
-	 	'menu_primary_fixed'             => 'fixed',
-	 	'menu_primary_location'          => false,
-	 	'menu_primary_center'            => true,
-	 	'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
-	 	'menu_primary_custom_back_text'  => true,
-	 	'menu_primary_back_text'         => __( 'back', 'wpf' ),
-	 	'header_show_title'              => true,
-	 	'header_show_description'        => true,
+		 	// HEADER TAB
+		 	'menu_primary_fixed'             => 'fixed',
+		 	'menu_primary_location'          => false,
+		 	'menu_primary_center'            => true,
+		 	'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
+		 	'menu_primary_custom_back_text'  => true,
+		 	'menu_primary_back_text'         => __( 'Back', 'wpf' ),
+		 	'header_show_title'              => true,
+		 	'header_show_description'        => true,
 
-	 	// FOOTER TAB
-	 	'footer_site_info'               => sprintf( __( '<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>', 'wpf' ), date( 'Y' ) ),
+		 	// FOOTER TAB
+		 	'footer_site_info'               => sprintf( __( '<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>', 'wpf' ), date( 'Y' ) ),
 
-	 	// CONTACT TAB
-	 	'contact_setup'                  => false,
-	 	'contact_debug'                  => false,
-	 	'contact_smtpauth'               => true,
-	 	'contact_smtpsecure'             => 'ssl',
-	 	'contact_username'               => false,
-	 	'contact_password'               => false,
-	 	'contact_host'                   => 'localhost',
-	 	'contact_port'                   => '25',
-	 	'contact_charset'                => 'utf-8',
-	 	'contact_from'                   => false,
-	 	'contact_fromname'               => false,
-	 	'contact_html'                   => true,
+		 	// CONTACT TAB
+		 	'contact_setup'                  => false,
+		 	'contact_debug'                  => false,
+		 	'contact_smtpauth'               => true,
+		 	'contact_smtpsecure'             => 'ssl',
+		 	'contact_username'               => false,
+		 	'contact_password'               => false,
+		 	'contact_host'                   => 'localhost',
+		 	'contact_port'                   => '25',
+		 	'contact_charset'                => 'utf-8',
+		 	'contact_from'                   => false,
+		 	'contact_fromname'               => false,
+		 	'contact_html'                   => true,
 
-	 	// VERSION
-	 	'wpf_version'                    => WPF_VERSION,
-	 );
+		 	// VERSION
+		 	'wpf_version'                    => WPF_VERSION,
+		 );
 
-	 return $options;
+		 return $options;
 
 	 } // end wpf_get_default_options()
  }
@@ -149,7 +149,7 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
  * This function is the validation function for register_setting() and will save
  * the options into the options array.
  */
- if ( ! function_exists( 'wpf_options_validation' ) ) {
+if ( ! function_exists( 'wpf_options_validation' ) ) {
 	function wpf_options_validation( $inputs ) {
 		// If a reset button is clicked then continue with the function that wil
 		// handle the reset.
@@ -189,7 +189,7 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
 
 		} elseif ( ! empty( $inputs['submit-footer'] ) ) {
 
-			$new_options['footer_site_info']                 = wpf_admin_textarea_validation ( $inputs['footer_site_info'] );
+			$new_options['footer_site_info']                 = wpf_admin_textarea_validation( $inputs['footer_site_info'] );
 
 		} elseif ( ! empty( $inputs['submit-contact'] ) ) {
 
@@ -326,18 +326,18 @@ if ( ! function_exists( 'wpf_admin_textarea_validation' ) ) {
 
 if ( ! function_exists( 'wpf_options_js' ) ) {
 	function wpf_options_js() {
-	$id = '#reset-' . $GLOBALS['active_tab'];
-	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			jQuery('<?php echo $id; ?>').click(function() {
-				if (!confirm('<?php _e( 'Are you sure you want to reset this options page?', 'wpf' ); ?>')) {
-					return false;
-				}
+		$id = '#reset-' . $GLOBALS['active_tab'];
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				jQuery('<?php echo esc_js( $id ); ?>').click(function() {
+					if (!confirm('<?php _e( 'Are you sure you want to reset this options page?', 'wpf' ); ?>')) {
+						return false;
+					}
+				});
 			});
-		});
-	</script>
-	<?php
+		</script>
+		<?php
 	} // end wpf_options_js()
 }
 
@@ -351,7 +351,7 @@ if ( ! function_exists( 'wpf_options_display' ) ) {
 	function wpf_options_display() {
 
 		global $active_tab;
-	?>
+		?>
 		<div class="wrap">
 
 			<div id="icon-themes" class="icon32"><br></div>
@@ -366,10 +366,10 @@ if ( ! function_exists( 'wpf_options_display' ) ) {
 
 			<?php if ( 'general' == $active_tab ) : ?>
 				<br />
-				<img class="align-center" src="<?php echo get_template_directory_uri(); ?>/screenshot.png" alt="" title="" />
+				<img class="align-center" src="<?php echo esc_attr( get_template_directory_uri() ); ?>/screenshot.png" alt="" title="" />
 				<p>
 					<?php _e( 'This is the general settings page for the WPF Theme. Go trough the tabmenu\'s and adjust any of the specific elements of the theme.', 'wpf' ); ?>
-					<?php _e( 'Current version: ', 'wpf' ); echo $GLOBALS['wpf_settings']['wpf_version']; ?>
+					<?php _e( 'Current version: ', 'wpf' ); echo esc_html( $GLOBALS['wpf_settings']['wpf_version'] ); ?>
 				</p>
 
 				<form method="post" action="options.php">
@@ -421,7 +421,7 @@ if ( ! function_exists( 'wpf_options_display' ) ) {
 					<?php settings_fields( 'footer_section' ); ?>
 
 					<h3><?php _e( 'Colophon', 'wpf' ); ?></h3>
-					<?php _e( 'The &copy; copyright text in the footer', 'wpf' ); ?>
+					<?php _e( 'The copyright text in the footer', 'wpf' ); ?>
 					<?php echo '<table class="form-table">'; ?>
 					<?php do_settings_fields( 'wpf-options', 'footer_section' ); ?>
 					<?php echo '</table>'; ?>
@@ -510,9 +510,9 @@ if ( ! function_exists( 'wpf_select_option_display' ) ) {
 		extract( $args );
 
 		$html = '<select name="wpf_settings[' . $id . ']" id="wpf_settings[' . $id . ']">';
-			foreach ( $options as $option ) {
-				$html .= '<option value="' . $option['value'] . '"' . selected( $GLOBALS['wpf_settings'][$id], $option['value'], false ) . '>' . $option['label'] . '</option>';
-			}
+		foreach ( $options as $option ) {
+			$html .= '<option value="' . $option['value'] . '"' . selected( $GLOBALS['wpf_settings'][$id], $option['value'], false ) . '>' . $option['label'] . '</option>';
+		}
 		$html .= '</select>';
 
 		echo $html;
