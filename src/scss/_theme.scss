@@ -589,7 +589,6 @@ h1.entry-title {
 .comment-list {
   list-style-type: none;
   .comment-body {
-    @include clearfix;
     margin-top: em-calc(10);
     padding: em-calc(5);
     border: 1px solid $secondary-color;
@@ -609,12 +608,12 @@ h1.entry-title {
   .vcard {
     display: block;
     margin: 0;
-    border: none;
     padding: 0;
+    border: none;
   }
   .fn {
-    font-size: em-calc(16);
     margin-left: em-calc(10);
+    font-size: em-calc(16);
   }
   .avatar {
     @include radius(50%);
@@ -638,10 +637,9 @@ h1.entry-title {
     }
   }
   .reply {
+    text-align: right;
     @extend .nowrap;
     .comment-reply-link {
-      position: relative;
-      float: right;
       &:before {
         @extend .FontAwesome;
         margin-right: em-calc(10);
@@ -657,24 +655,18 @@ h1.entry-title {
     margin: 0;
     line-height: 1;
   }
-  label {
-    @extend %col-colapsed;
-  }
   .comment-notes, .form-allowed-tags, .logged-in-as {
     margin-bottom: em-calc(20);
     line-height: 1.6;
   }
   input[type="text"], input[type="email"], input[type="url"], textarea {
-    @extend %col;
     @include radius;
-  }
-  .form-allowed-tags {
-    @extend %col-colapsed;
   }
   textarea {
     min-height: em-calc(200);
   }
   p.form-submit {
+    @include clearfix;
     input[type="submit"] {
       @include button-base;
       @include button-size;
@@ -706,24 +698,6 @@ h1.entry-title {
       left: em-calc(-60);
     }
   }
-
-  // .comment-respond {
-  //   // @todo: Optimize - extend from a global
-  //   label {
-  //     @include grid-column($columns:3, $collapse:false, $float:false);
-  //     text-align: right;
-  //     // @todo See if push request get's accepted or not. Either remove this comment or use the mixin
-  //     // @include form-label($alignment:inline, $base-style:false);
-  //     // Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
-  //     // I have made a push request to change this.
-  //     margin: 0 0 $form-spacing 0;
-  //     padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
-  //     padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
-  //   }
-  //   input[type="text"], input[type="email"], input[type="url"], textarea {
-  //     @include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
-  //   }
-  // }
 }
 
 /* ==========================================================================
