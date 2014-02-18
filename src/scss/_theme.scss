@@ -605,6 +605,9 @@ h1.entry-title {
     list-style-type: none;
     margin-left: em-calc(10)
   }
+  .comment-author {
+    text-align: right;
+  }
   .vcard {
     display: block;
     margin: 0;
@@ -617,6 +620,7 @@ h1.entry-title {
   }
   .avatar {
     @include radius(50%);
+    float: left;
   }
   .comment-metadata {
     text-align: right;
