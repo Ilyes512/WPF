@@ -67,16 +67,19 @@ if ( ! function_exists( 'wpf_site_description' ) ) {
 		if ( $GLOBALS['wpf_settings']['header_show_title'] && $GLOBALS['wpf_settings']['header_show_description'] ) {
 			switch ( true ) {
 				case is_day():
-					printf( __( 'Daily Archives: %s', 'wpf' ), get_the_date() );
+					printf( __( 'Daily Archive: %s', 'wpf' ), get_the_date() );
 					break;
 				case is_month():
-					printf( __( 'Monthly Archives: %s', 'wpf' ), get_the_date( _x( 'F Y' , 'monthly archives date format', 'wpf' ) ) );
+					printf( __( 'Monthly Archive: %s', 'wpf' ), get_the_date( _x( 'F Y' , 'monthly archives date format', 'wpf' ) ) );
 					break;
 				case is_year():
-					printf( __( 'Yearly Archives: %s', 'wpf' ), get_the_date( _x( 'Y', 'yearly archives date format', 'wpf' ) ) );
+					printf( __( 'Yearly Archive: %s', 'wpf' ), get_the_date( _x( 'Y', 'yearly archives date format', 'wpf' ) ) );
 					break;
 				case is_category():
-					echo esc_html( single_cat_title( '', false ) );
+					printf( __( 'Category Archive: %s', 'wpf' ), esc_html( single_cat_title( '', false ) ) );
+					break;
+				case is_tag():
+					printf( __( 'Tag Archive: %s', 'wpf' ), single_tag_title( '', false ) );
 					break;
 				case is_search():
 					// Get the search query
@@ -93,7 +96,7 @@ if ( ! function_exists( 'wpf_site_description' ) ) {
 					printf( __( 'Author\'s archive: %s', 'wpf' ), esc_html( $author->display_name ) );
 					break;
 				case is_archive():
-					_e( 'Archives', 'wpf' );
+					_e( 'Archive', 'wpf' );
 					break;
 				default:
 					echo esc_html( bloginfo( 'description' ) );

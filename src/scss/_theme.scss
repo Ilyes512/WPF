@@ -406,8 +406,11 @@ h1.entry-title {
   @extend .text-center;
 }
 .post-tag {
-  @include label($bg:$secondary-color, $radius:true);
+  @include label($text-size: rem-calc(11), $bg:$secondary-color, $radius:true);
   @extend .nowrap;
+  text-transform: uppercase;
+  letter-spacing: rem-calc(1.5);
+  margin-bottom: rem-calc(5);
   a:before {
     @extend .FontAwesome;
     margin-right: em-calc(10);

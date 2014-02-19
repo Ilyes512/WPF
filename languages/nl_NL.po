@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2014-02-17 23:14+0100\n"
-"PO-Revision-Date: 2014-02-17 23:15+0100\n"
+"POT-Creation-Date: 2014-02-19 22:05+0100\n"
+"PO-Revision-Date: 2014-02-19 22:06+0100\n"
 "Last-Translator: Ilyes <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: nl\n"
@@ -116,7 +116,7 @@ msgstr ""
 msgid " - page %d"
 msgstr " - pagina %d"
 
-#: content/content.php:25 inc/wpf/misc.inc.php:123
+#: content/content.php:25 inc/wpf/misc.inc.php:126
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
@@ -437,7 +437,7 @@ msgstr "Menu titel"
 
 #: inc/wpf/admin/header-tab.inc.php:76
 msgid "Custom \"back\" text"
-msgstr "Aangepaste \"terug\" tekst"
+msgstr "Aangepaste \"Terug\" tekst"
 
 #: inc/wpf/admin/header-tab.inc.php:82
 msgid "Add a custom \"Back\" text"
@@ -536,12 +536,12 @@ msgstr "Permalink naar de maand archief van %s"
 
 #: inc/wpf/misc.inc.php:70
 #, php-format
-msgid "Daily Archives: %s"
+msgid "Daily Archive: %s"
 msgstr "Dagelijks archief: %s"
 
 #: inc/wpf/misc.inc.php:73
 #, php-format
-msgid "Monthly Archives: %s"
+msgid "Monthly Archive: %s"
 msgstr "Maandelijks archief: %s"
 
 #: inc/wpf/misc.inc.php:73
@@ -551,7 +551,7 @@ msgstr "F Y"
 
 #: inc/wpf/misc.inc.php:76
 #, php-format
-msgid "Yearly Archives: %s"
+msgid "Yearly Archive: %s"
 msgstr "Jaarlijkse archief: %s"
 
 #: inc/wpf/misc.inc.php:76
@@ -559,18 +559,28 @@ msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: inc/wpf/misc.inc.php:89
+#: inc/wpf/misc.inc.php:79
+#, php-format
+msgid "Category Archive: %s"
+msgstr "Categorie archief: %s"
+
+#: inc/wpf/misc.inc.php:82
+#, php-format
+msgid "Tag Archive: %s"
+msgstr "Label archief: %s"
+
+#: inc/wpf/misc.inc.php:92
 #, php-format
 msgid "The search results for \"%s\""
 msgstr "De zoekresultaten voor \"%s\""
 
-#: inc/wpf/misc.inc.php:93
+#: inc/wpf/misc.inc.php:96
 #, php-format
 msgid "Author's archive: %s"
 msgstr "Auteurs archief: %s"
 
-#: inc/wpf/misc.inc.php:96
-msgid "Archives"
+#: inc/wpf/misc.inc.php:99
+msgid "Archive"
 msgstr "Archief"
 
 #: inc/wpf/navigation.inc.php:99 inc/wpf/navigation.inc.php:125
@@ -597,11 +607,11 @@ msgstr "Pagina's:"
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
 
-#: inc/wpf/navigation.inc.php:317
+#: inc/wpf/navigation.inc.php:336
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/wpf/navigation.inc.php:410
+#: inc/wpf/navigation.inc.php:429
 msgid "Home"
 msgstr "Start"
 
