@@ -56,7 +56,6 @@ add_action( 'wp_footer', 'wpf_foundation_jquery', 999 );
  */
 if ( ! function_exists( 'wpf_foundation_jquery' ) ) {
 	function wpf_foundation_jquery() {
-		echo "<script>\njQuery(document).foundation();\n";
-		echo "jQuery(function() { FastClick.attach(document.body); });\n</script>";
+		echo "<script>\njQuery(document).foundation();\n</script>";
 	} // end wpf_foundation_jquery()
 }

@@ -295,17 +295,36 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
 if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 	function wpf_primarymenu_display() {
 
-		// The #navbar classes
-		$navbar_class         = $GLOBALS['wpf_settings']['menu_primary_center'] ? 'contain-to-grid ' : '';
-		$navbar_class        .= $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : '';
+		// These array's will contain the topbar classes and data options
+		$navbar_class = array();
+		$navbar_data_options = array();
 
-		// The top-bar data-options
-		$navbar_data_options  = $GLOBALS['wpf_settings']['menu_primary_custom_back_text'] ? 'back_text:' . $GLOBALS['wpf_settings']['menu_primary_back_text'] : 'custom_back_text:false;';
+		// Check if top bar needs to be centered
+		if ( $GLOBALS['wpf_settings']['menu_primary_center'] ) {
+			$navbar_class[] = 'contain-to-grid';
+		}
 
+		// Check if top bar is 'fixed' or 'sticky'. If so then also adjust the sticky class so it doesn't mess up WordPress's '.fixed' class
+		if ( $GLOBALS['wpf_settings']['menu_primary_fixed'] ) {
+			$navbar_class[]        = $GLOBALS['wpf_settings']['menu_primary_fixed'];
+			$navbar_data_options[] = 'sticky_class:sticky-top-bar;';
+		}
+
+		// Check if the 'back'-text needs to be displayed in the mobile top bar.
+		if ( $GLOBALS['wpf_settings']['menu_primary_custom_back_text'] ) {
+			$navbar_data_options[] = 'back_text:' . $GLOBALS['wpf_settings']['menu_primary_back_text'] . ';';
+		} else {
+			$navbar_data_options[] = 'custom_back_text:false;';
+		}
+
+		// Convert the classes and data options array's to string's
+		$navbar_class = ( $navbar_class ) ? ' class="' . esc_attr( implode( ' ', $navbar_class ) ) . '"' : '';
+		$navbar_data_options = ( $navbar_data_options ) ? ' data-options="' . esc_attr( implode( '', $navbar_data_options ) ) . '"' : '';
 		?>
-		<div id="navbar" class="<?php echo esc_attr( $navbar_class ); ?>">
 
-			<nav id="site-navigation" class="top-bar" role="navigation" data-options="sticky_class:sticky-top-bar;<?php echo esc_attr( $navbar_data_options ); ?>" data-topbar>
+		<div id="navbar"<?php echo $navbar_class; ?>>
+
+			<nav id="site-navigation" class="top-bar" role="navigation"<?php echo $navbar_data_options; ?> data-topbar>
 				<ul class="title-area">
 					<li class="name">
 						<h1>
