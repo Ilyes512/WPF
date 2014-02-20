@@ -296,7 +296,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 	function wpf_primarymenu_display() {
 
 		// These array's will contain the topbar classes and data options
-		$navbar_class = array();
+		$navbar_class = array( 'topbar-line' );
 		$navbar_data_options = array();
 
 		// Check if top bar needs to be centered

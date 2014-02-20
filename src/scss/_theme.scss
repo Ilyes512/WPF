@@ -242,9 +242,15 @@ a.FontAwesome:hover {
     @extend .FontAwesome;
     margin-right: rem-calc(10);
     font-family: 'FontAwesome', $body-font-family;
+    line-height: inherit;
   }
 }
 
+@media #{$small} {
+  .topbar-line {
+    border-bottom: rem-calc(10) solid #005379;
+  }
+}
 
 /* ==========================================================================
    Content
