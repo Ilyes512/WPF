@@ -107,7 +107,7 @@ fieldset {
 // Top-bar-fix
 .top-bar input[type="text"],
 .top-bar input[type="submit"] {
-  height: em-calc(32);
+  height: rem-calc(32);
   margin-bottom: 0;
 }
 
@@ -205,7 +205,7 @@ a.FontAwesome:hover {
 }
 .site-description {
   clear: left;
-  font-size: em-calc(23);
+  font-size: rem-calc(23);
   line-height: 1.4;
 }
 
@@ -226,7 +226,7 @@ a.FontAwesome:hover {
     @include prefix-postfix-base;
     @include side-radius($side:right, $radius:$button-radius);
     @extend .FontAwesome;
-    margin-right: em-calc(10);
+    margin-right: rem-calc(10);
     font-family: 'FontAwesome', $body-font-family;
   }
 }
@@ -271,7 +271,7 @@ img[class*="wp-image-"] {
 }
 figcaption {
   display: block;
-  padding: em-calc(5 0 20 0);
+  padding: rem-calc(5 0 20 0);
   font-style: italic;
   text-decoration: underline;
 }
@@ -313,7 +313,7 @@ ul.page-numbers {
 }
 .pagination-title {
   display: block;
-  margin-bottom: em-calc(10);
+  margin-bottom: rem-calc(10);
 }
 
 // Post entry-title
@@ -326,7 +326,7 @@ h1.entry-title {
   @extend .nowrap;
   &:after {
     @extend .FontAwesome;
-    margin-left: em-calc(10);
+    margin-left: rem-calc(10);
     content: '\f178';
   }
 }
@@ -337,14 +337,14 @@ h1.entry-title {
   color: $primary-color;
   & > span {
     display: inline-block;
-    margin: em-calc(0 20 20 0);
+    margin: rem-calc(0 20 20 0);
   }
   // featured-post
   .featured-post {
     @extend .nowrap;
     &:before {
       @extend .FontAwesome;
-      margin-right: em-calc(10);
+      margin-right: rem-calc(10);
       content: '\f08D';
     }
   }
@@ -353,7 +353,7 @@ h1.entry-title {
     @extend .nowrap;
     a:before {
       @extend .FontAwesome;
-      margin-right: em-calc(10);
+      margin-right: rem-calc(10);
       content: '\f073';
     }
   }
@@ -365,11 +365,11 @@ h1.entry-title {
     padding: 0;
     &.vcard .fn {
       font-weight: normal;
-      font-size: em-calc(16);
+      font-size: rem-calc(16);
     }
     a:before {
       @extend .FontAwesome;
-      margin-right: em-calc(10);
+      margin-right: rem-calc(10);
       content: '\f007';
     }
   }
@@ -378,7 +378,7 @@ h1.entry-title {
     @extend .nowrap;
     a:before {
       @extend .FontAwesome;
-      margin-right: em-calc(10);
+      margin-right: rem-calc(10);
       content: '\f044';
     }
   }
@@ -390,7 +390,7 @@ h1.entry-title {
   @extend .nowrap;
   a:before {
     @extend .FontAwesome;
-    margin-right: em-calc(5);
+    margin-right: rem-calc(5);
     content: '\f086';
   }
 }
@@ -398,12 +398,12 @@ h1.entry-title {
   @extend .nowrap;
   &:before {
     @extend .FontAwesome;
-    margin-right: em-calc(10);
+    margin-right: rem-calc(10);
     content: '\f023';
   }
 }
 .post-tags {
-  margin-top: em-calc(20);
+  margin-top: rem-calc(20);
   @extend .text-center;
 }
 .post-tag {
@@ -414,7 +414,7 @@ h1.entry-title {
   margin-bottom: rem-calc(5);
   a:before {
     @extend .FontAwesome;
-    margin-right: em-calc(10);
+    margin-right: rem-calc(10);
     content: '\f02B';
   }
 }
@@ -426,18 +426,18 @@ h1.entry-title {
     @include clearfix;
 }
 .single .author-info {
-  margin-top: em-calc(40);
+  margin-top: rem-calc(40);
 }
 .author-avatar {
   float: left;
-  margin: em-calc(0 20 10 0);
+  margin: rem-calc(0 20 10 0);
   img {
     @include radius;
   }
 }
 .author-description {
   h2 {
-    font-size: em-calc(25);
+    font-size: rem-calc(25);
     margin-top: 0;
   }
 }
@@ -459,12 +459,12 @@ h1.entry-title {
   .alignright {
     display: inline-block;
     float: right;
-    margin: em-calc(0 0 10 10);
+    margin: rem-calc(0 0 10 10);
   }
   .alignleft {
     display: inline-block;
     float: left;
-    margin: em-calc(0 10 10 0);
+    margin: rem-calc(0 10 10 0);
   }
 
   // img / caption
@@ -474,7 +474,7 @@ h1.entry-title {
     margin-right: auto;
   }
   figcaption {
-    padding: em-calc(5 0 0 0);
+    padding: rem-calc(5 0 0 0);
   }
 }
 
@@ -534,7 +534,7 @@ h1.entry-title {
 
 // Container for .site-info and .footer-menu
 .site-footer-meta {
-  padding: em-calc(20 0);
+  padding: rem-calc(20 0);
 }
 // Contains the footer menu
 .footer-menu {
@@ -593,8 +593,8 @@ h1.entry-title {
 .comment-list {
   list-style-type: none;
   .comment-body {
-    margin-top: em-calc(10);
-    padding: em-calc(5);
+    margin-top: rem-calc(10);
+    padding: rem-calc(5);
     border: 1px solid $secondary-color;
     @include radius($global-radius);
   }
@@ -607,7 +607,7 @@ h1.entry-title {
   ul.children {
     background-color: #ffffff;
     list-style-type: none;
-    margin-left: em-calc(10)
+    margin-left: rem-calc(10)
   }
   .comment-author {
     text-align: right;
@@ -619,8 +619,8 @@ h1.entry-title {
     border: none;
   }
   .fn {
-    margin-left: em-calc(10);
-    font-size: em-calc(16);
+    margin-left: rem-calc(10);
+    font-size: rem-calc(16);
   }
   .avatar {
     @include radius(50%);
@@ -628,18 +628,18 @@ h1.entry-title {
   }
   .comment-metadata {
     text-align: right;
-    margin-bottom: em-calc(20);
+    margin-bottom: rem-calc(20);
     time:before {
       @extend .FontAwesome;
-      margin-right: em-calc(10);
+      margin-right: rem-calc(10);
       content: '\f073';
     }
     .edit-link {
-      margin-left: em-calc(10);
+      margin-left: rem-calc(10);
       @extend .nowrap;
       a:before {
         @extend .FontAwesome;
-        margin-right: em-calc(10);
+        margin-right: rem-calc(10);
         content: '\f044';
       }
     }
@@ -650,7 +650,7 @@ h1.entry-title {
     .comment-reply-link {
       &:before {
         @extend .FontAwesome;
-        margin-right: em-calc(10);
+        margin-right: rem-calc(10);
         content: '\f0e5';
       }
     }
@@ -664,14 +664,14 @@ h1.entry-title {
     line-height: 1;
   }
   .comment-notes, .form-allowed-tags, .logged-in-as {
-    margin-bottom: em-calc(20);
+    margin-bottom: rem-calc(20);
     line-height: 1.6;
   }
   input[type="text"], input[type="email"], input[type="url"], textarea {
     @include radius;
   }
   textarea {
-    min-height: em-calc(200);
+    min-height: rem-calc(200);
   }
   p.form-submit {
     @include clearfix;
@@ -687,23 +687,23 @@ h1.entry-title {
 @media #{$small} {
   .comment-list {
     ul.children {
-      margin-left: em-calc(25)
+      margin-left: rem-calc(25)
     }
     .comment-body {
       position: relative;
-      margin-top: em-calc(40);
-      padding: em-calc(10 20 10 35);
+      margin-top: rem-calc(40);
+      padding: rem-calc(10 20 10 35);
     }
     .comment-author {
       position: absolute;
-      top: em-calc(-25);
+      top: rem-calc(-25);
     }
     .fn {
       margin-left: 0;
     }
     .avatar {
       position: absolute;
-      left: em-calc(-60);
+      left: rem-calc(-60);
     }
   }
 }
@@ -742,7 +742,7 @@ form#wpf_contact {
     @include radius;
   }
   textarea {
-    min-height: em-calc(200);
+    min-height: rem-calc(200);
   }
   input[type="submit"] {
     @include button-base;
@@ -758,13 +758,9 @@ form#wpf_contact {
     label {
       @include grid-column($columns:3, $collapse:false, $float:false);
       text-align: right;
-      // @todo See if push request get's accepted or not. Either remove this comment or use the mixin
-      // @include form-label($alignment:inline, $base-style:false);
-      // Will not work cause it will set padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
-      // I have made a push request to change this.
       margin: 0 0 $form-spacing 0;
-      padding-top: $form-spacing / 2 + em-calc($input-border-width * 2);
-      padding-bottom: $form-spacing / 2 + em-calc($input-border-width * 2);
+      padding-top: $form-spacing / 2 + rem-calc($input-border-width * 2);
+      padding-bottom: $form-spacing / 2 + rem-calc($input-border-width * 2);
     }
     input[type="text"], input[type="email"], textarea, div.error small {
       @include grid-column($columns:9, $collapse:null, $float:false, $last-column:true);
