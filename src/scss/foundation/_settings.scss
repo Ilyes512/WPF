@@ -23,7 +23,7 @@
 
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true;
-// $include-print-styles: true;
+$include-print-styles: true;
 $include-html-global-classes: true; //$include-html-classes;
 
 // Grid
@@ -144,7 +144,7 @@ $header-font-family: "Open Sans", $body-font-family;
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
-// $paragraph-font-size: 1rem;
+$paragraph-font-size: 1rem;
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
@@ -160,7 +160,7 @@ $header-font-family: "Open Sans", $body-font-family;
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+$anchor-font-color-hover: scale-color($primary-color, $lightness: 15%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -190,17 +190,17 @@ $header-font-family: "Open Sans", $body-font-family;
 // $acronym-underline: 1px dotted #ddd;
 
 // We use these to control padding and margin
-// $microformat-padding: rem-calc(10 12);
-// $microformat-margin: rem-calc(0 0 20 0);
+$microformat-padding: 0; //rem-calc(10 12);
+$microformat-margin: 0; //rem-calc(0 0 20 0);
 
 // We use these to control the border styles
-// $microformat-border-width: 1px;
-// $microformat-border-style: solid;
-// $microformat-border-color: #ddd;
+$microformat-border-width: 1; //1px;
+$microformat-border-style: solid;
+$microformat-border-color: #ddd;
 
 // We use these to control full name font styles
-// $microformat-fullname-font-weight: bold;
-// $microformat-fullname-font-size: rem-calc(15);
+$microformat-fullname-font-weight: normal; // bold;
+$microformat-fullname-font-size: $paragraph-font-size; // rem-calc(15);
 
 // We use this to control the summary font styles
 // $microformat-summary-font-weight: bold;

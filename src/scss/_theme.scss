@@ -126,7 +126,7 @@ fieldset {
 }
 
 // No wrap @link http://www.impressivewebs.com/css-white-space/
-.nowrap {
+%nowrap {
   white-space: nowrap;
 }
 
@@ -339,7 +339,7 @@ h1.entry-title {
 
 // more-link
 .more-link {
-  @extend .nowrap;
+  @extend %nowrap;
   &:after {
     @extend .FontAwesome;
     margin-left: rem-calc(10);
@@ -357,7 +357,7 @@ h1.entry-title {
   }
   // featured-post
   .featured-post {
-    @extend .nowrap;
+    @extend %nowrap;
     &:before {
       @extend .FontAwesome;
       margin-right: rem-calc(10);
@@ -366,7 +366,7 @@ h1.entry-title {
   }
   // date
   .date {
-    @extend .nowrap;
+    @extend %nowrap;
     a:before {
       @extend .FontAwesome;
       margin-right: rem-calc(10);
@@ -375,14 +375,10 @@ h1.entry-title {
   }
   // author
   .author {
-    @extend .nowrap;
+    @extend %nowrap;
     border: 0;
     margin-bottom: 0;
     padding: 0;
-    &.vcard .fn {
-      font-weight: normal;
-      font-size: rem-calc(16);
-    }
     a:before {
       @extend .FontAwesome;
       margin-right: rem-calc(10);
@@ -391,7 +387,7 @@ h1.entry-title {
   }
   // edit-link
   .edit-link {
-    @extend .nowrap;
+    @extend %nowrap;
     a:before {
       @extend .FontAwesome;
       margin-right: rem-calc(10);
@@ -403,7 +399,7 @@ h1.entry-title {
   @extend .text-center;
 }
 .leave-reply {
-  @extend .nowrap;
+  @extend %nowrap;
   a:before {
     @extend .FontAwesome;
     margin-right: rem-calc(5);
@@ -411,7 +407,7 @@ h1.entry-title {
   }
 }
 .reply-closed {
-  @extend .nowrap;
+  @extend %nowrap;
   &:before {
     @extend .FontAwesome;
     margin-right: rem-calc(10);
@@ -424,7 +420,7 @@ h1.entry-title {
 }
 .post-tag {
   @include label($text-size: rem-calc(11), $bg:$secondary-color, $radius:true);
-  @extend .nowrap;
+  @extend %nowrap;
   text-transform: uppercase;
   letter-spacing: rem-calc(1.5);
   margin-bottom: rem-calc(5);
@@ -628,15 +624,8 @@ h1.entry-title {
   .comment-author {
     text-align: right;
   }
-  .vcard {
-    display: block;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
   .fn {
     margin-left: rem-calc(10);
-    font-size: rem-calc(16);
   }
   .avatar {
     @include radius(50%);
@@ -652,7 +641,7 @@ h1.entry-title {
     }
     .edit-link {
       margin-left: rem-calc(10);
-      @extend .nowrap;
+      @extend %nowrap;
       a:before {
         @extend .FontAwesome;
         margin-right: rem-calc(10);
@@ -662,7 +651,7 @@ h1.entry-title {
   }
   .reply {
     text-align: right;
-    @extend .nowrap;
+    @extend %nowrap;
     .comment-reply-link {
       &:before {
         @extend .FontAwesome;
