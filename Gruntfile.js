@@ -17,12 +17,12 @@ module.exports = function(grunt) {
 		sass: {
 			foundation: {
 				options: {
-					outputStyle: "compressed", // nested, expanded, compact, compressed
-					sourceComments: "map",
-					sourceMap: "style.css.map"
+					sourcemap: true,
+					style: 'compressed', // Can be nested, compact, compressed, expanded
+					quiet: true
 				},
 				files: {
-					"style.css": "src/scss/style.scss"
+					'style.css': 'src/scss/style.scss'
 				}
 			}
 		},
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 
 	grunt.registerTask("default", ["uglify", "sass", "copy"]);
 };

@@ -34,8 +34,8 @@ textarea {
 %break {
   -ms-word-break: break-all;
       word-break: break-all;
-       /* Non standard for webkit */
-       word-break: break-word;
+      /* Non standard for webkit */
+      word-break: break-word;
 
   -webkit-hyphens: auto;
      -moz-hyphens: auto;
@@ -185,10 +185,6 @@ a.FontAwesome:hover {
 
 
 // Makes the Foundation topbar main menu useable with different settings ie fixed, sticky or just normal mode
-#navbar {
-  float: left;
-  width: 100%;
-}
 .wp-toolbar { /* body class */
   padding-top: 46px;
   // Makes sure that a fixed mobile foundation menu works with wp-toolbar
@@ -443,7 +439,7 @@ h1.entry-title {
    ========================================================================== */
 .author-info {
   @extend .panel;
-    @include clearfix;
+  @include clearfix;
 }
 .single .author-info {
   margin-top: rem-calc(40);
