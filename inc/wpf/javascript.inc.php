@@ -46,6 +46,16 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 	} // end wpf_scripts_and_styles()
 }
 
+/**
+ * Add placeholder.js for Internet Explorer 8 and later
+ */
+add_action(
+	'wp_head',
+	function() {
+		echo '<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.js"></script><![endif]-->' . "\n";
+	}
+);
+
 add_action( 'wp_footer', 'wpf_foundation_jquery', 999 );
 /**
  * Initiate the necessary jQuery-scripts used by Foundation
