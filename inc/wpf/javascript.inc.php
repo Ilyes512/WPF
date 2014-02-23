@@ -38,7 +38,8 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		wp_enqueue_style( 'wpf-stylesheet', get_stylesheet_uri(), array(), WPF_VERSION );
 
 		// Add Google Fonts
-		$query_args = array( 'family' => 'Open+Sans:300' );
+		wp_deregister_style( 'open-sans' );
+		$query_args = array( 'family' => 'Open+Sans:400italic,700italic,400,700' );
 		wp_enqueue_style( 'open-sans', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 
 		// Add wpf-js script and all it's dependencies
