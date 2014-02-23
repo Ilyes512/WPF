@@ -69,6 +69,9 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
 		// Adds the javascript inline for the reset confirm dialog
 		add_action( "admin_footer-$wpf_options_page", 'wpf_options_js' );
 
+		// Add the styles inline
+		add_action( "admin_print_styles-$wpf_options_page", 'wpf_admin_styles' );
+
 		// Find out what tab is active
 		$active_tab = isset( $_GET['tab'] ) && ( 'header' == $_GET['tab'] || 'footer' == $_GET['tab'] || 'contact' == $_GET['tab'] ) ? $_GET['tab'] : 'general';
 
@@ -101,42 +104,50 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
 if ( ! function_exists( 'wpf_get_default_options' ) ) {
 	function wpf_get_default_options() {
 
-		 $options                          = array(
-		 	// GENERAL TAB
-		 	'page_boxed'                     => false,
-		 	'sidebar_left'                   => false,
-		 	'show_author_info'               => true,
+		$footer_site_info = sprintf(
+			__(
+				'<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>',
+				'wpf'
+			),
+			date( 'Y' )
+		);
 
-		 	// HEADER TAB
-		 	'menu_primary_fixed'             => 'fixed',
-		 	'menu_primary_location'          => false,
-		 	'menu_primary_center'            => true,
-		 	'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
-		 	'menu_primary_custom_back_text'  => true,
-		 	'menu_primary_back_text'         => __( 'Back', 'wpf' ),
-		 	'header_show_title'              => true,
-		 	'header_show_description'        => true,
+		$options                          = array(
+			// GENERAL TAB
+			'page_boxed'                     => false,
+			'sidebar_left'                   => false,
+			'show_author_info'               => true,
 
-		 	// FOOTER TAB
-		 	'footer_site_info'               => sprintf( __( '<p>&copy; %s Crafted on WPF<br><a href="https://github.com/MekZii/WPF" rel="nofollow" title="WPD - Wordpress Foundation">Visit the repository on github!</a></p>', 'wpf' ), date( 'Y' ) ),
+			// HEADER TAB
+			'menu_primary_fixed'             => 'fixed',
+			'menu_primary_location'          => false,
+			'menu_primary_center'            => true,
+			'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
+			'menu_primary_custom_back_text'  => true,
+			'menu_primary_back_text'         => __( 'Back', 'wpf' ),
+			'header_show_title'              => true,
+			'header_show_description'        => true,
 
-		 	// CONTACT TAB
-		 	'contact_setup'                  => false,
-		 	'contact_debug'                  => false,
-		 	'contact_smtpauth'               => true,
-		 	'contact_smtpsecure'             => 'ssl',
-		 	'contact_username'               => false,
-		 	'contact_password'               => false,
-		 	'contact_host'                   => 'localhost',
-		 	'contact_port'                   => '25',
-		 	'contact_charset'                => 'utf-8',
-		 	'contact_from'                   => false,
-		 	'contact_fromname'               => false,
-		 	'contact_html'                   => true,
+			// FOOTER TAB
+			'footer_site_info'               => $footer_site_info,
 
-		 	// VERSION
-		 	'wpf_version'                    => WPF_VERSION,
-		 );
+			// CONTACT TAB
+			'contact_setup'                  => false,
+			'contact_debug'                  => false,
+			'contact_smtpauth'               => true,
+			'contact_smtpsecure'             => 'ssl',
+			'contact_username'               => false,
+			'contact_password'               => false,
+			'contact_host'                   => 'localhost',
+			'contact_port'                   => '25',
+			'contact_charset'                => 'utf-8',
+			'contact_from'                   => false,
+			'contact_fromname'               => false,
+			'contact_html'                   => true,
+
+			// VERSION
+			'wpf_version'                    => WPF_VERSION,
+		);
 
 		 return $options;
 
@@ -347,6 +358,15 @@ if ( ! function_exists( 'wpf_options_js' ) ) {
  **************************************************************************/
 
 
+/**
+ * Add some minimal styling to the WPF settings page
+ */
+if ( ! function_exists( 'wpf_admin_styles' ) ) {
+	function wpf_admin_styles() {
+		echo '<style type="text/css">#wpf-logo { display: block; max-width: 100%; height: auto; }</style>';
+	}
+}
+
 if ( ! function_exists( 'wpf_options_display' ) ) {
 	function wpf_options_display() {
 
@@ -366,7 +386,7 @@ if ( ! function_exists( 'wpf_options_display' ) ) {
 
 			<?php if ( 'general' == $active_tab ) : ?>
 				<br />
-				<img class="align-center" src="<?php echo esc_attr( get_template_directory_uri() ); ?>/screenshot.png" alt="" title="" />
+				<img id="wpf-logo" src="<?php echo esc_attr( get_template_directory_uri() ); ?>/screenshot.png" alt="WPF logo" title="WPF" />
 				<p>
 					<?php _e( 'This is the general settings page for the WPF Theme. Go trough the tabmenu\'s and adjust any of the specific elements of the theme.', 'wpf' ); ?>
 					<?php _e( 'Current version: ', 'wpf' ); echo esc_html( $GLOBALS['wpf_settings']['wpf_version'] ); ?>
