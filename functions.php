@@ -136,7 +136,7 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		$html5_args = array(
 			//'search-form', // @todo Check what enabling html5 does to search-form
 			'comment-form'
-			//'comment-list', // @todo Check what enabling html5 does to search-form
+			//'comment-list', // @todo Check what enabling html5 does to comment-list
 		);
 		add_theme_support( 'html5', $html5_args );
 
