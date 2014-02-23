@@ -64,7 +64,7 @@ if ( ! function_exists( 'wpf_options_init' ) ) {
 		require( get_stylesheet_directory() . '/inc/wpf/admin/contextual-help.inc.php' );
 
 		// Adds the contextual help function
-		add_action( "load-$wpf_options_page", 'wpf_options_help_tab' );
+		add_action( "load-$wpf_options_page", 'wpf_options_contextual_help' );
 
 		// Adds the javascript inline for the reset confirm dialog
 		add_action( "admin_footer-$wpf_options_page", 'wpf_options_js' );

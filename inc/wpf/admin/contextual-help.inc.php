@@ -1,14 +1,14 @@
 <?php
 /**************************************************************************
- *    >CONTEXTUAL HELP TAB
+ *    >CONTEXTUAL HELP
  **************************************************************************/
 /**
- * This will contain the contextual help tab's content.
+ * This will contain the 'contextual help'-content.
  *
  *
  */
-if ( ! function_exists( 'wpf_options_help_tab' ) ) {
-	function wpf_options_help_tab() {
+if ( ! function_exists( 'wpf_options_contextual_help' ) ) {
+	function wpf_options_contextual_help() {
 
 		$screen = get_current_screen();
 		if ( $screen->id != $GLOBALS['wpf_options_page'] )
@@ -46,5 +46,5 @@ if ( ! function_exists( 'wpf_options_help_tab' ) ) {
 				break;
 		}
 
-	} // end wpf_options_help_tab()
+	} // end wpf_options_contextual_help()
 }
