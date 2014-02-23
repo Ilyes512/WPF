@@ -270,10 +270,12 @@ a.FontAwesome:hover {
 }
 
 // wp aligning
-.alignright, .alignleft, .aligncenter {
+.alignright, .alignleft, .aligncenter, .alignnone {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+}
+.aligncenter {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 // post thumbnail
@@ -282,14 +284,22 @@ a.FontAwesome:hover {
 }
 
 // img / caption
+figure {
+	max-width: 100%;
+	margin-bottom: rem-calc(20);
+}
 img[class*="wp-image-"] {
   @include radius;
+  margin-bottom: rem-calc(20);
+}
+figure img[class*="wp-image-"] {
+	margin-bottom: rem-calc(5);
 }
 figcaption {
   display: block;
-  padding: rem-calc(5 0 20 0);
   font-style: italic;
-  text-decoration: underline;
+  font-size: rem-calc(14);
+  line-height: $paragraph-line-height;
 }
 
 // Breadcrumbs
@@ -471,22 +481,18 @@ h1.entry-title {
   .alignright {
     display: inline-block;
     float: right;
-    margin: rem-calc(0 0 10 10);
+    margin-left: rem-calc(15);
   }
   .alignleft {
     display: inline-block;
     float: left;
-    margin: rem-calc(0 10 10 0);
+    margin-right: rem-calc(15);
   }
-
   // img / caption
   .wp-caption.alignright img, .wp-caption.alignleft img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
-  figcaption {
-    padding: rem-calc(5 0 0 0);
   }
 }
 

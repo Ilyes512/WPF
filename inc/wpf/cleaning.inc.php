@@ -68,17 +68,28 @@ if ( ! function_exists( 'wpf_caption_shortcode' ) ) {
 
 		// If the width is less than 1 or there is no caption, return the content
 		// wrapped between the [caption]< tags.
-		if ( 1 > $width || empty( $caption ) )
+		if ( $width < 1 || empty( $caption ) )
 			return $content;
 
+		// Prepare 'id'
+		if ( ! empty( $id ) )
+			$id = ' id="' . esc_attr( $id ) . '"';
+
+		// A caption's $width can't be higher then the $content_width
+		if ( isset( $GLOBALS['content_width'] ) && $width > $GLOBALS['content_width'] )
+			$width = $GLOBALS['content_width'];
+
+		// Prepare 'style'
+		$style = ' style="width: ' . (int) $width . 'px" ';
+
 		// Open the caption <div> including the needed classes.
-		$output = '<figure class="wp-caption ' . esc_attr( $align ) . '">';
+		$output = '<figure' . $id . ' class="wp-caption ' . esc_attr( $align ) . '"' . $style . ' >';
 
 		// Allow shortcodes for the content the caption was created for.
 		$output .= do_shortcode( $content );
 
 		// Append the caption text.
-		$output .= '<figcaption>' . esc_html( $caption ) . '</figcaption>';
+		$output .= '<figcaption>' . $caption . '</figcaption>';
 
 		// Close the caption </div>.
 		$output .= '</figure>';
