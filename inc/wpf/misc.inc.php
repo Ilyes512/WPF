@@ -34,7 +34,7 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 	function wpf_entry_meta() {
 		// Post sticky
 		if ( is_sticky() && is_home() && ! is_paged() )
-			echo '<span class="featured-post">' . __( 'Sticky', 'wpf' ) . '</span>';
+			echo '<span class="sticky-post">' . __( 'Sticky', 'wpf' ) . '</span>';
 
 		// Post date
 		printf(
