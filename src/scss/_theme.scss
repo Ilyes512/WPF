@@ -43,6 +43,12 @@ textarea {
           hyphens: auto;
 }
 
+// Remove's P-tag's bottom padding
+// (you might can use this for text preceding UL/OL)
+p.no-spacing   {
+    margin-bottom: 0;
+}
+
 // These classes get @exted so there will be no multiple classes with the same
 // contents (properties)
 %container {
@@ -274,8 +280,8 @@ a.FontAwesome:hover {
   display: block;
 }
 .aligncenter {
-	margin-left: auto;
-	margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // post thumbnail
@@ -285,15 +291,15 @@ a.FontAwesome:hover {
 
 // img / caption
 figure {
-	max-width: 100%;
-	margin-bottom: rem-calc(20);
+  max-width: 100%;
+  margin-bottom: rem-calc(20);
 }
 img[class*="wp-image-"] {
   @include radius;
   margin-bottom: rem-calc(20);
 }
 figure img[class*="wp-image-"] {
-	margin-bottom: rem-calc(5);
+  margin-bottom: rem-calc(5);
 }
 figcaption {
   display: block;
@@ -555,7 +561,7 @@ h1.entry-title {
 
 // Add some spacing at the bottom of every widget in the footer sidebar
 .footer-sidebar .widget {
-	margin-bottom: rem-calc(20);
+  margin-bottom: rem-calc(20);
 }
 
 // Container for .site-info and .footer-menu
