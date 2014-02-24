@@ -553,9 +553,14 @@ h1.entry-title {
   @extend %col;
 }
 
+// Add some spacing at the bottom of every widget in the footer sidebar
+.footer-sidebar .widget {
+	margin-bottom: rem-calc(20);
+}
+
 // Container for .site-info and .footer-menu
 .site-footer-meta {
-  padding: rem-calc(20 0);
+  padding-bottom: rem-calc(20);
 }
 // Contains the footer menu
 .footer-menu {
