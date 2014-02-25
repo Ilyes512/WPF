@@ -150,3 +150,14 @@ if ( ! function_exists( 'wpf_add_body_class' ) ) {
 		return $classes;
 	} // end wpf_add_body_class()
 }
+
+add_filter( 'the_content_more_link', 'wpf_remove_more_link_scroll' );
+/**
+ * 	Remove the named anchor for the "Read more"-link (ie #more-0000)
+ */
+if ( ! function_exists( 'wpf_remove_more_link_scroll' ) ) {
+	function wpf_remove_more_link_scroll( $link ) {
+		$link = preg_replace( '|#more-[0-9]+|', '', $link );
+		return $link;
+	} // end wpf_remove_more_link_scroll()
+}
