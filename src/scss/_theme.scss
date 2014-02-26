@@ -316,6 +316,7 @@ figcaption {
   font-size: "FontAwesome", $body-font-family;
   &>* {
     @include crumbs;
+    margin-bottom: rem-calc(9);
   }
 }
 .entry-thumbnail + .category-list {

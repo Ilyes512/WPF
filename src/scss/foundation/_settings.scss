@@ -283,7 +283,7 @@ $microformat-fullname-font-size: $paragraph-font-size; // rem-calc(15);
 // $crumb-bg: scale-color($secondary-color, $lightness: 55%);
 
 // We use these to set the padding around the breadcrumbs.
-// $crumb-padding: rem-calc(9 14 9);
+$crumb-padding: rem-calc(9 14 0);
 // $crumb-side-padding: rem-calc(12);
 
 // We use these to control border styles.
