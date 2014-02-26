@@ -1,0 +1,15 @@
+bower_components/.*
+hide/.*
+src/.*
+.gitignore
+bower.json
+crossdomain.xml
+Gruntfile.js
+MIT-LICENSE.txt
+humans.txt
+package.json
+README.md
+robots.txt
+WPF.sublime-project
+WPF.sublime-workspace
+.git-ftp-ignore
