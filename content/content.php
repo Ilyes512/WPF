@@ -53,7 +53,7 @@
 					</a>
 				</span><!-- .leave-reply -->
 			</div><!-- .comments-link -->
-		<?php elseif( ! comments_open() && ! is_single() ) : ?>
+		<?php elseif ( ! comments_open() && ! is_single() ) : ?>
 			<div class="comments-link">
 				<span class="reply-closed">
 					<?php _e( 'Comments are locked for this post', 'wpf' ); ?>
@@ -67,7 +67,7 @@
 			</div><!--post-tags -->
 		<?php endif; ?>
 
-		<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() && $GLOBALS['wpf_settings']['show_author_info'] ) : ?>
+		<?php if ( is_single() && get_the_author_meta( 'description' ) && $GLOBALS['wpf_settings']['show_author_info'] ) : ?>
 			<?php get_template_part( 'author-bio' ); ?>
 		<?php endif; ?>
 		<hr>
