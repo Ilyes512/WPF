@@ -136,33 +136,11 @@ fieldset {
   white-space: nowrap;
 }
 
-/* Font icons (FontAwesome v3.2.0 @http://fortawesome.github.io/Font-Awesome/)
-   ========================================================================== */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('font/fontawesome-webfont.eot?v=3.2.1');
-  src: url('font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
-       url('font/fontawesome-webfont.woff?v=3.2.1') format('woff'),
-       url('font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'),
-       url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-.FontAwesome {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  -webkit-font-smoothing: antialiased;
-  color: $primary-color;
-  line-height: inherit;
-  font-family: 'FontAwesome';
-  text-decoration: inherit;
-  font-weight: normal;
-  font-style: normal;
-  vertical-align: baseline;
-  speak: none;
-}
-a.FontAwesome:hover {
+// Including Font Awesome
+@import "font-awesome/font-awesome.scss";
+
+// Add a hover effect for links that use an icon
+a[class*=#{$fa-css-prefix}]:hover {
   color: $anchor-font-color-hover;
 }
 
@@ -238,13 +216,11 @@ a.FontAwesome:hover {
 .searchsubmit {
   @include grid-column($columns:3, $last-column:true, $collapse:true, $position:true);
   input {
-    @include button($padding:false, $full-width:false, $is-input:false);
+    @include button($padding:false, $full-width:true);
     @include prefix-postfix-base;
     @include side-radius($side:right, $radius:$button-radius);
-    @extend .FontAwesome;
-    margin-right: rem-calc(10);
     font-family: 'FontAwesome', $body-font-family;
-    line-height: inherit;
+    line-height: 1;
   }
 }
 
@@ -312,8 +288,6 @@ figcaption {
 .category-list {
   @include crumb-container;
   @include radius($crumb-radius);
-  @extend .FontAwesome;
-  font-size: "FontAwesome", $body-font-family;
   &>* {
     @include crumbs;
     margin-bottom: rem-calc(9);
@@ -336,7 +310,6 @@ figcaption {
 }
 ul.page-numbers {
   @include pagination($center:true, $base-style:true, $use-default-classes:false);
-  font-family: "FontAwesome", $body-font-family;
   span.current {
     @include pagination-current-item($has-anchor: false);
     display: inline-block;
@@ -358,7 +331,7 @@ h1.entry-title {
 .more-link {
   @extend %nowrap;
   &:after {
-    @extend .FontAwesome;
+    @extend %FACore;
     margin-left: rem-calc(10);
     content: '\f178';
   }
@@ -374,65 +347,18 @@ h1.entry-title {
   }
   // sticky post
   .sticky-post {
-    @extend %nowrap;
     font-weight: bold;
     text-decoration: underline;
-    &:before {
-      @extend .FontAwesome;
-      margin-right: rem-calc(10);
-      content: '\f08D';
-      text-decoration: none;
-    }
-  }
-  // date
-  .date {
-    @extend %nowrap;
-    a:before {
-      @extend .FontAwesome;
-      margin-right: rem-calc(10);
-      content: '\f073';
-    }
   }
   // author
   .author {
-    @extend %nowrap;
     border: 0;
     margin-bottom: 0;
     padding: 0;
-    a:before {
-      @extend .FontAwesome;
-      margin-right: rem-calc(10);
-      content: '\f007';
-    }
-  }
-  // edit-link
-  .edit-link {
-    @extend %nowrap;
-    a:before {
-      @extend .FontAwesome;
-      margin-right: rem-calc(10);
-      content: '\f044';
-    }
   }
 }
 .comments-link {
   @extend .text-center;
-}
-.leave-reply {
-  @extend %nowrap;
-  a:before {
-    @extend .FontAwesome;
-    margin-right: rem-calc(5);
-    content: '\f086';
-  }
-}
-.reply-closed {
-  @extend %nowrap;
-  &:before {
-    @extend .FontAwesome;
-    margin-right: rem-calc(10);
-    content: '\f023';
-  }
 }
 .post-tags {
   margin-top: rem-calc(20);
@@ -440,15 +366,10 @@ h1.entry-title {
 }
 .post-tag {
   @include label($text-size: rem-calc(11), $bg:$secondary-color, $radius:true);
-  @extend %nowrap;
   text-transform: uppercase;
   letter-spacing: rem-calc(1.5);
   margin-bottom: rem-calc(5);
-  a:before {
-    @extend .FontAwesome;
-    margin-right: rem-calc(10);
-    content: '\f02B';
-  }
+  color: $primary-color;
 }
 
 /* author-bio
@@ -473,12 +394,12 @@ h1.entry-title {
     margin-top: 0;
   }
 }
-.author-link:after {
-  @extend .FontAwesome;
-  margin-right: 0;
-  content: '\f178';
+.author-link {
+  @extend .more-link;
+  &:after {
+    margin-left: 0;
+  }
 }
-
 
 @media #{$small} {
   .sidebar_right .site-content, .site-content {
@@ -656,7 +577,7 @@ h1.entry-title {
     text-align: right;
     margin-bottom: rem-calc(20);
     time:before {
-      @extend .FontAwesome;
+      @extend %FACore;
       margin-right: rem-calc(10);
       content: '\f073';
     }
@@ -664,7 +585,7 @@ h1.entry-title {
       margin-left: rem-calc(10);
       @extend %nowrap;
       a:before {
-        @extend .FontAwesome;
+        @extend %FACore;
         margin-right: rem-calc(10);
         content: '\f044';
       }
@@ -675,7 +596,7 @@ h1.entry-title {
     @extend %nowrap;
     .comment-reply-link {
       &:before {
-        @extend .FontAwesome;
+        @extend %FACore;
         margin-right: rem-calc(10);
         content: '\f0e5';
       }

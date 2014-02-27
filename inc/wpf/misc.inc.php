@@ -34,11 +34,11 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 	function wpf_entry_meta() {
 		// Post sticky
 		if ( is_sticky() && is_home() && ! is_paged() )
-			echo '<span class="sticky-post">' . __( 'Sticky', 'wpf' ) . '</span>';
+			echo '<span class="sticky-post"><i class="icon-thumb-tack icon-fw">&nbsp;</i>' . __( 'Sticky', 'wpf' ) . '</span>';
 
 		// Post date
 		printf(
-			'<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+			'<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="icon-calendar icon-fw">&nbsp;</i><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 			esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ),
 			esc_attr( sprintf( __( 'Permalink to the month archive for %s', 'wpf' ), get_the_date( 'F' ) ) ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -48,7 +48,7 @@ if ( ! function_exists( 'wpf_entry_meta' ) ) {
 		// Post author
 		if ( 'post' == get_post_type() ) {
 			printf(
-				'<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+				'<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author"><i class="icon-user icon-fw">&nbsp;</i>%3$s</a></span>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				esc_attr( sprintf( __( 'View all posts by %s', 'wpf' ), get_the_author() ) ),
 				get_the_author()
@@ -151,13 +151,15 @@ if ( ! function_exists( 'wpf_add_body_class' ) ) {
 	} // end wpf_add_body_class()
 }
 
-add_filter( 'the_content_more_link', 'wpf_remove_more_link_scroll' );
+add_filter( 'the_content_more_link', 'wpf_edit_more_link' );
 /**
- * 	Remove the named anchor for the "Read more"-link (ie #more-0000)
+ * 	Remove the named anchor for the "Read more"-link (ie #more-0000) and add icon class
  */
-if ( ! function_exists( 'wpf_remove_more_link_scroll' ) ) {
-	function wpf_remove_more_link_scroll( $link ) {
+if ( ! function_exists( 'wpf_edit_more_link' ) ) {
+	function wpf_edit_more_link( $link ) {
 		$link = preg_replace( '|#more-[0-9]+|', '', $link );
+		//$link = preg_replace( '|class="more-link"|', 'class="more-link icon-long-arrow-right"', $link );
+		//$link .= '<i class="icon-long-arrow-right"></i>';
 		return $link;
-	} // end wpf_remove_more_link_scroll()
+	} // end wpf_edit_more_link()
 }

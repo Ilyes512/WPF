@@ -1,0 +1,22 @@
+// Base Class Definition
+// -------------------------
+
+%FACore {
+  display: inline-block;
+  font-family: FontAwesome, $body-font-family;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*[class*=#{$fa-css-prefix}] {
+  @extend %FACore;
+}
+
+  // width: auto;
+  // height: auto;
+  // line-height: inherit;
+  // vertical-align: baseline;
+  // speak: none;

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2014-02-19 22:05+0100\n"
-"PO-Revision-Date: 2014-02-19 22:06+0100\n"
+"POT-Creation-Date: 2014-03-01 01:56+0100\n"
+"PO-Revision-Date: 2014-03-01 01:56+0100\n"
 "Last-Translator: Ilyes <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: nl\n"
@@ -133,19 +133,19 @@ msgstr "Lees verder"
 msgid "Reply on "
 msgstr "Reactie op "
 
-#: content/content.php:52
+#: content/content.php:53
 msgid "Leave a response"
 msgstr "Laat een reactie achter"
 
-#: content/content.php:52
+#: content/content.php:53
 msgid "one response"
 msgstr "1 reactie"
 
-#: content/content.php:52
+#: content/content.php:53
 msgid "% responses"
 msgstr "% reacties"
 
-#: content/content.php:59
+#: content/content.php:61
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
@@ -177,11 +177,7 @@ msgstr "WPF thema opties"
 msgid "WPF Options"
 msgstr "WPF opties"
 
-#: inc/wpf/admin.inc.php:116
-msgid "Back"
-msgstr "Terug"
-
-#: inc/wpf/admin.inc.php:121
+#: inc/wpf/admin.inc.php:109
 #, php-format
 msgid ""
 "<p>&copy; %s Crafted on WPF<br><a href=\"https://github.com/MekZii/WPF\" rel="
@@ -192,27 +188,31 @@ msgstr ""
 "rel=\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a></p>"
 
-#: inc/wpf/admin.inc.php:334
+#: inc/wpf/admin.inc.php:127
+msgid "Back"
+msgstr "Terug"
+
+#: inc/wpf/admin.inc.php:345
 msgid "Are you sure you want to reset this options page?"
 msgstr "Weet u zeker dat u deze optie pagina wilt herstellen?"
 
-#: inc/wpf/admin.inc.php:359
+#: inc/wpf/admin.inc.php:379
 msgid "General Options"
 msgstr "Algemene opties"
 
-#: inc/wpf/admin.inc.php:360
+#: inc/wpf/admin.inc.php:380
 msgid "Header Options"
 msgstr "Kop opties"
 
-#: inc/wpf/admin.inc.php:361 inc/wpf/admin/footer-tab.inc.php:9
+#: inc/wpf/admin.inc.php:381 inc/wpf/admin/footer-tab.inc.php:9
 msgid "Footer Options"
 msgstr "Voet opties"
 
-#: inc/wpf/admin.inc.php:362
+#: inc/wpf/admin.inc.php:382
 msgid "Contact Options"
 msgstr "Contact opties"
 
-#: inc/wpf/admin.inc.php:371
+#: inc/wpf/admin.inc.php:391
 msgid ""
 "This is the general settings page for the WPF Theme. Go trough the tabmenu's "
 "and adjust any of the specific elements of the theme."
@@ -220,75 +220,75 @@ msgstr ""
 "Dit zijn de algemene opties voor de WPF thema. Blader door de tabmenu's en "
 "pas de specifieke elementen van de thema aan."
 
-#: inc/wpf/admin.inc.php:372
+#: inc/wpf/admin.inc.php:392
 msgid "Current version: "
 msgstr "Huidige versie: "
 
-#: inc/wpf/admin.inc.php:379 inc/wpf/admin/contextual-help.inc.php:22
+#: inc/wpf/admin.inc.php:399 inc/wpf/admin/contextual-help.inc.php:22
 #: inc/wpf/admin/general-tab.inc.php:9
 msgid "Layout Options"
 msgstr "Opmaak opties"
 
-#: inc/wpf/admin.inc.php:380
+#: inc/wpf/admin.inc.php:400
 msgid "Make some subtile changes to the layout"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/admin.inc.php:385 inc/wpf/admin/contextual-help.inc.php:30
+#: inc/wpf/admin.inc.php:405 inc/wpf/admin/contextual-help.inc.php:30
 #: inc/wpf/admin/general-tab.inc.php:52
 msgid "Post Options"
 msgstr "Bericht opties"
 
-#: inc/wpf/admin.inc.php:386
+#: inc/wpf/admin.inc.php:406
 msgid "Make some subtile changes to the post pages"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/admin.inc.php:392 inc/wpf/admin.inc.php:415
-#: inc/wpf/admin.inc.php:430 inc/wpf/admin.inc.php:452
+#: inc/wpf/admin.inc.php:412 inc/wpf/admin.inc.php:435
+#: inc/wpf/admin.inc.php:450 inc/wpf/admin.inc.php:472
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: inc/wpf/admin.inc.php:393 inc/wpf/admin.inc.php:416
-#: inc/wpf/admin.inc.php:431 inc/wpf/admin.inc.php:453
+#: inc/wpf/admin.inc.php:413 inc/wpf/admin.inc.php:436
+#: inc/wpf/admin.inc.php:451 inc/wpf/admin.inc.php:473
 msgid "Reset Values"
 msgstr "Herstel instellingen"
 
-#: inc/wpf/admin.inc.php:402
+#: inc/wpf/admin.inc.php:422
 msgid "Menu options"
 msgstr "Menu opties"
 
-#: inc/wpf/admin.inc.php:403
+#: inc/wpf/admin.inc.php:423
 msgid "Make the menu fixed and/or contained-to-grid"
 msgstr "Maak de menu vast en/of vast-aan-grid"
 
-#: inc/wpf/admin.inc.php:408
+#: inc/wpf/admin.inc.php:428
 msgid "Title &amp; description"
 msgstr "Titel &amp; beschrijving"
 
-#: inc/wpf/admin.inc.php:409
+#: inc/wpf/admin.inc.php:429
 msgid "Hide the title and/or the description of the site"
 msgstr "Verberg de titel en/of de beschrijving van de site"
 
-#: inc/wpf/admin.inc.php:423
+#: inc/wpf/admin.inc.php:443
 msgid "Colophon"
 msgstr "Colofon"
 
-#: inc/wpf/admin.inc.php:424
+#: inc/wpf/admin.inc.php:444
 msgid "The copyright text in the footer"
 msgstr "De auteursrechten test in de voet"
 
-#: inc/wpf/admin.inc.php:439 inc/wpf/admin/contact-tab.inc.php:9
+#: inc/wpf/admin.inc.php:459 inc/wpf/admin/contact-tab.inc.php:9
 msgid "Contact Development"
 msgstr "Contact Ontwikkeling"
 
-#: inc/wpf/admin.inc.php:440
+#: inc/wpf/admin.inc.php:460
 msgid "You can disable the Contact Form or/and put it in Debug Mode"
 msgstr "Je kunt de contact formulier uitschakelen en/of in debug modes zetten"
 
-#: inc/wpf/admin.inc.php:445 inc/wpf/admin/contact-tab.inc.php:64
+#: inc/wpf/admin.inc.php:465 inc/wpf/admin/contact-tab.inc.php:64
 msgid "Contact Configuration"
 msgstr "Contact instellingen"
 
-#: inc/wpf/admin.inc.php:446
+#: inc/wpf/admin.inc.php:466
 msgid "Fill in these options to use the WPF Contact Template"
 msgstr ""
 "Vul deze opties in om gebruik te kunnen maken van de WPF contact template"
@@ -584,20 +584,14 @@ msgid "Archive"
 msgstr "Archief"
 
 #: inc/wpf/navigation.inc.php:99 inc/wpf/navigation.inc.php:125
-msgid "&#xf053; Previous"
-msgstr "&#xf053; Vorige"
+#: inc/wpf/navigation.inc.php:153 inc/wpf/navigation.inc.php:164
+msgid "Previous"
+msgstr "Vorige pagina"
 
 #: inc/wpf/navigation.inc.php:100 inc/wpf/navigation.inc.php:126
-msgid "Next &#xf054;"
-msgstr "Volgende &#xf054;"
-
 #: inc/wpf/navigation.inc.php:152 inc/wpf/navigation.inc.php:163
-msgid "Next page &#xf054;"
-msgstr "Volgende pagina &#xf054;"
-
-#: inc/wpf/navigation.inc.php:153 inc/wpf/navigation.inc.php:164
-msgid "&#xf053; Previous page"
-msgstr "&#xf053; Vorige pagina"
+msgid "Next"
+msgstr "Volgende pagina"
 
 #: inc/wpf/navigation.inc.php:160
 msgid "Pages:"
@@ -680,6 +674,18 @@ msgstr "Uw inhoud alstublieft"
 msgid "Send mail"
 msgstr "Verzend mail"
 
+#~ msgid "&#xf053; Previous"
+#~ msgstr "&#xf053; Vorige"
+
+#~ msgid "Next &#xf054;"
+#~ msgstr "Volgende &#xf054;"
+
+#~ msgid "Next page &#xf054;"
+#~ msgstr "Volgende pagina &#xf054;"
+
+#~ msgid "&#xf053; Previous page"
+#~ msgstr "&#xf053; Vorige pagina"
+
 #~ msgid "<cite class=\"fn\">%s</cite>"
 #~ msgstr "<cite class=\"fn\">%s</cite>"
 
@@ -752,12 +758,6 @@ msgstr "Verzend mail"
 
 #~ msgid "back"
 #~ msgstr "terug"
-
-#~ msgid "Next page"
-#~ msgstr "Volgende pagina"
-
-#~ msgid "Previous page"
-#~ msgstr "Vorige pagina"
 
 #~ msgid ""
 #~ "The settings in /inc/mail.inc.php haven't been set. Please adjust the "

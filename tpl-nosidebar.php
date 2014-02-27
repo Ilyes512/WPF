@@ -1,8 +1,8 @@
 <?php /* Template Name: No sidebar */
 /**
  * The template for displaying pages without the sidebar.
- * 
- * 
+ *
+ *
  */
 
 get_header(); ?>
@@ -11,7 +11,7 @@ get_header(); ?>
 
 		<!-- Row for main content area -->
 		<div id="content" class="site-content-fw" role="main">
-		
+
 			<?php /* Start loop */ ?>
 			<?php while ( have_posts() ): the_post(); ?>
 				<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -24,18 +24,18 @@ get_header(); ?>
 						<?php wpf_link_pages(); ?>
 					</div><!-- .entry-content -->
 
-					<?php if ( has_tag() ) : ?>	
+					<?php if ( has_tag() ) : ?>
 						<footer class="entry-meta">
 							<div class="post-tags">
-								<?php the_tags( '<span class="post-tag">', '</span> <span class="post-tag">', '</span>' ); ?>
+								<?php the_tags( '<span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span> <span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span>' ); ?>
 							</div><!--post-tags -->
 						</footer><!-- .entry-meta -->
 					<?php endif; ?>
 				</article><!-- #post -->
-	
+
 				<?php comments_template(); ?>
 			<?php endwhile; ?>
-	
+
 		</div><!-- #content -->
 	</section>
 <?php wpf_dev( 'end tpl-nosidebar.php' ); ?>

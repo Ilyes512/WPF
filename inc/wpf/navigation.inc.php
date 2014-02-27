@@ -96,8 +96,8 @@ if ( ! function_exists( 'wpf_paginate_link' ) ) {
 				'end_size'  => 2,
 				'mid_size'  => 5,
 				'prev_next' => True,
-				'prev_text' => __( '&#xf053; Previous', 'wpf' ),
-				'next_text' => __( 'Next &#xf054;', 'wpf' ),
+				'prev_text' => '<i class="icon-chevron-left icon-fw">&nbsp;</i>' . __( 'Previous', 'wpf' ),
+				'next_text' => __( 'Next', 'wpf' ) . '<i class="icon-chevron-right icon-fw">&nbsp;</i>',
 				'type'      => 'list',
 			)
 		);
@@ -122,8 +122,8 @@ if ( ! function_exists( 'wpf_paginate_comments_link' ) ) {
 			array(
 				'end_size'  => 2,
 				'mid_size'  => 5,
-				'prev_text' => __( '&#xf053; Previous', 'wpf' ),
-				'next_text' => __( 'Next &#xf054;', 'wpf' ),
+				'prev_text' => '<i class="icon-chevron-left icon-fw">&nbsp;</i>' . __( 'Previous', 'wpf' ),
+				'next_text' => __( 'Next', 'wpf' ) . '<i class="icon-chevron-right icon-fw">&nbsp;</i>',
 				'type'      => 'list',
 				'echo'      => false,
 			)
@@ -149,8 +149,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 						'before'           => '<div class="pagination-container"><ul class="page-numbers">',
 						'after'            => '</ul></div>',
 						'next_or_number'   => 'both',
-						'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
-						'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
+						'nextpagelink'     => __( 'Next', 'wpf' ) . '<i class="icon-chevron-right icon-fw">&nbsp;</i>',
+						'previouspagelink' => '<i class="icon-chevron-left icon-fw">&nbsp;</i>' . __( 'Previous', 'wpf' ),
 					)
 				);
 				break;
@@ -160,8 +160,8 @@ if ( ! function_exists( 'wpf_link_pages' ) ) {
 						'before'           => '<div class="pagination-container"><span class="pagination-title">' . __( 'Pages:', 'wpf' ) . '</span><ul class="page-numbers">',
 						'after'            => '</ul></div>',
 						'next_or_number'   => 'both',
-						'nextpagelink'     => __( 'Next page &#xf054;', 'wpf' ),
-						'previouspagelink' => __( '&#xf053; Previous page', 'wpf' ),
+						'nextpagelink'     => __( 'Next', 'wpf' ) . '<i class="icon-chevron-right icon-fw">&nbsp;</i>',
+						'previouspagelink' => '<i class="icon-chevron-left icon-fw">&nbsp;</i>' . __( 'Previous', 'wpf' ),
 					)
 				);
 				break;

@@ -28,7 +28,7 @@
 
 		<div class="entry-meta">
 			<?php wpf_entry_meta(); ?>
-			<?php edit_post_link( __( 'Edit', 'wpf' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php edit_post_link( '<i class="icon-pencil-square-o icon-fw">&nbsp;</i>' . __( 'Edit', 'wpf' ), '<span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
@@ -49,21 +49,20 @@
 			<div class="comments-link">
 				<span class="leave-reply">
 					<a href="<?php esc_attr_e( get_comments_link() ); ?>" title="<?php esc_attr_e( __( 'Reply on ', 'wpf' ) . get_the_title() ); ?>">
+						<i class="icon-comments icon-fw">&nbsp;</i>
 						<?php comments_number( __( 'Leave a response', 'wpf' ), __( 'one response', 'wpf' ), __( '% responses', 'wpf' ) ); ?>
 					</a>
 				</span><!-- .leave-reply -->
 			</div><!-- .comments-link -->
 		<?php elseif ( ! comments_open() && ! is_single() ) : ?>
 			<div class="comments-link">
-				<span class="reply-closed">
-					<?php _e( 'Comments are locked for this post', 'wpf' ); ?>
-				</span><!-- .reply-closed -->
+				<span class="reply-closed"><i class="icon-lock icon-fw">&nbsp;</i><?php _e( 'Comments are locked for this post', 'wpf' ); ?></span><!-- .reply-closed -->
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 
 		<?php if ( has_tag() ) : ?>
 			<div class="post-tags">
-				<?php the_tags( '<span class="post-tag">', '</span> <span class="post-tag">', '</span>' ); ?>
+				<?php the_tags( '<span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span> <span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span>' ); ?>
 			</div><!--post-tags -->
 		<?php endif; ?>
 

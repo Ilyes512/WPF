@@ -27,7 +27,7 @@ get_header(); ?>
 					<?php if ( has_tag() ) : ?>
 						<footer class="entry-meta">
 							<div class="post-tags">
-								<?php the_tags( '<span class="post-tag">', '</span> <span class="post-tag">', '</span>' ); ?>
+								<?php the_tags( '<span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span> <span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span>' ); ?>
 							</div><!--post-tags -->
 						</footer><!-- .entry-meta -->
 					<?php endif; ?>

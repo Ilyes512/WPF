@@ -13,7 +13,7 @@
 			<input type="text" value="" name="s" placeholder="<?php _e( 'Search', 'wpf' ); ?>">
 		</div>
 		<div class="searchsubmit">
-			<input type="submit" value="&#xf002;">
+			<input class="icon" type="submit" value="&#xf002;">
 		</div>
 	</div><!-- .searchform -->
 </form>

@@ -9,8 +9,8 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					"js/foundation.min.js": ["bower_components/fastclick/lib/fastclick.js", "src/foundation/foundation.js", "src/foundation/foundation.topbar.js", "src/foundation/foundation.alert.js"],
-					"js/vendor/modernizr.min.js": "bower_components/modernizr/modernizr.js"
+					'js/foundation.min.js': ['bower_components/fastclick/lib/fastclick.js', 'src/foundation/foundation.js', 'src/foundation/foundation.topbar.js', 'src/foundation/foundation.alert.js'],
+					'js/vendor/modernizr.min.js': 'bower_components/modernizr/modernizr.js'
 				}
 			}
 		},
@@ -28,19 +28,21 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ["src/foundation/*.js"],
-				tasks: ["uglify"]
+				files: ['src/foundation/*.js'],
+				tasks: ['uglify']
 			},
 			sass: 	{
-				files: ["src/scss/**/*.scss"],
-				tasks: ["sass"]
+				files: ['src/scss/**/*.scss'],
+				tasks: ['sass']
 			}
 		},
 		copy: {
 			bower: {
 				files: [
-					{src: "bower_components/jquery/jquery.min.js", dest: "js/vendor/jquery.min.js"},
-					{src: "bower_components/jquery-placeholder/jquery.placeholder.min.js", dest: "js/vendor/jquery.placeholder.min.js"}
+					{src: 'bower_components/jquery/jquery.min.js', dest: 'js/vendor/jquery.min.js'},
+					{src: 'bower_components/jquery-placeholder/jquery.placeholder.min.js', dest: 'js/vendor/jquery.placeholder.min.js'},
+					{src: 'bower_components/font-awesome/fonts/*', dest: 'fonts/', flatten: true, expand: true},
+					{src: 'bower_components/font-awesome/scss/*', dest: 'src/scss/font-awesome', flatten: true, expand: true}
 				]
 			}
 		}
@@ -51,6 +53,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 
-	grunt.registerTask("default", ["sass"]);
-	grunt.registerTask("build", ["uglify", "sass", "copy"]);
+	grunt.registerTask('default', ['sass']);
+	grunt.registerTask('build', ['uglify', 'sass', 'copy']);
 };
