@@ -163,3 +163,16 @@ if ( ! function_exists( 'wpf_edit_more_link' ) ) {
 		return $link;
 	} // end wpf_edit_more_link()
 }
+
+add_action('personal_options_update', 'wpf_allow_html_profile');
+/**
+ *  Allow users that have a role of contributor or higher to use more html for there profile
+ */
+if ( ! function_exists( 'wpf_allow_html_profile' ) ) {
+	function wpf_allow_html_profile( $link ) {
+		if ( current_user_can( 'edit_posts' ) ) {
+			remove_filter( 'pre_user_description', 'wp_filter_kses' );
+			add_filter( 'pre_user_description', 'wp_filter_post_kses' );
+		}
+	} // end wpf_allow_html_profile()
+}
