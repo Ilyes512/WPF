@@ -122,7 +122,7 @@ fieldset {
 }
 
 // No wrap @link http://www.impressivewebs.com/css-white-space/
-%nowrap {
+.NW {
   white-space: nowrap;
 }
 // Use this to extend classes/ids that need to break up long words so it doesn't break the layout
@@ -337,13 +337,10 @@ h1.entry-title {
 }
 
 // more-link
-.more-link {
-  @extend %nowrap;
-  &:after {
-    @extend %FACore;
-    margin-left: rem-calc(10);
-    content: '\f178';
-  }
+.more-link:after {
+  @extend %FACore;
+  margin-left: rem-calc(10);
+  content: '\f178';
 }
 
 // (Post) entry-meta
@@ -593,7 +590,7 @@ h1.entry-title {
       }
       .edit-link {
         margin-left: rem-calc(10);
-        @extend %nowrap;
+        @extend .NW;
         a:before {
           @extend %FACore;
           margin-right: rem-calc(10);
@@ -603,7 +600,7 @@ h1.entry-title {
     }
     .reply {
       text-align: right;
-      @extend %nowrap;
+      @extend .NW;
       .comment-reply-link {
         &:before {
           @extend %FACore;
