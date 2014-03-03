@@ -22,7 +22,8 @@ module.exports = function(grunt) {
 					quiet: true
 				},
 				files: {
-					'style.css': 'src/scss/style.scss'
+					'style.css': 'src/scss/style.scss',
+					'css/admin-bar.min.css': 'src/scss/wp/admin-bar.scss'
 				}
 			}
 		},

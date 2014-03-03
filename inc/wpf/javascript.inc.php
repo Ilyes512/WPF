@@ -42,6 +42,10 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		$query_args = array( 'family' => 'Open+Sans:400italic,700italic,400,700' );
 		wp_enqueue_style( 'open-sans', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 
+		// Load a adjusted admin-bar.min.css file
+		wp_deregister_style( 'admin-bar' );
+		wp_register_style( 'admin-bar', get_template_directory_uri() . '/css/admin-bar.min.css', array( 'open-sans', 'dashicons' ) );
+
 		// Add wpf-js script and all it's dependencies
 		wp_enqueue_script( 'wpf-js' );
 	} // end wpf_scripts_and_styles()
