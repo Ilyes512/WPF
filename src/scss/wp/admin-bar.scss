@@ -751,7 +751,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 }
 /* End no @font-face */
 
-@media screen and ( max-width: 782px ) {
+@media only screen and ( max-width: 40.063em ) {
 	/* Toolbar Touchification*/
 	html #wpadminbar {
 		left: 0 !important;

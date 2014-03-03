@@ -177,9 +177,10 @@ a[class*=#{$fa-css-prefix}]:hover {
    ========================================================================== */
 
 
+html .f-topbar-fixed { padding-top: 45px; }
+
 // Makes the Foundation topbar main menu useable with different settings ie fixed, sticky or just normal mode
 .wp-toolbar { /* body class */
-  padding-top: 46px;
   // Makes sure that a fixed mobile foundation menu works with wp-toolbar
   &.fixed_topbar { /* Have to use .fixed_topbar instead of .f-topbar-fix cause .f-topbar-fix will be removed when menu is expanded */
     #navbar, #site-navigation { z-index: 600; }
@@ -189,13 +190,18 @@ a[class*=#{$fa-css-prefix}]:hover {
   }
 }
 
-@media only screen and (min-width:782px) {
+
+@media #{$small} {
+  html .f-topbar-fixed { padding-top: 55px; }
   .wp-toolbar {
-    padding-top: 32px;
+    //padding-top: 32px;
     &.f-topbar-fixed { /* Have to use .f-topbar-fixed so sticky menu will work */
       #navbar, #masthead { margin-top: 32px; }
       #wpadminbar { margin-top: 0; }
     }
+  }
+  .topbar-line {
+    border-bottom: rem-calc(10) solid #005379;
   }
 }
 
@@ -233,11 +239,6 @@ a[class*=#{$fa-css-prefix}]:hover {
   }
 }
 
-@media #{$small} {
-  .topbar-line {
-    border-bottom: rem-calc(10) solid #005379;
-  }
-}
 
 /* ==========================================================================
    Content
