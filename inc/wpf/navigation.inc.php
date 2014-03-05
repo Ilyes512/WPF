@@ -290,10 +290,31 @@ if ( ! function_exists( 'wpf_nav_menu_fallback' ) ) {
 /**
  * This function will display the primary topbar menu
  *
- *
+ * @param  string $location Can either be 'header' or 'bottom'
+ * @return string           Returns the primary topbar menu only when the right condition's are met
  */
 if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
-	function wpf_primarymenu_display() {
+	function wpf_primarymenu_display( $location ) {
+
+		// Check if wpf_primary_display should display the menu on $location or
+		// if it should break out of the function using return;
+		switch ( $location ) {
+			case 'header':
+				// If this equels to true then wpf_primary_display should print
+				// the menu. It will break out of the switch and prevent
+				// return; from executing by using break;.
+				if ( 'fixed' == $GLOBALS['wpf_settings']['menu_primary_fixed'] )
+					break;
+				return;
+				break;
+			case 'bottom':
+				if ( 'fixed' != $GLOBALS['wpf_settings']['menu_primary_fixed'] )
+					break;
+				if ( $GLOBALS['wpf_settings']['menu_primary_location'] )
+					break;
+				return;
+				break;
+		}
 
 		// These array's will contain the topbar classes and data options
 		$navbar_class = array( 'topbar-line' );

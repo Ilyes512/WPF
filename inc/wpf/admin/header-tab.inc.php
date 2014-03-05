@@ -37,18 +37,6 @@ add_settings_field(
 );
 
 add_settings_field(
-	'menu_primary_location',       // $id
-	__( 'Menu Location', 'wpf' ),  // $title
-	'wpf_checkbox_option_display', // $callback
-	'wpf-options',                 // $page
-	'header_menu_section',         // $section
-	array(                         // $args
-		'id'    => 'menu_primary_location',
-		'label' => __( 'Show the menu beneath the title area', 'wpf' ) . '<em>' . __( ' (Doesn\'t work when menu is fixed)', 'wpf' ) . '</em>'
-	)
-);
-
-add_settings_field(
 	'menu_primary_center',         // $id
 	__( 'Center Menu', 'wpf' ),    // $title
 	'wpf_checkbox_option_display', // $callback

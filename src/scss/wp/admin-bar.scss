@@ -79,7 +79,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 	left: 0;
 	width: 100%;
 	min-width: 600px; /* match the min-width of the body in wp-admin.css */
-	z-index: 99999;
+	z-index: 98;
 	background: #222;
 }
 
@@ -755,7 +755,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 	/* Toolbar Touchification*/
 	html #wpadminbar {
 		left: 0 !important;
-		z-index: 500 !important;
+		z-index: 98;
 		height: 46px;
 		min-width: 300px;
 
@@ -1050,7 +1050,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 }
 
 /* Smartphone */
-@media screen and (max-width: 600px) {
+@media only screen and ( max-width: 40.063em ) {
 	#wpadminbar {
 		position: absolute;
 	}

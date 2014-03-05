@@ -120,7 +120,6 @@ if ( ! function_exists( 'wpf_get_default_options' ) ) {
 
 			// HEADER TAB
 			'menu_primary_fixed'             => 'fixed',
-			'menu_primary_location'          => false,
 			'menu_primary_center'            => true,
 			'menu_primary_title'             => get_bloginfo( 'name', 'display' ),
 			'menu_primary_custom_back_text'  => true,
@@ -189,7 +188,6 @@ if ( ! function_exists( 'wpf_options_validation' ) ) {
 				}
 			}
 
-			$new_options['menu_primary_location']            = isset( $inputs['menu_primary_location'] ) && $inputs['menu_primary_location'] ? true : false;
 			$new_options['menu_primary_center']              = isset( $inputs['menu_primary_center'] ) && $inputs['menu_primary_center'] ? true : false;
 			$new_options['menu_primary_title']               = sanitize_text_field( $inputs['menu_primary_title'] );
 			$new_options['menu_primary_custom_back_text']    = isset( $inputs['menu_primary_custom_back_text'] ) && $inputs['menu_primary_custom_back_text'] ? true : false;
@@ -244,7 +242,6 @@ if ( ! function_exists( 'wpf_reset_options' ) ) {
 		} elseif ( ! empty( $inputs['reset-header'] ) ) {
 
 			$new_options['menu_primary_fixed']               = $reset_options['menu_primary_fixed'];
-			$new_options['menu_primary_location']            = $reset_options['menu_primary_location'];
 			$new_options['menu_primary_center']              = $reset_options['menu_primary_center'];
 			$new_options['menu_primary_title']               = $reset_options['menu_primary_title'];
 			$new_options['menu_primary_custom_back_text']    = $reset_options['menu_primary_custom_back_text'];

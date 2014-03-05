@@ -27,23 +27,24 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 <div id="page" class="hfeed site<?php echo $GLOBALS['wpf_settings']['page_boxed'] ? ' boxed' : ''; echo $GLOBALS['wpf_settings']['sidebar_left'] ? ' sidebar_left' : ''; ?>" role="document">
 
 	<header id="masthead" class="site-header" role="banner">
-		<?php if ( function_exists( 'wpf_primarymenu_display') && ! $GLOBALS['wpf_settings']['menu_primary_location'] ) echo wpf_primarymenu_display(); ?>
+<?php echo wpf_primarymenu_display( 'header' ); ?>
+
 <!--[if lt IE 8]>
 <p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
 <![endif]-->
 		<?php if ( $GLOBALS['wpf_settings']['header_show_title'] ) : ?>
-			<div class="site-meta">
-				<section>
-					<h1 class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-						<?php if ( $GLOBALS['wpf_settings']['header_show_description'] ) : ?>
-							<p class="site-description"><?php if ( function_exists( 'wpf_site_description' ) ) wpf_site_description(); ?></p>
-						<?php endif; ?>
-					</h1>
-				</section>
-			</div><!-- .site-meta -->
+			<div class="fixed-header">
+				<div class="site-meta">
+					<section>
+						<h1 class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+							<?php if ( $GLOBALS['wpf_settings']['header_show_description'] ) : ?>
+								<p class="site-description"><?php if ( function_exists( 'wpf_site_description' ) ) wpf_site_description(); ?></p>
+							<?php endif; ?>
+						</h1>
+					</section>
+				</div><!-- .site-meta -->
+			</div><!-- .fixed-header -->
 		<?php endif; ?>
-		<?php if ( function_exists( 'wpf_primarymenu_display' ) && $GLOBALS['wpf_settings']['menu_primary_location'] ) echo wpf_primarymenu_display(); ?>
-		<hr>
 	</header><!-- #masthead -->
 <?php wpf_dev( 'end header.php' ); ?>

@@ -141,10 +141,15 @@ add_filter( 'body_class', 'wpf_add_body_class' );
 if ( ! function_exists( 'wpf_add_body_class' ) ) {
 	function wpf_add_body_class( $classes = array() ) {
 
-		$topbar = $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : '';
+		$topbar = $GLOBALS['wpf_settings']['menu_primary_fixed'] ? $GLOBALS['wpf_settings']['menu_primary_fixed'] : false;
 
-		if ( 'fixed' == $topbar ) {
-			$classes[] = 'fixed_topbar';
+		switch ( $topbar ) {
+			case 'fixed':
+				$classes[] = 'topbar-fixed';
+				break;
+			case 'sticky-top-bar':
+				$classes[] = 'topbar-sticky';
+				break;
 		}
 
 		return $classes;

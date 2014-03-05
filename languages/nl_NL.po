@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPF\n"
-"POT-Creation-Date: 2014-03-01 01:56+0100\n"
-"PO-Revision-Date: 2014-03-01 01:56+0100\n"
+"POT-Creation-Date: 2014-04-05 22:56+0100\n"
+"PO-Revision-Date: 2014-04-05 22:56+0100\n"
 "Last-Translator: Ilyes <ilyes.ahidar@gmail.com>\n"
 "Language-Team: WPF <ilyes.ahidar@gmail.com>\n"
 "Language: nl\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:17
+#: 404.php:19
 msgid "404 error - Page not found!"
 msgstr "404 fout <br> Pagina niet gevonden!"
 
-#: 404.php:19
+#: 404.php:21
 msgid ""
 "Something went wrong! The page you are looking for might have been removed, "
 "had its name changed, or is temporarily unavailable."
@@ -31,20 +31,20 @@ msgstr ""
 "Er is wat fout gegaan! De pagina die je zoekt kan verwijderd, verplaats of "
 "tijdelijk niet beschikbaar zijn."
 
-#: 404.php:21
+#: 404.php:23
 msgid "Please try the following:"
 msgstr "Probeer het volgende uit:"
 
-#: 404.php:23
+#: 404.php:25
 msgid "Check your spelling"
 msgstr "Controleer uw spelling"
 
-#: 404.php:24 content/content-none.php:29
+#: 404.php:26 content/content-none.php:29
 #, php-format
 msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Ga terug naar de <a href=\"%s\">startpagina</a>"
 
-#: 404.php:25
+#: 404.php:27
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
 
@@ -121,7 +121,7 @@ msgstr " - pagina %d"
 msgid "Permalink to %s"
 msgstr "Permalink naar %s"
 
-#: content/content.php:31 tpl-contact.php:19
+#: content/content.php:31 tpl-contact.php:21
 msgid "Edit"
 msgstr "Aanpassen"
 
@@ -145,7 +145,7 @@ msgstr "1 reactie"
 msgid "% responses"
 msgstr "% reacties"
 
-#: content/content.php:61
+#: content/content.php:59
 msgid "Comments are locked for this post"
 msgstr "Reacties zijn voor dit artikel gesloten"
 
@@ -157,7 +157,7 @@ msgstr "Primaire menu"
 msgid "Footer Navigation"
 msgstr "Voet menu"
 
-#: header.php:32
+#: header.php:33
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google."
@@ -188,31 +188,31 @@ msgstr ""
 "rel=\"nofollow\" title=\"WPD - Wordpress Foundation\">Bezoek github voor de "
 "broncode!</a></p>"
 
-#: inc/wpf/admin.inc.php:127
+#: inc/wpf/admin.inc.php:126
 msgid "Back"
 msgstr "Terug"
 
-#: inc/wpf/admin.inc.php:345
+#: inc/wpf/admin.inc.php:342
 msgid "Are you sure you want to reset this options page?"
 msgstr "Weet u zeker dat u deze optie pagina wilt herstellen?"
 
-#: inc/wpf/admin.inc.php:379
+#: inc/wpf/admin.inc.php:376
 msgid "General Options"
 msgstr "Algemene opties"
 
-#: inc/wpf/admin.inc.php:380
+#: inc/wpf/admin.inc.php:377
 msgid "Header Options"
 msgstr "Kop opties"
 
-#: inc/wpf/admin.inc.php:381 inc/wpf/admin/footer-tab.inc.php:9
+#: inc/wpf/admin.inc.php:378 inc/wpf/admin/footer-tab.inc.php:9
 msgid "Footer Options"
 msgstr "Voet opties"
 
-#: inc/wpf/admin.inc.php:382
+#: inc/wpf/admin.inc.php:379
 msgid "Contact Options"
 msgstr "Contact opties"
 
-#: inc/wpf/admin.inc.php:391
+#: inc/wpf/admin.inc.php:388
 msgid ""
 "This is the general settings page for the WPF Theme. Go trough the tabmenu's "
 "and adjust any of the specific elements of the theme."
@@ -220,75 +220,75 @@ msgstr ""
 "Dit zijn de algemene opties voor de WPF thema. Blader door de tabmenu's en "
 "pas de specifieke elementen van de thema aan."
 
-#: inc/wpf/admin.inc.php:392
+#: inc/wpf/admin.inc.php:389
 msgid "Current version: "
 msgstr "Huidige versie: "
 
-#: inc/wpf/admin.inc.php:399 inc/wpf/admin/contextual-help.inc.php:22
+#: inc/wpf/admin.inc.php:396 inc/wpf/admin/contextual-help.inc.php:22
 #: inc/wpf/admin/general-tab.inc.php:9
 msgid "Layout Options"
 msgstr "Opmaak opties"
 
-#: inc/wpf/admin.inc.php:400
+#: inc/wpf/admin.inc.php:397
 msgid "Make some subtile changes to the layout"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/admin.inc.php:405 inc/wpf/admin/contextual-help.inc.php:30
+#: inc/wpf/admin.inc.php:402 inc/wpf/admin/contextual-help.inc.php:30
 #: inc/wpf/admin/general-tab.inc.php:52
 msgid "Post Options"
 msgstr "Bericht opties"
 
-#: inc/wpf/admin.inc.php:406
+#: inc/wpf/admin.inc.php:403
 msgid "Make some subtile changes to the post pages"
 msgstr "Maak wat subtiele veranderingen aan de opmaak"
 
-#: inc/wpf/admin.inc.php:412 inc/wpf/admin.inc.php:435
-#: inc/wpf/admin.inc.php:450 inc/wpf/admin.inc.php:472
+#: inc/wpf/admin.inc.php:409 inc/wpf/admin.inc.php:432
+#: inc/wpf/admin.inc.php:447 inc/wpf/admin.inc.php:469
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: inc/wpf/admin.inc.php:413 inc/wpf/admin.inc.php:436
-#: inc/wpf/admin.inc.php:451 inc/wpf/admin.inc.php:473
+#: inc/wpf/admin.inc.php:410 inc/wpf/admin.inc.php:433
+#: inc/wpf/admin.inc.php:448 inc/wpf/admin.inc.php:470
 msgid "Reset Values"
 msgstr "Herstel instellingen"
 
-#: inc/wpf/admin.inc.php:422
+#: inc/wpf/admin.inc.php:419
 msgid "Menu options"
 msgstr "Menu opties"
 
-#: inc/wpf/admin.inc.php:423
+#: inc/wpf/admin.inc.php:420
 msgid "Make the menu fixed and/or contained-to-grid"
 msgstr "Maak de menu vast en/of vast-aan-grid"
 
-#: inc/wpf/admin.inc.php:428
+#: inc/wpf/admin.inc.php:425
 msgid "Title &amp; description"
 msgstr "Titel &amp; beschrijving"
 
-#: inc/wpf/admin.inc.php:429
+#: inc/wpf/admin.inc.php:426
 msgid "Hide the title and/or the description of the site"
 msgstr "Verberg de titel en/of de beschrijving van de site"
 
-#: inc/wpf/admin.inc.php:443
+#: inc/wpf/admin.inc.php:440
 msgid "Colophon"
 msgstr "Colofon"
 
-#: inc/wpf/admin.inc.php:444
+#: inc/wpf/admin.inc.php:441
 msgid "The copyright text in the footer"
 msgstr "De auteursrechten test in de voet"
 
-#: inc/wpf/admin.inc.php:459 inc/wpf/admin/contact-tab.inc.php:9
+#: inc/wpf/admin.inc.php:456 inc/wpf/admin/contact-tab.inc.php:9
 msgid "Contact Development"
 msgstr "Contact Ontwikkeling"
 
-#: inc/wpf/admin.inc.php:460
+#: inc/wpf/admin.inc.php:457
 msgid "You can disable the Contact Form or/and put it in Debug Mode"
 msgstr "Je kunt de contact formulier uitschakelen en/of in debug modes zetten"
 
-#: inc/wpf/admin.inc.php:465 inc/wpf/admin/contact-tab.inc.php:64
+#: inc/wpf/admin.inc.php:462 inc/wpf/admin/contact-tab.inc.php:64
 msgid "Contact Configuration"
 msgstr "Contact instellingen"
 
-#: inc/wpf/admin.inc.php:466
+#: inc/wpf/admin.inc.php:463
 msgid "Fill in these options to use the WPF Contact Template"
 msgstr ""
 "Vul deze opties in om gebruik te kunnen maken van de WPF contact template"
@@ -412,62 +412,50 @@ msgid "Sticky"
 msgstr "Sticky"
 
 #: inc/wpf/admin/header-tab.inc.php:41
-msgid "Menu Location"
-msgstr "Menu lokatie"
-
-#: inc/wpf/admin/header-tab.inc.php:47
-msgid "Show the menu beneath the title area"
-msgstr "Laat de menu beneden het titel gebied zien"
-
-#: inc/wpf/admin/header-tab.inc.php:47
-msgid " (Doesn't work when menu is fixed)"
-msgstr " (Werkt niet wanneer de menu \"vast\" staat)"
-
-#: inc/wpf/admin/header-tab.inc.php:53
 msgid "Center Menu"
 msgstr "Centreer menu"
 
-#: inc/wpf/admin/header-tab.inc.php:59
+#: inc/wpf/admin/header-tab.inc.php:47
 msgid "Center the menu"
 msgstr "Centreer de menu"
 
-#: inc/wpf/admin/header-tab.inc.php:65
+#: inc/wpf/admin/header-tab.inc.php:53
 msgid "Menu Title"
 msgstr "Menu titel"
 
-#: inc/wpf/admin/header-tab.inc.php:76
+#: inc/wpf/admin/header-tab.inc.php:64
 msgid "Custom \"back\" text"
 msgstr "Aangepaste \"Terug\" tekst"
 
-#: inc/wpf/admin/header-tab.inc.php:82
+#: inc/wpf/admin/header-tab.inc.php:70
 msgid "Add a custom \"Back\" text"
 msgstr "Voeg een aangepaste \"Terug\" tekst toe"
 
-#: inc/wpf/admin/header-tab.inc.php:82
+#: inc/wpf/admin/header-tab.inc.php:70
 msgid " (Turn off if you wan't the parent's title as the \"Back\" text)"
 msgstr " (Zet dit uit als je de titel van de ouder als \"Terug\" tekst wilt)"
 
-#: inc/wpf/admin/header-tab.inc.php:88
+#: inc/wpf/admin/header-tab.inc.php:76
 msgid "\"back\" text"
 msgstr "\"terug\" tekst"
 
-#: inc/wpf/admin/header-tab.inc.php:110
+#: inc/wpf/admin/header-tab.inc.php:98
 msgid "Title Options"
 msgstr "Titel opties"
 
-#: inc/wpf/admin/header-tab.inc.php:117
+#: inc/wpf/admin/header-tab.inc.php:105
 msgid "Hide site title"
 msgstr "Verberg site titel"
 
-#: inc/wpf/admin/header-tab.inc.php:123
+#: inc/wpf/admin/header-tab.inc.php:111
 msgid "Hide the site title"
 msgstr "Verberg de site titel"
 
-#: inc/wpf/admin/header-tab.inc.php:129
+#: inc/wpf/admin/header-tab.inc.php:117
 msgid "Hide site description"
 msgstr "Verberg site beschrijving"
 
-#: inc/wpf/admin/header-tab.inc.php:135
+#: inc/wpf/admin/header-tab.inc.php:123
 msgid "Hide the site description"
 msgstr "Verberg de site beschrijving"
 
@@ -601,11 +589,11 @@ msgstr "Pagina's:"
 msgid "Add a menu"
 msgstr "Voeg een menu toe"
 
-#: inc/wpf/navigation.inc.php:336
+#: inc/wpf/navigation.inc.php:357
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/wpf/navigation.inc.php:429
+#: inc/wpf/navigation.inc.php:450
 msgid "Home"
 msgstr "Start"
 
@@ -638,41 +626,50 @@ msgstr "Voet 3"
 msgid "Search"
 msgstr "Zoeken"
 
-#: tpl-contact.php:40
+#: tpl-contact.php:42
 msgid "Name (required)"
 msgstr "Naam (verplicht)"
 
-#: tpl-contact.php:41
+#: tpl-contact.php:43
 msgid "Your name please"
 msgstr "Uw naam alstublieft"
 
-#: tpl-contact.php:47
+#: tpl-contact.php:49
 msgid "Email (required)"
 msgstr "Email (verplicht)"
 
-#: tpl-contact.php:48
+#: tpl-contact.php:50
 msgid "Your email please"
 msgstr "Uw email alstublieft"
 
-#: tpl-contact.php:54
+#: tpl-contact.php:56
 msgid "Subject (required)"
 msgstr "Onderwerp (verplicht)"
 
-#: tpl-contact.php:55
+#: tpl-contact.php:57
 msgid "Your subject please"
 msgstr "Uw onderwerp alstublieft"
 
-#: tpl-contact.php:61
+#: tpl-contact.php:63
 msgid "Content (required)"
 msgstr "Inhoud (verplicht)"
 
-#: tpl-contact.php:62
+#: tpl-contact.php:64
 msgid "Your content please"
 msgstr "Uw inhoud alstublieft"
 
-#: tpl-contact.php:67
+#: tpl-contact.php:69
 msgid "Send mail"
 msgstr "Verzend mail"
+
+#~ msgid "Menu Location"
+#~ msgstr "Menu lokatie"
+
+#~ msgid "Show the menu beneath the title area"
+#~ msgstr "Laat de menu beneden het titel gebied zien"
+
+#~ msgid " (Doesn't work when menu is fixed)"
+#~ msgstr " (Werkt niet wanneer de menu \"vast\" staat)"
 
 #~ msgid "&#xf053; Previous"
 #~ msgstr "&#xf053; Vorige"
