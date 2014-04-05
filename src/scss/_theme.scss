@@ -456,13 +456,14 @@ h1.entry-title {
   margin-top: rem-calc(40);
 }
 .author-avatar {
-  float: left;
-  margin: rem-calc(0 20 10 0);
-  img {
-    @include radius;
-  }
+  @extend %col;
+  margin-bottom: 20px;
+  text-align: center;
+  img { @include radius(50%); }
 }
 .author-description {
+  @extend %col;
+  text-align: center;
   h2 {
     font-size: rem-calc(25);
     margin-top: 0;
@@ -498,6 +499,13 @@ h1.entry-title {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  // author-bio
+  .author-avatar { @include grid-column($columns:3, $collapse:null, $float:false); }
+  .author-description {
+    @include grid-column($columns:9, $collapse:null, $float:false);
+    text-align: left;
   }
 }
 
