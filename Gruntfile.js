@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'js/foundation.min.js': ['bower_components/fastclick/lib/fastclick.js', 'src/foundation/foundation.js', 'src/foundation/foundation.topbar.js', 'src/foundation/foundation.alert.js'],
+					'js/foundation.min.js': ['bower_components/fastclick/lib/fastclick.js', 'src/js/foundation/foundation.js', 'src/js/foundation/foundation.topbar.js', 'src/js/foundation/foundation.alert.js'],
 					'js/vendor/modernizr.min.js': 'bower_components/modernizr/modernizr.js'
 				}
 			}
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['src/foundation/*.js'],
+				files: ['src/js/**/*.js'],
 				tasks: ['uglify']
 			},
 			sass: 	{
