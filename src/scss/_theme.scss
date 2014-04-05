@@ -197,11 +197,6 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
   -o-background-size: cover;
   background-size: cover;
 }
-.topbar-sticky #navbar {
-  position: relative;
-  margin-bottom: rem-calc(20);
-  &.fixed { position: fixed; }
-}
 .topbar-fixed {
   .fixed-header { top: rem-calc(45); }
   #navbar .expanded { margin-top: rem-calc(-$wpf_mobile_header_height); }
@@ -236,7 +231,7 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
 // Site-meta contains the headings (.site-title & .site-description)
 .site-meta {
   @extend %container;
-  margin-top: rem-calc($wpf_mobile_header_height * 0.15);
+  margin-top: rem-calc($wpf_mobile_header_height * 0.10);
   background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.45);
   @include radius;
@@ -272,10 +267,13 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
 }
 
 @media #{$small} {
-.site { margin-top: rem-calc($wpf_header_height); }
-.fixed-header { height: rem-calc($wpf_header_height); }
+  .site { margin-top: rem-calc($wpf_header_height); }
+  .fixed-header {
+    height: rem-calc($wpf_header_height);
+    //margin-top: rem-calc(32);
+  }
 
-.site-meta { margin-top: rem-calc($wpf_header_height * 0.15); }
+  .site-meta { margin-top: rem-calc($wpf_header_height * 0.20); }
 
   // Add's a blue line under the top-bar and also fixes a spacing problem
   html .f-topbar-fixed { padding-top: rem-calc(55); }
@@ -289,17 +287,19 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
   .wp-toolbar {
     .site-body { padding-top: 0; }
     .site { margin-top: rem-calc($wpf_header_height+32); }
+    .fixed-header { margin-top: rem-calc(32); }
     &.topbar-fixed {
       .site { margin-top: rem-calc($wpf_header_height+32); }
       .fixed-header {
-        padding-top: rem-calc(32);
+        padding-top: 0;
+        //margin-top: rem-calc(32);
         height: rem-calc($wpf_header_height+32);
       }
       #wpadminbar { top: 0; z-index: 100; }
       #navbar { top: rem-calc(32); }
     }
     &.topbar-sticky {
-      .fixed-header { top: rem-calc(32); }
+      //.fixed-header { top: rem-calc(32); }
       .fixed { margin-top: rem-calc(32); }
     }
   }
@@ -313,6 +313,7 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
 
 .content-area {
   @extend %container;
+  padding-top: rem-calc(20);
 }
 .site-content, .site-content-fw {
   @extend %col;
