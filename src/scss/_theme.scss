@@ -390,8 +390,6 @@ ul.page-numbers {
   span.current {
     @include pagination-current-item($has-anchor: false);
     display: inline-block;
-    /* @todo: remove this once PR is excepted: https://github.com/zurb/foundation/pull/4493 */
-    @include radius;
   }
 }
 .pagination-title {
