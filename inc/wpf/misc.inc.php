@@ -163,8 +163,6 @@ add_filter( 'the_content_more_link', 'wpf_edit_more_link' );
 if ( ! function_exists( 'wpf_edit_more_link' ) ) {
 	function wpf_edit_more_link( $link ) {
 		$link = preg_replace( '|#more-[0-9]+|', '', $link );
-		//$link = preg_replace( '|class="more-link"|', 'class="more-link icon-long-arrow-right"', $link );
-		//$link .= '<i class="icon-long-arrow-right"></i>';
 		return $link;
 	} // end wpf_edit_more_link()
 }
