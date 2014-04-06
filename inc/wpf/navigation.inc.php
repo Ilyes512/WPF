@@ -367,7 +367,7 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 							'fallback_cb'    => 'wpf_nav_menu_fallback',
 						)
 					); ?>
-					<ul class="right hide-for-medium-down">
+					<ul class="right show-for-large-up">
 						<li class="divider"></li>
 						<li class="has-form"><?php get_search_form(); ?></li>
 					</ul>

@@ -30,7 +30,7 @@ get_header(); ?>
 				</div><!-- .panel -->
 
 			</div><!-- #content -->
-			<?php $GLOBALS['class_searchform'] = 'show-for-medium-down'; ?>
+			<?php $GLOBALS['class_searchform'] = 'hide-for-large-up'; ?>
 			<?php get_sidebar(); ?>
 		</section><!-- #content -->
 	</div><!-- .site-body -->
