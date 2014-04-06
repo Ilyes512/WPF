@@ -48,8 +48,8 @@
 		<?php if ( comments_open() && ! is_single() ) : ?>
 			<div class="comments-link">
 				<span class="leave-reply">
+					<i class="icon-comments icon-fw">&nbsp;</i>
 					<a href="<?php esc_attr_e( get_comments_link() ); ?>" title="<?php esc_attr_e( __( 'Reply on ', 'wpf' ) . get_the_title() ); ?>">
-						<i class="icon-comments icon-fw">&nbsp;</i>
 						<?php comments_number( __( 'Leave a response', 'wpf' ), __( 'one response', 'wpf' ), __( '% responses', 'wpf' ) ); ?>
 					</a>
 				</span><!-- .leave-reply -->
