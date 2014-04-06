@@ -478,7 +478,7 @@ $crumb-padding: rem-calc(9 14 0); //rem-calc(9 14 9);
 
 // Flex Video
 
-// $include-html-media-classes: $include-html-classes;
+$include-html-media-classes: true; //$include-html-classes;
 
 // We use these to control video container padding and margins
 // $flex-video-padding-top: rem-calc(25);
