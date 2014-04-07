@@ -9,7 +9,7 @@ get_header(); ?>
 <?php wpf_dev( 'tpl-leftsidebar.php' ); ?>
 	<div class="site-body">
 <?php echo wpf_primarymenu_display( 'bottom' ); ?>
-		<section id='primary' class="content-area sidebar_left">
+		<section id="primary" class="content-area sidebar_left">
 
 			<!-- Row for main content area -->
 			<div id="content" class="site-content" role="main">

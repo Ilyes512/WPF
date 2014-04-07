@@ -9,7 +9,7 @@ get_header(); ?>
 <?php wpf_dev( 'archive.php' ); ?>
 	<div class="site-body">
 <?php echo wpf_primarymenu_display( 'bottom' ); ?>
-		<section id='primary' class="content-area">
+		<section id="primary" class="content-area">
 
 			<!-- Row for main content area -->
 			<div id="content" class="site-content" role="main">
