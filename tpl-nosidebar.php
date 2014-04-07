@@ -14,7 +14,8 @@ get_header(); ?>
 			<!-- Row for main content area -->
 			<div id="content" class="site-content-fw" role="main">
 
-				<?php /* Start loop */ ?>
+				<?php if ( function_exists( 'wpf_before_content' ) ) echo wpf_before_content(); ?>
+
 				<?php while ( have_posts() ): the_post(); ?>
 					<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<header class="entry-header">

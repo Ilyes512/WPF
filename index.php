@@ -10,8 +10,11 @@ get_header(); ?>
 	<div class="site-body">
 <?php echo wpf_primarymenu_display( 'bottom' ); ?>
 		<section id='primary' class="content-area">
+
 			<!-- Row for main content area -->
 			<div id="content" class="site-content" role="main">
+
+				<?php if ( function_exists( 'wpf_before_content' ) ) echo wpf_before_content(); ?>
 
 				<?php if ( have_posts() ) : ?>
 					<?php /* Start the Loop */ ?>

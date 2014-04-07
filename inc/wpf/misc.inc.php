@@ -179,3 +179,12 @@ if ( ! function_exists( 'wpf_allow_html_profile' ) ) {
 		}
 	} // end wpf_allow_html_profile()
 }
+
+if ( ! function_exists( 'wpf_before_content' ) ) {
+	function wpf_before_content() {
+		$outdated_msg = __( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' );
+		$output = sprintf( '<!--[if lt IE 8]><div data-alert class="msgbox-info">%s<a href="#" class="close">&times;</a></div><![endif]-->', $outdated_msg );
+
+		return $output;
+	} // end wpf_before_content()
+}

@@ -29,9 +29,6 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 	<header id="masthead" class="site-header" role="banner">
 <?php echo wpf_primarymenu_display( 'header' ); ?>
 
-<!--[if lt IE 8]>
-<p class="chromeframe"><?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.' , 'wpf' ); ?></p>
-<![endif]-->
 		<?php if ( $GLOBALS['wpf_settings']['header_show_title'] ) : ?>
 			<div class="fixed-header">
 				<div class="site-meta">

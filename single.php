@@ -14,7 +14,8 @@ get_header(); ?>
 			<!-- Row for main content area -->
 			<div id="content" class="site-content" role="main">
 
-				<?php /* Start the Loop */ ?>
+				<?php if ( function_exists( 'wpf_before_content' ) ) echo wpf_before_content(); ?>
+
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'content/content', get_post_format() ); ?>
 					<?php comments_template(); ?>
