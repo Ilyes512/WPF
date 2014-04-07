@@ -372,10 +372,12 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 							'fallback_cb'    => 'wpf_nav_menu_fallback',
 						)
 					); ?>
-					<ul class="right show-for-large-up">
-						<li class="divider"></li>
-						<li class="has-form"><?php get_search_form(); ?></li>
-					</ul>
+					<?php if ( $GLOBALS['wpf_settings']['menu_primary_searchform'] ) : ?>
+						<ul class="right show-for-large-up">
+							<li class="divider"></li>
+							<li class="has-form"><?php get_search_form(); ?></li>
+						</ul>
+					<?php endif; ?>
 				</section><!-- .top-bar-section -->
 			</nav><!-- #site-navigation -->
 		</div><!-- #nav-bar -->

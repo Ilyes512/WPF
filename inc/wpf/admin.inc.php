@@ -125,6 +125,7 @@ if ( ! function_exists( 'wpf_get_default_options' ) ) {
 			'menu_primary_custom_back_text'  => true,
 			'menu_primary_back_text'         => __( 'Back', 'wpf' ),
 			'menu_primary_click'             => false,
+			'menu_primary_searchform'        => true,
 			'header_show_title'              => true,
 			'header_show_description'        => true,
 
@@ -194,6 +195,7 @@ if ( ! function_exists( 'wpf_options_validation' ) ) {
 			$new_options['menu_primary_custom_back_text']    = isset( $inputs['menu_primary_custom_back_text'] ) && $inputs['menu_primary_custom_back_text'] ? true : false;
 			$new_options['menu_primary_back_text']           = sanitize_text_field( $inputs['menu_primary_back_text'] );
 			$new_options['menu_primary_click']               = isset( $inputs['menu_primary_click'] ) && $inputs['menu_primary_click'] ? true : false;
+			$new_options['menu_primary_searchform']          = isset( $inputs['menu_primary_searchform'] ) && $inputs['menu_primary_searchform'] ? true : false;
 
 			$new_options['header_show_title']                = isset( $inputs['header_show_title'] ) && $inputs['header_show_title'] ? true : false;
 			$new_options['header_show_description']          = isset( $inputs['header_show_description'] ) && $inputs['header_show_description'] ? true : false;
@@ -249,6 +251,7 @@ if ( ! function_exists( 'wpf_reset_options' ) ) {
 			$new_options['menu_primary_custom_back_text']    = $reset_options['menu_primary_custom_back_text'];
 			$new_options['menu_primary_back_text']           = $reset_options['menu_primary_back_text'];
 			$new_options['menu_primary_click']               = $reset_options['menu_primary_click'];
+			$new_options['menu_primary_searchform']          = $reset_options['menu_primary_searchform'];
 
 			$new_options['header_show_title']                = $reset_options['header_show_title'];
 			$new_options['header_show_description']          = $reset_options['header_show_description'];
