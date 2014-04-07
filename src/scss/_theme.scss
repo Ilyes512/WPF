@@ -50,11 +50,11 @@ textarea {
 }
 
 // Boxed page
-.boxed {
+.boxed .content-area {
   @extend %container;
 }
 @media #{$medium-up} {
-  .boxed {
+  .boxed .content-area {
     border-left: 1px solid $hr-border-color;
     border-right: 1px solid $hr-border-color;
   }
