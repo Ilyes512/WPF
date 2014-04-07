@@ -9,6 +9,10 @@
 global $wpf_settings;
 
 wpf_dev( 'footer.php' ); ?>
+	<p id="back-top">
+		<a href="#top"><i class="icon-chevron-up"></i><span class="hide-for-small-only"><?php _e( 'Back to top', 'wpf'); ?></span></a>
+	</p>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<hr>
 		<?php wpf_print_footer_sidebar(); ?>

@@ -53,7 +53,7 @@ textarea {
 .boxed {
   @extend %container;
 }
-@media #{$small} {
+@media #{$medium-up} {
   .boxed {
     border-left: 1px solid $hr-border-color;
     border-right: 1px solid $hr-border-color;
@@ -162,6 +162,49 @@ a[class*=#{$fa-css-prefix}]:hover {
 .msgbox-warning { @include alert-style($warning-color); }
 .msgbox-info { @include alert-style($info-color); }
 
+// Markup for the "back to top"-button
+#back-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  padding: rem-calc(10);
+  margin-bottom: 0;
+  opacity: 0.7;
+  font-size: rem-calc(11);
+  a {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    @include single-transition($speed:1s);
+    &:hover { color: $primary-color; }
+  }
+  i {
+    display: block;
+    font-size: 2em;
+  }
+}
+
+@media #{$medium-up} {
+  #back-top {
+    bottom: rem-calc(30);
+    right: rem-calc(30);
+    padding: 0;
+    i { font-size: 3em; }
+  }
+}
+
+@media #{$large-up} {
+  #back-top {
+    bottom: rem-calc(50);
+    right: rem-calc(50);
+    padding: 0;
+    i { font-size: 4em; }
+  }
+}
+
 
 /* ==========================================================================
    Header & Top-bar
@@ -192,7 +235,7 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
 .site-body {
   position: relative;
   width: 100%;
-  min-width: 100%;
+  overflow: scroll;
   min-height: rem-calc(400);
   z-index: 1;
   background: white;
@@ -254,7 +297,7 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
   }
 }
 
-@media #{$small} {
+@media #{$medium-up} {
   .site { margin-top: rem-calc($wpf_header_height); }
   .fixed-header {
     height: rem-calc($wpf_header_height);
@@ -462,7 +505,7 @@ h1.entry-title {
   }
 }
 
-@media #{$small} {
+@media #{$medium-up} {
   .sidebar_right .site-content, .site-content {
     @include grid-column($columns:8, $collapse:null, $float:false);
   }
@@ -510,7 +553,7 @@ h1.entry-title {
   list-style: none;
 }
 
-@media #{$small} {
+@media #{$medium-up} {
   .sidebar_right .sidebar-container, .sidebar-container  {
     @include grid-column($columns:4, $collapse:null, $float:false, $last-column:true);
   }
@@ -563,7 +606,7 @@ h1.entry-title {
   @extend %col;
   ul {
     @include inline-list;
-    margin-bottom: 0;
+    //margin-bottom: 0;
     float: left;
   }
 }
@@ -575,7 +618,7 @@ h1.entry-title {
   }
 }
 
-@media #{$small} {
+@media #{$medium-up} {
   // widget's footer sizes
   .widget-xlarge {
     @include grid-column($columns:12, $collapse:null, $float:false);
@@ -599,6 +642,7 @@ h1.entry-title {
     @include grid-column($columns:6, $collapse:null, $push:6, $float:false);
     ul {
       float: right;
+      margin-bottom: 0;
     }
   }
   // Contains some site information
@@ -700,7 +744,7 @@ h1.entry-title {
   }
 }
 
-@media #{$small} {
+@media #{$medium-up} {
   .comment-list {
     ul.children {
       margin-left: rem-calc(25)
@@ -769,7 +813,7 @@ h1.entry-title {
     }
   }
 
-  @media #{$small} {
+  @media #{$medium-up} {
     form#wpf_contact {
           // @todo: Optimize - extend from a global
       label {

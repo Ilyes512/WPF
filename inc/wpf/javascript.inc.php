@@ -32,7 +32,7 @@ if ( ! function_exists( 'wpf_scripts_and_styles' ) ) {
 		wp_register_script( 'wpf-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.min.js', array(), '2.7.1', false );
 
 		// register Foundation jsscript in the footer
-		wp_register_script( 'wpf-js', get_stylesheet_directory_uri() . '/js/foundation.min.js', array( 'jquery', 'wpf-modernizr' ), WPF_VERSION, true );
+		wp_register_script( 'wpf-js', get_stylesheet_directory_uri() . '/js/wpf.min.js', array( 'jquery', 'wpf-modernizr' ), WPF_VERSION, true );
 
 		// Add style.css
 		wp_enqueue_style( 'wpf-stylesheet', get_stylesheet_uri(), array(), WPF_VERSION );
@@ -59,18 +59,4 @@ if ( ! function_exists( 'wpf_placeholder' ) ) {
 	function wpf_placeholder() {
 		echo '<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.js"></script><![endif]-->' . "\n";
 	}
-}
-
-add_action( 'wp_footer', 'wpf_foundation_jquery', 999 );
-/**
- * Initiate the necessary jQuery-scripts used by Foundation
- *
- * Initiate the necessary jQuery-scripts used by Foundation after the scripts
- * are enqueued in wpf_scripts_and_styles(). The wp_enqueue_scripts hook is
- * loaded with priority 20 within the wp_footer function.
- */
-if ( ! function_exists( 'wpf_foundation_jquery' ) ) {
-	function wpf_foundation_jquery() {
-		echo "<script>\njQuery(document).foundation();\n</script>";
-	} // end wpf_foundation_jquery()
 }

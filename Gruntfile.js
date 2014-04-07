@@ -9,7 +9,13 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'js/foundation.min.js': ['bower_components/fastclick/lib/fastclick.js', 'src/js/foundation/foundation.js', 'src/js/foundation/foundation.topbar.js', 'src/js/foundation/foundation.alert.js'],
+					'js/wpf.min.js': [
+						'bower_components/fastclick/lib/fastclick.js',
+						'src/js/foundation/foundation.js',
+						'src/js/foundation/foundation.topbar.js',
+						'src/js/foundation/foundation.alert.js',
+						'src/js/app.js'
+					],
 					'js/vendor/modernizr.min.js': 'bower_components/modernizr/modernizr.js'
 				}
 			}
