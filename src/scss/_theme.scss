@@ -34,14 +34,6 @@ textarea {
     resize: vertical;
 }
 
-// Chrome Frame prompt
-.chromeframe {
-  margin: 1em;
-  padding: 0.2em;
-  background: #ccc;
-  color: #000;
-}
-
 // These classes get @exted so there will be no multiple classes with the same
 // contents (properties)
 %container {
@@ -164,15 +156,11 @@ a[class*=#{$fa-css-prefix}]:hover {
     @include alert-close;
   }
 }
-.msgbox-alert {
-  @include alert-style($alert-color);
-}
-.msgbox-succes {
-  @include alert-style($success-color);
-}
-.msgbox-secondary {
-  @include alert-style($secondary-color);
-}
+.msgbox-success { @include alert-style($success-color); }
+.msgbox-alert { @include alert-style($alert-color); }
+.msgbox-secondary { @include alert-style($secondary-color); }
+.msgbox-warning { @include alert-style($warning-color); }
+.msgbox-info { @include alert-style($info-color); }
 
 
 /* ==========================================================================
