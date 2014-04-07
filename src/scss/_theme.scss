@@ -376,7 +376,8 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
 // img / caption
 figure {
   max-width: 100%;
-  margin-bottom: rem-calc(20);
+  margin: rem-calc(0 0 20);
+  padding: 0;
 }
 img[class*="wp-image-"] {
   @include radius;
