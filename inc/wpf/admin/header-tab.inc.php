@@ -82,6 +82,18 @@ add_settings_field(
 	)
 );
 
+add_settings_field(
+	'menu_primary_click',          // $id
+	__( 'Click Menu', 'wpf' ),     // $title
+	'wpf_checkbox_option_display', // $callback
+	'wpf-options',                 // $page
+	'header_menu_section',         // $section
+	array(                         // $args
+		'id'    => 'menu_primary_click',
+		'label' => __( 'Clickable menu', 'wpf' )
+	)
+);
+
 register_setting(
 	'header_menu_section', // $option_group
 	'wpf_settings'         // $option_name

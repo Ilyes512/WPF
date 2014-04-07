@@ -338,6 +338,11 @@ if ( ! function_exists( 'wpf_primarymenu_display' ) ) {
 			$navbar_data_options[] = 'custom_back_text:false;';
 		}
 
+		// Check if the menu should use click instead of hover for navigation
+		if ( $GLOBALS['wpf_settings']['menu_primary_click'] ) {
+			$navbar_data_options[] = 'is_hover:false;';
+		}
+
 		// Convert the classes and data options array's to string's
 		$navbar_class = ( $navbar_class ) ? ' class="' . esc_attr( implode( ' ', $navbar_class ) ) . '"' : '';
 		$navbar_data_options = ( $navbar_data_options ) ? ' data-options="' . esc_attr( implode( '', $navbar_data_options ) ) . '"' : '';
