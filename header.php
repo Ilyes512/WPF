@@ -29,19 +29,21 @@ $body_class = ( is_admin_bar_showing() ) ? 'wp-toolbar antialiased' : 'antialias
 	<header id="masthead" class="site-header" role="banner">
 <?php echo wpf_primarymenu_display( 'header' ); ?>
 
-		<?php if ( $GLOBALS['wpf_settings']['header_show_title'] ) : ?>
-			<div class="fixed-header">
+		<div class="fixed-header">
+			<?php if ( $GLOBALS['wpf_settings']['header_show_title'] || $GLOBALS['wpf_settings']['header_show_description'] ) : ?>
 				<div class="site-meta">
 					<section>
 						<h1 class="site-title">
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+							<?php if ( $GLOBALS['wpf_settings']['header_show_title'] ) :  ?>
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+							<?php endif; ?>
 							<?php if ( $GLOBALS['wpf_settings']['header_show_description'] ) : ?>
 								<p class="site-description"><?php if ( function_exists( 'wpf_site_description' ) ) wpf_site_description(); ?></p>
 							<?php endif; ?>
 						</h1>
 					</section>
 				</div><!-- .site-meta -->
-			</div><!-- .fixed-header -->
-		<?php endif; ?>
+			<?php endif; ?>
+		</div><!-- .fixed-header -->
 	</header><!-- #masthead -->
 <?php wpf_dev( 'end header.php' ); ?>

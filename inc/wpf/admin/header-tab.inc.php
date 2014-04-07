@@ -114,25 +114,25 @@ add_settings_section(
 
 add_settings_field(
 	'header_show_title',            // $id
-	__( 'Hide site title', 'wpf' ), // $title
+	__( 'Show site title', 'wpf' ), // $title
 	'wpf_checkbox_option_display',  // $callback
 	'wpf-options',                  // $page
 	'header_title_section',         // $section
 	array(                          // $args
 		'id'    => 'header_show_title',
-		'label' => __( 'Hide the site title', 'wpf' )
+		'label' => __( 'Show the site title in the header', 'wpf' )
 	)
 );
 
 add_settings_field(
 	'header_show_description',            // $id
-	__( 'Hide site description', 'wpf' ), // $title
+	__( 'Show site description', 'wpf' ), // $title
 	'wpf_checkbox_option_display',        // $callback
 	'wpf-options',                        // $page
 	'header_title_section',               // $section
 	array(                                // $args
 		'id'    => 'header_show_description',
-		'label' => __( 'Hide the site description', 'wpf' )
+		'label' => __( 'Show the site description in the header', 'wpf' )
 	)
 );
 
