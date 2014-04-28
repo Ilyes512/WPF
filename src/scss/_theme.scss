@@ -205,6 +205,37 @@ a[class*=#{$fa-css-prefix}]:hover {
   }
 }
 
+// Some markup for <pre> and <code>
+pre {
+  overflow: auto;
+  width: auto;
+  padding: rem-calc(5 0);
+  margin-bottom: rem-calc(20);
+  background-color: #eee;
+  @include radius;
+}
+code {
+  background-color: #eee;
+  padding: rem-calc(0 5);
+  border: 1px solid scale-color(#eee, $lightness: -10%);;
+  @include radius;
+}
+pre code { border: 0; }
+
+// Prettify embedded GitHub Gist's
+.gist {
+  // Make it look nicer (hide the purple background of the container)
+  table {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  // Hide meta information at the bottom of every gist
+  .gist-file {
+    .gist-meta { display: none; }
+    .gist-data.gist-syntax { border-bottom: 0; }
+  }
+}
+
 
 /* ==========================================================================
    Header & Top-bar
