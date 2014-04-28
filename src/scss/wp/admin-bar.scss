@@ -8,14 +8,13 @@
 	text-transform: none;
 	letter-spacing: normal;
 	font: normal 13px/32px "Open Sans", sans-serif;
+	-webkit-border-radius: 0;
 	border-radius: 0;
 	-webkit-box-sizing: content-box;
-	-moz-box-sizing:    content-box;
-	box-sizing:         content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 	-webkit-transition: none;
-	-moz-transition:    none;
-	-o-transition:      none;
-	transition:         none;
+	transition: none;
 	-webkit-font-smoothing: subpixel-antialiased; /* Prevent Safari from switching to standard antialiasing on hover */
 }
 
@@ -250,7 +249,6 @@ html:lang(he-il) .rtl #wpadminbar *  {
 #wpadminbar .ab-item:before,
 #wpadminbar #adminbarsearch:before {
 	position: relative;
-	-moz-transition: all .1s ease-in-out;
 	-webkit-transition: all .1s ease-in-out;
 	transition: all .1s ease-in-out;
 }
@@ -587,24 +585,17 @@ html:lang(he-il) .rtl #wpadminbar *  {
 	border: none;
 	outline: none;
 	cursor: pointer;
-
 	-webkit-box-shadow: none;
 	box-shadow: none;
-
-	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	-ms-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-
 	-webkit-transition-duration: 400ms;
+	transition-duration: 400ms;
 	-webkit-transition-property: width, background;
+	transition-property: width, background;
 	-webkit-transition-timing-function: ease;
-	-moz-transition-duration: 400ms;
-	-moz-transition-property: width, background;
-	-moz-transition-timing-function: ease;
-	-o-transition-duration: 400ms;
-	-o-transition-property: width, background;
-	-o-transition-timing-function: ease;
+	transition-timing-function: ease;
 }
 
 #wpadminbar > #wp-toolbar > #wp-admin-bar-top-secondary > #wp-admin-bar-search #adminbarsearch input.adminbar-input:focus {
@@ -751,7 +742,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 }
 /* End no @font-face */
 
-@media only screen and ( max-width: 40.063em ) {
+@media screen and (max-width: 40.063em) {
 	/* Toolbar Touchification*/
 	html #wpadminbar {
 		left: 0 !important;
@@ -1009,7 +1000,6 @@ html:lang(he-il) .rtl #wpadminbar *  {
 	/* Override default min-width so dropdown lists aren't stretched
 		to 100% viewport width at responsive sizes. */
 	#wpadminbar .ab-top-menu > .menupop > .ab-sub-wrapper {
-		min-width: intrinsic;
 		min-width: -webkit-fit-content;
 		min-width: -moz-fit-content;
 		min-width: fit-content;
@@ -1050,7 +1040,7 @@ html:lang(he-il) .rtl #wpadminbar *  {
 }
 
 /* Smartphone */
-@media only screen and ( max-width: 40.063em ) {
+@media screen and (max-width: 40.063em) {
 	#wpadminbar {
 		position: absolute;
 	}
