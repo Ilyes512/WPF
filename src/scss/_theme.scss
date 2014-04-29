@@ -211,13 +211,13 @@ pre {
   width: auto;
   padding: rem-calc(5);
   margin-bottom: rem-calc(20);
-  background-color: #eee;
+  background-color: #f2f2f2;
   @include radius;
 }
 code {
-  background-color: #eee;
+  background-color: #f2f2f2;
   padding: rem-calc(0 5);
-  border: 1px solid scale-color(#eee, $lightness: -10%);
+  border: 1px solid #d8d8d8;
   @include radius;
 }
 pre code {
@@ -534,7 +534,7 @@ h1.entry-title {
   @extend .text-center;
 }
 .post-tag {
-  @include label($text-size: rem-calc(11), $bg:$secondary-color, $radius:true);
+  @include label($text-size: rem-calc(11), $bg:#f2f2f2, $radius:true);
   text-transform: uppercase;
   letter-spacing: rem-calc(1.5);
   margin-bottom: rem-calc(5);
