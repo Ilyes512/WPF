@@ -381,13 +381,41 @@ html .f-topbar-fixed { padding-top: rem-calc(45); }
   @extend %col;
 }
 
-// 404 / "No posts found"
+// (tip, note, caution) Panel / Callout Panel (used for ie 404 / "No posts found")
 .panel {
+  position: relative;
   @include panel;
   @include radius;
+  hr { border: 5px solid $primary-color; }
 }
-.panel hr {
-  border: 5px solid $primary-color;
+.icon-tip, .icon-note, .icon-caution {
+  left: rem-calc(20);
+  top: rem-calc(20);
+  width: 100%;
+  margin-bottom: rem-calc(20);
+  color: $body-font-color;
+  font-size: 3em;
+  text-align: center;
+}
+.icon-tip:before { content: "\f05a"; }
+.icon-note:before { content: "\f14b"; }
+.icon-caution:before { content: "\f06a"; }
+.callout {
+  @extend .panel;
+  $_bg: scale-color($primary-color, $lightness: 94%);
+  border-color: scale-color($_bg, $lightness: $panel-function-factor);
+  background: $_bg;
+  .icon-tip, .icon-note, .icon-caution { color: $primary-color; }
+}
+
+@media #{$medium-up} {
+  .panel.with-icon, .callout.with-icon {
+    padding-left: rem-calc(70);
+    .icon-tip, .icon-note, .icon-caution {
+      position: absolute;
+      width: initial;
+    }
+  }
 }
 
 // wp aligning
