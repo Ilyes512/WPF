@@ -29,7 +29,13 @@ wpf_dev( 'content.php' ); ?>
 		<div class="entry-meta">
 			<?php wpf_entry_meta(); ?>
 			<?php edit_post_link( '<i class="icon-pencil-square-o icon-fw">&nbsp;</i>' . __( 'Edit', 'wpf' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php if ( has_tag() ) : ?>
+				<div class="post-tags">
+					<?php the_tags( '<span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span> <span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span>' ); ?>
+				</div><!--post-tags -->
+			<?php endif; ?>
 		</div><!-- .entry-meta -->
+
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
@@ -45,27 +51,6 @@ wpf_dev( 'content.php' ); ?>
 	<?php endif; ?>
 
 	<footer class="entry-meta">
-		<?php if ( comments_open() && ! is_single() ) : ?>
-			<div class="comments-link">
-				<span class="leave-reply">
-					<i class="icon-comments icon-fw">&nbsp;</i>
-					<a href="<?php esc_attr_e( get_comments_link() ); ?>" title="<?php esc_attr_e( __( 'Reply on ', 'wpf' ) . get_the_title() ); ?>">
-						<?php comments_number( __( 'Leave a response', 'wpf' ), __( 'one response', 'wpf' ), __( '% responses', 'wpf' ) ); ?>
-					</a>
-				</span><!-- .leave-reply -->
-			</div><!-- .comments-link -->
-		<?php elseif ( ! comments_open() && ! is_single() ) : ?>
-			<div class="comments-link">
-				<span class="reply-closed"><i class="icon-lock icon-fw">&nbsp;</i><?php _e( 'Comments are locked for this post', 'wpf' ); ?></span><!-- .reply-closed -->
-			</div><!-- .comments-link -->
-		<?php endif; // comments_open() ?>
-
-		<?php if ( has_tag() ) : ?>
-			<div class="post-tags">
-				<?php the_tags( '<span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span> <span class="post-tag"><i class="icon-tag icon-fw">&nbsp;</i>', '</span>' ); ?>
-			</div><!--post-tags -->
-		<?php endif; ?>
-
 		<?php if ( is_single() && get_the_author_meta( 'description' ) && $GLOBALS['wpf_settings']['show_author_info'] ) : ?>
 			<?php get_template_part( 'author-bio' ); ?>
 		<?php endif; ?>
