@@ -126,7 +126,7 @@ if ( ! function_exists( 'wpf_setup' ) ) {
 		 * "standard" posts and pages.
 		 */
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 637, 300, true );
+		set_post_thumbnail_size( 635, 299, true );
 
 		/*
 		 * Enable html5 theme support
