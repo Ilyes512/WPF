@@ -5,7 +5,7 @@ Please, if you have tips or idea's, then please share them! Just put them under 
 WPF is a Wordpress theme based on Zurb's Foundation HTML Framework. Foundation is designed with "mobile first" in mind. Also the theme is (more) [SEMANTIC](https://en.wikipedia.org/wiki/Semantic_HTML) now! For more info see [Foundation](http://foundation.zurb.com/).
 
 # Version
-This theme uses the latest Foundation `v5.1.1` and works on the latest Wordpress version `v3.8.x`. The current WPF version is `v0.3.0`.
+This theme uses the latest Foundation `v5.2.2` and works on the latest Wordpress version `v3.9.x`. The current WPF version is `v0.3.0`.
 
 # WPF plugins (not included anymore!)
 * WPF theme comes with "WPF Quote"-plugin that will add a quote post type togather with a special random quote widget.
